@@ -210,8 +210,6 @@
         flex-direction: row;
         height: auto;
     }
-
-    /* 사이드바 - 좌측 고정 */
     .sidebar {
         width: 80px;
         min-width: 80px;
@@ -261,72 +259,64 @@
     .divider {
         display: none;
     }
-
-    /* 콘텐츠 영역 조정 */
     .content {
         width: calc(100% - 80px);
         margin-left: 80px;
-        padding: 12px;
+        padding: 15px;
         overflow-y: auto;
     }
-
-    /* 프로필 이미지 크기 축소 */
     .profile-images {
-        flex-direction: column;
-        align-items: center;
+        display: flex;
+        justify-content: center;
         gap: 10px;
         margin-bottom: 15px;
     }
 
     .profile-images img {
-        width: 90px;
-        height: 90px;
+        width: 120px;
+        height: 120px;
     }
-
-    /* 텍스트 크기 조정 */
-    .intro-text, 
-    .about-text, 
-    .contact-text, 
+    .intro-text,
+    .about-text,
+    .contact-text,
     .project-manager-text {
-        max-width: 100%;
-        font-size: 11px;
+        max-width: 90%;
+        font-size: 12px;
         line-height: 1.5;
         text-align: left;
     }
 
     .about-text h2,
     .contact-text h2 {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     /* 경력 섹션 */
     .experience h3 {
-        font-size: 13px;
+        font-size: 14px;
         margin-bottom: 10px;
     }
 
     .experience ul li {
-        margin-bottom: 8px;
+        margin-bottom: 10px;
     }
 
     .experience ul li strong {
-        font-size: 11px;
+        font-size: 12px;
     }
 
     .experience ul li p {
-        font-size: 11px;
+        font-size: 12px;
     }
-
-    /* 프로젝트 및 포트폴리오 섹션 */
     .grid-container {
         grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
+        gap: 10px;
         margin-top: 10px;
     }
 
     .grid-item a {
-        width: 90px;
-        height: 90px;
+        width: 120px;
+        height: 120px;
     }
 
     .grid-item img {
@@ -336,29 +326,24 @@
     }
 
     .grid-item p {
-        font-size: 11px;
+        font-size: 12px;
     }
-
-    /* 프로젝트 경험 조정 */
     .project-manager-text h2 {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .project-manager-text p {
-        font-size: 11px;
+        font-size: 12px;
     }
-
-    /* 연락처 크기 조정 */
     .contact-text strong {
-        font-size: 11px;
+        font-size: 12px;
     }
-
-    /* 푸터 */
     footer {
-        font-size: 10px;
+        font-size: 12px;
         padding: 5px;
     }
 }
+
     </style>
     <script>
         function showAbout() {
