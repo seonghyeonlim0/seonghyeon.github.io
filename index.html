@@ -208,15 +208,16 @@
 @media screen and (max-width: 768px) {
     .container {
         flex-direction: row;
-        height: auto;
+        height: 100vh; /* 전체 높이를 한 화면에 맞춤 */
+        overflow: hidden;
     }
 
-    /* 사이드바 - 좌측 고정 유지 */
+    /* 사이드바 - 크기 줄이고 좌측 고정 유지 */
     .sidebar {
-        width: 75px;
-        min-width: 75px;
+        width: 65px;
+        min-width: 65px;
         height: 100vh;
-        padding: 8px 0;
+        padding: 5px 0;
         position: fixed;
         left: 0;
         top: 0;
@@ -229,16 +230,16 @@
         z-index: 1000;
     }
 
-    /* 사이드바 텍스트 크기 조정 (밸런스 맞춤) */
+    /* 사이드바 텍스트 크기 줄이기 */
     .sidebar h2 {
-        font-size: 11px;
+        font-size: 10px;
         margin-bottom: 4px;
         text-align: center;
         white-space: nowrap;
     }
 
     .sidebar p {
-        font-size: 8px;
+        font-size: 7px;
         font-weight: bold;
         color: rgba(0, 0, 0, 0.6);
         text-align: center;
@@ -246,8 +247,8 @@
     }
 
     .sidebar hr {
-        width: 50%;
-        margin: 6px auto;
+        width: 40%;
+        margin: 5px auto;
     }
 
     .sidebar nav ul {
@@ -259,13 +260,13 @@
     }
 
     .sidebar nav ul li {
-        margin: 5px 0;
+        margin: 3px 0;
         padding: 0;
     }
 
     .sidebar nav ul li a {
-        font-size: 11px;
-        padding: 6px;
+        font-size: 9px;
+        padding: 5px;
         display: block;
         text-align: center;
     }
@@ -274,73 +275,78 @@
         display: none;
     }
 
-    /* 콘텐츠 영역 */
+    /* 콘텐츠 영역 크기 조정 */
     .content {
-        width: calc(100% - 75px);
-        margin-left: 75px;
-        padding: 12px;
-        overflow-y: auto;
+        width: calc(100% - 65px);
+        margin-left: 65px;
+        padding: 10px;
+        overflow: hidden; /* 스크롤 없애기 */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
 
-    /* HOME 페이지 프로필 이미지 - 가로 배치 */
+    /* HOME 페이지 프로필 이미지 - 가로 배치 및 크기 축소 */
     .profile-images {
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: 8px;
-        margin-bottom: 12px;
+        gap: 5px;
+        margin-bottom: 8px;
     }
 
     .profile-images img {
-        width: 90px;
-        height: 90px;
+        width: 60px;
+        height: 60px;
     }
 
-    /* 텍스트 크기 유지하면서 가독성 조정 */
+    /* 텍스트 크기 축소 */
     .intro-text,
     .about-text,
     .contact-text,
     .project-manager-text {
-        max-width: 90%;
-        font-size: 11px;
-        line-height: 1.5;
-        text-align: left;
+        max-width: 85%;
+        font-size: 10px;
+        line-height: 1.4;
+        text-align: center;
     }
 
     .about-text h2,
     .contact-text h2 {
-        font-size: 13px;
+        font-size: 11px;
     }
 
     /* 경력 섹션 */
     .experience h3 {
-        font-size: 13px;
-        margin-bottom: 8px;
+        font-size: 11px;
+        margin-bottom: 6px;
     }
 
     .experience ul li {
-        margin-bottom: 8px;
+        margin-bottom: 5px;
     }
 
     .experience ul li strong {
-        font-size: 11px;
+        font-size: 10px;
     }
 
     .experience ul li p {
-        font-size: 11px;
+        font-size: 10px;
     }
 
     /* 프로젝트 및 포트폴리오 섹션 */
     .grid-container {
         grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-        margin-top: 8px;
+        gap: 5px;
+        margin-top: 5px;
     }
 
     .grid-item a {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
     }
 
     .grid-item img {
@@ -350,24 +356,24 @@
     }
 
     .grid-item p {
-        font-size: 11px;
+        font-size: 9px;
     }
 
     /* 프로젝트 경험 조정 */
     .project-manager-text h2 {
-        font-size: 13px;
+        font-size: 11px;
     }
 
     .project-manager-text p {
-        font-size: 11px;
+        font-size: 10px;
     }
 
     /* 연락처 크기 조정 */
     .contact-text strong {
-        font-size: 11px;
+        font-size: 10px;
     }
 
-    /* 모바일에서 푸터 숨기기 */
+    /* 모바일에서 푸터 삭제 */
     footer {
         display: none;
     }
@@ -610,4 +616,4 @@
         <p>&copy; 2020-2025 | Seong Hyeon LIM.</p>
     </footer>
 </body>
-</html> 
+</html>            해당 HTML 구조에서 모바일도 볼 수 있게 반응형 구조를 추가해줄 수 있어? 전체적인 구조를 공유해주면 좋을 것 같아
