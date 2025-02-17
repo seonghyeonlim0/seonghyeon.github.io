@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            font-family: 'Netflix Sans Light', 'HGGGothicssi 60g', sans-serif;
+            font-family: 'Netflix Sans Light', 'HGGGothicssi 40g', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
@@ -205,90 +205,136 @@
             font-size: 12px;
             line-height: 8;
         }
-@media screen and (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        height: auto;
-    }
-    
+body {
+    font-family: 'Netflix Sans Light', 'HGGGothicssi 40g', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+}
+.container {
+    display: flex;
+    flex: 1;
+    height: 100vh;
+    overflow: hidden;
+}
+.sidebar {
+    width: 20%;
+    background: #f4f4f4;
+    padding: 15px 8px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 4vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+.sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 3px;
+    padding-left: 20px;
+}
+.sidebar p {
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: rgba(0, 0, 0, 0.6);
+    padding-left: 20px;
+}
+.divider {
+    display: none;
+}
+.content {
+    margin-left: 20%;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px 60px;
+    padding-top: 6vh;
+    overflow-y: auto;
+}
+body {
+    font-family: 'Netflix Sans Light', 'HGGGothicssi 40g', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+}
+.container {
+    display: flex;
+    flex: 1;
+    height: 100vh;
+    overflow: hidden;
+}
+.sidebar {
+    width: 20%;
+    background: #f4f4f4;
+    padding: 15px 8px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 4vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+.sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 3px;
+    padding-left: 20px;
+}
+.sidebar p {
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: rgba(0, 0, 0, 0.6);
+    padding-left: 20px;
+}
+.divider {
+    display: none;
+}
+.content {
+    margin-left: 20%;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px 60px;
+    padding-top: 6vh;
+    overflow-y: auto;
+}
+@media (max-width: 768px) {
     .sidebar {
-        width: 100%;
-        height: auto;
-        padding-top: 1vh;
-        text-align: center;
+        width: 25%;
     }
-    
-    .sidebar h2 {
-        font-size: 16px;
-        padding-left: 0;
-    }
-    
-    .sidebar p {
-        font-size: 10px;
-        padding-left: 0;
-    }
-    
-    .sidebar nav ul {
-        display: flex;
-        justify-content: space-around;
-        padding: 0;
-    }
-    
-    .sidebar nav ul li {
-        margin: 0;
-        padding: 10px 5px;
-    }
-    
-    .divider {
-        display: none;
-    }
-    
     .content {
-        padding: 10px 20px;
-    }
-    
-    .intro-text, .about-text, .contact-text, .project-manager-text {
-        font-size: 14px;
-        max-width: 100%;
-    }
-    
-    .profile-images {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .profile-images img {
-        width: 120px;
-        height: 120px;
-        margin-bottom: 10px;
-    }
-    
-    footer {
-        padding: 10px;
-        font-size: 14px;
+        margin-left: 25%;
+        padding: 15px;
     }
 }
-
-@media screen and (max-width: 480px) {
-    .sidebar h2 {
-        font-size: 14px;
+@media (max-width: 480px) {
+    .sidebar {
+        width: 30%;
     }
-
-    .sidebar p {
-        font-size: 9px;
-    }
-
     .content {
+        margin-left: 30%;
         padding: 10px;
-    }
-
-    .profile-images img {
-        width: 100px;
-        height: 100px;
-    }
-    
-    footer {
-        font-size: 12px;
     }
 }
     </style>
