@@ -205,137 +205,90 @@
             font-size: 12px;
             line-height: 8;
         }
-/* 기존 CSS 코드는 동일하게 유지 */
-
-/* 반응형 스타일 추가 */
-@media (max-width: 1024px) {
+@media screen and (max-width: 768px) {
     .container {
         flex-direction: column;
         height: auto;
     }
+    
     .sidebar {
         width: 100%;
         height: auto;
-        padding: 10px;
-        padding-top: 2vh;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        padding-top: 1vh;
+        text-align: center;
     }
+    
     .sidebar h2 {
         font-size: 16px;
-        padding-left: 10px;
-    }
-    .sidebar p {
-        display: none;
-    }
-    .sidebar hr {
-        display: none;
-    }
-    .sidebar nav ul {
-        display: flex;
-        gap: 15px;
-    }
-    .sidebar nav ul li {
-        margin: 0;
         padding-left: 0;
     }
+    
+    .sidebar p {
+        font-size: 10px;
+        padding-left: 0;
+    }
+    
+    .sidebar nav ul {
+        display: flex;
+        justify-content: space-around;
+        padding: 0;
+    }
+    
+    .sidebar nav ul li {
+        margin: 0;
+        padding: 10px 5px;
+    }
+    
     .divider {
         display: none;
     }
+    
     .content {
-        padding: 20px;
-        padding-top: 4vh;
+        padding: 10px 20px;
     }
+    
+    .intro-text, .about-text, .contact-text, .project-manager-text {
+        font-size: 14px;
+        max-width: 100%;
+    }
+    
     .profile-images {
         flex-direction: column;
         align-items: center;
-        gap: 10px;
     }
+    
     .profile-images img {
         width: 120px;
         height: 120px;
+        margin-bottom: 10px;
     }
-    .intro-text, .about-text, .contact-text, .project-manager-text {
-        max-width: 100%;
-    }
-    .grid-container {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-    }
-    .grid-item a {
-        width: 150px;
-        height: 150px;
-    }
-    .grid-item p {
-        font-size: 12px;
+    
+    footer {
+        padding: 10px;
+        font-size: 14px;
     }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 480px) {
     .sidebar h2 {
         font-size: 14px;
     }
-    .sidebar nav ul li a {
+
+    .sidebar p {
         font-size: 9px;
     }
+
     .content {
-        padding: 15px;
-        padding-top: 3vh;
+        padding: 10px;
     }
+
     .profile-images img {
         width: 100px;
         height: 100px;
     }
-    .intro-text, .about-text, .contact-text, .project-manager-text {
-        font-size: 11px;
-    }
-    .grid-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .grid-item a {
-        width: 120px;
-        height: 120px;
-    }
-    .grid-item p {
-        font-size: 11px;
-    }
-    .experience ul li strong, .experience ul li p {
-        font-size: 11px;
-    }
-    .about-text h2, .experience h3, .contact-text h2 {
-        font-size: 13px;
-    }
-}
-
-@media (max-width: 480px) {
-    .sidebar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .sidebar nav ul {
-        flex-direction: column;
-        gap: 5px;
-    }
-    .grid-container {
-        grid-template-columns: repeat(1, 1fr);
-    }
-    .grid-item a {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-    }
-    .grid-item img {
-        border-radius: 10px;
-    }
-    .grid-item p {
-        font-size: 10px;
-    }
-    .contact-text p {
-        font-size: 10px;
-    }
-    footer p {
-        font-size: 10px;
+    
+    footer {
+        font-size: 12px;
     }
 }
     </style>
