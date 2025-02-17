@@ -210,6 +210,8 @@
         flex-direction: row;
         height: auto;
     }
+
+    /* 사이드바 - 좌측 고정 */
     .sidebar {
         width: 80px;
         min-width: 80px;
@@ -227,13 +229,25 @@
         z-index: 1000;
     }
 
-    .sidebar h2,
+    /* 사이드바 타이틀 보이게 유지 */
+    .sidebar h2 {
+        font-size: 12px;
+        margin-bottom: 5px;
+        text-align: center;
+        white-space: nowrap;
+    }
+
     .sidebar p {
-        display: none;
+        font-size: 9px;
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.6);
+        text-align: center;
+        white-space: nowrap;
     }
 
     .sidebar hr {
         width: 50%;
+        margin: 8px auto;
     }
 
     .sidebar nav ul {
@@ -259,23 +273,31 @@
     .divider {
         display: none;
     }
+
+    /* 콘텐츠 영역 */
     .content {
         width: calc(100% - 80px);
         margin-left: 80px;
         padding: 15px;
         overflow-y: auto;
     }
+
+    /* HOME 페이지 프로필 이미지 - 가로 배치 */
     .profile-images {
         display: flex;
+        flex-direction: row; /* 가로 정렬 */
         justify-content: center;
-        gap: 10px;
+        align-items: center;
+        gap: 15px;
         margin-bottom: 15px;
     }
 
     .profile-images img {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
     }
+
+    /* 텍스트 크기 유지하면서 가독성 조정 */
     .intro-text,
     .about-text,
     .contact-text,
@@ -308,6 +330,8 @@
     .experience ul li p {
         font-size: 12px;
     }
+
+    /* 프로젝트 및 포트폴리오 섹션 */
     .grid-container {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
@@ -328,6 +352,8 @@
     .grid-item p {
         font-size: 12px;
     }
+
+    /* 프로젝트 경험 조정 */
     .project-manager-text h2 {
         font-size: 14px;
     }
@@ -335,15 +361,18 @@
     .project-manager-text p {
         font-size: 12px;
     }
+
+    /* 연락처 크기 조정 */
     .contact-text strong {
         font-size: 12px;
     }
+
+    /* 푸터 */
     footer {
         font-size: 12px;
         padding: 5px;
     }
 }
-
     </style>
     <script>
         function showAbout() {
