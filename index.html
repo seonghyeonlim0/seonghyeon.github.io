@@ -1,4 +1,4 @@
-<!DOCTYPE html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +6,7 @@
     <title>LIM, Creative Contents Editor</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* 기본 스타일 */
+        /* 기본 스타일 (이전과 동일) */
         body {
             font-family: 'Netflix Sans Light', 'HGGGothicssi 60g', sans-serif;
             margin: 0;
@@ -20,6 +20,8 @@
         .container {
             display: flex;
             flex: 1;
+            height: 100vh;
+            overflow: hidden;
         }
         .sidebar {
             width: 10%;
@@ -29,7 +31,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            padding-top: 4vh; /* 상단 여백 조정 */
+            padding-top: 4vh;
         }
         .sidebar h2 {
             font-size: 18px;
@@ -54,8 +56,8 @@
             width: 0.5px;
             background: rgba(0, 0, 0, 0.15);
             height: 85%;
+            margin: 0 20px;
             align-self: center;
-            margin: 0 20px; /* 좌우 여백 추가 */
         }
         .sidebar nav ul {
             list-style: none;
@@ -79,32 +81,30 @@
             align-items: flex-start;
             justify-content: flex-start;
             text-align: left;
-            padding: 20px 60px; /* 상단 여백 조정 */
-            padding-top: 6vh; /* 상단 여백 조정 */
+            padding: 20px 60px;
+            padding-top: 6vh;
+            overflow-y: auto;
         }
-        .intro-text, .about-text {
+        .intro-text, .about-text, .contact-text, .project-manager-text {
             max-width: 550px;
             font-size: 12px;
             color: #333;
             line-height: 1.6;
             font-weight: normal;
         }
-        .about-section {
-            display: none;
-        }
-        .motion-graphic-section {
+        .about-section, .motion-graphic-section, .contact-section, .project-manager-section {
             display: none;
         }
         .motion-graphic-section .work-experience-subtitle,
         .motion-graphic-section .personal-projects-subtitle {
-            font-size: 22px; /* 제목 폰트 크기 */
-            color: #555; /* 제목 폰트 색상 */
+            font-size: 14px;
+            color: #555;
             margin: 15px 0;
-            font-weight: bold; /* 제목 폰트 두께 */
+            font-weight: bold;
         }
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(6, 1fr);
             gap: 20px;
             margin-top: 20px;
         }
@@ -116,9 +116,9 @@
         }
         .grid-item a {
             display: block;
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            border-radius: 100%;
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.3s ease;
@@ -132,10 +132,10 @@
             object-fit: cover;
         }
         .grid-item p {
-            font-size: 16px; /* 내용 폰트 크기 */
-            color: #555; /* 내용 폰트 색상 (예: 어두운 회색) */
+            font-size: 14px;
+            color: #555;
             margin-top: 10px;
-            font-weight: normal; /* 내용 폰트 두께 */
+            font-weight: normal;
         }
         .profile-images {
             display: flex;
@@ -150,14 +150,14 @@
         }
         footer {
             text-align: center;
-            padding: 10px; /* 높이 여백 반으로 줄임 */
+            padding: 3px;
             background: #333;
             color: white;
             font-size: 12px;
             width: 100%;
             flex-shrink: 0;
-            line-height: 1.6;
-            margin-top: auto; /* 하단 여백 없애기 */
+            line-height: 0.5;
+            margin-top: auto;
         }
         .experience {
             margin-top: 30px;
@@ -172,6 +172,7 @@
             line-height: 1.6;
         }
         .experience ul li strong {
+            font-size: 12px;
             font-weight: bold;
             color: #333;
         }
@@ -182,16 +183,30 @@
             line-height: 1.6;
         }
         .about-text h2 {
-            font-size: 26px;
+            font-size: 14px;
             font-weight: bold;
             margin-bottom: 20px;
             line-height: 1.6;
         }
         .experience h3 {
-            font-size: 26px;
+            font-size: 14px;
             font-weight: bold;
             margin-bottom: 15px;
             line-height: 1.6;
+        }
+        .contact-text h2 {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .contact-text strong {
+            font-size: 12px;
+            line-height: 1.6;
+        }
+        .contact-text height {
+            font-size: 12px;
+            line-height: 8;
         }
     </style>
     <script>
@@ -199,12 +214,32 @@
             document.querySelector(".intro-section").style.display = "none";
             document.querySelector(".about-section").style.display = "block";
             document.querySelector(".motion-graphic-section").style.display = "none";
+            document.querySelector(".contact-section").style.display = "none";
+            document.querySelector(".project-manager-section").style.display = "none";
         }
 
         function showMotionGraphic() {
             document.querySelector(".intro-section").style.display = "none";
             document.querySelector(".about-section").style.display = "none";
             document.querySelector(".motion-graphic-section").style.display = "block";
+            document.querySelector(".contact-section").style.display = "none";
+            document.querySelector(".project-manager-section").style.display = "none";
+        }
+
+        function showContact() {
+            document.querySelector(".intro-section").style.display = "none";
+            document.querySelector(".about-section").style.display = "none";
+            document.querySelector(".motion-graphic-section").style.display = "none";
+            document.querySelector(".contact-section").style.display = "block";
+            document.querySelector(".project-manager-section").style.display = "none";
+        }
+
+        function showProjectManager() {
+            document.querySelector(".intro-section").style.display = "none";
+            document.querySelector(".about-section").style.display = "none";
+            document.querySelector(".motion-graphic-section").style.display = "none";
+            document.querySelector(".contact-section").style.display = "none";
+            document.querySelector(".project-manager-section").style.display = "block";
         }
     </script>
 </head>
@@ -220,11 +255,12 @@
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="#" onclick="showAbout()">ABOUT</a></li>
                     <li><a href="#" onclick="showMotionGraphic()">MOTION GRAPHIC DESIGNER</a></li>
-                    <li><a href="#">PROJECT MANAGER</a></li>
-                    <li><a href="#">CONTACT</a></li>
+                    <li><a href="#" onclick="showProjectManager()">PROJECT MANAGER</a></li>
+                    <li><a href="#" onclick="showContact()">CONTACT</a></li>
                 </ul>
             </nav>
         </aside>
+        <!-- 분리 라인 추가 -->
         <div class="divider"></div>
 
         <!-- 콘텐츠 영역 -->
@@ -328,7 +364,7 @@
                     </div>
                     <div class="grid-item">
                         <a href="https://www.naver.com" target="_blank">
-                            <img src="image5.jpg" alt="Casa Caffe"> <!-- image7.jpg는 Casa Caffe 이미지 파일 -->
+                            <img src="image5.jpg" alt="Casa Caffe">
                         </a>
                         <p>Casa Caffe</p>
                     </div>
@@ -364,27 +400,66 @@
                     <!-- 추가된 원형 이미지 및 텍스트 -->
                     <div class="grid-item">
                         <a href="https://www.naver.com" target="_blank">
-                            <img src="image10.jpg" alt="GENTLE MONSTER"> <!-- image8.jpg는 GENTLE MONSTER 이미지 파일 -->
+                            <img src="image10.jpg" alt="GENTLE MONSTER">
                         </a>
                         <p>GENTLE MONSTER</p>
                     </div>
                     <div class="grid-item">
                         <a href="https://www.naver.com" target="_blank">
-                            <img src="image11.jpg" alt="melixir"> <!-- image9.jpg는 melixir 이미지 파일 -->
+                            <img src="image11.jpg" alt="melixir">
                         </a>
                         <p>melixir</p>
                     </div>
                     <div class="grid-item">
                         <a href="https://www.naver.com" target="_blank">
-                            <img src="image12.jpg" alt="국가보훈 공모전"> <!-- image10.jpg는 국가보훈 공모전 이미지 파일 -->
+                            <img src="image12.jpg" alt="국가보훈 공모전">
                         </a>
                         <p>국가보훈 공모전</p>
                     </div>
                 </div>
             </div>
+
+            <!-- PROJECT MANAGER 섹션 -->
+            <div class="project-manager-section">
+                <div class="project-manager-text">
+                    <h2>PROJECT EXPERIENCE</h2>
+                    <p>
+                        <strong>Netflix Title Outdoor Advertising Campaign</strong><br>
+                        September 2023 - Current
+                    </p>
+                    <p>
+                        <strong>NETFLIX Distribution Partner Management & Creative Supervision</strong><br>
+                        September 2023 - February 2025
+                    </p>
+                    <p>
+                        <strong>NETFLIX Brand Campaign</strong><br>
+                        September 2023 - December 2024
+                    </p>
+                    <p>
+                        <strong>SK hynix</strong><br>
+                        September 2023 - February 2025
+                    </p>
+                    <p>
+                        <strong>CocaCola</strong><br>
+                        September 2023 - February 2025
+                    </p>
+                </div>
+            </div>
+
+            <!-- CONTACT 섹션 -->
+            <div class="contact-section">
+                <div class="contact-text">
+                    <h2>Contact</h2>
+                    <p>If you'd like to discuss any projects or collaborations,</p>
+                    <p>Contact me by email.</p>
+                    <p><strong>seonghyeonlim0@gmail.com</strong></p>
+                    <p><height>or</height></p>
+                    <p>Call me maybe.</p>
+                    <p><strong>+82 10-2012-4511</strong></p>
+                </div>
+            </div>
         </main>
     </div>
-
     <!-- 푸터 -->
     <footer>
         <p>&copy; 2020-2025 | Seong Hyeon LIM.</p>
