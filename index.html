@@ -389,6 +389,33 @@
         function showMotionGraphic() { showSection("motion-graphic-section"); }
         function showAiCreator() { showSection("ai-creator-section"); }
         function showContact() { showSection("contact-section"); }
+
+        // AI CREATOR videos: crop to a tidy 4:5 thumbnail while idle,
+        // but show the whole frame (no crop) while playing or fullscreen.
+        document.addEventListener("DOMContentLoaded", function () {
+            var vids = document.querySelectorAll(".video-grid video");
+            function full(v) { v.style.objectFit = "contain"; v.style.aspectRatio = "auto"; }
+            function crop(v) {
+                if (isFs(v) || !v.paused) return;
+                v.style.objectFit = "cover";
+                v.style.aspectRatio = "";
+            }
+            function isFs(v) {
+                var fe = document.fullscreenElement || document.webkitFullscreenElement;
+                return fe === v;
+            }
+            vids.forEach(function (v) {
+                v.addEventListener("play", function () { full(v); });
+                v.addEventListener("pause", function () { crop(v); });
+                v.addEventListener("ended", function () { crop(v); });
+            });
+            document.addEventListener("fullscreenchange", function () {
+                vids.forEach(function (v) { isFs(v) ? full(v) : crop(v); });
+            });
+            document.addEventListener("webkitfullscreenchange", function () {
+                vids.forEach(function (v) { isFs(v) ? full(v) : crop(v); });
+            });
+        });
     </script>
 </head>
 <body>
