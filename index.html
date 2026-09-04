@@ -92,15 +92,21 @@
             overflow-y: auto;
             overflow-x: hidden;
         }
-        .intro-text, .about-text, .contact-text, .project-manager-text {
+        .intro-text, .about-text, .contact-text, .project-manager-text, .ai-creator-text {
             max-width: 550px;
             font-size: 12px;
             color: #333;
             line-height: 1.6;
             font-weight: normal;
         }
-        .about-section, .motion-graphic-section, .contact-section, .project-manager-section {
+        .about-section, .motion-graphic-section, .contact-section, .project-manager-section, .ai-creator-section {
             display: none;
+        }
+        .ai-creator-text h2 {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            color: #555;
         }
         .motion-graphic-section .work-experience-subtitle,
         .motion-graphic-section .personal-projects-subtitle {
@@ -325,37 +331,28 @@
 }
     </style>
     <script>
-        function showAbout() {
-            document.querySelector(".intro-section").style.display = "none";
-            document.querySelector(".about-section").style.display = "block";
-            document.querySelector(".motion-graphic-section").style.display = "none";
-            document.querySelector(".contact-section").style.display = "none";
-            document.querySelector(".project-manager-section").style.display = "none";
+        var SECTIONS = [
+            "intro-section",
+            "about-section",
+            "project-manager-section",
+            "motion-graphic-section",
+            "ai-creator-section",
+            "contact-section"
+        ];
+
+        function showSection(name) {
+            SECTIONS.forEach(function (cls) {
+                var el = document.querySelector("." + cls);
+                if (el) el.style.display = (cls === name) ? "block" : "none";
+            });
         }
 
-        function showMotionGraphic() {
-            document.querySelector(".intro-section").style.display = "none";
-            document.querySelector(".about-section").style.display = "none";
-            document.querySelector(".motion-graphic-section").style.display = "block";
-            document.querySelector(".contact-section").style.display = "none";
-            document.querySelector(".project-manager-section").style.display = "none";
-        }
-
-        function showContact() {
-            document.querySelector(".intro-section").style.display = "none";
-            document.querySelector(".about-section").style.display = "none";
-            document.querySelector(".motion-graphic-section").style.display = "none";
-            document.querySelector(".contact-section").style.display = "block";
-            document.querySelector(".project-manager-section").style.display = "none";
-        }
-
-        function showProjectManager() {
-            document.querySelector(".intro-section").style.display = "none";
-            document.querySelector(".about-section").style.display = "none";
-            document.querySelector(".motion-graphic-section").style.display = "none";
-            document.querySelector(".contact-section").style.display = "none";
-            document.querySelector(".project-manager-section").style.display = "block";
-        }
+        function showHome() { showSection("intro-section"); }
+        function showAbout() { showSection("about-section"); }
+        function showProjectManager() { showSection("project-manager-section"); }
+        function showMotionGraphic() { showSection("motion-graphic-section"); }
+        function showAiCreator() { showSection("ai-creator-section"); }
+        function showContact() { showSection("contact-section"); }
     </script>
 </head>
 <body>
@@ -369,8 +366,9 @@
                 <ul>
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="#" onclick="showAbout()">ABOUT</a></li>
-                    <li><a href="#" onclick="showMotionGraphic()">MOTION GRAPHIC DESIGNER</a></li>
                     <li><a href="#" onclick="showProjectManager()">PROJECT MANAGER</a></li>
+                    <li><a href="#" onclick="showMotionGraphic()">MOTION GRAPHIC DESIGNER</a></li>
+                    <li><a href="#" onclick="showAiCreator()">AI CREATOR</a></li>
                     <li><a href="#" onclick="showContact()">CONTACT</a></li>
                 </ul>
             </nav>
@@ -570,6 +568,12 @@
                         <strong>Georgia Coffee Key Visual Shooting Planning</strong><br>
                         December 2024
                     </p>
+                </div>
+            </div>
+            <div class="ai-creator-section">
+                <div class="ai-creator-text">
+                    <h2>AI CREATOR</h2>
+                    <p>Content coming soon.</p>
                 </div>
             </div>
             <div class="contact-section">
