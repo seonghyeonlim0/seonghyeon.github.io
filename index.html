@@ -337,6 +337,25 @@
                 columns: 1;
             }
         }
+        .case-pair {
+            max-width: 960px;
+            margin: 14px auto 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .case-pair img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            background: var(--card);
+        }
+        @media (max-width: 640px) {
+            .case-pair {
+                grid-template-columns: 1fr;
+            }
+        }
 
         .about-text h2, .contact-text h2, .project-manager-text h2,
         .ai-creator-text h2, .experience h3 {
@@ -644,7 +663,8 @@
             "case-casacaffe-section",
             "case-steamvac-section",
             "case-queenlabel-section",
-            "case-drbarn-section"
+            "case-drbarn-section",
+            "case-3dartwork-section"
         ];
 
         function staggerChildren(section) {
@@ -686,6 +706,7 @@
         function showCaseSteamvac() { showSection("case-steamvac-section"); }
         function showCaseQueenlabel() { showSection("case-queenlabel-section"); }
         function showCaseDrbarn() { showSection("case-drbarn-section"); }
+        function showCase3dartwork() { showSection("case-3dartwork-section"); }
 
         /* ---------- Theme toggle ---------- */
         function currentTheme() {
@@ -900,7 +921,7 @@
                         <p>PLANTLANCE</p>
                     </div>
                     <div class="grid-item">
-                        <a href="https://www.behance.net/gallery/227808461/Wintering-of-the-Panda" target="_blank">
+                        <a href="#" onclick="showCase3dartwork(); return false;">
                             <img src="image9.jpg" alt="3D ARTWORK">
                         </a>
                         <p>3D ARTWORK</p>
@@ -1017,6 +1038,18 @@
                 <div class="case-media">
                     <img src="cases/drbarn/blue-overview.png" alt="Dr.BARN 올인원 두관보 이뮨 — 프로젝트 개요">
                     <img src="cases/drbarn/blue-1.gif" alt="Dr.BARN 올인원 두관보 이뮨 — 상세 01" loading="lazy">
+                </div>
+            </div>
+            <div class="case-section case-3dartwork-section">
+                <button class="case-back" type="button" onclick="showMotionGraphic()">← MOTION GRAPHIC DESIGNER</button>
+                <div class="case-media">
+                    <img src="cases/3dartwork/art-1.png" alt="3D ARTWORK — Animal Characters Collection">
+                    <img src="cases/3dartwork/art-2.jpg" alt="3D ARTWORK — 01" loading="lazy">
+                    <img src="cases/3dartwork/art-3.png" alt="3D ARTWORK — 02" loading="lazy">
+                </div>
+                <div class="case-pair">
+                    <img src="cases/3dartwork/art-4.png" alt="3D ARTWORK — 03" loading="lazy">
+                    <img src="cases/3dartwork/art-5.png" alt="3D ARTWORK — 04" loading="lazy">
                 </div>
             </div>
             <div class="project-manager-section">
