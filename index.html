@@ -307,7 +307,7 @@
         }
         .case-heading {
             max-width: 960px;
-            margin: clamp(34px, 6vw, 56px) auto 0;
+            margin: clamp(34px, 6vw, 56px) auto 14px;
             font-size: clamp(18px, 1.1vw + 14px, 24px);
             font-weight: 800;
             letter-spacing: 0.03em;
@@ -643,7 +643,8 @@
             "case-wristbrace-section",
             "case-casacaffe-section",
             "case-steamvac-section",
-            "case-queenlabel-section"
+            "case-queenlabel-section",
+            "case-drbarn-section"
         ];
 
         function staggerChildren(section) {
@@ -684,6 +685,7 @@
         function showCaseCasacaffe() { showSection("case-casacaffe-section"); }
         function showCaseSteamvac() { showSection("case-steamvac-section"); }
         function showCaseQueenlabel() { showSection("case-queenlabel-section"); }
+        function showCaseDrbarn() { showSection("case-drbarn-section"); }
 
         /* ---------- Theme toggle ---------- */
         function currentTheme() {
@@ -859,7 +861,7 @@
                         <p>TECHLOVE</p>
                     </div>
                     <div class="grid-item">
-                        <a href="https://www.behance.net/gallery/228919211/DrBARN" target="_blank">
+                        <a href="#" onclick="showCaseDrbarn(); return false;">
                             <img src="image3.jpg" alt="Dr. BARN">
                         </a>
                         <p>Dr. BARN</p>
@@ -989,6 +991,24 @@
                     <img src="cases/queenlabel/ql-3d-7.gif" alt="QUEENLABEL 대용량 제습기 — 제습 성능" loading="lazy">
                     <img src="cases/queenlabel/ql-2d-12.gif" alt="QUEENLABEL 대용량 제습기 — 8가지 안전장치" loading="lazy">
                     <img src="cases/queenlabel/ql-2d-13.gif" alt="QUEENLABEL 대용량 제습기 — 누적 판매" loading="lazy">
+                </div>
+            </div>
+            <div class="case-section case-drbarn-section">
+                <button class="case-back" type="button" onclick="showMotionGraphic()">← MOTION GRAPHIC DESIGNER</button>
+                <h3 class="case-heading">다이너티 올인원 이뮨</h3>
+                <div class="case-media">
+                    <img src="cases/drbarn/pink-overview.png" alt="Dr.BARN 다이너티 올인원 이뮨 — 프로젝트 개요">
+                </div>
+                <div class="case-cols">
+                    <img src="cases/drbarn/pink-1.gif" alt="Dr.BARN 다이너티 올인원 이뮨 — 상세 01" loading="lazy">
+                    <img src="cases/drbarn/pink-2.gif" alt="Dr.BARN 다이너티 올인원 이뮨 — 상세 02" loading="lazy">
+                </div>
+                <h3 class="case-heading">올인원 두관보 이뮨</h3>
+                <div class="case-media">
+                    <img src="cases/drbarn/blue-overview.png" alt="Dr.BARN 올인원 두관보 이뮨 — 프로젝트 개요">
+                </div>
+                <div class="case-cols">
+                    <img src="cases/drbarn/blue-1.gif" alt="Dr.BARN 올인원 두관보 이뮨 — 상세 01" loading="lazy">
                 </div>
             </div>
             <div class="project-manager-section">
