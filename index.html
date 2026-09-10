@@ -251,13 +251,52 @@
         }
 
         .about-section, .motion-graphic-section, .contact-section,
-        .project-manager-section, .ai-creator-section {
+        .project-manager-section, .ai-creator-section, .case-section {
             display: none;
         }
 
         /* legacy empty heading kept in markup */
         .motion-graphic-section > h2 {
             display: none;
+        }
+
+        /* ---------- In-site case study page ---------- */
+        .case-section {
+            width: 100%;
+        }
+        .case-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin: 0 0 22px;
+            padding: 7px 14px;
+            font: inherit;
+            font-size: var(--fs-label);
+            letter-spacing: 0.06em;
+            color: var(--muted);
+            background: transparent;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            cursor: pointer;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+        .case-back:hover {
+            color: var(--ink);
+            border-color: var(--ink);
+        }
+        .case-media {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.45);
+        }
+        .case-media img {
+            display: block;
+            width: 100%;
+            height: auto;
         }
 
         .about-text h2, .contact-text h2, .project-manager-text h2,
@@ -560,7 +599,8 @@
             "project-manager-section",
             "motion-graphic-section",
             "ai-creator-section",
-            "contact-section"
+            "contact-section",
+            "case-techlove-section"
         ];
 
         function staggerChildren(section) {
@@ -586,6 +626,8 @@
                     el.classList.remove("reveal-in");
                 }
             });
+            var content = document.querySelector(".content");
+            if (content) content.scrollTop = 0;
         }
 
         function showHome() { showSection("intro-section"); }
@@ -594,6 +636,7 @@
         function showMotionGraphic() { showSection("motion-graphic-section"); }
         function showAiCreator() { showSection("ai-creator-section"); }
         function showContact() { showSection("contact-section"); }
+        function showCaseTechlove() { showSection("case-techlove-section"); }
 
         /* ---------- Theme toggle ---------- */
         function currentTheme() {
@@ -763,7 +806,7 @@
                         <p>QUEENLABEL</p>
                     </div>
                     <div class="grid-item">
-                        <a href="https://www.behance.net/gallery/228999411/TECHLOVE" target="_blank">
+                        <a href="#" onclick="showCaseTechlove(); return false;">
                             <img src="image2.jpg" alt="TECHLOVE">
                         </a>
                         <p>TECHLOVE</p>
@@ -831,6 +874,13 @@
                         </a>
                         <p>국가보훈 공모전</p>
                     </div>
+                </div>
+            </div>
+            <div class="case-section case-techlove-section">
+                <button class="case-back" type="button" onclick="showMotionGraphic()">← MOTION GRAPHIC DESIGNER</button>
+                <div class="case-media">
+                    <img src="cases/techlove-overview.png" alt="TECHLOVE 베이직 목 견인기 — 프로젝트 개요" loading="lazy">
+                    <img src="cases/techlove-detail.gif" alt="TECHLOVE 베이직 목 견인기 — 3D 콘텐츠 상세" loading="lazy">
                 </div>
             </div>
             <div class="project-manager-section">
