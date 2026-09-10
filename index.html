@@ -112,6 +112,18 @@
         .ai-creator-section {
             width: 100%;
         }
+        .ai-part-subtitle {
+            font-size: 18px;
+            color: #555;
+            font-weight: bold;
+            margin: 0 0 4px;
+        }
+        .ai-part-subtitle + .video-grid {
+            margin-top: 12px;
+        }
+        .ai-part-subtitle.is-second {
+            margin-top: 52px;
+        }
         .video-grid {
             display: grid;
             grid-template-columns: repeat(5, minmax(0, 200px));
@@ -645,6 +657,7 @@
                 <div class="ai-creator-text">
                     <h2>AI CREATOR</h2>
                 </div>
+                <h3 class="ai-part-subtitle">브랜드 콘텐츠</h3>
                 <div class="video-grid">
                     <figure>
                         <video src="videos/reels.mp4" controls muted loop playsinline preload="metadata"></video>
@@ -665,6 +678,17 @@
                     <figure>
                         <video src="videos/PORSHE.mp4" controls muted loop playsinline preload="metadata"></video>
                         <figcaption>포르쉐 X 전동드릴</figcaption>
+                    </figure>
+                </div>
+                <h3 class="ai-part-subtitle is-second">증권 콘텐츠</h3>
+                <div class="video-grid">
+                    <figure>
+                        <video src="videos/Final.mp4" controls muted loop playsinline preload="metadata"></video>
+                        <figcaption>증권 콘텐츠 01</figcaption>
+                    </figure>
+                    <figure>
+                        <video src="videos/Final_2.mp4" controls muted loop playsinline preload="metadata"></video>
+                        <figcaption>증권 콘텐츠 02</figcaption>
                     </figure>
                 </div>
             </div>
