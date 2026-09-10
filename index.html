@@ -304,6 +304,27 @@
             font-size: var(--fs-label);
             color: var(--faint);
         }
+        /* masonry-style multi-column media flow (2-3 cols by width) */
+        .case-cols {
+            max-width: 1100px;
+            margin: 18px auto 0;
+            columns: 320px 3;
+            column-gap: 14px;
+        }
+        .case-cols img {
+            display: block;
+            width: 100%;
+            height: auto;
+            margin-bottom: 14px;
+            border-radius: 8px;
+            background: var(--card);
+            break-inside: avoid;
+        }
+        @media (max-width: 640px) {
+            .case-cols {
+                columns: 1;
+            }
+        }
 
         .about-text h2, .contact-text h2, .project-manager-text h2,
         .ai-creator-text h2, .experience h3 {
@@ -938,25 +959,18 @@
                 <button class="case-back" type="button" onclick="showMotionGraphic()">← MOTION GRAPHIC DESIGNER</button>
                 <div class="case-media">
                     <img src="cases/queenlabel/ql-overview.png" alt="QUEENLABEL 대용량 제습기 — 프로젝트 개요">
-                    <img src="cases/queenlabel/ql-2d-10.gif" alt="QUEENLABEL 대용량 제습기 — 브랜드 인트로" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-1.gif" alt="QUEENLABEL 대용량 제습기 — 세탁실 활용" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-2.gif" alt="QUEENLABEL 대용량 제습기 — 침실 활용" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-3.gif" alt="QUEENLABEL 대용량 제습기 — 건조 성능 비교" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-11.png" alt="QUEENLABEL 대용량 제습기 — 콘텐츠 구성" loading="lazy">
+                </div>
+                <div class="case-cols">
                     <img src="cases/queenlabel/ql-3d-8.gif" alt="QUEENLABEL 대용량 제습기 — 공간 연출" loading="lazy">
-                    <img src="cases/queenlabel/ql-3d-7.gif" alt="QUEENLABEL 대용량 제습기 — 제습 성능" loading="lazy">
-                    <img src="cases/queenlabel/ql-3d-3.gif" alt="QUEENLABEL 대용량 제습기 — 내부 구조" loading="lazy">
+                    <img src="cases/queenlabel/ql-2d-10.gif" alt="QUEENLABEL 대용량 제습기 — 브랜드 인트로" loading="lazy">
                     <img src="cases/queenlabel/ql-3d-4.gif" alt="QUEENLABEL 대용량 제습기 — 팬 구동" loading="lazy">
-                    <img src="cases/queenlabel/ql-3d-5.gif" alt="QUEENLABEL 대용량 제습기 — 열교환기" loading="lazy">
                     <img src="cases/queenlabel/ql-3d-1.gif" alt="QUEENLABEL 대용량 제습기 — 물통 인출" loading="lazy">
+                    <img src="cases/queenlabel/ql-2d-11.png" alt="QUEENLABEL 대용량 제습기 — 콘텐츠 구성" loading="lazy">
+                    <img src="cases/queenlabel/ql-3d-3.gif" alt="QUEENLABEL 대용량 제습기 — 내부 구조" loading="lazy">
+                    <img src="cases/queenlabel/ql-3d-5.gif" alt="QUEENLABEL 대용량 제습기 — 열교환기" loading="lazy">
                     <img src="cases/queenlabel/ql-3d-6.gif" alt="QUEENLABEL 대용량 제습기 — 물통 채움" loading="lazy">
                     <img src="cases/queenlabel/ql-3d-2.gif" alt="QUEENLABEL 대용량 제습기 — 연속 배수" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-4.gif" alt="QUEENLABEL 대용량 제습기 — 조작부" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-5.gif" alt="QUEENLABEL 대용량 제습기 — 파지" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-6.gif" alt="QUEENLABEL 대용량 제습기 — 물통 세척" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-7.gif" alt="QUEENLABEL 대용량 제습기 — 물통 인출(촬영)" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-8.gif" alt="QUEENLABEL 대용량 제습기 — 물통 손잡이" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-9.gif" alt="QUEENLABEL 대용량 제습기 — 물통 개봉" loading="lazy">
+                    <img src="cases/queenlabel/ql-3d-7.gif" alt="QUEENLABEL 대용량 제습기 — 제습 성능" loading="lazy">
                     <img src="cases/queenlabel/ql-2d-12.gif" alt="QUEENLABEL 대용량 제습기 — 8가지 안전장치" loading="lazy">
                     <img src="cases/queenlabel/ql-2d-13.gif" alt="QUEENLABEL 대용량 제습기 — 누적 판매" loading="lazy">
                 </div>
