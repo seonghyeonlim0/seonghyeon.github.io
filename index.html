@@ -298,37 +298,6 @@
             width: 100%;
             height: auto;
         }
-        .case-part-subtitle {
-            max-width: 960px;
-            margin: clamp(28px, 5vw, 48px) auto 0;
-            font-size: var(--fs-sub);
-            color: var(--muted);
-            font-weight: bold;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-        .case-part-subtitle:first-of-type {
-            margin-top: 22px;
-        }
-        .case-grid {
-            max-width: 960px;
-            margin: 12px auto 0;
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 16px;
-        }
-        .case-grid img {
-            display: block;
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            background: var(--card);
-        }
-        @media (max-width: 640px) {
-            .case-grid {
-                grid-template-columns: 1fr;
-            }
-        }
 
         .about-text h2, .contact-text h2, .project-manager-text h2,
         .ai-creator-text h2, .experience h3 {
@@ -632,8 +601,7 @@
             "ai-creator-section",
             "contact-section",
             "case-techlove-section",
-            "case-wristbrace-section",
-            "case-queenlabel-section"
+            "case-wristbrace-section"
         ];
 
         function staggerChildren(section) {
@@ -671,7 +639,6 @@
         function showContact() { showSection("contact-section"); }
         function showCaseTechlove() { showSection("case-techlove-section"); }
         function showCaseWristbrace() { showSection("case-wristbrace-section"); }
-        function showCaseQueenlabel() { showSection("case-queenlabel-section"); }
 
         /* ---------- Theme toggle ---------- */
         function currentTheme() {
@@ -835,7 +802,7 @@
                 <h3 class="work-experience-subtitle">WORK EXPERIENCE</h3>
                 <div class="grid-container">
                     <div class="grid-item">
-                        <a href="#" onclick="showCaseQueenlabel(); return false;">
+                        <a href="https://www.behance.net/gallery/229257013/QUEENLABEL" target="_blank">
                             <img src="image1.jpg" alt="QUEENLABEL">
                         </a>
                         <p>QUEENLABEL</p>
@@ -929,39 +896,6 @@
                     <img src="cases/wristbrace/wb-4.gif" alt="TECHLOVE 다이얼 손목 보호대 — 다이얼 조절 원리" loading="lazy">
                     <img src="cases/wristbrace/wb-5.gif" alt="TECHLOVE 다이얼 손목 보호대 — 알루미늄 지지대" loading="lazy">
                     <img src="cases/wristbrace/wb-1.gif" alt="TECHLOVE 다이얼 손목 보호대 — 360도 뷰" loading="lazy">
-                </div>
-            </div>
-            <div class="case-section case-queenlabel-section">
-                <button class="case-back" type="button" onclick="showMotionGraphic()">← MOTION GRAPHIC DESIGNER</button>
-                <div class="case-media">
-                    <img src="cases/queenlabel/ql-overview.png" alt="QUEENLABEL 대용량 제습기 — 프로젝트 개요">
-                </div>
-                <h3 class="case-part-subtitle">3D</h3>
-                <div class="case-grid">
-                    <img src="cases/queenlabel/ql-3d-4.gif" alt="QUEENLABEL 대용량 제습기 — 3D 물통 인출" loading="lazy">
-                    <img src="cases/queenlabel/ql-3d-5.gif" alt="QUEENLABEL 대용량 제습기 — 3D 연속 배수" loading="lazy">
-                    <img src="cases/queenlabel/ql-3d-8.gif" alt="QUEENLABEL 대용량 제습기 — 3D 내부 구조" loading="lazy">
-                    <img src="cases/queenlabel/ql-3d-3.gif" alt="QUEENLABEL 대용량 제습기 — 3D 팬 구동" loading="lazy">
-                    <img src="cases/queenlabel/ql-3d-6.gif" alt="QUEENLABEL 대용량 제습기 — 3D 열교환기" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-9.gif" alt="QUEENLABEL 대용량 제습기 — 3D 물통 채움" loading="lazy">
-                    <img src="cases/queenlabel/ql-3d-7.gif" alt="QUEENLABEL 대용량 제습기 — 3D 제습 성능" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-3.gif" alt="QUEENLABEL 대용량 제습기 — 3D 공간 연출" loading="lazy">
-                </div>
-                <h3 class="case-part-subtitle">2D</h3>
-                <div class="case-grid">
-                    <img src="cases/queenlabel/ql-2d-12.gif" alt="QUEENLABEL 대용량 제습기 — 2D 브랜드 인트로" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-1.png" alt="QUEENLABEL 대용량 제습기 — 2D 콘텐츠 구성" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-5.gif" alt="QUEENLABEL 대용량 제습기 — 2D 세탁실 활용" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-11.gif" alt="QUEENLABEL 대용량 제습기 — 2D 침실 활용" loading="lazy">
-                    <img src="cases/queenlabel/ql-3d-1.gif" alt="QUEENLABEL 대용량 제습기 — 2D 건조 비교" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-8.gif" alt="QUEENLABEL 대용량 제습기 — 2D 조작부" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-2.gif" alt="QUEENLABEL 대용량 제습기 — 2D 파지" loading="lazy">
-                    <img src="cases/queenlabel/ql-3d-2.gif" alt="QUEENLABEL 대용량 제습기 — 2D 물통 세척" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-4.gif" alt="QUEENLABEL 대용량 제습기 — 2D 물통 인출" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-7.gif" alt="QUEENLABEL 대용량 제습기 — 2D 물통 손잡이" loading="lazy">
-                    <img src="cases/queenlabel/ql-3d-9.gif" alt="QUEENLABEL 대용량 제습기 — 2D 물통 개봉" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-6.gif" alt="QUEENLABEL 대용량 제습기 — 2D 8가지 안전장치" loading="lazy">
-                    <img src="cases/queenlabel/ql-2d-10.gif" alt="QUEENLABEL 대용량 제습기 — 2D 누적 판매" loading="lazy">
                 </div>
             </div>
             <div class="project-manager-section">
