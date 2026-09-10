@@ -304,11 +304,22 @@
             font-size: var(--fs-label);
             color: var(--faint);
         }
+        .case-heading {
+            max-width: 960px;
+            margin: clamp(34px, 6vw, 56px) auto 0;
+            font-size: clamp(18px, 1.1vw + 14px, 24px);
+            font-weight: 800;
+            letter-spacing: 0.03em;
+            color: var(--ink);
+        }
+        .case-heading::before {
+            content: "\2713\00a0\00a0";
+        }
         /* masonry-style multi-column media flow (2-3 cols by width) */
         .case-cols {
-            max-width: 1100px;
-            margin: 18px auto 0;
-            columns: 320px 3;
+            max-width: 960px;
+            margin: 16px auto 0;
+            columns: 300px 3;
             column-gap: 14px;
         }
         .case-cols img {
@@ -960,6 +971,7 @@
                 <div class="case-media">
                     <img src="cases/queenlabel/ql-overview.png" alt="QUEENLABEL 대용량 제습기 — 프로젝트 개요">
                 </div>
+                <h3 class="case-heading">3D CONTENT</h3>
                 <div class="case-cols">
                     <img src="cases/queenlabel/ql-3d-8.gif" alt="QUEENLABEL 대용량 제습기 — 공간 연출" loading="lazy">
                     <img src="cases/queenlabel/ql-2d-10.gif" alt="QUEENLABEL 대용량 제습기 — 브랜드 인트로" loading="lazy">
