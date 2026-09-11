@@ -665,7 +665,9 @@
             "case-queenlabel-section",
             "case-drbarn-section",
             "case-3dartwork-section",
-            "case-puricare-section"
+            "case-puricare-section",
+            "case-gukgabohun-section",
+            "case-plantlance-section"
         ];
 
         function staggerChildren(section) {
@@ -709,6 +711,8 @@
         function showCaseDrbarn() { showSection("case-drbarn-section"); }
         function showCase3dartwork() { showSection("case-3dartwork-section"); }
         function showCasePuricare() { showSection("case-puricare-section"); }
+        function showCaseGukgabohun() { showSection("case-gukgabohun-section"); }
+        function showCasePlantlance() { showSection("case-plantlance-section"); }
 
         /* ---------- Theme toggle ---------- */
         function currentTheme() {
@@ -917,7 +921,7 @@
                         <p>LG PuriCare</p>
                     </div>
                     <div class="grid-item">
-                        <a href="https://www.behance.net/gallery/227882559/PLANT-LANCE" target="_blank">
+                        <a href="#" onclick="showCasePlantlance(); return false;">
                             <img src="image8.jpg" alt="PLANTLANCE">
                         </a>
                         <p>PLANTLANCE</p>
@@ -941,7 +945,7 @@
                         <p>melixir</p>
                     </div>
                     <div class="grid-item">
-                        <a href="https://www.behance.net/gallery/227881999/_" target="_blank">
+                        <a href="#" onclick="showCaseGukgabohun(); return false;">
                             <img src="image12.jpg" alt="국가보훈 공모전">
                         </a>
                         <p>국가보훈 공모전</p>
@@ -1062,6 +1066,24 @@
                     <img src="cases/puricare/pc-2.jpg" alt="LG PuriCare 360˚ 공기청정기 — 프로젝트 개요">
                     <video src="cases/puricare/pc-3.mp4" controls playsinline preload="metadata"></video>
                     <img src="cases/puricare/pc-9.jpg" alt="LG PuriCare 360˚ 공기청정기 — 크레딧" loading="lazy">
+                </div>
+            </div>
+            <div class="case-section case-gukgabohun-section">
+                <button class="case-back" type="button" onclick="showMotionGraphic()">← MOTION GRAPHIC DESIGNER</button>
+                <div class="case-media">
+                    <img src="cases/gukgabohun/gb-1.jpg" alt="국가보훈 공모전 — 독립운동 일러스트 무드샷">
+                    <img src="cases/gukgabohun/gb-2.jpg" alt="국가보훈 공모전 — 프로젝트 개요">
+                    <video src="cases/gukgabohun/gb-3.mp4" controls playsinline preload="metadata"></video>
+                    <img src="cases/gukgabohun/gb-4.jpg" alt="국가보훈 공모전 — 크레딧" loading="lazy">
+                </div>
+            </div>
+            <div class="case-section case-plantlance-section">
+                <button class="case-back" type="button" onclick="showMotionGraphic()">← MOTION GRAPHIC DESIGNER</button>
+                <div class="case-media">
+                    <img src="cases/plantlance/pl-1.jpg" alt="PLANT LANCE — 무드샷">
+                    <img src="cases/plantlance/pl-2.jpg" alt="PLANT LANCE — 프로젝트 개요">
+                    <video src="cases/plantlance/pl-3.mp4" controls playsinline preload="metadata"></video>
+                    <img src="cases/plantlance/pl-4.jpg" alt="PLANT LANCE — 크레딧" loading="lazy">
                 </div>
             </div>
             <div class="project-manager-section">
