@@ -284,6 +284,99 @@
             color: var(--ink);
             border-color: var(--ink);
         }
+        .is-zoomable {
+            cursor: zoom-in;
+        }
+        .case-pagenav {
+            max-width: 960px;
+            margin: 40px auto 0;
+            padding-top: 22px;
+            border-top: 1px solid var(--line);
+            display: flex;
+            gap: 16px;
+        }
+        .case-pagenav__link {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            max-width: 48%;
+            padding: 6px 2px;
+            text-decoration: none;
+            color: var(--ink);
+        }
+        .case-pagenav__next {
+            margin-left: auto;
+            text-align: right;
+            align-items: flex-end;
+        }
+        .case-pagenav__dir {
+            font-size: var(--fs-label);
+            color: var(--faint);
+            letter-spacing: 0.05em;
+        }
+        .case-pagenav__title {
+            font-size: var(--fs-body);
+            font-weight: 700;
+            transition: color 0.2s ease;
+        }
+        .case-pagenav__link:hover .case-pagenav__title {
+            color: var(--muted);
+        }
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5vh 5vw;
+            background: rgba(0, 0, 0, 0.85);
+            cursor: zoom-out;
+        }
+        .lightbox img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 6px;
+            box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.6);
+        }
+        .lightbox__close {
+            position: fixed;
+            top: 18px;
+            right: 22px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            background: rgba(0, 0, 0, 0.35);
+            color: #fff;
+            font-size: 18px;
+            line-height: 1;
+            cursor: pointer;
+        }
+        .to-top {
+            position: fixed;
+            right: clamp(16px, 3vw, 28px);
+            bottom: clamp(16px, 3vw, 28px);
+            z-index: 20;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            background: var(--bg);
+            color: var(--ink);
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.35);
+            transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+        }
+        .to-top:hover {
+            transform: translateY(-2px);
+        }
+        @media (max-width: 640px) {
+            .case-pagenav__link {
+                max-width: 100%;
+            }
+        }
         .case-media {
             max-width: 960px;
             margin: 0 auto;
@@ -693,6 +786,38 @@
         Object.keys(SECTION_SLUGS).forEach(function (name) {
             SLUG_TO_SECTION[SECTION_SLUGS[name]] = name;
         });
+        /* browser-tab title per section, so it's not just "LIM, Content Creator" everywhere */
+        var SECTION_TITLES = {
+            "intro-section": "LIM, Content Creator",
+            "about-section": "About — LIM",
+            "project-manager-section": "Project Manager — LIM",
+            "motion-graphic-section": "Motion Graphic Designer — LIM",
+            "ai-creator-section": "AI Creator — LIM",
+            "contact-section": "Contact — LIM",
+            "case-techlove-section": "TECHLOVE 목견인기 — LIM",
+            "case-wristbrace-section": "TECHLOVE 손목보호대 — LIM",
+            "case-casacaffe-section": "Casa Caffe — LIM",
+            "case-steamvac-section": "QUEENLABEL 스팀청소기 — LIM",
+            "case-queenlabel-section": "QUEENLABEL 제습기 — LIM",
+            "case-drbarn-section": "Dr. BARN — LIM",
+            "case-3dartwork-section": "3D ARTWORK — LIM",
+            "case-puricare-section": "LG PuriCare — LIM",
+            "case-gukgabohun-section": "국가보훈 공모전 — LIM",
+            "case-plantlance-section": "PLANTLANCE — LIM"
+        };
+        /* prev/next order for the case-page bottom navigator */
+        var CASE_ORDER = [
+            ["case-techlove-section", "TECHLOVE · 목견인기"],
+            ["case-wristbrace-section", "TECHLOVE · 손목보호대"],
+            ["case-casacaffe-section", "Casa Caffe"],
+            ["case-steamvac-section", "QUEENLABEL · 스팀청소기"],
+            ["case-queenlabel-section", "QUEENLABEL · 제습기"],
+            ["case-drbarn-section", "Dr. BARN"],
+            ["case-3dartwork-section", "3D ARTWORK"],
+            ["case-puricare-section", "LG PuriCare"],
+            ["case-gukgabohun-section", "국가보훈 공모전"],
+            ["case-plantlance-section", "PLANTLANCE"]
+        ];
         /* which sidebar nav item (by order) should light up for a given section */
         var NAV_INDEX = {
             "intro-section": 0,
@@ -752,6 +877,7 @@
             var content = document.querySelector(".content");
             if (content) content.scrollTop = 0;
             syncActiveNav(name);
+            document.title = SECTION_TITLES[name] || SECTION_TITLES["intro-section"];
         }
 
         /* Navigate + record a browser-history entry so Back/Forward work. */
@@ -803,12 +929,84 @@
             syncToggleLabel();
         }
 
+        /* ---------- Prev/Next navigator at the bottom of every case page ---------- */
+        function buildCaseNav() {
+            CASE_ORDER.forEach(function (entry, i) {
+                var id = entry[0];
+                var section = document.querySelector("." + id);
+                if (!section || section.querySelector(".case-pagenav")) return;
+                var prev = CASE_ORDER[(i - 1 + CASE_ORDER.length) % CASE_ORDER.length];
+                var next = CASE_ORDER[(i + 1) % CASE_ORDER.length];
+                var nav = document.createElement("div");
+                nav.className = "case-pagenav";
+                nav.innerHTML =
+                    '<a href="#" class="case-pagenav__link case-pagenav__prev" data-target="' + prev[0] + '">' +
+                        '<span class="case-pagenav__dir">← 이전 프로젝트</span>' +
+                        '<span class="case-pagenav__title">' + prev[1] + '</span>' +
+                    '</a>' +
+                    '<a href="#" class="case-pagenav__link case-pagenav__next" data-target="' + next[0] + '">' +
+                        '<span class="case-pagenav__dir">다음 프로젝트 →</span>' +
+                        '<span class="case-pagenav__title">' + next[1] + '</span>' +
+                    '</a>';
+                section.appendChild(nav);
+            });
+            document.querySelectorAll(".case-pagenav__link").forEach(function (a) {
+                a.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    navigate(a.getAttribute("data-target"));
+                });
+            });
+        }
+
+        /* ---------- Lightbox: click any case image to view it full-size ---------- */
+        function initLightbox() {
+            var lb = document.getElementById("lightbox");
+            var lbImg = document.getElementById("lightboxImg");
+            if (!lb || !lbImg) return;
+            function open(src, alt) {
+                lbImg.src = src;
+                lbImg.alt = alt || "";
+                lb.hidden = false;
+            }
+            function close() {
+                lb.hidden = true;
+                lbImg.removeAttribute("src");
+            }
+            document.querySelectorAll(".case-media img, .case-cols img, .case-pair img").forEach(function (img) {
+                img.classList.add("is-zoomable");
+                img.addEventListener("click", function () { open(img.currentSrc || img.src, img.alt); });
+            });
+            lb.addEventListener("click", function (e) { if (e.target === lb) close(); });
+            var closeBtn = lb.querySelector(".lightbox__close");
+            if (closeBtn) closeBtn.addEventListener("click", close);
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "Escape" && !lb.hidden) close();
+            });
+        }
+
+        /* ---------- Back-to-top button (content scrolls internally, not the window) ---------- */
+        function initBackToTop() {
+            var btn = document.getElementById("toTop");
+            var content = document.querySelector(".content");
+            if (!btn || !content) return;
+            content.addEventListener("scroll", function () {
+                btn.hidden = content.scrollTop < 400;
+            });
+            btn.addEventListener("click", function () {
+                content.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        }
+
         document.addEventListener("DOMContentLoaded", function () {
             /* restore whichever section the URL points at (deep link / reload),
                and normalize the URL so Back/Forward has a starting point. */
             var initial = sectionFromHash();
             showSection(initial);
             history.replaceState({ section: initial }, "", "#/" + (SECTION_SLUGS[initial] || ""));
+
+            buildCaseNav();
+            initLightbox();
+            initBackToTop();
 
             var btn = document.getElementById("themeToggle");
             if (btn) {
@@ -1279,5 +1477,10 @@
     <footer>
         <p>&copy; 2020-2026 | Seong Hyeon LIM.</p>
     </footer>
+    <button id="toTop" class="to-top" type="button" aria-label="맨 위로" hidden>↑</button>
+    <div id="lightbox" class="lightbox" hidden>
+        <img id="lightboxImg" src="" alt="">
+        <button class="lightbox__close" type="button" aria-label="닫기">✕</button>
+    </div>
 </body>
 </html>
