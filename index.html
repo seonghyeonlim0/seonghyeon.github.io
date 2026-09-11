@@ -988,6 +988,24 @@
         }
 
         /* ---------- Back-to-top button (content scrolls internally, not the window) ---------- */
+        /* Manual rAF smooth-scroll: native scrollTo({behavior:"smooth"}) on a
+           non-window scroll container is unreliable in some browsers (notably
+           older Safari), so drive it by hand instead. */
+        function smoothScrollToTop(el, duration) {
+            var startY = el.scrollTop;
+            if (startY <= 0) return;
+            duration = duration || 420;
+            var startTime = null;
+            function step(ts) {
+                if (startTime === null) startTime = ts;
+                var progress = Math.min((ts - startTime) / duration, 1);
+                var eased = 1 - Math.pow(1 - progress, 3);
+                el.scrollTop = startY * (1 - eased);
+                if (progress < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
+
         function initBackToTop() {
             var btn = document.getElementById("toTop");
             var content = document.querySelector(".content");
@@ -996,7 +1014,7 @@
                 btn.hidden = content.scrollTop < 400;
             });
             btn.addEventListener("click", function () {
-                content.scrollTo({ top: 0, behavior: "smooth" });
+                smoothScrollToTop(content);
             });
         }
 
