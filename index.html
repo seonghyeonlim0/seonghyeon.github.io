@@ -670,6 +670,62 @@
             "case-plantlance-section"
         ];
 
+        /* ---------- URL routing (so the browser Back/Forward buttons work) ---------- */
+        var SECTION_SLUGS = {
+            "intro-section": "",
+            "about-section": "about",
+            "project-manager-section": "project-manager",
+            "motion-graphic-section": "motion-graphic",
+            "ai-creator-section": "ai-creator",
+            "contact-section": "contact",
+            "case-techlove-section": "case/techlove",
+            "case-wristbrace-section": "case/wristbrace",
+            "case-casacaffe-section": "case/casacaffe",
+            "case-steamvac-section": "case/steamvac",
+            "case-queenlabel-section": "case/queenlabel",
+            "case-drbarn-section": "case/drbarn",
+            "case-3dartwork-section": "case/3dartwork",
+            "case-puricare-section": "case/puricare",
+            "case-gukgabohun-section": "case/gukgabohun",
+            "case-plantlance-section": "case/plantlance"
+        };
+        var SLUG_TO_SECTION = {};
+        Object.keys(SECTION_SLUGS).forEach(function (name) {
+            SLUG_TO_SECTION[SECTION_SLUGS[name]] = name;
+        });
+        /* which sidebar nav item (by order) should light up for a given section */
+        var NAV_INDEX = {
+            "intro-section": 0,
+            "about-section": 1,
+            "project-manager-section": 2,
+            "motion-graphic-section": 3,
+            "case-techlove-section": 3,
+            "case-wristbrace-section": 3,
+            "case-casacaffe-section": 3,
+            "case-steamvac-section": 3,
+            "case-queenlabel-section": 3,
+            "case-drbarn-section": 3,
+            "case-3dartwork-section": 3,
+            "case-puricare-section": 3,
+            "case-gukgabohun-section": 3,
+            "case-plantlance-section": 3,
+            "ai-creator-section": 4,
+            "contact-section": 5
+        };
+
+        function sectionFromHash() {
+            var slug = location.hash.replace(/^#\/?/, "");
+            return SLUG_TO_SECTION.hasOwnProperty(slug) ? SLUG_TO_SECTION[slug] : "intro-section";
+        }
+
+        function syncActiveNav(name) {
+            var navLinks = document.querySelectorAll(".sidebar nav a");
+            var idx = NAV_INDEX[name];
+            navLinks.forEach(function (a, i) {
+                a.classList.toggle("is-active", i === idx);
+            });
+        }
+
         function staggerChildren(section) {
             var sel = ".grid-item, .video-grid figure, .project-manager-text p, .experience li, .intro-text p";
             var items = section.querySelectorAll(sel);
@@ -695,24 +751,38 @@
             });
             var content = document.querySelector(".content");
             if (content) content.scrollTop = 0;
+            syncActiveNav(name);
         }
 
-        function showHome() { showSection("intro-section"); }
-        function showAbout() { showSection("about-section"); }
-        function showProjectManager() { showSection("project-manager-section"); }
-        function showMotionGraphic() { showSection("motion-graphic-section"); }
-        function showAiCreator() { showSection("ai-creator-section"); }
-        function showContact() { showSection("contact-section"); }
-        function showCaseTechlove() { showSection("case-techlove-section"); }
-        function showCaseWristbrace() { showSection("case-wristbrace-section"); }
-        function showCaseCasacaffe() { showSection("case-casacaffe-section"); }
-        function showCaseSteamvac() { showSection("case-steamvac-section"); }
-        function showCaseQueenlabel() { showSection("case-queenlabel-section"); }
-        function showCaseDrbarn() { showSection("case-drbarn-section"); }
-        function showCase3dartwork() { showSection("case-3dartwork-section"); }
-        function showCasePuricare() { showSection("case-puricare-section"); }
-        function showCaseGukgabohun() { showSection("case-gukgabohun-section"); }
-        function showCasePlantlance() { showSection("case-plantlance-section"); }
+        /* Navigate + record a browser-history entry so Back/Forward work. */
+        function navigate(name) {
+            showSection(name);
+            var hash = "#/" + (SECTION_SLUGS[name] || "");
+            if (location.hash !== hash) {
+                history.pushState({ section: name }, "", hash);
+            }
+        }
+
+        window.addEventListener("popstate", function () {
+            showSection(sectionFromHash());
+        });
+
+        function showHome() { navigate("intro-section"); }
+        function showAbout() { navigate("about-section"); }
+        function showProjectManager() { navigate("project-manager-section"); }
+        function showMotionGraphic() { navigate("motion-graphic-section"); }
+        function showAiCreator() { navigate("ai-creator-section"); }
+        function showContact() { navigate("contact-section"); }
+        function showCaseTechlove() { navigate("case-techlove-section"); }
+        function showCaseWristbrace() { navigate("case-wristbrace-section"); }
+        function showCaseCasacaffe() { navigate("case-casacaffe-section"); }
+        function showCaseSteamvac() { navigate("case-steamvac-section"); }
+        function showCaseQueenlabel() { navigate("case-queenlabel-section"); }
+        function showCaseDrbarn() { navigate("case-drbarn-section"); }
+        function showCase3dartwork() { navigate("case-3dartwork-section"); }
+        function showCasePuricare() { navigate("case-puricare-section"); }
+        function showCaseGukgabohun() { navigate("case-gukgabohun-section"); }
+        function showCasePlantlance() { navigate("case-plantlance-section"); }
 
         /* ---------- Theme toggle ---------- */
         function currentTheme() {
@@ -734,19 +804,11 @@
         }
 
         document.addEventListener("DOMContentLoaded", function () {
-            /* first-load reveal + HOME active */
-            var intro = document.querySelector(".intro-section");
-            if (intro) {
-                staggerChildren(intro);
-                intro.classList.add("reveal-in");
-            }
-            var navLinks = document.querySelectorAll(".sidebar nav a");
-            navLinks.forEach(function (a) {
-                a.addEventListener("click", function () {
-                    navLinks.forEach(function (x) { x.classList.toggle("is-active", x === a); });
-                });
-            });
-            if (navLinks[0]) navLinks[0].classList.add("is-active");
+            /* restore whichever section the URL points at (deep link / reload),
+               and normalize the URL so Back/Forward has a starting point. */
+            var initial = sectionFromHash();
+            showSection(initial);
+            history.replaceState({ section: initial }, "", "#/" + (SECTION_SLUGS[initial] || ""));
 
             var btn = document.getElementById("themeToggle");
             if (btn) {
@@ -796,12 +858,12 @@
             <hr>
             <nav>
                 <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="#" onclick="showAbout()">ABOUT</a></li>
-                    <li><a href="#" onclick="showProjectManager()">PROJECT MANAGER</a></li>
-                    <li><a href="#" onclick="showMotionGraphic()">MOTION GRAPHIC DESIGNER</a></li>
-                    <li><a href="#" onclick="showAiCreator()">AI CREATOR</a></li>
-                    <li><a href="#" onclick="showContact()">CONTACT</a></li>
+                    <li><a href="#/" onclick="showHome(); return false;">HOME</a></li>
+                    <li><a href="#/about" onclick="showAbout(); return false;">ABOUT</a></li>
+                    <li><a href="#/project-manager" onclick="showProjectManager(); return false;">PROJECT MANAGER</a></li>
+                    <li><a href="#/motion-graphic" onclick="showMotionGraphic(); return false;">MOTION GRAPHIC DESIGNER</a></li>
+                    <li><a href="#/ai-creator" onclick="showAiCreator(); return false;">AI CREATOR</a></li>
+                    <li><a href="#/contact" onclick="showContact(); return false;">CONTACT</a></li>
                 </ul>
             </nav>
         </aside>
