@@ -287,41 +287,6 @@
         .is-zoomable {
             cursor: zoom-in;
         }
-        .case-pagenav {
-            max-width: 960px;
-            margin: 40px auto 0;
-            padding-top: 22px;
-            border-top: 1px solid var(--line);
-            display: flex;
-            gap: 16px;
-        }
-        .case-pagenav__link {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            max-width: 48%;
-            padding: 6px 2px;
-            text-decoration: none;
-            color: var(--ink);
-        }
-        .case-pagenav__next {
-            margin-left: auto;
-            text-align: right;
-            align-items: flex-end;
-        }
-        .case-pagenav__dir {
-            font-size: var(--fs-label);
-            color: var(--faint);
-            letter-spacing: 0.05em;
-        }
-        .case-pagenav__title {
-            font-size: var(--fs-body);
-            font-weight: 700;
-            transition: color 0.2s ease;
-        }
-        .case-pagenav__link:hover .case-pagenav__title {
-            color: var(--muted);
-        }
         .lightbox[hidden] {
             display: none;
         }
@@ -374,11 +339,6 @@
         }
         .to-top:hover {
             transform: translateY(-2px);
-        }
-        @media (max-width: 640px) {
-            .case-pagenav__link {
-                max-width: 100%;
-            }
         }
         .case-media {
             max-width: 960px;
@@ -808,19 +768,6 @@
             "case-gukgabohun-section": "국가보훈 공모전 — LIM",
             "case-plantlance-section": "PLANTLANCE — LIM"
         };
-        /* prev/next order for the case-page bottom navigator */
-        var CASE_ORDER = [
-            ["case-techlove-section", "TECHLOVE · 목견인기"],
-            ["case-wristbrace-section", "TECHLOVE · 손목보호대"],
-            ["case-casacaffe-section", "Casa Caffe"],
-            ["case-steamvac-section", "QUEENLABEL · 스팀청소기"],
-            ["case-queenlabel-section", "QUEENLABEL · 제습기"],
-            ["case-drbarn-section", "Dr. BARN"],
-            ["case-3dartwork-section", "3D ARTWORK"],
-            ["case-puricare-section", "LG PuriCare"],
-            ["case-gukgabohun-section", "국가보훈 공모전"],
-            ["case-plantlance-section", "PLANTLANCE"]
-        ];
         /* which sidebar nav item (by order) should light up for a given section */
         var NAV_INDEX = {
             "intro-section": 0,
@@ -932,35 +879,6 @@
             syncToggleLabel();
         }
 
-        /* ---------- Prev/Next navigator at the bottom of every case page ---------- */
-        function buildCaseNav() {
-            CASE_ORDER.forEach(function (entry, i) {
-                var id = entry[0];
-                var section = document.querySelector("." + id);
-                if (!section || section.querySelector(".case-pagenav")) return;
-                var prev = CASE_ORDER[(i - 1 + CASE_ORDER.length) % CASE_ORDER.length];
-                var next = CASE_ORDER[(i + 1) % CASE_ORDER.length];
-                var nav = document.createElement("div");
-                nav.className = "case-pagenav";
-                nav.innerHTML =
-                    '<a href="#" class="case-pagenav__link case-pagenav__prev" data-target="' + prev[0] + '">' +
-                        '<span class="case-pagenav__dir">← 이전 프로젝트</span>' +
-                        '<span class="case-pagenav__title">' + prev[1] + '</span>' +
-                    '</a>' +
-                    '<a href="#" class="case-pagenav__link case-pagenav__next" data-target="' + next[0] + '">' +
-                        '<span class="case-pagenav__dir">다음 프로젝트 →</span>' +
-                        '<span class="case-pagenav__title">' + next[1] + '</span>' +
-                    '</a>';
-                section.appendChild(nav);
-            });
-            document.querySelectorAll(".case-pagenav__link").forEach(function (a) {
-                a.addEventListener("click", function (e) {
-                    e.preventDefault();
-                    navigate(a.getAttribute("data-target"));
-                });
-            });
-        }
-
         /* ---------- Lightbox: click any case image to view it full-size ---------- */
         function initLightbox() {
             var lb = document.getElementById("lightbox");
@@ -1025,7 +943,6 @@
             showSection(initial);
             history.replaceState({ section: initial }, "", "#/" + (SECTION_SLUGS[initial] || ""));
 
-            buildCaseNav();
             initLightbox();
             initBackToTop();
 
