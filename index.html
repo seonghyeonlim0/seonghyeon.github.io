@@ -326,7 +326,6 @@
             cursor: pointer;
         }
         .project-manager-text p {
-            cursor: pointer;
             padding: 10px 14px;
             margin-left: -14px;
             margin-right: -14px;
@@ -336,53 +335,16 @@
         .project-manager-text p:hover {
             background: var(--card);
         }
-        .project-modal[hidden] {
-            display: none;
+        .project-manager-text p a {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
         }
-        .project-modal {
-            position: fixed;
-            inset: 0;
-            z-index: 50;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 5vh 5vw;
-            background: rgba(0, 0, 0, 0.6);
-        }
-        .project-modal__card {
-            position: relative;
-            max-width: 520px;
-            width: 100%;
-            background: var(--bg);
-            border: 1px solid var(--line);
-            border-radius: 14px;
-            padding: 36px;
-            box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.45);
-        }
-        .project-modal__card h3 {
-            font-size: 1.15rem;
-            line-height: 1.4;
-            margin: 0 0 14px;
-            color: var(--ink);
-        }
-        .project-modal__card p {
+        .case-project-placeholder {
             color: var(--muted);
             font-size: 0.95rem;
-            margin: 0;
-        }
-        .project-modal__close {
-            position: absolute;
-            top: 14px;
-            right: 14px;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            border: 1px solid var(--line);
-            background: transparent;
-            color: var(--ink);
-            font-size: 16px;
-            line-height: 1;
-            cursor: pointer;
+            margin-top: 14px;
         }
         .to-top {
             position: fixed;
@@ -786,7 +748,20 @@
             "case-3dartwork-section",
             "case-puricare-section",
             "case-gukgabohun-section",
-            "case-plantlance-section"
+            "case-plantlance-section",
+            "case-netflix-outdoor-section",
+            "case-ballantines-section",
+            "case-powerade-worldcup-section",
+            "case-netflix-distribution-section",
+            "case-skhynix-amazon-section",
+            "case-skhynix-social-section",
+            "case-powerade-soccer-section",
+            "case-powerade-product-section",
+            "case-minutemaid-section",
+            "case-sprite-waterbomb-section",
+            "case-ambasa-section",
+            "case-powerade-baseball-section",
+            "case-georgia-coffee-section"
         ];
 
         /* ---------- URL routing (so the browser Back/Forward buttons work) ---------- */
@@ -806,7 +781,20 @@
             "case-3dartwork-section": "case/3dartwork",
             "case-puricare-section": "case/puricare",
             "case-gukgabohun-section": "case/gukgabohun",
-            "case-plantlance-section": "case/plantlance"
+            "case-plantlance-section": "case/plantlance",
+            "case-netflix-outdoor-section": "case/netflix-outdoor",
+            "case-ballantines-section": "case/ballantines",
+            "case-powerade-worldcup-section": "case/powerade-worldcup",
+            "case-netflix-distribution-section": "case/netflix-distribution",
+            "case-skhynix-amazon-section": "case/skhynix-amazon",
+            "case-skhynix-social-section": "case/skhynix-social",
+            "case-powerade-soccer-section": "case/powerade-soccer",
+            "case-powerade-product-section": "case/powerade-product",
+            "case-minutemaid-section": "case/minutemaid",
+            "case-sprite-waterbomb-section": "case/sprite-waterbomb",
+            "case-ambasa-section": "case/ambasa",
+            "case-powerade-baseball-section": "case/powerade-baseball",
+            "case-georgia-coffee-section": "case/georgia-coffee"
         };
         var SLUG_TO_SECTION = {};
         Object.keys(SECTION_SLUGS).forEach(function (name) {
@@ -829,13 +817,39 @@
             "case-3dartwork-section": "3D ARTWORK — LIM",
             "case-puricare-section": "LG PuriCare — LIM",
             "case-gukgabohun-section": "국가보훈 공모전 — LIM",
-            "case-plantlance-section": "PLANTLANCE — LIM"
+            "case-plantlance-section": "PLANTLANCE — LIM",
+            "case-netflix-outdoor-section": "NETFLIX 옥외광고 — LIM",
+            "case-ballantines-section": "Ballantine's — LIM",
+            "case-powerade-worldcup-section": "Powerade x FIFA World Cup — LIM",
+            "case-netflix-distribution-section": "NETFLIX 배급 파트너 관리 — LIM",
+            "case-skhynix-amazon-section": "SK hynix Amazon A+ — LIM",
+            "case-skhynix-social-section": "SK hynix 소셜 콘텐츠 — LIM",
+            "case-powerade-soccer-section": "Powerade 축구 콘셉트 — LIM",
+            "case-powerade-product-section": "Powerade 제품 콘셉트 — LIM",
+            "case-minutemaid-section": "Minute Maid 레모네이드 — LIM",
+            "case-sprite-waterbomb-section": "Sprite 워터밤 — LIM",
+            "case-ambasa-section": "Ambasa 소셜 콘텐츠 — LIM",
+            "case-powerade-baseball-section": "Powerade 야구 콘셉트 — LIM",
+            "case-georgia-coffee-section": "Georgia Coffee — LIM"
         };
         /* which sidebar nav item (by order) should light up for a given section */
         var NAV_INDEX = {
             "intro-section": 0,
             "about-section": 1,
             "project-manager-section": 2,
+            "case-netflix-outdoor-section": 2,
+            "case-ballantines-section": 2,
+            "case-powerade-worldcup-section": 2,
+            "case-netflix-distribution-section": 2,
+            "case-skhynix-amazon-section": 2,
+            "case-skhynix-social-section": 2,
+            "case-powerade-soccer-section": 2,
+            "case-powerade-product-section": 2,
+            "case-minutemaid-section": 2,
+            "case-sprite-waterbomb-section": 2,
+            "case-ambasa-section": 2,
+            "case-powerade-baseball-section": 2,
+            "case-georgia-coffee-section": 2,
             "motion-graphic-section": 3,
             "case-techlove-section": 3,
             "case-wristbrace-section": 3,
@@ -922,6 +936,19 @@
         function showCasePuricare() { navigate("case-puricare-section"); }
         function showCaseGukgabohun() { navigate("case-gukgabohun-section"); }
         function showCasePlantlance() { navigate("case-plantlance-section"); }
+        function showCaseNetflixOutdoor() { navigate("case-netflix-outdoor-section"); }
+        function showCaseBallantines() { navigate("case-ballantines-section"); }
+        function showCasePoweradeWorldcup() { navigate("case-powerade-worldcup-section"); }
+        function showCaseNetflixDistribution() { navigate("case-netflix-distribution-section"); }
+        function showCaseSkhynixAmazon() { navigate("case-skhynix-amazon-section"); }
+        function showCaseSkhynixSocial() { navigate("case-skhynix-social-section"); }
+        function showCasePoweradeSoccer() { navigate("case-powerade-soccer-section"); }
+        function showCasePoweradeProduct() { navigate("case-powerade-product-section"); }
+        function showCaseMinutemaid() { navigate("case-minutemaid-section"); }
+        function showCaseSpriteWaterbomb() { navigate("case-sprite-waterbomb-section"); }
+        function showCaseAmbasa() { navigate("case-ambasa-section"); }
+        function showCasePoweradeBaseball() { navigate("case-powerade-baseball-section"); }
+        function showCaseGeorgiaCoffee() { navigate("case-georgia-coffee-section"); }
 
         /* ---------- Theme toggle ---------- */
         function currentTheme() {
@@ -968,32 +995,6 @@
             });
         }
 
-        function initProjectModal() {
-            var modal = document.getElementById("projectModal");
-            var titleEl = document.getElementById("projectModalTitle");
-            var periodEl = document.getElementById("projectModalPeriod");
-            if (!modal || !titleEl || !periodEl) return;
-            function open(title, period) {
-                titleEl.textContent = title || "";
-                periodEl.textContent = period || "";
-                modal.hidden = false;
-            }
-            function close() {
-                modal.hidden = true;
-            }
-            document.querySelectorAll(".project-manager-text p").forEach(function (p) {
-                p.addEventListener("click", function () {
-                    open(p.getAttribute("data-title"), p.getAttribute("data-period"));
-                });
-            });
-            modal.addEventListener("click", function (e) { if (e.target === modal) close(); });
-            var closeBtn = modal.querySelector(".project-modal__close");
-            if (closeBtn) closeBtn.addEventListener("click", close);
-            document.addEventListener("keydown", function (e) {
-                if (e.key === "Escape" && !modal.hidden) close();
-            });
-        }
-
         /* ---------- Back-to-top button (content scrolls internally, not the window) ---------- */
         /* Manual rAF smooth-scroll: native scrollTo({behavior:"smooth"}) on a
            non-window scroll container is unreliable in some browsers (notably
@@ -1033,7 +1034,6 @@
             history.replaceState({ section: initial }, "", "#/" + (SECTION_SLUGS[initial] || ""));
 
             initLightbox();
-            initProjectModal();
             initBackToTop();
 
             var btn = document.getElementById("themeToggle");
@@ -1376,59 +1376,150 @@
             <div class="project-manager-section">
                 <div class="project-manager-text">
                     <h2>PROJECT EXPERIENCE</h2>
-                    <p data-title="NETFLIX Title Outdoor Advertising Campaign" data-period="September 2023 - Current">
-                        <strong>NETFLIX Title Outdoor Advertising Campaign</strong><br>
-                        September 2023 - Current
+                    <p>
+                        <a href="#/case/netflix-outdoor" onclick="showCaseNetflixOutdoor(); return false;">
+                            <strong>NETFLIX Title Outdoor Advertising Campaign</strong><br>
+                            September 2023 - Current
+                        </a>
                     </p>
-                    <p data-title="Pernod Ricard (Ballantine's) Blog &amp; Social Content Planning and Production" data-period="February 2026 - September 2026">
-                        <strong>Pernod Ricard (Ballantine's) Blog &amp; Social Content Planning and Production</strong><br>
-                        February 2026 - September 2026
+                    <p>
+                        <a href="#/case/ballantines" onclick="showCaseBallantines(); return false;">
+                            <strong>Pernod Ricard (Ballantine's) Blog &amp; Social Content Planning and Production</strong><br>
+                            February 2026 - September 2026
+                        </a>
                     </p>
-                    <p data-title="Powerade Virtual Advertising Campaign Proposal: Powerade x 2026 FIFA World Cup" data-period="April 2026 - June 2026">
-                        <strong>Powerade Virtual Advertising Campaign Proposal: Powerade x 2026 FIFA World Cup</strong><br>
-                        April 2026 - June 2026
+                    <p>
+                        <a href="#/case/powerade-worldcup" onclick="showCasePoweradeWorldcup(); return false;">
+                            <strong>Powerade Virtual Advertising Campaign Proposal: Powerade x 2026 FIFA World Cup</strong><br>
+                            April 2026 - June 2026
+                        </a>
                     </p>
-                    <p data-title="NETFLIX Distribution Partner Management &amp; Creative Supervision" data-period="September 2023 - February 2025">
-                        <strong>NETFLIX Distribution Partner Management &amp; Creative Supervision</strong><br>
-                        September 2023 - February 2025
+                    <p>
+                        <a href="#/case/netflix-distribution" onclick="showCaseNetflixDistribution(); return false;">
+                            <strong>NETFLIX Distribution Partner Management &amp; Creative Supervision</strong><br>
+                            September 2023 - February 2025
+                        </a>
                     </p>
-                    <p data-title="SK hynix Amazon A+ and Product Detail Page Planning" data-period="September 2023 - February 2025">
-                        <strong>SK hynix Amazon A+ and Product Detail Page Planning</strong><br>
-                        September 2023 - February 2025
+                    <p>
+                        <a href="#/case/skhynix-amazon" onclick="showCaseSkhynixAmazon(); return false;">
+                            <strong>SK hynix Amazon A+ and Product Detail Page Planning</strong><br>
+                            September 2023 - February 2025
+                        </a>
                     </p>
-                    <p data-title="SK hynix Social Content Planning" data-period="September 2023 - February 2025">
-                        <strong>SK hynix Social Content Planning</strong><br>
-                        September 2023 - February 2025
+                    <p>
+                        <a href="#/case/skhynix-social" onclick="showCaseSkhynixSocial(); return false;">
+                            <strong>SK hynix Social Content Planning</strong><br>
+                            September 2023 - February 2025
+                        </a>
                     </p>
-                    <p data-title="Powerade Virtual Advertisement Planning (Soccer Concept)" data-period="October 2023 - November 2023">
-                        <strong>Powerade Virtual Advertisement Planning (Soccer Concept)</strong><br>
-                        October 2023 - November 2023
+                    <p>
+                        <a href="#/case/powerade-soccer" onclick="showCasePoweradeSoccer(); return false;">
+                            <strong>Powerade Virtual Advertisement Planning (Soccer Concept)</strong><br>
+                            October 2023 - November 2023
+                        </a>
                     </p>
-                    <p data-title="Powerade Virtual Advertisement Planning (Product Concept)" data-period="November 2023 - December 2023">
-                        <strong>Powerade Virtual Advertisement Planning (Product Concept)</strong><br>
-                        November 2023 - December 2023
+                    <p>
+                        <a href="#/case/powerade-product" onclick="showCasePoweradeProduct(); return false;">
+                            <strong>Powerade Virtual Advertisement Planning (Product Concept)</strong><br>
+                            November 2023 - December 2023
+                        </a>
                     </p>
-                    <p data-title="Minute Maid Lemonade Key Visual and Shorts Video Planning" data-period="January 2024 - February 2024">
-                        <strong>Minute Maid Lemonade Key Visual and Shorts Video Planning</strong><br>
-                        January 2024 - February 2024
+                    <p>
+                        <a href="#/case/minutemaid" onclick="showCaseMinutemaid(); return false;">
+                            <strong>Minute Maid Lemonade Key Visual and Shorts Video Planning</strong><br>
+                            January 2024 - February 2024
+                        </a>
                     </p>
-                    <p data-title="Sprite Waterbomb Advertisement Planning" data-period="July 2024 - August 2024">
-                        <strong>Sprite Waterbomb Advertisement Planning</strong><br>
-                        July 2024 - August 2024
+                    <p>
+                        <a href="#/case/sprite-waterbomb" onclick="showCaseSpriteWaterbomb(); return false;">
+                            <strong>Sprite Waterbomb Advertisement Planning</strong><br>
+                            July 2024 - August 2024
+                        </a>
                     </p>
-                    <p data-title="Ambasa Social Content Advertisement Video Planning" data-period="October 2024 - November 2024">
-                        <strong>Ambasa Social Content Advertisement Video Planning</strong><br>
-                        October 2024 - November 2024
+                    <p>
+                        <a href="#/case/ambasa" onclick="showCaseAmbasa(); return false;">
+                            <strong>Ambasa Social Content Advertisement Video Planning</strong><br>
+                            October 2024 - November 2024
+                        </a>
                     </p>
-                    <p data-title="Powerade Virtual Advertisement Planning (Baseball Concept)" data-period="November 2024 - December 2024">
-                        <strong>Powerade Virtual Advertisement Planning (Baseball Concept)</strong><br>
-                        November 2024 - December 2024
+                    <p>
+                        <a href="#/case/powerade-baseball" onclick="showCasePoweradeBaseball(); return false;">
+                            <strong>Powerade Virtual Advertisement Planning (Baseball Concept)</strong><br>
+                            November 2024 - December 2024
+                        </a>
                     </p>
-                    <p data-title="Georgia Coffee Key Visual Shooting Planning" data-period="December 2024">
-                        <strong>Georgia Coffee Key Visual Shooting Planning</strong><br>
-                        December 2024
+                    <p>
+                        <a href="#/case/georgia-coffee" onclick="showCaseGeorgiaCoffee(); return false;">
+                            <strong>Georgia Coffee Key Visual Shooting Planning</strong><br>
+                            December 2024
+                        </a>
                     </p>
                 </div>
+            </div>
+            <div class="case-section case-netflix-outdoor-section">
+                <button class="case-back" type="button" onclick="showProjectManager()">← PROJECT EXPERIENCE</button>
+                <h3 class="case-heading">NETFLIX Title Outdoor Advertising Campaign</h3>
+                <p class="case-project-placeholder">September 2023 - Current · 콘텐츠 준비 중입니다.</p>
+            </div>
+            <div class="case-section case-ballantines-section">
+                <button class="case-back" type="button" onclick="showProjectManager()">← PROJECT EXPERIENCE</button>
+                <h3 class="case-heading">Pernod Ricard (Ballantine's) Blog &amp; Social Content Planning and Production</h3>
+                <p class="case-project-placeholder">February 2026 - September 2026 · 콘텐츠 준비 중입니다.</p>
+            </div>
+            <div class="case-section case-powerade-worldcup-section">
+                <button class="case-back" type="button" onclick="showProjectManager()">← PROJECT EXPERIENCE</button>
+                <h3 class="case-heading">Powerade Virtual Advertising Campaign Proposal: Powerade x 2026 FIFA World Cup</h3>
+                <p class="case-project-placeholder">April 2026 - June 2026 · 콘텐츠 준비 중입니다.</p>
+            </div>
+            <div class="case-section case-netflix-distribution-section">
+                <button class="case-back" type="button" onclick="showProjectManager()">← PROJECT EXPERIENCE</button>
+                <h3 class="case-heading">NETFLIX Distribution Partner Management &amp; Creative Supervision</h3>
+                <p class="case-project-placeholder">September 2023 - February 2025 · 콘텐츠 준비 중입니다.</p>
+            </div>
+            <div class="case-section case-skhynix-amazon-section">
+                <button class="case-back" type="button" onclick="showProjectManager()">← PROJECT EXPERIENCE</button>
+                <h3 class="case-heading">SK hynix Amazon A+ and Product Detail Page Planning</h3>
+                <p class="case-project-placeholder">September 2023 - February 2025 · 콘텐츠 준비 중입니다.</p>
+            </div>
+            <div class="case-section case-skhynix-social-section">
+                <button class="case-back" type="button" onclick="showProjectManager()">← PROJECT EXPERIENCE</button>
+                <h3 class="case-heading">SK hynix Social Content Planning</h3>
+                <p class="case-project-placeholder">September 2023 - February 2025 · 콘텐츠 준비 중입니다.</p>
+            </div>
+            <div class="case-section case-powerade-soccer-section">
+                <button class="case-back" type="button" onclick="showProjectManager()">← PROJECT EXPERIENCE</button>
+                <h3 class="case-heading">Powerade Virtual Advertisement Planning (Soccer Concept)</h3>
+                <p class="case-project-placeholder">October 2023 - November 2023 · 콘텐츠 준비 중입니다.</p>
+            </div>
+            <div class="case-section case-powerade-product-section">
+                <button class="case-back" type="button" onclick="showProjectManager()">← PROJECT EXPERIENCE</button>
+                <h3 class="case-heading">Powerade Virtual Advertisement Planning (Product Concept)</h3>
+                <p class="case-project-placeholder">November 2023 - December 2023 · 콘텐츠 준비 중입니다.</p>
+            </div>
+            <div class="case-section case-minutemaid-section">
+                <button class="case-back" type="button" onclick="showProjectManager()">← PROJECT EXPERIENCE</button>
+                <h3 class="case-heading">Minute Maid Lemonade Key Visual and Shorts Video Planning</h3>
+                <p class="case-project-placeholder">January 2024 - February 2024 · 콘텐츠 준비 중입니다.</p>
+            </div>
+            <div class="case-section case-sprite-waterbomb-section">
+                <button class="case-back" type="button" onclick="showProjectManager()">← PROJECT EXPERIENCE</button>
+                <h3 class="case-heading">Sprite Waterbomb Advertisement Planning</h3>
+                <p class="case-project-placeholder">July 2024 - August 2024 · 콘텐츠 준비 중입니다.</p>
+            </div>
+            <div class="case-section case-ambasa-section">
+                <button class="case-back" type="button" onclick="showProjectManager()">← PROJECT EXPERIENCE</button>
+                <h3 class="case-heading">Ambasa Social Content Advertisement Video Planning</h3>
+                <p class="case-project-placeholder">October 2024 - November 2024 · 콘텐츠 준비 중입니다.</p>
+            </div>
+            <div class="case-section case-powerade-baseball-section">
+                <button class="case-back" type="button" onclick="showProjectManager()">← PROJECT EXPERIENCE</button>
+                <h3 class="case-heading">Powerade Virtual Advertisement Planning (Baseball Concept)</h3>
+                <p class="case-project-placeholder">November 2024 - December 2024 · 콘텐츠 준비 중입니다.</p>
+            </div>
+            <div class="case-section case-georgia-coffee-section">
+                <button class="case-back" type="button" onclick="showProjectManager()">← PROJECT EXPERIENCE</button>
+                <h3 class="case-heading">Georgia Coffee Key Visual Shooting Planning</h3>
+                <p class="case-project-placeholder">December 2024 · 콘텐츠 준비 중입니다.</p>
             </div>
             <div class="ai-creator-section">
                 <div class="ai-creator-text">
@@ -1508,13 +1599,6 @@
     <div id="lightbox" class="lightbox" hidden>
         <img id="lightboxImg" src="" alt="">
         <button class="lightbox__close" type="button" aria-label="닫기">✕</button>
-    </div>
-    <div id="projectModal" class="project-modal" hidden>
-        <div class="project-modal__card">
-            <button class="project-modal__close" type="button" aria-label="닫기">✕</button>
-            <h3 id="projectModalTitle"></h3>
-            <p id="projectModalPeriod"></p>
-        </div>
     </div>
 </body>
 </html>
