@@ -963,6 +963,10 @@
                 } else {
                     el.style.display = "none";
                     el.classList.remove("reveal-in");
+                    /* stop any video (and its audio) left playing in a section we're leaving */
+                    el.querySelectorAll("video").forEach(function (v) {
+                        if (!v.paused) v.pause();
+                    });
                 }
             });
             var content = document.querySelector(".content");
