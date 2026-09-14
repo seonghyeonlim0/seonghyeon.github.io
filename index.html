@@ -1049,7 +1049,9 @@
             }
             document.querySelectorAll(".case-media img, .case-cols img, .case-pair img, .case-grid img").forEach(function (img) {
                 img.classList.add("is-zoomable");
-                img.addEventListener("click", function () { open(img.currentSrc || img.src, img.alt); });
+                img.addEventListener("click", function () {
+                    open(img.dataset.full || img.currentSrc || img.src, img.alt);
+                });
             });
             lb.addEventListener("click", function (e) { if (e.target === lb) close(); });
             var closeBtn = lb.querySelector(".lightbox__close");
@@ -1651,31 +1653,31 @@
                 <p class="case-note" style="margin-top:-6px;">이미지를 클릭하면 전체 상세페이지를 크게 볼 수 있습니다.</p>
                 <div class="case-grid">
                     <figure>
-                        <img src="cases/skhynix-amazon/sk-1-platinum-p51.jpg" alt="SK hynix Platinum P51 SSD — Amazon 상세페이지" loading="lazy">
+                        <img src="cases/skhynix-amazon/sk-1-platinum-p51-thumb.jpg" data-full="cases/skhynix-amazon/sk-1-platinum-p51.jpg" alt="SK hynix Platinum P51 SSD — Amazon 상세페이지" loading="lazy">
                         <figcaption>Platinum P51 SSD</figcaption>
                     </figure>
                     <figure>
-                        <img src="cases/skhynix-amazon/sk-2-gold-p42.jpg" alt="SK hynix Gold P42 SSD — Amazon 상세페이지" loading="lazy">
+                        <img src="cases/skhynix-amazon/sk-2-gold-p42-thumb.jpg" data-full="cases/skhynix-amazon/sk-2-gold-p42.jpg" alt="SK hynix Gold P42 SSD — Amazon 상세페이지" loading="lazy">
                         <figcaption>Gold P42 SSD</figcaption>
                     </figure>
                     <figure>
-                        <img src="cases/skhynix-amazon/sk-3-handbook-e31.jpg" alt="SK hynix Handbook E31 — Amazon 상세페이지" loading="lazy">
+                        <img src="cases/skhynix-amazon/sk-3-handbook-e31-thumb.jpg" data-full="cases/skhynix-amazon/sk-3-handbook-e31.jpg" alt="SK hynix Handbook E31 — Amazon 상세페이지" loading="lazy">
                         <figcaption>Handbook E31</figcaption>
                     </figure>
                     <figure>
-                        <img src="cases/skhynix-amazon/sk-4-silver-s32.jpg" alt="SK hynix Silver S32 SSD — Amazon 상세페이지" loading="lazy">
+                        <img src="cases/skhynix-amazon/sk-4-silver-s32-thumb.jpg" data-full="cases/skhynix-amazon/sk-4-silver-s32.jpg" alt="SK hynix Silver S32 SSD — Amazon 상세페이지" loading="lazy">
                         <figcaption>Silver S32 SSD</figcaption>
                     </figure>
                     <figure>
-                        <img src="cases/skhynix-amazon/sk-5-tube-t31.jpg" alt="SK hynix Tube T31 — Amazon 상세페이지" loading="lazy">
+                        <img src="cases/skhynix-amazon/sk-5-tube-t31-thumb.jpg" data-full="cases/skhynix-amazon/sk-5-tube-t31.jpg" alt="SK hynix Tube T31 — Amazon 상세페이지" loading="lazy">
                         <figcaption>Tube T31</figcaption>
                     </figure>
                     <figure>
-                        <img src="cases/skhynix-amazon/sk-6-beetle-x31.jpg" alt="SK hynix Beetle X31 — Amazon 상세페이지" loading="lazy">
+                        <img src="cases/skhynix-amazon/sk-6-beetle-x31-thumb.jpg" data-full="cases/skhynix-amazon/sk-6-beetle-x31.jpg" alt="SK hynix Beetle X31 — Amazon 상세페이지" loading="lazy">
                         <figcaption>Beetle X31</figcaption>
                     </figure>
                     <figure>
-                        <img src="cases/skhynix-amazon/sk-7-platinum-p41.jpg" alt="SK hynix Platinum P41 SSD — Amazon 상세페이지" loading="lazy">
+                        <img src="cases/skhynix-amazon/sk-7-platinum-p41-thumb.jpg" data-full="cases/skhynix-amazon/sk-7-platinum-p41.jpg" alt="SK hynix Platinum P41 SSD — Amazon 상세페이지" loading="lazy">
                         <figcaption>Platinum P41 SSD</figcaption>
                     </figure>
                 </div>
