@@ -301,6 +301,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: auto;
             padding: 5vh 5vw;
             background: rgba(0, 0, 0, 0.85);
             cursor: zoom-out;
@@ -310,6 +311,26 @@
             max-height: 100%;
             border-radius: 6px;
             box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.6);
+            cursor: zoom-in;
+        }
+        /* Click the image to zoom to its actual size and scroll around it
+           (useful for tall infographics whose text is too small to read
+           when scaled down to fit the screen). */
+        .lightbox.is-zoomed {
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 0;
+            cursor: auto;
+        }
+        .lightbox.is-zoomed img {
+            max-width: none;
+            max-height: none;
+            width: auto;
+            height: auto;
+            border-radius: 0;
+            cursor: zoom-out;
+            margin: 5vh auto;
+            display: block;
         }
         .lightbox__close {
             position: fixed;
@@ -1045,12 +1066,18 @@
             function open(src, alt) {
                 lbImg.src = src;
                 lbImg.alt = alt || "";
+                lb.classList.remove("is-zoomed");
                 lb.hidden = false;
             }
             function close() {
                 lb.hidden = true;
+                lb.classList.remove("is-zoomed");
                 lbImg.removeAttribute("src");
             }
+            lbImg.addEventListener("click", function (e) {
+                e.stopPropagation();
+                lb.classList.toggle("is-zoomed");
+            });
             document.querySelectorAll(".case-media img, .case-cols img, .case-pair img, .case-grid img").forEach(function (img) {
                 img.classList.add("is-zoomable");
                 img.addEventListener("click", function () {
