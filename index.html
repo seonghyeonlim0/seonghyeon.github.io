@@ -325,6 +325,65 @@
             line-height: 1;
             cursor: pointer;
         }
+        .project-manager-text p {
+            cursor: pointer;
+            padding: 10px 14px;
+            margin-left: -14px;
+            margin-right: -14px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+        }
+        .project-manager-text p:hover {
+            background: var(--card);
+        }
+        .project-modal[hidden] {
+            display: none;
+        }
+        .project-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5vh 5vw;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        .project-modal__card {
+            position: relative;
+            max-width: 520px;
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 36px;
+            box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.45);
+        }
+        .project-modal__card h3 {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin: 0 0 14px;
+            color: var(--ink);
+        }
+        .project-modal__card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        .project-modal__close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            background: transparent;
+            color: var(--ink);
+            font-size: 16px;
+            line-height: 1;
+            cursor: pointer;
+        }
         .to-top {
             position: fixed;
             right: clamp(16px, 3vw, 28px);
@@ -909,6 +968,32 @@
             });
         }
 
+        function initProjectModal() {
+            var modal = document.getElementById("projectModal");
+            var titleEl = document.getElementById("projectModalTitle");
+            var periodEl = document.getElementById("projectModalPeriod");
+            if (!modal || !titleEl || !periodEl) return;
+            function open(title, period) {
+                titleEl.textContent = title || "";
+                periodEl.textContent = period || "";
+                modal.hidden = false;
+            }
+            function close() {
+                modal.hidden = true;
+            }
+            document.querySelectorAll(".project-manager-text p").forEach(function (p) {
+                p.addEventListener("click", function () {
+                    open(p.getAttribute("data-title"), p.getAttribute("data-period"));
+                });
+            });
+            modal.addEventListener("click", function (e) { if (e.target === modal) close(); });
+            var closeBtn = modal.querySelector(".project-modal__close");
+            if (closeBtn) closeBtn.addEventListener("click", close);
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "Escape" && !modal.hidden) close();
+            });
+        }
+
         /* ---------- Back-to-top button (content scrolls internally, not the window) ---------- */
         /* Manual rAF smooth-scroll: native scrollTo({behavior:"smooth"}) on a
            non-window scroll container is unreliable in some browsers (notably
@@ -948,6 +1033,7 @@
             history.replaceState({ section: initial }, "", "#/" + (SECTION_SLUGS[initial] || ""));
 
             initLightbox();
+            initProjectModal();
             initBackToTop();
 
             var btn = document.getElementById("themeToggle");
@@ -1290,55 +1376,55 @@
             <div class="project-manager-section">
                 <div class="project-manager-text">
                     <h2>PROJECT EXPERIENCE</h2>
-                    <p>
+                    <p data-title="NETFLIX Title Outdoor Advertising Campaign" data-period="September 2023 - Current">
                         <strong>NETFLIX Title Outdoor Advertising Campaign</strong><br>
                         September 2023 - Current
                     </p>
-                    <p>
+                    <p data-title="Pernod Ricard (Ballantine's) Blog &amp; Social Content Planning and Production" data-period="February 2026 - September 2026">
                         <strong>Pernod Ricard (Ballantine's) Blog &amp; Social Content Planning and Production</strong><br>
                         February 2026 - September 2026
                     </p>
-                    <p>
+                    <p data-title="Powerade Virtual Advertising Campaign Proposal: Powerade x 2026 FIFA World Cup" data-period="April 2026 - June 2026">
                         <strong>Powerade Virtual Advertising Campaign Proposal: Powerade x 2026 FIFA World Cup</strong><br>
                         April 2026 - June 2026
                     </p>
-                    <p>
+                    <p data-title="NETFLIX Distribution Partner Management &amp; Creative Supervision" data-period="September 2023 - February 2025">
                         <strong>NETFLIX Distribution Partner Management &amp; Creative Supervision</strong><br>
                         September 2023 - February 2025
                     </p>
-                    <p>
+                    <p data-title="SK hynix Amazon A+ and Product Detail Page Planning" data-period="September 2023 - February 2025">
                         <strong>SK hynix Amazon A+ and Product Detail Page Planning</strong><br>
                         September 2023 - February 2025
                     </p>
-                    <p>
+                    <p data-title="SK hynix Social Content Planning" data-period="September 2023 - February 2025">
                         <strong>SK hynix Social Content Planning</strong><br>
                         September 2023 - February 2025
                     </p>
-                    <p>
+                    <p data-title="Powerade Virtual Advertisement Planning (Soccer Concept)" data-period="October 2023 - November 2023">
                         <strong>Powerade Virtual Advertisement Planning (Soccer Concept)</strong><br>
                         October 2023 - November 2023
                     </p>
-                    <p>
+                    <p data-title="Powerade Virtual Advertisement Planning (Product Concept)" data-period="November 2023 - December 2023">
                         <strong>Powerade Virtual Advertisement Planning (Product Concept)</strong><br>
                         November 2023 - December 2023
                     </p>
-                    <p>
+                    <p data-title="Minute Maid Lemonade Key Visual and Shorts Video Planning" data-period="January 2024 - February 2024">
                         <strong>Minute Maid Lemonade Key Visual and Shorts Video Planning</strong><br>
                         January 2024 - February 2024
                     </p>
-                    <p>
+                    <p data-title="Sprite Waterbomb Advertisement Planning" data-period="July 2024 - August 2024">
                         <strong>Sprite Waterbomb Advertisement Planning</strong><br>
                         July 2024 - August 2024
                     </p>
-                    <p>
+                    <p data-title="Ambasa Social Content Advertisement Video Planning" data-period="October 2024 - November 2024">
                         <strong>Ambasa Social Content Advertisement Video Planning</strong><br>
                         October 2024 - November 2024
                     </p>
-                    <p>
+                    <p data-title="Powerade Virtual Advertisement Planning (Baseball Concept)" data-period="November 2024 - December 2024">
                         <strong>Powerade Virtual Advertisement Planning (Baseball Concept)</strong><br>
                         November 2024 - December 2024
                     </p>
-                    <p>
+                    <p data-title="Georgia Coffee Key Visual Shooting Planning" data-period="December 2024">
                         <strong>Georgia Coffee Key Visual Shooting Planning</strong><br>
                         December 2024
                     </p>
@@ -1422,6 +1508,13 @@
     <div id="lightbox" class="lightbox" hidden>
         <img id="lightboxImg" src="" alt="">
         <button class="lightbox__close" type="button" aria-label="닫기">✕</button>
+    </div>
+    <div id="projectModal" class="project-modal" hidden>
+        <div class="project-modal__card">
+            <button class="project-modal__close" type="button" aria-label="닫기">✕</button>
+            <h3 id="projectModalTitle"></h3>
+            <p id="projectModalPeriod"></p>
+        </div>
     </div>
 </body>
 </html>
