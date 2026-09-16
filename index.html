@@ -522,6 +522,31 @@
                 grid-template-columns: 1fr;
             }
         }
+        /* Uniform 2-col grid for 1920x1080 photos/videos, so a whole
+           category (stills + clips together) lines up at one consistent
+           size instead of some being full-width-huge and others squeezed
+           into a portrait-shaped grid. */
+        .case-16x9 {
+            max-width: 960px;
+            margin: 16px auto 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .case-16x9 img,
+        .case-16x9 video {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #000;
+        }
+        @media (max-width: 640px) {
+            .case-16x9 {
+                grid-template-columns: 1fr;
+            }
+        }
 
         .about-text h2, .contact-text h2, .project-manager-text h2,
         .ai-creator-text h2, .experience h3 {
@@ -1083,7 +1108,7 @@
                 e.stopPropagation();
                 lb.classList.toggle("is-zoomed");
             });
-            document.querySelectorAll(".case-media img, .case-cols img, .case-pair img, .case-grid img").forEach(function (img) {
+            document.querySelectorAll(".case-media img, .case-cols img, .case-pair img, .case-grid img, .case-16x9 img").forEach(function (img) {
                 img.classList.add("is-zoomable");
                 img.addEventListener("click", function () {
                     open(img.dataset.full || img.currentSrc || img.src, img.alt);
@@ -1588,84 +1613,42 @@
                 </div>
                 <h3 class="case-heading">FINAL CONTENT</h3>
                 <p class="case-label">Title Campaigns</p>
-                <div class="video-grid" style="max-width:960px; margin: 16px auto 0;">
-                    <figure>
-                        <video src="cases/netflix-outdoor/title-campaigns/gisaengsu.mp4" controls muted loop playsinline preload="metadata"></video>
-                        <figcaption>기생수</figcaption>
-                    </figure>
-                    <figure>
-                        <video src="cases/netflix-outdoor/title-campaigns/melo-movie.mp4" controls muted loop playsinline preload="metadata"></video>
-                        <figcaption>멜로무비</figcaption>
-                    </figure>
-                    <figure>
-                        <video src="cases/netflix-outdoor/title-campaigns/oggaem.mp4" controls muted loop playsinline preload="metadata"></video>
-                        <figcaption>오징어 게임</figcaption>
-                    </figure>
-                    <figure>
-                        <video src="cases/netflix-outdoor/title-campaigns/iruh-jilgini.mp4" controls muted loop playsinline preload="metadata"></video>
-                        <figcaption>이루어질지니</figcaption>
-                    </figure>
-                </div>
-                <div class="case-media" style="margin-top: 24px;">
+                <div class="case-16x9">
+                    <video src="cases/netflix-outdoor/title-campaigns/gisaengsu.mp4" controls muted loop playsinline preload="metadata"></video>
+                    <video src="cases/netflix-outdoor/title-campaigns/melo-movie.mp4" controls muted loop playsinline preload="metadata"></video>
+                    <video src="cases/netflix-outdoor/title-campaigns/oggaem.mp4" controls muted loop playsinline preload="metadata"></video>
+                    <video src="cases/netflix-outdoor/title-campaigns/iruh-jilgini.mp4" controls muted loop playsinline preload="metadata"></video>
                     <img src="cases/netflix-outdoor/title-campaigns/wolgan-namchin-bus.jpg" alt="넷플릭스 「월간남친」 — 버스 옥외광고" loading="lazy">
                 </div>
                 <p class="case-label">Brand Campaign</p>
-                <div class="case-media">
+                <div class="case-16x9">
                     <img src="cases/netflix-outdoor/brand-campaign/brand-1.jpg" alt="넷플릭스 「9월, 넷플 뭐봄?」 — 지하철 옥외광고" loading="lazy">
-                </div>
-                <div class="case-media" style="margin-top: 24px;">
                     <video src="cases/netflix-outdoor/brand-campaign/brand-1.mp4" controls playsinline preload="metadata"></video>
-                </div>
-                <div class="case-media" style="margin-top: 24px;">
                     <video src="cases/netflix-outdoor/brand-campaign/brand-2.mp4" controls playsinline preload="metadata"></video>
-                </div>
-                <div class="case-media" style="margin-top: 24px;">
                     <video src="cases/netflix-outdoor/brand-campaign/brand-3.mp4" controls playsinline preload="metadata"></video>
                 </div>
                 <p class="case-label">Busan International Film Festival</p>
-                <div class="case-pair">
+                <div class="case-16x9">
                     <img src="cases/netflix-outdoor/busan-iff/busan-3.jpg" alt="부산국제영화제 — 넷플릭스 옥외 포스터 전시" loading="lazy">
                     <img src="cases/netflix-outdoor/busan-iff/busan-4.jpg" alt="부산국제영화제 — 넷플릭스 외벽 포스터" loading="lazy">
-                </div>
-                <div class="case-media" style="margin-top: 24px;">
                     <video src="cases/netflix-outdoor/busan-iff/busan-1.mp4" controls playsinline preload="metadata"></video>
-                </div>
-                <div class="case-media" style="margin-top: 24px;">
                     <video src="cases/netflix-outdoor/busan-iff/busan-2.mp4" controls playsinline preload="metadata"></video>
                 </div>
                 <p class="case-label">BTS Comeback Live</p>
-                <div class="case-media">
+                <div class="case-16x9">
                     <img src="cases/netflix-outdoor/bts-comeback/bts-photo.jpg" alt="넷플릭스 N x BTS 「Comeback Live」 — 옥외 계단 광고" loading="lazy">
-                </div>
-                <div class="case-media" style="margin-top: 24px;">
                     <video src="cases/netflix-outdoor/bts-comeback/bts-1.mp4" controls playsinline preload="metadata"></video>
-                </div>
-                <div class="case-media" style="margin-top: 24px;">
                     <video src="cases/netflix-outdoor/bts-comeback/bts-2.mp4" controls playsinline preload="metadata"></video>
-                </div>
-                <div class="case-media" style="margin-top: 24px;">
                     <video src="cases/netflix-outdoor/bts-comeback/bts-3.mp4" controls playsinline preload="metadata"></video>
-                </div>
-                <div class="case-media" style="margin-top: 24px;">
                     <video src="cases/netflix-outdoor/bts-comeback/bts-4.mp4" controls playsinline preload="metadata"></video>
                 </div>
                 <p class="case-label">Next on Netflix</p>
-                <div class="case-media">
+                <div class="case-16x9">
                     <img src="cases/netflix-outdoor/next-on-netflix/non-1.jpg" alt="Next on Netflix — 지하상가 옥외광고" loading="lazy">
-                </div>
-                <div class="case-media" style="margin-top: 24px;">
                     <video src="cases/netflix-outdoor/next-on-netflix/non-1.mp4" controls playsinline preload="metadata"></video>
-                </div>
-                <div class="case-media" style="margin-top: 24px;">
                     <video src="cases/netflix-outdoor/next-on-netflix/non-2.mp4" controls playsinline preload="metadata"></video>
-                </div>
-                <div class="case-media" style="margin-top: 24px;">
                     <video src="cases/netflix-outdoor/next-on-netflix/non-3.mp4" controls playsinline preload="metadata"></video>
-                </div>
-                <div class="case-media" style="margin-top: 24px;">
                     <video src="cases/netflix-outdoor/next-on-netflix/non-4.mp4" controls playsinline preload="metadata"></video>
-                </div>
-                <div class="case-media" style="margin-top: 24px;">
                     <video src="cases/netflix-outdoor/next-on-netflix/non-5.mp4" controls playsinline preload="metadata"></video>
                 </div>
             </div>
