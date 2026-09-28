@@ -342,6 +342,16 @@
         .role-card ul { list-style: none; margin: 0; padding: 0; }
         .role-card li { font-size: var(--fs-body); line-height: 1.9; padding-left: 16px; position: relative; }
         .role-card li::before { content: "–"; position: absolute; left: 0; color: var(--faint); }
+        .role-card p { margin: 0; font-size: var(--fs-body); line-height: 1.7; word-break: keep-all; }
+        .stat-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin: 28px 0 0; max-width: 640px; }
+        .stat-item { border-top: 1px solid var(--ink); padding-top: 10px; }
+        .stat-item strong { display: block; font-size: clamp(26px, 3vw, 36px); font-weight: 500; letter-spacing: -.03em; line-height: 1.2; }
+        .stat-item span { display: block; font-size: 12px; color: var(--muted); margin-top: 4px; }
+        .test-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin: 20px 0; }
+        .test-card { padding: 18px; background: var(--card); }
+        .test-card span { display: block; font-size: 11px; letter-spacing: .09em; text-transform: uppercase; color: var(--faint); margin-bottom: 10px; }
+        .test-card strong { display: block; font-size: var(--fs-sub); font-weight: 600; line-height: 1.5; margin-bottom: 6px; word-break: keep-all; }
+        .test-card p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.6; word-break: keep-all; }
         .marketing-flow--lg { margin: 26px 0 6px; }
         .marketing-flow--lg span { padding: 10px 16px; font-size: 13px; letter-spacing: .03em; }
         .outlier-compare { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin: 22px 0; align-items: start; }
@@ -350,7 +360,8 @@
         .marketing-closing { padding: clamp(40px, 5vw, 64px) 0 clamp(20px, 3vw, 32px); }
         .marketing-closing p { max-width: 620px; margin: 22px 0 0; font-size: var(--fs-sub); line-height: 1.8; color: var(--muted); word-break: keep-all; }
         @media (max-width: 700px) {
-            .format-grid, .performance-grid, .role-grid, .outlier-compare { grid-template-columns: 1fr; }
+            .format-grid, .performance-grid, .role-grid, .outlier-compare, .test-grid { grid-template-columns: 1fr; }
+            .stat-grid { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; }
             .format-card { min-height: 0; }
             .format-card small { margin-top: 0; }
             .insight-grid article, .next-test div { grid-template-columns: 1fr; gap: 4px; }
@@ -2285,28 +2296,55 @@
             </div>
             <div class="marketing-lab-section">
                 <h2 class="marketing-heading">MARKETING LAB</h2>
-                <p class="marketing-lead">실제 AI 콘텐츠 채널 운영 데이터를 기반으로, AI를 활용해 게시물 성과를 구조화·비교하고 콘텐츠별 반응 차이와 개선 방향을 도출했습니다. 단순 수치 요약이 아니라 데이터 정리 → 패턴 탐색 → 해석 → 다음 콘텐츠 방향 설정까지의 과정을 하나의 AI-assisted marketing workflow로 정리했습니다.</p>
+                <p class="marketing-lead">직접 기획·제작한 콘텐츠를 실제 채널에 게시하고, 게시 이후 데이터를 분석해 다음 콘텐츠 방향을 설계하는 과정을 정리했습니다.</p>
                 <a class="marketing-project" href="#/marketing-lab/joseon-archive" onclick="showMarketingCase(); return false;">
-                    <span class="marketing-eyebrow">01 / AI-Assisted Content Performance Analysis</span>
+                    <span class="marketing-eyebrow">01 / Content Performance Analysis &amp; Optimization</span>
                     <strong>JOSEON ARCHIVE</strong>
-                    <em>AI-Assisted Content Performance Analysis</em>
+                    <em>Content Performance Analysis &amp; Optimization</em>
                     <span class="marketing-arrow">VIEW ANALYSIS ↗</span>
                 </a>
             </div>
             <div class="marketing-case-section">
                 <button class="case-back" type="button" onclick="showMarketingLab()">← MARKETING LAB</button>
                 <header class="marketing-hero">
-                    <span class="marketing-eyebrow">01 / AI-Assisted Content Performance Analysis</span>
+                    <span class="marketing-eyebrow">Content Performance Analysis &amp; Optimization</span>
                     <h2>JOSEON ARCHIVE</h2>
-                    <p><strong>AI-Assisted Content Performance Analysis</strong><br>현대 브랜드를 조선시대의 소재와 문화로 재해석한 AI 콘텐츠를 기획·제작하고 실제 소셜 채널에 운영했습니다. 게시 이후 실제 Instagram 인사이트 데이터를 수집했고, AI를 활용해 게시물 데이터를 정리·분류·비교하여 콘텐츠별 반응 차이를 확인했습니다. 13개의 게시물을 분석 대상으로 사용했습니다.</p>
-                    <div class="marketing-meta">Content Planning · AI Visual Production · Channel Operation · AI-Assisted Performance Analysis</div>
+                    <p>직접 기획·제작한 AI 콘텐츠를 실제 SNS 채널에 게시하고, 콘텐츠 유형별 성과 데이터를 분석해 다음 콘텐츠 방향을 개선한 프로젝트입니다.</p>
+                    <div class="role-grid">
+                        <div class="role-card">
+                            <span>Role</span>
+                            <ul><li>Content Planning</li><li>AI Production</li><li>Channel Operation</li><li>Performance Analysis</li><li>Content Optimization</li></ul>
+                        </div>
+                        <div class="role-card">
+                            <span>Process</span>
+                            <div class="marketing-flow"><span>Planning</span><i>→</i><span>Production</span><i>→</i><span>Publishing</span><i>→</i><span>Data Analysis</span><i>→</i><span>Insight</span><i>→</i><span>Optimization</span></div>
+                        </div>
+                    </div>
+                    <div class="stat-grid">
+                        <div class="stat-item"><strong>13</strong><span>Published Contents</span></div>
+                        <div class="stat-item"><strong>3</strong><span>Content Formats</span></div>
+                        <div class="stat-item"><strong>1,426</strong><span>Highest Views</span></div>
+                    </div>
+                    <p class="marketing-muted" style="font-size:11px; margin-top:10px;">2026.01–09 초기 채널 운영 데이터 기준</p>
                 </header>
 
                 <section class="marketing-block">
-                    <span class="marketing-eyebrow">01 / Content Operation</span>
-                    <h3>실제 채널에 운영한 AI 콘텐츠</h3>
-                    <p>AI 콘텐츠를 실제 Instagram 채널에 지속적으로 업로드하고, 게시 이후 조회수와 도달 데이터를 확인했습니다. 콘텐츠 제작 자체보다 게시 이후 데이터를 통해 어떤 콘텐츠 구조와 표현 방식에서 상대적으로 다른 반응이 나타나는지 분석하는 것에 초점을 맞췄습니다.</p>
-                    <span class="op-label">Analyzed Content</span>
+                    <span class="marketing-eyebrow">01 / Project Overview</span>
+                    <h3>왜 이 프로젝트를 진행했는가</h3>
+                    <p>AI 콘텐츠 제작 자체가 목적이 아니라, 실제로 콘텐츠를 게시하고 성과 데이터를 기반으로 다음 콘텐츠 방향을 개선하는 마케팅 워크플로우를 검증하기 위해 진행했습니다.</p>
+                </section>
+
+                <section class="marketing-block">
+                    <span class="marketing-eyebrow">02 / Content Operation</span>
+                    <h3>실제 채널 운영</h3>
+                    <p>현대 브랜드를 조선시대의 소재와 문화로 재해석한 콘텐츠를 기획하고, AI로 제작해 Instagram 채널에 실제로 게시·운영했습니다.</p>
+                    <ul>
+                        <li>콘텐츠 기획</li>
+                        <li>AI 기반 콘텐츠 제작</li>
+                        <li>Instagram 채널 게시 및 운영</li>
+                        <li>게시물별 성과 데이터 수집</li>
+                    </ul>
+                    <span class="op-label">실제 게시된 콘텐츠</span>
                     <div class="op-strip">
                         <div class="op-thumb"><img src="cases/marketing-lab/joseon-archive/post01-a1.jpg" alt="JOSEON ARCHIVE — Post 01" loading="lazy"></div>
                         <div class="op-thumb"><img src="cases/marketing-lab/joseon-archive/post07-b1.jpg" alt="JOSEON ARCHIVE — Post 07" loading="lazy"></div>
@@ -2315,35 +2353,35 @@
                 </section>
 
                 <section class="marketing-block">
-                    <span class="marketing-eyebrow">02 / Content Format</span>
-                    <h3>제작 방식과 첫 화면 구성 기준 분류</h3>
-                    <p class="marketing-muted">오래된 게시물부터 A(1–6번), B(7–11번), C(12–13번)로 분류했습니다. 게시 시기와 소재가 달라 동일한 조건에서 비교한 결과는 아닙니다.</p>
+                    <span class="marketing-eyebrow">03 / Content Format Comparison</span>
+                    <h3>콘텐츠 표현 방식 분류</h3>
+                    <p class="marketing-muted">13개 게시물을 표현 방식에 따라 세 가지로 분류했습니다. 게시 시점과 소재가 동일하지 않아 통제된 실험은 아니며, 어떤 콘텐츠 구조에서 상대적으로 높은 반응이 나타났는지 탐색하기 위한 비교입니다.</p>
                     <div class="format-grid">
                         <article class="format-card">
-                            <div class="format-thumb"><img src="cases/marketing-lab/joseon-archive/post01-a1.jpg" alt="Motion Poster 포맷 대표 — Post 01" loading="lazy"></div>
+                            <div class="format-thumb"><img src="cases/marketing-lab/joseon-archive/post01-a1.jpg" alt="Format A 대표 — Post 01" loading="lazy"></div>
                             <b>A</b><h4>Motion Poster</h4><p>제품 포스터 비주얼에 간단한 모션을 더한 콘텐츠</p><small>01–06 / 6 POSTS</small>
                         </article>
                         <article class="format-card">
-                            <div class="format-thumb"><img src="cases/marketing-lab/joseon-archive/post07-b1.jpg" alt="Product Film 포맷 대표 — Post 07" loading="lazy"></div>
-                            <b>B</b><h4>Product Film</h4><p>제품과 카메라 모션을 활용한 광고 영상형 콘텐츠</p><small>07–11 / 5 POSTS</small>
+                            <div class="format-thumb"><img src="cases/marketing-lab/joseon-archive/post07-b1.jpg" alt="Format B 대표 — Post 07" loading="lazy"></div>
+                            <b>B</b><h4>Product-Focused Content</h4><p>제품과 카메라 모션을 활용한 광고 영상형 콘텐츠</p><small>07–11 / 5 POSTS</small>
                         </article>
                         <article class="format-card">
-                            <div class="format-thumb"><img src="cases/marketing-lab/joseon-archive/post12-c1.jpg" alt="Curiosity Hook 포맷 대표 — Post 12" loading="lazy"></div>
-                            <b>C</b><h4>Curiosity Hook</h4><p>질문형 첫 화면으로 궁금증을 만든 뒤 제품을 공개하는 콘텐츠</p><small>12–13 / 2 POSTS</small>
+                            <div class="format-thumb"><img src="cases/marketing-lab/joseon-archive/post12-c1.jpg" alt="Format C 대표 — Post 12" loading="lazy"></div>
+                            <b>C</b><h4>Question-Based Hook Content</h4><p>질문형 첫 화면으로 궁금증을 만든 뒤 제품을 공개하는 콘텐츠</p><small>12–13 / 2 POSTS</small>
                         </article>
                     </div>
                 </section>
 
                 <section class="marketing-block">
-                    <span class="marketing-eyebrow">03 / Performance Data</span>
-                    <h3>포맷별 평균 조회수와 게시물별 분포</h3>
-                    <p class="marketing-muted">Instagram 인사이트 CSV 기준. 막대는 동일한 축에서 포맷별 게시물당 평균 조회수를 나타냅니다.</p>
+                    <span class="marketing-eyebrow">04 / Performance Data</span>
+                    <h3>실제 게시물 성과 데이터</h3>
+                    <p class="marketing-muted">Instagram 인사이트에서 확보한 조회수(Views)·도달(Reach) 기준입니다. 막대는 동일한 축에서 포맷별 게시물당 평균 조회수를 나타냅니다.</p>
                     <div class="performance-grid" aria-label="A 평균 115.5회, B 평균 91회, C 평균 810.5회">
                         <div class="performance-item"><span>A / 6 posts</span><strong>115.5</strong><span>Avg. Views · Avg. Reach 82.7</span><div class="performance-track"><i style="--bar:14.3%"></i></div></div>
                         <div class="performance-item"><span>B / 5 posts</span><strong>91</strong><span>Avg. Views · Avg. Reach 69.4</span><div class="performance-track"><i style="--bar:11.2%"></i></div></div>
                         <div class="performance-item"><span>C / 2 posts</span><strong>810.5</strong><span>Avg. Views · Avg. Reach 606.5</span><div class="performance-track"><i style="--bar:100%"></i></div></div>
                     </div>
-                    <div class="marketing-note"><strong>평균보다 분포와 이상치가 중요합니다</strong>C는 게시물이 2개뿐이며, 그중 한 게시물이 1,426 views를 기록하면서 평균을 크게 높였습니다. 대부분의 게시물은 약 100 views 전후였습니다.</div>
+                    <div class="marketing-note"><strong>평균보다 분포가 중요합니다</strong>C는 게시물이 2개뿐이며, 그중 한 게시물이 1,426 views를 기록하면서 평균을 크게 높였습니다. 대부분의 게시물은 약 100 views 전후였습니다.</div>
                     <p class="marketing-muted" style="margin:18px 0 0;">C 게시물별 조회수</p>
                     <div class="dist-list">
                         <div class="dist-row"><span>C-1 · LEGO</span><div class="dist-track"><i style="--bar:13.7%"></i></div><span>195</span></div>
@@ -2357,74 +2395,68 @@
                 </section>
 
                 <section class="marketing-block">
-                    <span class="marketing-eyebrow">04 / AI-Assisted Performance Analysis</span>
-                    <h3>AI와 사람의 역할을 나눈 분석 과정</h3>
-                    <ul>
-                        <li>Instagram CSV 데이터 정리</li>
-                        <li>게시물 날짜순 정렬</li>
-                        <li>콘텐츠 포맷별 자동 분류</li>
-                        <li>Views / Reach 데이터 비교</li>
-                        <li>평균값 및 게시물별 분포 확인</li>
-                        <li>이상치 게시물 탐색</li>
-                        <li>콘텐츠 구조 차이 비교</li>
-                        <li>다음 제작 방향 후보 도출</li>
-                    </ul>
-                    <div class="role-grid">
-                        <div class="role-card">
-                            <span>AI</span>
-                            <ul><li>Data Cleaning</li><li>Classification</li><li>Comparison</li><li>Pattern Detection</li></ul>
-                        </div>
-                        <div class="role-card">
-                            <span>My Role</span>
-                            <ul><li>Context Check</li><li>Interpretation</li><li>Decision</li><li>Next Action</li></ul>
-                        </div>
-                    </div>
-                    <div class="marketing-flow marketing-flow--lg"><span>Raw Data</span><i>→</i><span>AI Analysis</span><i>→</i><span>Pattern Detection</span><i>→</i><span>Human Interpretation</span><i>→</i><span>Content Decision</span></div>
-                </section>
-
-                <section class="marketing-block">
-                    <span class="marketing-eyebrow">05 / Outlier Analysis</span>
-                    <h3>대부분 게시물과 다른 반응을 보인 하나의 게시물</h3>
-                    <p>대부분의 게시물이 약 100 views 전후를 기록했지만, 한 게시물이 1,426 views를 기록했습니다. 이 수치를 성공 사례로 보기보다, AI 분석 과정에서 확인된 이상치(High-response post)로 다뤘습니다.</p>
+                    <span class="marketing-eyebrow">05 / Key Finding</span>
+                    <h3>가장 높은 반응을 얻은 콘텐츠</h3>
+                    <p>13개 콘텐츠 중 질문형 Hook을 사용한 콘텐츠에서 상대적으로 높은 조회수가 관찰되었습니다.</p>
                     <div class="outlier-compare">
                         <div class="performance-item"><span>Most Posts</span><strong>≈ 100</strong><span>Views</span></div>
                         <div class="performance-item">
-                            <div class="op-thumb"><img src="cases/marketing-lab/joseon-archive/post13-c2.jpg" alt="High-response Post — 도미노" loading="lazy"></div>
-                            <div><span>High-response Post</span><strong>1,426</strong><span>Views</span></div>
+                            <div class="op-thumb"><img src="cases/marketing-lab/joseon-archive/post13-c2.jpg" alt="가장 높은 조회수를 기록한 게시물 — 도미노" loading="lazy"></div>
+                            <div><span>Highest-viewed Post</span><strong>1,426</strong><span>Views</span></div>
                         </div>
                     </div>
-                    <p class="marketing-muted">해당 게시물의 콘텐츠 구조는 다른 게시물과 비교해 다음과 같은 차이가 있었습니다.</p>
+                    <p class="marketing-muted">다만 아래 요인이 함께 작용했을 수 있어, 이 관찰을 성과의 직접적인 원인으로 단정하지 않습니다.</p>
                     <ul>
-                        <li>질문형 첫 화면</li>
-                        <li>제품 공개 전 궁금증 유도</li>
-                        <li>콘텐츠 진입부에 명확한 Hook</li>
-                        <li>기존 제품 중심 영상과 다른 정보 전달 방식</li>
+                        <li>게시 시점 차이</li>
+                        <li>소재 차이</li>
+                        <li>브랜드 친숙도 차이</li>
+                        <li>샘플 수 부족</li>
                     </ul>
-                    <p class="marketing-muted">다만 게시 시점, 브랜드, 소재 등의 영향도 있을 수 있어, 위 요소가 성과 상승의 직접적인 원인이라고 단정하지 않습니다.</p>
+                    <p class="marketing-muted">Correlation / Pattern Observation 수준의 관찰이며, 원인을 확정한 결과는 아닙니다.</p>
                 </section>
 
                 <section class="marketing-block">
                     <span class="marketing-eyebrow">06 / Insight</span>
-                    <h3>제품 비주얼 중심 구조를 벗어난 가능성</h3>
-                    <p>기존 콘텐츠는 제품 비주얼을 바로 보여주는 방식이 중심이었습니다. 상대적으로 높은 반응을 기록한 게시물은 첫 화면에서 질문을 제시하고, 이후 제품을 공개하는 구조였습니다. 현재 데이터만으로 확정적인 결론을 내릴 수는 없지만, 제품 비주얼 자체뿐 아니라 첫 화면의 Hook과 정보 공개 방식이 초기 콘텐츠 반응에 영향을 줄 가능성을 확인했습니다.</p>
+                    <h3>Observation과 Hypothesis 구분</h3>
+                    <div class="role-grid">
+                        <div class="role-card">
+                            <span>Observation</span>
+                            <p>질문형 Hook 콘텐츠에서 상대적으로 높은 조회수가 나타남</p>
+                        </div>
+                        <div class="role-card">
+                            <span>Hypothesis</span>
+                            <p>제품 중심 노출보다 상황 또는 질문 중심 Hook이 초기 관심을 높였을 가능성</p>
+                        </div>
+                    </div>
+                    <p style="margin-top:18px;">현재 데이터만으로 확정적인 결론을 내릴 수는 없으며, 이는 향후 테스트가 필요한 가설입니다.</p>
                 </section>
 
                 <section class="marketing-block">
-                    <span class="marketing-eyebrow">07 / Optimization Direction</span>
-                    <h3>다음 콘텐츠 제작 및 운영 방향</h3>
-                    <ul>
-                        <li>첫 화면에서 질문이나 상황을 먼저 제시</li>
-                        <li>제품 전체 이미지를 처음부터 바로 노출하지 않는 구성</li>
-                        <li>첫 1–2초 안에 궁금증 요소 전달</li>
-                        <li>제품 중심 콘텐츠와 Hook 중심 콘텐츠의 반응 차이 지속 확인</li>
-                        <li>조회수뿐 아니라 Reach / Save / Share 등의 지표도 함께 확인</li>
-                    </ul>
+                    <span class="marketing-eyebrow">07 / Next Test</span>
+                    <h3>다음 콘텐츠 테스트 설계</h3>
+                    <p>분석 결과를 바탕으로 다음 콘텐츠에서 검증할 테스트를 설계했습니다.</p>
+                    <div class="test-grid">
+                        <div class="test-card">
+                            <span>Hook A</span>
+                            <strong>"조선시대에 자판기가 있었다면?"</strong>
+                            <p>질문형 Hook — 상황을 먼저 제시하고 제품을 이후 공개</p>
+                        </div>
+                        <div class="test-card">
+                            <span>Hook B</span>
+                            <strong>제품·기계 직접 노출</strong>
+                            <p>제품 중심 노출 — 첫 화면부터 제품을 바로 노출</p>
+                        </div>
+                    </div>
+                    <div class="next-test">
+                        <div><strong>Control Variables</strong><span>유사한 업로드 시간, 동일하거나 유사한 영상 길이, 동일한 콘텐츠 소재, 유사한 Caption 구조</span></div>
+                        <div><strong>Metrics</strong><span>Views, Reach, Watch Time, Saves, Shares</span></div>
+                        <div><strong>Goal</strong><span>첫 1–2초의 Hook 방식이 콘텐츠 진입과 시청 지속에 영향을 주는지 확인</span></div>
+                    </div>
                 </section>
 
                 <div class="marketing-closing">
-                    <span class="marketing-eyebrow">AI Marketing Workflow</span>
-                    <div class="marketing-flow marketing-flow--lg"><span>Planning</span><i>→</i><span>Production</span><i>→</i><span>Publishing</span><i>→</i><span>Data Collection</span><i>→</i><span>AI Analysis</span><i>→</i><span>Human Interpretation</span><i>→</i><span>Optimization</span></div>
-                    <p>AI를 콘텐츠 생성 도구에 그치지 않고, 실제 운영 데이터를 구조화하고 패턴을 탐색해 다음 콘텐츠 의사결정을 보조하는 분석 도구로 활용했습니다.</p>
+                    <div class="marketing-flow marketing-flow--lg"><span>AI-assisted Analysis</span><i>→</i><span>Human Interpretation</span><i>→</i><span>Marketing Decision</span></div>
+                    <p>AI는 데이터를 정리하고 패턴을 탐색하는 도구로 활용했습니다. 인사이트 해석과 다음 콘텐츠 방향에 대한 결정은 사람이 직접 했습니다.</p>
                 </div>
             </div>
             <div class="contact-section">
