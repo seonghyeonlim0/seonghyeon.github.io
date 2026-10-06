@@ -284,105 +284,10 @@
         }
 
         .motion-graphic-section, .contact-section,
-        .project-manager-section, .ai-creator-section, .marketing-lab-section,
-        .marketing-case-section, .case-section {
+        .project-manager-section, .ai-creator-section, .case-section {
             display: none;
         }
 
-        /* Marketing Lab follows the site's monochrome, editorial case-study language. */
-        .marketing-lab-section, .marketing-case-section { width: 100%; max-width: 1080px; }
-        .marketing-heading { font-size: var(--fs-h2); color: var(--muted); letter-spacing: .04em; margin: 0 0 18px; padding-bottom: 12px; position: relative; }
-        .marketing-heading::after { content: ""; position: absolute; width: 32px; height: 2px; background: var(--ink); left: 0; bottom: 0; }
-        .marketing-lead { max-width: 680px; font-size: var(--fs-body); line-height: 1.7; margin: 0 0 24px; word-break: keep-all; }
-        .marketing-project { display: block; max-width: 880px; color: inherit; text-decoration: none; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: clamp(22px, 3vw, 36px) clamp(18px, 3vw, 32px); background: var(--card); transition: transform .3s ease, box-shadow .3s ease; }
-        .marketing-project:hover { transform: translateY(-4px); box-shadow: 0 20px 38px -28px rgba(0,0,0,.5); }
-        .marketing-eyebrow { display: block; color: var(--faint); font-size: 12px; letter-spacing: .09em; text-transform: uppercase; }
-        .marketing-project strong { display: block; font-size: clamp(28px, 3vw, 38px); line-height: 1.1; letter-spacing: -.03em; margin: 16px 0 6px; }
-        .marketing-project em { display: block; font-size: var(--fs-body); font-style: normal; color: var(--muted); }
-        .marketing-project .marketing-arrow { display: block; margin-top: 26px; font-size: 12px; letter-spacing: .07em; }
-        .marketing-case-section .case-back { margin-bottom: 24px; }
-        .marketing-hero { border-bottom: 1px solid var(--line); padding-bottom: clamp(28px, 3vw, 42px); }
-        .marketing-hero h2 { font-size: clamp(38px, 4.5vw, 58px); line-height: 1.04; letter-spacing: -.04em; margin: 14px 0 16px; font-weight: 600; }
-        .marketing-hero p { max-width: 700px; font-size: var(--fs-body); line-height: 1.7; color: var(--muted); margin: 0; word-break: keep-all; }
-        .marketing-hero p strong { color: var(--ink); font-size: var(--fs-sub); font-weight: 600; }
-        .marketing-meta { margin-top: 16px; color: var(--faint); font-size: 12px; letter-spacing: .03em; }
-        .marketing-block { padding: clamp(32px, 3.5vw, 48px) 0; border-bottom: 1px solid var(--line); }
-        .marketing-block h3 { font-size: clamp(21px, 2.2vw, 28px); line-height: 1.3; letter-spacing: -.025em; margin: 8px 0 12px; }
-        .marketing-block p { max-width: 760px; font-size: var(--fs-body); line-height: 1.7; word-break: keep-all; margin: 0 0 14px; }
-        .marketing-muted { color: var(--muted); }
-        .format-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; margin-top: 20px; }
-        .format-card { min-height: 148px; padding: 18px; background: var(--card); display: flex; flex-direction: column; }
-        .format-card b { font-size: 24px; line-height: 1; font-weight: 500; }
-        .format-card h4 { font-size: var(--fs-body); margin: 12px 0 3px; }
-        .format-card p { font-size: 13px; margin: 0; color: var(--muted); line-height: 1.55; }
-        .format-card small { font-size: 11px; color: var(--faint); letter-spacing: .06em; margin-top: auto; padding-top: 14px; }
-        .performance-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin: 22px 0; }
-        .performance-item { border-top: 1px solid var(--ink); padding-top: 10px; }
-        .performance-item strong { display: block; font-size: clamp(28px, 3vw, 40px); font-weight: 500; letter-spacing: -.035em; line-height: 1.25; }
-        .performance-item span { display: block; font-size: 12px; color: var(--muted); }
-        .performance-track { height: 3px; margin-top: 12px; background: var(--line); }
-        .performance-track i { display: block; height: 100%; width: var(--bar); background: var(--ink); }
-        .marketing-note { padding: 14px 18px; border-left: 2px solid var(--ink); background: var(--card); font-size: 13px; line-height: 1.65; word-break: keep-all; }
-        .marketing-note strong { display: block; margin-bottom: 4px; }
-        .marketing-detail { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 13px; }
-        .marketing-detail th, .marketing-detail td { text-align: left; padding: 8px; border-bottom: 1px solid var(--line); }
-        .marketing-detail th { color: var(--muted); font-weight: normal; }
-        .marketing-detail a { color: inherit; text-underline-offset: 3px; }
-        .marketing-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 16px 0; }
-        .marketing-flow span { padding: 6px 9px; border: 1px solid var(--line); font-size: 12px; }
-        .marketing-flow i { font-style: normal; color: var(--faint); }
-        .insight-grid { border-top: 1px solid var(--line); margin-top: 18px; }
-        .insight-grid article { display: grid; grid-template-columns: 155px 1fr; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); }
-        .insight-grid h4 { margin: 0; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
-        .insight-grid p { margin: 0; font-size: 13px; }
-        .next-test { border-top: 1px solid var(--line); margin-top: 18px; }
-        .next-test div { display: grid; grid-template-columns: 150px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 13px; line-height: 1.65; }
-        .next-test strong { letter-spacing: .07em; }
-        .marketing-block ul { max-width: 760px; margin: 0 0 14px; padding-left: 20px; }
-        .marketing-block li { font-size: var(--fs-body); line-height: 1.7; margin-bottom: 8px; word-break: keep-all; }
-        .op-label { display: block; color: var(--faint); font-size: 11px; letter-spacing: .09em; text-transform: uppercase; margin: 20px 0 10px; }
-        .op-strip { display: flex; gap: 10px; flex-wrap: wrap; }
-        .op-thumb { width: 58px; height: 103px; flex: 0 0 auto; border: 1px solid var(--line); background: var(--card); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .op-thumb img, .op-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .op-thumb span { font-size: 10px; color: var(--faint); text-align: center; padding: 4px; line-height: 1.4; }
-        .format-thumb { width: 100px; height: 178px; margin: 0 0 14px; border: 1px solid var(--line); background: var(--bg); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .format-thumb img, .format-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .format-thumb span { font-size: 10px; color: var(--faint); letter-spacing: .04em; }
-        .dist-list { margin: 18px 0 0; max-width: 420px; }
-        .dist-row { display: grid; grid-template-columns: 110px 1fr 56px; align-items: center; gap: 10px; padding: 6px 0; font-size: 12px; color: var(--muted); }
-        .dist-track { height: 3px; background: var(--line); }
-        .dist-track i { display: block; height: 100%; background: var(--ink); width: var(--bar); }
-        .role-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin: 22px 0 6px; }
-        .role-card { border-top: 1px solid var(--ink); padding-top: 12px; }
-        .role-card span { display: block; font-size: 11px; letter-spacing: .09em; text-transform: uppercase; color: var(--faint); margin-bottom: 10px; }
-        .role-card ul { list-style: none; margin: 0; padding: 0; }
-        .role-card li { font-size: var(--fs-body); line-height: 1.9; padding-left: 16px; position: relative; }
-        .role-card li::before { content: "–"; position: absolute; left: 0; color: var(--faint); }
-        .role-card p { margin: 0; font-size: var(--fs-body); line-height: 1.7; word-break: keep-all; }
-        .stat-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin: 28px 0 0; max-width: 640px; }
-        .stat-item { border-top: 1px solid var(--ink); padding-top: 10px; }
-        .stat-item strong { display: block; font-size: clamp(26px, 3vw, 36px); font-weight: 500; letter-spacing: -.03em; line-height: 1.2; }
-        .stat-item span { display: block; font-size: 12px; color: var(--muted); margin-top: 4px; }
-        .test-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin: 20px 0; }
-        .test-card { padding: 18px; background: var(--card); }
-        .test-card span { display: block; font-size: 11px; letter-spacing: .09em; text-transform: uppercase; color: var(--faint); margin-bottom: 10px; }
-        .test-card strong { display: block; font-size: var(--fs-sub); font-weight: 600; line-height: 1.5; margin-bottom: 6px; word-break: keep-all; }
-        .test-card p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.6; word-break: keep-all; }
-        .marketing-flow--lg { margin: 26px 0 6px; }
-        .marketing-flow--lg span { padding: 10px 16px; font-size: 13px; letter-spacing: .03em; }
-        .outlier-compare { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin: 22px 0; align-items: start; }
-        .outlier-compare .performance-item { display: flex; align-items: flex-end; gap: 14px; }
-        .outlier-compare .op-thumb { width: 48px; height: 85px; }
-        .marketing-closing { padding: clamp(40px, 5vw, 64px) 0 clamp(20px, 3vw, 32px); }
-        .marketing-closing p { max-width: 620px; margin: 22px 0 0; font-size: var(--fs-sub); line-height: 1.8; color: var(--muted); word-break: keep-all; }
-        @media (max-width: 700px) {
-            .format-grid, .performance-grid, .role-grid, .outlier-compare, .test-grid { grid-template-columns: 1fr; }
-            .stat-grid { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; }
-            .format-card { min-height: 0; }
-            .format-card small { margin-top: 0; }
-            .insight-grid article, .next-test div { grid-template-columns: 1fr; gap: 4px; }
-            .dist-row { grid-template-columns: 90px 1fr 50px; }
-        }
 
 
         /* ---------- In-site case study page ---------- */
@@ -1129,8 +1034,6 @@
             "project-manager-section",
             "motion-graphic-section",
             "ai-creator-section",
-            "marketing-lab-section",
-            "marketing-case-section",
             "contact-section",
             "case-techlove-section",
             "case-wristbrace-section",
@@ -1164,8 +1067,6 @@
             "project-manager-section": "project-manager",
             "motion-graphic-section": "motion-graphic",
             "ai-creator-section": "ai-creator",
-            "marketing-lab-section": "marketing-lab",
-            "marketing-case-section": "marketing-lab/joseon-archive",
             "contact-section": "contact",
             "case-techlove-section": "case/techlove",
             "case-wristbrace-section": "case/wristbrace",
@@ -1202,8 +1103,6 @@
             "project-manager-section": "Brand Projects — LIM",
             "motion-graphic-section": "Motion & 3D Works — LIM",
             "ai-creator-section": "Personal AI Works — LIM",
-            "marketing-lab-section": "Marketing Lab — LIM",
-            "marketing-case-section": "Joseon Archive — LIM",
             "contact-section": "Contact — LIM",
             "case-techlove-section": "TECHLOVE 목견인기 — LIM",
             "case-wristbrace-section": "TECHLOVE 손목보호대 — LIM",
@@ -1260,9 +1159,7 @@
             "case-gukgabohun-section": 2,
             "case-plantlance-section": 2,
             "ai-creator-section": 3,
-            "marketing-lab-section": 4,
-            "marketing-case-section": 4,
-            "contact-section": 5
+            "contact-section": 4
         };
 
         function sectionFromHash() {
@@ -1328,8 +1225,6 @@
         function showProjectManager() { navigate("project-manager-section"); }
         function showMotionGraphic() { navigate("motion-graphic-section"); }
         function showAiCreator() { navigate("ai-creator-section"); }
-        function showMarketingLab() { navigate("marketing-lab-section"); }
-        function showMarketingCase() { navigate("marketing-case-section"); }
         function showContact() { navigate("contact-section"); }
         function showCaseTechlove() { navigate("case-techlove-section"); }
         function showCaseWristbrace() { navigate("case-wristbrace-section"); }
@@ -1499,7 +1394,6 @@
                     <li><a href="#/project-manager" onclick="showProjectManager(); return false;">BRAND PROJECTS</a></li>
                     <li><a href="#/motion-graphic" onclick="showMotionGraphic(); return false;">MOTION &amp; 3D</a></li>
                     <li><a href="#/ai-creator" onclick="showAiCreator(); return false;">AI WORKS</a></li>
-                    <li><a href="#/marketing-lab" onclick="showMarketingLab(); return false;">MARKETING LAB</a></li>
                     <li><a href="#/contact" onclick="showContact(); return false;">CONTACT</a></li>
                 </ul>
             </nav>
@@ -2487,171 +2381,6 @@
                         <video src="videos/zippo-hwarotae.mp4" controls muted loop playsinline preload="metadata"></video>
                         <figcaption>ZIPPO X 화롯대</figcaption>
                     </figure>
-                </div>
-            </div>
-            <div class="marketing-lab-section">
-                <h2 class="marketing-heading">MARKETING LAB</h2>
-                <p class="marketing-lead">직접 기획·제작한 콘텐츠를 실제 채널에 게시하고, 게시 이후 데이터를 분석해 다음 콘텐츠 방향을 설계하는 과정을 정리했습니다.</p>
-                <a class="marketing-project" href="#/marketing-lab/joseon-archive" onclick="showMarketingCase(); return false;">
-                    <span class="marketing-eyebrow">01 / Content Performance Analysis &amp; Optimization</span>
-                    <strong>JOSEON ARCHIVE</strong>
-                    <em>Content Performance Analysis &amp; Optimization</em>
-                    <span class="marketing-arrow">VIEW ANALYSIS ↗</span>
-                </a>
-            </div>
-            <div class="marketing-case-section">
-                <button class="case-back" type="button" onclick="showMarketingLab()">← MARKETING LAB</button>
-                <header class="marketing-hero">
-                    <span class="marketing-eyebrow">Content Performance Analysis &amp; Optimization</span>
-                    <h2>JOSEON ARCHIVE</h2>
-                    <p>직접 기획·제작한 AI 콘텐츠를 실제 SNS 채널에 게시하고, 콘텐츠 유형별 성과 데이터를 분석해 다음 콘텐츠 방향을 개선한 프로젝트입니다.</p>
-                    <div class="role-grid">
-                        <div class="role-card">
-                            <span>Role</span>
-                            <ul><li>Content Planning</li><li>AI Production</li><li>Channel Operation</li><li>Performance Analysis</li><li>Content Optimization</li></ul>
-                        </div>
-                        <div class="role-card">
-                            <span>Process</span>
-                            <div class="marketing-flow"><span>Planning</span><i>→</i><span>Production</span><i>→</i><span>Publishing</span><i>→</i><span>Data Analysis</span><i>→</i><span>Insight</span><i>→</i><span>Optimization</span></div>
-                        </div>
-                    </div>
-                    <div class="stat-grid">
-                        <div class="stat-item"><strong>13</strong><span>Published Contents</span></div>
-                        <div class="stat-item"><strong>3</strong><span>Content Formats</span></div>
-                        <div class="stat-item"><strong>1,426</strong><span>Highest Views</span></div>
-                    </div>
-                    <p class="marketing-muted" style="font-size:11px; margin-top:10px;">2026.08–09 초기 채널 운영 데이터 기준</p>
-                </header>
-
-                <section class="marketing-block">
-                    <span class="marketing-eyebrow">01 / Project Overview</span>
-                    <h3>왜 이 프로젝트를 진행했는가</h3>
-                    <p>AI 콘텐츠 제작 자체가 목적이 아니라, 실제로 콘텐츠를 게시하고 성과 데이터를 기반으로 다음 콘텐츠 방향을 개선하는 마케팅 워크플로우를 검증하기 위해 진행했습니다.</p>
-                </section>
-
-                <section class="marketing-block">
-                    <span class="marketing-eyebrow">02 / Content Operation</span>
-                    <h3>실제 채널 운영</h3>
-                    <p>현대 브랜드를 조선시대의 소재와 문화로 재해석한 콘텐츠를 기획하고, AI로 제작해 Instagram 채널에 실제로 게시·운영했습니다.</p>
-                    <ul>
-                        <li>콘텐츠 기획</li>
-                        <li>AI 기반 콘텐츠 제작</li>
-                        <li>Instagram 채널 게시 및 운영</li>
-                        <li>게시물별 성과 데이터 수집</li>
-                    </ul>
-                    <span class="op-label">실제 게시된 콘텐츠</span>
-                    <div class="op-strip">
-                        <div class="op-thumb"><img src="cases/marketing-lab/joseon-archive/post01-a1.jpg" alt="JOSEON ARCHIVE — Post 01" loading="lazy" decoding="async"></div>
-                        <div class="op-thumb"><img src="cases/marketing-lab/joseon-archive/post07-b1.jpg" alt="JOSEON ARCHIVE — Post 07" loading="lazy" decoding="async"></div>
-                        <div class="op-thumb"><img src="cases/marketing-lab/joseon-archive/post12-c1.jpg" alt="JOSEON ARCHIVE — Post 12" loading="lazy" decoding="async"></div>
-                    </div>
-                </section>
-
-                <section class="marketing-block">
-                    <span class="marketing-eyebrow">03 / Content Format Comparison</span>
-                    <h3>콘텐츠 표현 방식 분류</h3>
-                    <p class="marketing-muted">13개 게시물을 표현 방식에 따라 세 가지로 분류했습니다. 게시 시점과 소재가 동일하지 않아 통제된 실험은 아니며, 어떤 콘텐츠 구조에서 상대적으로 높은 반응이 나타났는지 탐색하기 위한 비교입니다.</p>
-                    <div class="format-grid">
-                        <article class="format-card">
-                            <div class="format-thumb"><img src="cases/marketing-lab/joseon-archive/post01-a1.jpg" alt="Format A 대표 — Post 01" loading="lazy" decoding="async"></div>
-                            <b>A</b><h4>Motion Poster</h4><p>제품 포스터 비주얼에 간단한 모션을 더한 콘텐츠</p><small>01–06 / 6 POSTS</small>
-                        </article>
-                        <article class="format-card">
-                            <div class="format-thumb"><img src="cases/marketing-lab/joseon-archive/post07-b1.jpg" alt="Format B 대표 — Post 07" loading="lazy" decoding="async"></div>
-                            <b>B</b><h4>Product-Focused Content</h4><p>제품과 카메라 모션을 활용한 광고 영상형 콘텐츠</p><small>07–11 / 5 POSTS</small>
-                        </article>
-                        <article class="format-card">
-                            <div class="format-thumb"><img src="cases/marketing-lab/joseon-archive/post12-c1.jpg" alt="Format C 대표 — Post 12" loading="lazy" decoding="async"></div>
-                            <b>C</b><h4>Question-Based Hook Content</h4><p>질문형 첫 화면으로 궁금증을 만든 뒤 제품을 공개하는 콘텐츠</p><small>12–13 / 2 POSTS</small>
-                        </article>
-                    </div>
-                </section>
-
-                <section class="marketing-block">
-                    <span class="marketing-eyebrow">04 / Performance Data</span>
-                    <h3>실제 게시물 성과 데이터</h3>
-                    <p class="marketing-muted">Instagram 인사이트에서 확보한 조회수(Views)·도달(Reach) 기준입니다. 막대는 동일한 축에서 포맷별 게시물당 평균 조회수를 나타냅니다.</p>
-                    <div class="performance-grid" aria-label="A 평균 115.5회, B 평균 91회, C 평균 810.5회">
-                        <div class="performance-item"><span>A / 6 posts</span><strong>115.5</strong><span>Avg. Views · Avg. Reach 82.7</span><div class="performance-track"><i style="--bar:14.3%"></i></div></div>
-                        <div class="performance-item"><span>B / 5 posts</span><strong>91</strong><span>Avg. Views · Avg. Reach 69.4</span><div class="performance-track"><i style="--bar:11.2%"></i></div></div>
-                        <div class="performance-item"><span>C / 2 posts</span><strong>810.5</strong><span>Avg. Views · Avg. Reach 606.5</span><div class="performance-track"><i style="--bar:100%"></i></div></div>
-                    </div>
-                    <div class="marketing-note"><strong>평균보다 분포가 중요합니다</strong>C는 게시물이 2개뿐이며, 그중 한 게시물이 1,426 views를 기록하면서 평균을 크게 높였습니다. 대부분의 게시물은 약 100 views 전후였습니다.</div>
-                    <p class="marketing-muted" style="margin:18px 0 0;">C 게시물별 조회수</p>
-                    <div class="dist-list">
-                        <div class="dist-row"><span>C-1 · LEGO</span><div class="dist-track"><i style="--bar:13.7%"></i></div><span>195</span></div>
-                        <div class="dist-row"><span>C-2 · 도미노</span><div class="dist-track"><i style="--bar:100%"></i></div><span>1,426</span></div>
-                    </div>
-                    <table class="marketing-detail"><thead><tr><th>게시물</th><th>조회</th><th>도달</th></tr></thead><tbody>
-                        <tr><td><a href="https://www.instagram.com/reel/DdTUuuwONce/" target="_blank" rel="noopener noreferrer">C-1 · LEGO ↗</a></td><td>195</td><td>137</td></tr>
-                        <tr><td><a href="https://www.instagram.com/reel/DdbDoyQO129/" target="_blank" rel="noopener noreferrer">C-2 · 도미노 ↗</a></td><td>1,426</td><td>1,076</td></tr>
-                    </tbody></table>
-                    <p class="marketing-muted">출처: Instagram 인사이트 내보내기 (2026.08.01–09.21). 조회·도달은 내보내기 시점의 누적값입니다.</p>
-                </section>
-
-                <section class="marketing-block">
-                    <span class="marketing-eyebrow">05 / Key Finding</span>
-                    <h3>가장 높은 반응을 얻은 콘텐츠</h3>
-                    <p>13개 콘텐츠 중 질문형 Hook을 사용한 콘텐츠에서 상대적으로 높은 조회수가 관찰되었습니다.</p>
-                    <div class="outlier-compare">
-                        <div class="performance-item"><span>Most Posts</span><strong>≈ 100</strong><span>Views</span></div>
-                        <div class="performance-item">
-                            <div class="op-thumb"><img src="cases/marketing-lab/joseon-archive/post13-c2.jpg" alt="가장 높은 조회수를 기록한 게시물 — 도미노" loading="lazy" decoding="async"></div>
-                            <div><span>Highest-viewed Post</span><strong>1,426</strong><span>Views</span></div>
-                        </div>
-                    </div>
-                    <p class="marketing-muted">다만 아래 요인이 함께 작용했을 수 있어, 이 관찰을 성과의 직접적인 원인으로 단정하지 않습니다.</p>
-                    <ul>
-                        <li>게시 시점 차이</li>
-                        <li>소재 차이</li>
-                        <li>브랜드 친숙도 차이</li>
-                        <li>샘플 수 부족</li>
-                    </ul>
-                    <p class="marketing-muted">Correlation / Pattern Observation 수준의 관찰이며, 원인을 확정한 결과는 아닙니다.</p>
-                </section>
-
-                <section class="marketing-block">
-                    <span class="marketing-eyebrow">06 / Insight</span>
-                    <h3>Observation과 Hypothesis 구분</h3>
-                    <div class="role-grid">
-                        <div class="role-card">
-                            <span>Observation</span>
-                            <p>질문형 Hook 콘텐츠에서 상대적으로 높은 조회수가 나타남</p>
-                        </div>
-                        <div class="role-card">
-                            <span>Hypothesis</span>
-                            <p>제품 중심 노출보다 상황 또는 질문 중심 Hook이 초기 관심을 높였을 가능성</p>
-                        </div>
-                    </div>
-                    <p style="margin-top:18px;">현재 데이터만으로 확정적인 결론을 내릴 수는 없으며, 이는 향후 테스트가 필요한 가설입니다.</p>
-                </section>
-
-                <section class="marketing-block">
-                    <span class="marketing-eyebrow">07 / Next Test</span>
-                    <h3>다음 콘텐츠 테스트 설계</h3>
-                    <p>분석 결과를 바탕으로 다음 콘텐츠에서 검증할 테스트를 설계했습니다.</p>
-                    <div class="test-grid">
-                        <div class="test-card">
-                            <span>Hook A</span>
-                            <strong>"조선시대에 자판기가 있었다면?"</strong>
-                            <p>질문형 Hook — 상황을 먼저 제시하고 제품을 이후 공개</p>
-                        </div>
-                        <div class="test-card">
-                            <span>Hook B</span>
-                            <strong>제품·기계 직접 노출</strong>
-                            <p>제품 중심 노출 — 첫 화면부터 제품을 바로 노출</p>
-                        </div>
-                    </div>
-                    <div class="next-test">
-                        <div><strong>Control Variables</strong><span>유사한 업로드 시간, 동일하거나 유사한 영상 길이, 동일한 콘텐츠 소재, 유사한 Caption 구조</span></div>
-                        <div><strong>Metrics</strong><span>Views, Reach, Watch Time, Saves, Shares</span></div>
-                        <div><strong>Goal</strong><span>첫 1–2초의 Hook 방식이 콘텐츠 진입과 시청 지속에 영향을 주는지 확인</span></div>
-                    </div>
-                </section>
-
-                <div class="marketing-closing">
-                    <div class="marketing-flow marketing-flow--lg"><span>AI-assisted Analysis</span><i>→</i><span>Human Interpretation</span><i>→</i><span>Marketing Decision</span></div>
-                    <p>AI는 데이터를 정리하고 패턴을 탐색하는 도구로 활용했습니다. 인사이트 해석과 다음 콘텐츠 방향에 대한 결정은 사람이 직접 했습니다.</p>
                 </div>
             </div>
             <div class="contact-section">
