@@ -748,39 +748,15 @@
             align-items: center;
             padding-bottom: clamp(28px, 4vw, 48px);
         }
-        .home-eyebrow {
-            display: block;
-            font-size: 12px;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--faint);
-        }
-        .home-title {
-            margin: 14px 0 12px;
-            font-size: clamp(34px, 4.4vw, 58px);
-            font-weight: 600;
-            line-height: 1.03;
-            letter-spacing: -0.035em;
-        }
-        .home-keywords {
-            margin: 0 0 20px;
-            font-size: 13px;
-            letter-spacing: 0.04em;
-            color: var(--muted);
-        }
         .home-lead {
             margin: 0;
-            max-width: 460px;
-            font-size: var(--fs-body);
-            line-height: 1.75;
+            max-width: 480px;
+            font-size: clamp(21px, 1.7vw + 10px, 31px);
+            font-weight: 600;
+            line-height: 1.42;
+            letter-spacing: -0.02em;
             word-break: keep-all;
         }
-        .home-cta, .home-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .home-cta { margin-top: 24px; }
         .home-btn {
             display: inline-flex;
             align-items: center;
@@ -794,11 +770,6 @@
             transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
         }
         .home-btn:hover { border-color: var(--ink); }
-        .home-btn--primary {
-            color: var(--bg);
-            background: var(--ink);
-            border-color: var(--ink);
-        }
         .home-hero__visual {
             display: grid;
             grid-template-columns: 1.15fr 1fr;
@@ -1583,18 +1554,11 @@
                 <div class="home">
                     <section class="home-hero">
                         <div class="home-hero__text">
-                            <span class="home-eyebrow">LIM Seong Hyeon</span>
-                            <h1 class="home-title">CONTENT CREATOR</h1>
-                            <p class="home-keywords">Creative Planning · Visual Production · AI Creative</p>
-                            <p class="home-lead">
+                            <h1 class="home-lead">
                                 브랜드의 메시지를 콘텐츠로 기획하고,<br>
                                 2D·3D·모션과 생성형 AI를 활용해<br>
                                 아이디어를 실제 결과물까지 구현하는 Content Creator입니다.
-                            </p>
-                            <div class="home-cta">
-                                <a class="home-btn home-btn--primary" href="#/project-manager" onclick="showProjectManager(); return false;">BRAND PROJECTS →</a>
-                                <a class="home-btn" href="#/motion-graphic" onclick="showMotionGraphic(); return false;">MOTION &amp; 3D →</a>
-                            </div>
+                            </h1>
                         </div>
                         <div class="home-hero__visual">
                             <a class="hero-tile hero-tile--a" href="#/case/puricare" onclick="showCasePuricare(); return false;">
@@ -1707,14 +1671,6 @@
                             <p>기존 2D·3D·모션 제작에 생성형 AI를 더해 아이디어 탐색과 제작 범위를 넓히고 있습니다.</p>
                         </div>
                         <a class="home-btn" href="#/ai-creator" onclick="showAiCreator(); return false;">AI WORKS →</a>
-                    </section>
-
-                    <section class="home-block home-links">
-                        <a class="home-btn" href="#/project-manager" onclick="showProjectManager(); return false;">BRAND PROJECTS</a>
-                        <a class="home-btn" href="#/motion-graphic" onclick="showMotionGraphic(); return false;">MOTION &amp; 3D</a>
-                        <a class="home-btn" href="#/ai-creator" onclick="showAiCreator(); return false;">AI WORKS</a>
-                        <a class="home-btn" href="#/marketing-lab" onclick="showMarketingLab(); return false;">MARKETING LAB</a>
-                        <a class="home-btn" href="#/contact" onclick="showContact(); return false;">CONTACT</a>
                     </section>
                 </div>
             </div>
