@@ -143,9 +143,9 @@
 
         /* ---------- Sidebar (desktop: left column) ---------- */
         .sidebar {
-            flex: 0 0 clamp(160px, 15vw, 210px);
-            background: var(--bg);
-            padding: 4vh 8px 15px;
+            flex: 0 0 clamp(240px, 19vw, 280px);
+            background: transparent;
+            padding: 4vh 12px 15px 8px;
             display: flex;
             flex-direction: column;
             overflow-y: auto;
@@ -174,6 +174,7 @@
             opacity: 0.8;
             padding-left: 20px;
         }
+        .sidebar > p.sidebar-subtitle span { white-space: nowrap; }
         .theme-toggle {
             align-self: flex-start;
             display: inline-flex;
@@ -887,6 +888,10 @@
             }
         }
 
+        @media (max-width: 800px) {
+            .sidebar { flex-basis: 210px; }
+        }
+
         /* ---------- Mobile: sidebar becomes a top bar ---------- */
         @media (max-width: 640px) {
             .container {
@@ -1332,7 +1337,7 @@
         <aside class="sidebar">
             <h2>LIM Seong Hyeon</h2>
             <p>BRAND CONTENT CREATOR</p>
-            <p class="sidebar-subtitle">Creative Planning · Visual Production · Art Direction</p>
+            <p class="sidebar-subtitle"><span>Creative Planning</span> · <span>Visual Production</span> · <span>Art Direction</span></p>
             <button id="themeToggle" class="theme-toggle" type="button" aria-label="다크 모드 전환">
                 <span class="theme-toggle__dot"></span>
                 <span class="theme-toggle__label">DARK</span>
