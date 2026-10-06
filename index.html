@@ -834,48 +834,24 @@
         .exp-list strong { display: block; font-size: 14px; }
         .exp-list span { font-size: 12.5px; color: var(--muted); }
         .exp-list time { font-size: 12px; color: var(--faint); white-space: nowrap; }
-        .brand-names {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px clamp(16px, 2vw, 26px);
-            margin: 0 0 16px;
-            padding: 0;
-            list-style: none;
-        }
-        .brand-names li {
-            font-size: clamp(14px, 0.5vw + 10px, 16px);
-            font-weight: 500;
-            letter-spacing: -0.005em;
-            color: var(--ink);
-        }
-        .type-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 0 0 24px;
-            padding: 0;
-            list-style: none;
-        }
-        .type-chips li {
-            padding: 5px 12px;
-            font-size: 12px;
-            letter-spacing: 0.02em;
+        .brand-types {
+            margin: -4px 0 22px;
+            font-size: 13px;
+            letter-spacing: 0.01em;
             color: var(--muted);
-            border: 1px solid var(--line);
-            border-radius: 999px;
         }
         .thumb-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 10px;
-            margin-bottom: 24px;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 14px;
+            margin-bottom: 28px;
         }
         .thumb-tile {
             position: relative;
             display: block;
             aspect-ratio: 1 / 1;
             overflow: hidden;
-            border-radius: 10px;
+            border-radius: 12px;
             background: var(--card);
         }
         .thumb-tile img {
@@ -883,28 +859,50 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+            transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
         }
-        .thumb-tile:hover img { transform: scale(1.06); }
+        .thumb-tile::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.42), transparent 42%);
+            opacity: 0.85;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
         .thumb-tile span {
             position: absolute;
-            left: 6px;
-            bottom: 6px;
-            max-width: calc(100% - 12px);
-            padding: 2px 8px;
-            overflow: hidden;
-            font-size: 10.5px;
-            letter-spacing: 0.02em;
-            white-space: nowrap;
-            text-overflow: ellipsis;
+            left: 12px;
+            bottom: 11px;
+            z-index: 1;
+            font-size: 11.5px;
+            letter-spacing: 0.04em;
             color: #fff;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 999px;
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
         }
-        .home-btn--wide { padding: 10px 18px; }
-        .home-end { border-top: 0; padding-top: 0; }
+        .thumb-tile:hover img { transform: scale(1.05); }
+        .thumb-tile:hover::after { opacity: 1; }
+        .home-link {
+            display: inline-block;
+            padding-bottom: 3px;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            color: var(--ink);
+            text-decoration: none;
+            border-bottom: 1px solid var(--line);
+            transition: border-color 0.2s ease;
+        }
+        .home-link:hover { border-color: var(--ink); }
         @media (max-width: 1100px) {
             .skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (min-width: 641px) and (max-width: 999px) {
+            .thumb-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+            .thumb-tile:nth-child(n+9) { display: none; }
+        }
+        @media (max-width: 640px) {
+            .thumb-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+            .thumb-tile span { left: 10px; bottom: 9px; font-size: 11px; }
         }
         @media (max-width: 900px) {
             .home-hero { flex-direction: column; align-items: flex-start; }
@@ -1584,59 +1582,40 @@
 
                     <section class="home-block">
                         <h2 class="home-h">BRAND EXPERIENCE</h2>
-                        <ul class="brand-names" aria-label="Brands">
-                            <li>Netflix</li>
-                            <li>SK hynix</li>
-                            <li>Coca-Cola</li>
-                            <li>Powerade</li>
-                            <li>Sprite</li>
-                            <li>Minute Maid</li>
-                            <li>Georgia Coffee</li>
-                            <li>Ballantine's</li>
-                            <li>Coupang Play</li>
-                            <li>MapleStory</li>
-                            <li>Ambasa</li>
-                            <li>LG PuriCare</li>
-                            <li>QUEENLABEL</li>
-                            <li>TECHLOVE</li>
-                            <li>Dr. BARN</li>
-                            <li>Casa Caffe</li>
-                        </ul>
-                        <ul class="type-chips" aria-label="Content types">
-                            <li>OOH / DOOH</li>
-                            <li>Digital Campaign</li>
-                            <li>Social Content</li>
-                            <li>E-commerce</li>
-                            <li>2D / 3D / Motion</li>
-                            <li>AI Creative</li>
-                        </ul>
+                        <p class="brand-types">OOH / DOOH · Digital Campaign · Social · E-commerce · 2D / 3D / Motion</p>
                         <div class="thumb-grid">
                             <a class="thumb-tile" href="#/case/netflix-outdoor" onclick="showCaseNetflixOutdoor(); return false;">
-                                <img src="home/b-netflix.webp" alt="NETFLIX" width="360" height="360" loading="lazy" decoding="async"><span>NETFLIX</span>
+                                <img src="home/b-netflix.webp" alt="NETFLIX" width="480" height="480" loading="lazy" decoding="async"><span>NETFLIX</span>
                             </a>
                             <a class="thumb-tile" href="#/case/skhynix-social" onclick="showCaseSkhynixSocial(); return false;">
-                                <img src="home/b-skhynix.webp" alt="SK hynix" width="360" height="360" loading="lazy" decoding="async"><span>SK hynix</span>
+                                <img src="home/b-skhynix.webp" alt="SK hynix" width="480" height="480" loading="lazy" decoding="async"><span>SK hynix</span>
                             </a>
                             <a class="thumb-tile" href="#/case/minutemaid" onclick="showCaseMinutemaid(); return false;">
-                                <img src="home/b-cocacola.webp" alt="Coca-Cola Minute Maid" width="360" height="360" loading="lazy" decoding="async"><span>Coca-Cola</span>
+                                <img src="home/b-cocacola.webp" alt="Coca-Cola Minute Maid" width="480" height="480" loading="lazy" decoding="async"><span>Coca-Cola</span>
                             </a>
                             <a class="thumb-tile" href="#/case/ballantines" onclick="showCaseBallantines(); return false;">
-                                <img src="home/b-ballantines.webp" alt="Ballantine's" width="360" height="360" loading="lazy" decoding="async"><span>Ballantine's</span>
+                                <img src="home/b-ballantines.webp" alt="Ballantine's" width="480" height="480" loading="lazy" decoding="async"><span>Ballantine's</span>
                             </a>
                             <a class="thumb-tile" href="#/case/georgia-coffee" onclick="showCaseGeorgiaCoffee(); return false;">
-                                <img src="home/b-georgia.webp" alt="Georgia Coffee" width="360" height="360" loading="lazy" decoding="async"><span>Georgia Coffee</span>
+                                <img src="home/b-georgia.webp" alt="Georgia Coffee" width="480" height="480" loading="lazy" decoding="async"><span>Georgia Coffee</span>
                             </a>
                             <a class="thumb-tile" href="#/case/ambasa" onclick="showCaseAmbasa(); return false;">
-                                <img src="home/b-ambasa.webp" alt="Ambasa" width="360" height="360" loading="lazy" decoding="async"><span>Ambasa</span>
+                                <img src="home/b-ambasa.webp" alt="Ambasa" width="480" height="480" loading="lazy" decoding="async"><span>Ambasa</span>
                             </a>
                             <a class="thumb-tile" href="#/case/queenlabel" onclick="showCaseQueenlabel(); return false;">
-                                <img src="home/b-queenlabel.webp" alt="QUEENLABEL" width="360" height="360" loading="lazy" decoding="async"><span>QUEENLABEL</span>
+                                <img src="home/b-queenlabel.webp" alt="QUEENLABEL" width="480" height="480" loading="lazy" decoding="async"><span>QUEENLABEL</span>
                             </a>
                             <a class="thumb-tile" href="#/case/drbarn" onclick="showCaseDrbarn(); return false;">
-                                <img src="home/b-drbarn.webp" alt="Dr. BARN" width="360" height="360" loading="lazy" decoding="async"><span>Dr. BARN</span>
+                                <img src="home/b-drbarn.webp" alt="Dr. BARN" width="480" height="480" loading="lazy" decoding="async"><span>Dr. BARN</span>
+                            </a>
+                            <a class="thumb-tile" href="#/case/techlove" onclick="showCaseTechlove(); return false;">
+                                <img src="home/b-techlove.webp" alt="TECHLOVE" width="480" height="480" loading="lazy" decoding="async"><span>TECHLOVE</span>
+                            </a>
+                            <a class="thumb-tile" href="#/case/puricare" onclick="showCasePuricare(); return false;">
+                                <img src="home/b-puricare.webp" alt="LG PuriCare" width="480" height="480" loading="lazy" decoding="async"><span>LG PuriCare</span>
                             </a>
                         </div>
-                        <a class="home-btn home-btn--wide" href="#/project-manager" onclick="showProjectManager(); return false;">VIEW ALL BRAND PROJECTS →</a>
+                        <a class="home-link" href="#/project-manager" onclick="showProjectManager(); return false;">VIEW ALL BRAND PROJECTS →</a>
                     </section>
 
                     <section class="home-block">
@@ -1655,10 +1634,6 @@
                                 <time>2020.03 – 2021.04</time>
                             </li>
                         </ul>
-                    </section>
-
-                    <section class="home-block home-end">
-                        <a class="home-btn home-btn--wide" href="#/project-manager" onclick="showProjectManager(); return false;">VIEW ALL PROJECTS →</a>
                     </section>
                 </div>
             </div>
