@@ -846,54 +846,18 @@
         .exp-list strong { display: block; font-size: 14px; }
         .exp-list span { font-size: 12.5px; color: var(--muted); }
         .exp-list time { font-size: 12px; color: var(--faint); white-space: nowrap; }
-        .brand-types {
-            margin: -4px 0 22px;
-            font-size: 13px;
-            letter-spacing: 0.01em;
-            color: var(--muted);
-        }
-        .thumb-grid {
+        .home-routes {
             display: grid;
-            grid-template-columns: repeat(5, minmax(0, 1fr));
-            gap: 14px;
-            margin-bottom: 28px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: clamp(22px, 3.5vw, 48px);
         }
-        .thumb-tile {
-            position: relative;
-            display: block;
-            aspect-ratio: 1 / 1;
-            overflow: hidden;
-            border-radius: 12px;
-            background: var(--card);
+        .route-item p {
+            max-width: 340px;
+            margin: 0 0 20px;
+            font-size: var(--fs-body);
+            line-height: 1.75;
+            word-break: keep-all;
         }
-        .thumb-tile img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
-        }
-        .thumb-tile::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.42), transparent 42%);
-            opacity: 0.85;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-        }
-        .thumb-tile span {
-            position: absolute;
-            left: 12px;
-            bottom: 11px;
-            z-index: 1;
-            font-size: 11.5px;
-            letter-spacing: 0.04em;
-            color: #fff;
-            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
-        }
-        .thumb-tile:hover img { transform: scale(1.05); }
-        .thumb-tile:hover::after { opacity: 1; }
         .home-link {
             display: inline-block;
             padding-bottom: 3px;
@@ -905,34 +869,13 @@
             transition: border-color 0.2s ease;
         }
         .home-link:hover { border-color: var(--ink); }
-        .home-ai {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 18px;
-        }
-        .home-ai .home-h { margin-bottom: 10px; }
-        .home-ai p {
-            max-width: 520px;
-            margin: 0;
-            font-size: var(--fs-body);
-            line-height: 1.7;
-            word-break: keep-all;
-        }
         @media (max-width: 1100px) {
             .skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
-        @media (min-width: 641px) and (max-width: 999px) {
-            .thumb-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-            .thumb-tile:nth-child(n+9) { display: none; }
-        }
-        @media (max-width: 640px) {
-            .thumb-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-            .thumb-tile span { left: 10px; bottom: 9px; font-size: 11px; }
-        }
         @media (max-width: 900px) {
             .home-split { grid-template-columns: 1fr; }
+            .home-routes { grid-template-columns: 1fr; gap: 0; }
+            .route-item + .route-item { margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--line); }
             .home-hero { flex-direction: column; align-items: flex-start; }
         }
 
@@ -1631,50 +1574,22 @@
                         </div>
                     </section>
 
-                    <section class="home-block">
-                        <h2 class="home-h">BRAND EXPERIENCE</h2>
-                        <p class="brand-types">OOH / DOOH · Digital Campaign · Social · E-commerce · 2D / 3D / Motion</p>
-                        <div class="thumb-grid">
-                            <a class="thumb-tile" href="#/case/netflix-outdoor" onclick="showCaseNetflixOutdoor(); return false;">
-                                <img src="home/b-netflix.webp" alt="NETFLIX" width="480" height="480" loading="lazy" decoding="async"><span>NETFLIX</span>
-                            </a>
-                            <a class="thumb-tile" href="#/case/skhynix-social" onclick="showCaseSkhynixSocial(); return false;">
-                                <img src="home/b-skhynix.webp" alt="SK hynix" width="480" height="480" loading="lazy" decoding="async"><span>SK hynix</span>
-                            </a>
-                            <a class="thumb-tile" href="#/case/minutemaid" onclick="showCaseMinutemaid(); return false;">
-                                <img src="home/b-cocacola.webp" alt="Coca-Cola Minute Maid" width="480" height="480" loading="lazy" decoding="async"><span>Coca-Cola</span>
-                            </a>
-                            <a class="thumb-tile" href="#/case/ballantines" onclick="showCaseBallantines(); return false;">
-                                <img src="home/b-ballantines.webp" alt="Ballantine's" width="480" height="480" loading="lazy" decoding="async"><span>Ballantine's</span>
-                            </a>
-                            <a class="thumb-tile" href="#/case/georgia-coffee" onclick="showCaseGeorgiaCoffee(); return false;">
-                                <img src="home/b-georgia.webp" alt="Georgia Coffee" width="480" height="480" loading="lazy" decoding="async"><span>Georgia Coffee</span>
-                            </a>
-                            <a class="thumb-tile" href="#/case/ambasa" onclick="showCaseAmbasa(); return false;">
-                                <img src="home/b-ambasa.webp" alt="Ambasa" width="480" height="480" loading="lazy" decoding="async"><span>Ambasa</span>
-                            </a>
-                            <a class="thumb-tile" href="#/case/queenlabel" onclick="showCaseQueenlabel(); return false;">
-                                <img src="home/b-queenlabel.webp" alt="QUEENLABEL" width="480" height="480" loading="lazy" decoding="async"><span>QUEENLABEL</span>
-                            </a>
-                            <a class="thumb-tile" href="#/case/drbarn" onclick="showCaseDrbarn(); return false;">
-                                <img src="home/b-drbarn.webp" alt="Dr. BARN" width="480" height="480" loading="lazy" decoding="async"><span>Dr. BARN</span>
-                            </a>
-                            <a class="thumb-tile" href="#/case/techlove" onclick="showCaseTechlove(); return false;">
-                                <img src="home/b-techlove.webp" alt="TECHLOVE" width="480" height="480" loading="lazy" decoding="async"><span>TECHLOVE</span>
-                            </a>
-                            <a class="thumb-tile" href="#/case/puricare" onclick="showCasePuricare(); return false;">
-                                <img src="home/b-puricare.webp" alt="LG PuriCare" width="480" height="480" loading="lazy" decoding="async"><span>LG PuriCare</span>
-                            </a>
+                    <section class="home-block home-routes">
+                        <div class="route-item">
+                            <h2 class="home-h">BRAND EXPERIENCE</h2>
+                            <p>브랜드 광고·디지털 콘텐츠의 기획부터 제작 디렉팅까지 경험했습니다.</p>
+                            <a class="home-link" href="#/project-manager" onclick="showProjectManager(); return false;">VIEW ALL BRAND PROJECTS →</a>
                         </div>
-                        <a class="home-link" href="#/project-manager" onclick="showProjectManager(); return false;">VIEW ALL BRAND PROJECTS →</a>
-                    </section>
-
-                    <section class="home-block home-ai">
-                        <div>
+                        <div class="route-item">
+                            <h2 class="home-h">VISUAL PRODUCTION</h2>
+                            <p>2D·3D·모션을 활용해 아이디어를 실제 비주얼 콘텐츠로 구현합니다.</p>
+                            <a class="home-link" href="#/motion-graphic" onclick="showMotionGraphic(); return false;">VIEW ALL PRODUCTION PROJECTS →</a>
+                        </div>
+                        <div class="route-item">
                             <h2 class="home-h">GENERATIVE AI</h2>
-                            <p>기존 2D·3D·모션 제작에 생성형 AI를 더해 아이디어 탐색과 제작 범위를 넓히고 있습니다.</p>
+                            <p>생성형 AI를 활용해 이미지·영상 제작과 아이디어 탐색을 확장합니다.</p>
+                            <a class="home-link" href="#/ai-creator" onclick="showAiCreator(); return false;">VIEW ALL AI PROJECTS →</a>
                         </div>
-                        <a class="home-btn" href="#/ai-creator" onclick="showAiCreator(); return false;">AI WORKS →</a>
                     </section>
                 </div>
             </div>
