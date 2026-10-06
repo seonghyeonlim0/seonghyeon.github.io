@@ -39,6 +39,7 @@
         }
 
         :root {
+            --sb-x: 26px;
             --bg: #f4f4f4;
             --ink: #2b2b2b;
             --muted: #5a5a5a;
@@ -144,8 +145,12 @@
         /* ---------- Sidebar (desktop: left column) ---------- */
         .sidebar {
             flex: 0 0 clamp(240px, 19vw, 280px);
-            background: transparent;
-            padding: 4vh 12px 15px 8px;
+            margin: 3vh 0 3vh 18px;
+            background: color-mix(in srgb, var(--card) 55%, transparent);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            box-shadow: 0 24px 48px -34px rgba(0, 0, 0, 0.45);
+            padding: 30px 14px 20px 8px;
             display: flex;
             flex-direction: column;
             overflow-y: auto;
@@ -154,33 +159,33 @@
         .sidebar h2 {
             font-size: var(--fs-name);
             letter-spacing: -0.01em;
-            margin: 0 0 3px;
-            padding-left: 20px;
+            margin: 0 0 6px;
+            padding-left: var(--sb-x);
         }
         .sidebar > p {
             font-size: var(--fs-role);
             font-weight: bold;
             letter-spacing: 0.06em;
-            margin: 0 0 4px;
-            color: var(--faint);
-            padding-left: 20px;
+            margin: 0 0 10px;
+            color: var(--muted);
+            padding-left: var(--sb-x);
         }
         .sidebar > p.sidebar-subtitle {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 500;
+            line-height: 1.7;
             letter-spacing: 0.02em;
-            margin: 0 0 16px;
+            margin: 0 0 18px;
             color: var(--faint);
-            opacity: 0.8;
-            padding-left: 20px;
+            padding-left: var(--sb-x);
         }
-        .sidebar > p.sidebar-subtitle span { white-space: nowrap; }
+        .sidebar > p.sidebar-subtitle span { display: block; }
         .theme-toggle {
             align-self: flex-start;
             display: inline-flex;
             align-items: center;
             gap: 7px;
-            margin: 0 0 18px 20px;
+            margin: auto 0 0 var(--sb-x);
             padding: 5px 11px;
             font: inherit;
             font-size: var(--fs-role);
@@ -205,8 +210,8 @@
         }
         .sidebar hr {
             width: 100%;
-            margin: 12px 0 12px 20px;
-            max-width: calc(100% - 32px);
+            margin: 12px 0 12px var(--sb-x);
+            max-width: calc(100% - var(--sb-x) - 14px);
             border: 0;
             height: 1px;
             background: var(--line);
@@ -218,7 +223,7 @@
         }
         .sidebar nav ul li {
             margin: 12px 0;
-            padding-left: 25px;
+            padding-left: var(--sb-x);
         }
         .sidebar nav ul li a {
             position: relative;
@@ -248,6 +253,7 @@
         }
 
         .divider {
+            display: none;
             flex: 0 0 1px;
             background: var(--line);
             align-self: stretch;
@@ -903,6 +909,13 @@
             .sidebar {
                 flex: 0 0 auto;
                 width: 100%;
+                margin: 0;
+                align-self: auto;
+                max-height: none;
+                background: transparent;
+                border: 0;
+                border-radius: 0;
+                box-shadow: none;
                 padding: 14px 18px 10px;
                 border-bottom: 1px solid var(--line);
             }
@@ -917,9 +930,13 @@
                 padding-left: 0;
                 margin-bottom: 10px;
             }
+            .sidebar > p.sidebar-subtitle span { display: inline; }
+            .sidebar > p.sidebar-subtitle span + span::before { content: " · "; }
             .theme-toggle {
                 margin: 0 0 12px 0;
+                order: 1;
             }
+            .sidebar nav { order: 2; }
             .sidebar hr {
                 display: none;
             }
@@ -1337,11 +1354,7 @@
         <aside class="sidebar">
             <h2>LIM Seong Hyeon</h2>
             <p>BRAND CONTENT CREATOR</p>
-            <p class="sidebar-subtitle"><span>Creative Planning</span> · <span>Visual Production</span> · <span>Art Direction</span></p>
-            <button id="themeToggle" class="theme-toggle" type="button" aria-label="다크 모드 전환">
-                <span class="theme-toggle__dot"></span>
-                <span class="theme-toggle__label">DARK</span>
-            </button>
+            <p class="sidebar-subtitle"><span>Creative Planning</span><span>Visual Production</span><span>Art Direction</span></p>
             <hr>
             <nav>
                 <ul>
@@ -1354,6 +1367,10 @@
                     <li><a href="#/contact" onclick="showContact(); return false;">CONTACT</a></li>
                 </ul>
             </nav>
+            <button id="themeToggle" class="theme-toggle" type="button" aria-label="다크 모드 전환">
+                <span class="theme-toggle__dot"></span>
+                <span class="theme-toggle__label">DARK</span>
+            </button>
         </aside>
         <div class="divider"></div>
         <main class="content">
