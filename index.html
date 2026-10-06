@@ -742,21 +742,42 @@
         /* ---------- HOME ---------- */
         .intro-section { width: 100%; max-width: 1040px; }
         .home-hero {
-            display: grid;
-            grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-            gap: clamp(24px, 4vw, 56px);
+            --av: clamp(104px, 13vw, 172px);
+            display: flex;
             align-items: center;
-            padding-bottom: clamp(28px, 4vw, 48px);
+            gap: clamp(22px, 4vw, 48px);
+            margin-bottom: clamp(28px, 4vw, 44px);
+            padding: clamp(22px, 3vw, 34px) clamp(22px, 3.5vw, 40px);
+            background: var(--card);
+            border-radius: 24px;
+        }
+        .home-hero__avatars { display: flex; flex: 0 0 auto; }
+        .home-hero__avatars picture {
+            display: block;
+            width: var(--av);
+            height: var(--av);
+            overflow: hidden;
+            border: 4px solid var(--card);
+            border-radius: 50%;
+            background: var(--card);
+        }
+        .home-hero__avatars picture + picture { margin-left: calc(var(--av) * -0.16); }
+        .home-hero__avatars img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .home-lead {
             margin: 0;
-            max-width: 480px;
-            font-size: clamp(21px, 1.7vw + 10px, 31px);
+            max-width: 470px;
+            font-size: clamp(18px, 1.1vw + 12px, 24px);
             font-weight: 600;
-            line-height: 1.42;
-            letter-spacing: -0.02em;
+            line-height: 1.55;
+            letter-spacing: -0.015em;
             word-break: keep-all;
         }
+        .home-hero + .home-block { padding-top: 0; border-top: 0; }
         .home-btn {
             display: inline-flex;
             align-items: center;
@@ -770,40 +791,7 @@
             transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
         }
         .home-btn:hover { border-color: var(--ink); }
-        .home-hero__visual {
-            display: grid;
-            grid-template-columns: 1.15fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            gap: 10px;
-            aspect-ratio: 1.12 / 1;
-        }
-        .hero-tile {
-            position: relative;
-            display: block;
-            overflow: hidden;
-            border-radius: 14px;
-            background: var(--card);
-        }
-        .hero-tile--a { grid-row: 1 / span 2; }
-        .hero-tile img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
-        }
-        .hero-tile:hover img, .work-card:hover img { transform: scale(1.04); }
-        .hero-tile span {
-            position: absolute;
-            left: 10px;
-            bottom: 10px;
-            padding: 3px 9px;
-            font-size: 11px;
-            letter-spacing: 0.04em;
-            color: #fff;
-            background: rgba(0, 0, 0, 0.45);
-            border-radius: 999px;
-        }
+        .work-card:hover img { transform: scale(1.04); }
         .home-block {
             padding: clamp(28px, 3.5vw, 44px) 0;
             border-top: 1px solid var(--line);
@@ -915,8 +903,8 @@
             .work-grid, .skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
         @media (max-width: 900px) {
-            .home-hero, .home-split { grid-template-columns: 1fr; }
-            .home-hero__visual { aspect-ratio: 1.4 / 1; }
+            .home-split { grid-template-columns: 1fr; }
+            .home-hero { flex-direction: column; align-items: flex-start; }
         }
 
         /* ---------- MOTION GRAPHIC grids ---------- */
@@ -1553,27 +1541,22 @@
             <div class="intro-section">
                 <div class="home">
                     <section class="home-hero">
-                        <div class="home-hero__text">
-                            <h1 class="home-lead">
-                                브랜드의 메시지를 콘텐츠로 기획하고,<br>
-                                2D·3D·모션과 생성형 AI를 활용해<br>
-                                아이디어를 실제 결과물까지 구현하는 Content Creator입니다.
-                            </h1>
+                        <div class="home-hero__avatars">
+                            <picture>
+                                <source srcset="face-3d.webp" type="image/webp">
+                                <img src="face-3d.gif" alt="3D Face" width="172" height="172" decoding="async">
+                            </picture>
+                            <picture>
+                                <source srcset="wave-hand.webp" type="image/webp">
+                                <img src="wave-hand.gif" alt="Waving Hand" width="172" height="172" decoding="async">
+                            </picture>
                         </div>
-                        <div class="home-hero__visual">
-                            <a class="hero-tile hero-tile--a" href="#/case/puricare" onclick="showCasePuricare(); return false;">
-                                <img src="home/hero-a.webp" alt="LG PuriCare 3D 콘텐츠" width="720" height="720" decoding="async">
-                                <span>LG PuriCare · 3D</span>
-                            </a>
-                            <a class="hero-tile hero-tile--b" href="#/case/techlove" onclick="showCaseTechlove(); return false;">
-                                <img src="home/hero-b.webp" alt="TECHLOVE 3D 콘텐츠" width="480" height="480" decoding="async">
-                                <span>TECHLOVE · 3D</span>
-                            </a>
-                            <a class="hero-tile hero-tile--c" href="#/case/drbarn" onclick="showCaseDrbarn(); return false;">
-                                <img src="home/hero-c.webp" alt="Dr. BARN 모션 콘텐츠" width="480" height="480" decoding="async">
-                                <span>Dr. BARN · Motion</span>
-                            </a>
-                        </div>
+                        <h1 class="home-lead">
+                            브랜드의 메시지를 콘텐츠로 기획하고,<br>
+                            2D·3D·모션과 생성형 AI를 활용해<br>
+                            아이디어를 실제 결과물까지 구현하는<br>
+                            Content Creator입니다.
+                        </h1>
                     </section>
 
                     <section class="home-block">
