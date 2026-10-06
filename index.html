@@ -39,7 +39,7 @@
         }
 
         :root {
-            --sb-x: 26px;
+            --sb-x: 22px;
             --bg: #f4f4f4;
             --ink: #2b2b2b;
             --muted: #5a5a5a;
@@ -54,9 +54,9 @@
             --noise-opacity: 0.04;
 
             /* Fluid type scale */
-            --fs-name: clamp(18px, 1.4vw + 12px, 22px);
-            --fs-role: clamp(11px, 0.5vw + 9px, 14px);
-            --fs-nav: clamp(12px, 0.9vw + 9px, 15px);
+            --fs-name: clamp(18px, 1.2vw + 11px, 20px);
+            --fs-role: clamp(11px, 0.4vw + 8px, 12.5px);
+            --fs-nav: clamp(12px, 0.7vw + 8px, 13.5px);
             --fs-body: clamp(14px, 0.55vw + 11px, 16px);
             --fs-h2: clamp(17px, 0.9vw + 13px, 20px);
             --fs-sub: clamp(15px, 0.7vw + 12px, 18px);
@@ -144,7 +144,7 @@
 
         /* ---------- Sidebar (desktop: left column) ---------- */
         .sidebar {
-            flex: 0 0 clamp(240px, 19vw, 280px);
+            flex: 0 0 clamp(215px, 16.5vw, 248px);
             margin: 3vh 0 3vh 18px;
             background: color-mix(in srgb, var(--card) 55%, transparent);
             border: 1px solid var(--line);
@@ -171,7 +171,7 @@
             padding-left: var(--sb-x);
         }
         .sidebar > p.sidebar-subtitle {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 500;
             line-height: 1.7;
             letter-spacing: 0.02em;
@@ -895,7 +895,7 @@
         }
 
         @media (max-width: 800px) {
-            .sidebar { flex-basis: 210px; }
+            .sidebar { flex-basis: 214px; }
         }
 
         /* ---------- Mobile: sidebar becomes a top bar ---------- */
