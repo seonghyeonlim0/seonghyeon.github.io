@@ -37,7 +37,7 @@ window.AI_WORKS = {
             label: "WHAT IF ~",   /* copy shown above the video */
             title: "WHAT IF",
             tagline: "브랜드의 새로운 가능성",
-            desc: "만약 익숙한 브랜드가 전혀 다른 제품을 만든다면? 브랜드를 상징하는 색, 소재, 형태를 새로운 제품에 적용하고, 그럴듯하지만 존재하지 않는 제품의 모습을 AI 영상으로 구현한 콘셉트 시리즈입니다.",
+            desc: "만약 익숙한 브랜드가 전혀 다른 제품을 만든다면? 브랜드를 상징하는 색, 소재, 형태를 새로운 제품에 적용하고, 그럴듯하지만 존재하지 않는 제품의 모습을 AI 영상으로 구현한 컨셉 시리즈입니다.",
             projects: ["product-concept-featured", "product-concept-01", "material-motion", "new-scene", "product-concept-02"]
         },
         {
@@ -45,7 +45,7 @@ window.AI_WORKS = {
             label: "JOSEON ARCHIVE",
             title: "JOSEON ARCHIVE",
             tagline: "과거에 없던 조선",
-            desc: "오늘의 브랜드와 놀이 문화가 조선에 존재했다면? 전통적인 공간과 공예에 현대적인 상상을 더해, 익숙하면서도 낯선 조선의 풍경을 AI 영상으로 구현한 콘셉트 시리즈입니다.",
+            desc: "오늘의 브랜드와 놀이 문화가 조선에 존재했다면? 전통적인 공간과 공예에 현대적인 상상을 더해, 익숙하면서도 낯선 조선의 풍경을 AI 영상으로 구현한 컨셉 시리즈입니다.",
             series: "joseon"
         },
         {
@@ -67,7 +67,7 @@ window.AI_WORKS = {
     placeholders: {
         role:   "[본인 담당 범위 입력]",
         tools:  "[사용 도구 입력]",
-        kind:   "[개인 콘셉트 / 클라이언트 작업 입력]",
+        kind:   "[개인 컨셉 / 클라이언트 작업 입력]",
         intent: "[이 프로젝트에서 전달하려던 메시지와 연출 방향을 입력할 예정입니다.]",
         issue:  "[초기 결과의 문제, 수정한 방법, 최종 결과의 차이를 입력할 예정입니다.]"
     },
@@ -92,9 +92,9 @@ window.AI_WORKS = {
         /* ---- temporary featured work = first BRAND CONTENT video (videos/reels.mp4) ---- */
         "product-concept-featured": {
             title: "GUCCI X 마우스",
-            summary: "익숙한 제품을 새로운 소재와 공간으로 재해석한 콘셉트 영상입니다. 제품의 특징이 짧은 장면 안에서 드러나도록 구성했습니다.",
+            summary: "익숙한 제품을 새로운 소재와 공간으로 재해석한 컨셉 영상입니다. 제품의 특징이 짧은 장면 안에서 드러나도록 구성했습니다.",
             category: "WHAT IF",
-            kind: "[개인 콘셉트 / 클라이언트 작업 입력]",
+            kind: "[개인 컨셉 / 클라이언트 작업 입력]",
             role: "[본인 담당 범위 입력]",
             tools: "[사용 도구 입력]",
             videos: [
@@ -159,6 +159,6 @@ window.AI_WORKS = {
        Per project you may add: kind, role, tools, intent, process (array), issue, comparison. */
     detailDefaults: {
         /* process steps are rendered in order, joined with arrows */
-        process: ["콘셉트 설정", "기준 이미지 제작", "영상 생성", "편집 및 사운드"]
+        process: ["컨셉 설정", "기준 이미지 제작", "영상 생성", "편집 및 사운드"]
     }
 };
