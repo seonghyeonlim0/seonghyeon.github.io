@@ -284,7 +284,7 @@
         }
 
         .motion-graphic-section, .contact-section,
-        .project-manager-section, .ai-creator-section, .case-section {
+        .project-manager-section, .ai-creator-section, .ai-detail-section, .case-section {
             display: none;
         }
 
@@ -786,8 +786,7 @@
 
         /* ---------- MOTION GRAPHIC grids ---------- */
         .work-experience-subtitle,
-        .personal-projects-subtitle,
-        .ai-part-subtitle {
+        .personal-projects-subtitle {
             font-size: var(--fs-sub);
             color: var(--muted);
             font-weight: bold;
@@ -795,8 +794,7 @@
             text-transform: uppercase;
             margin: 0 0 4px;
         }
-        .personal-projects-subtitle,
-        .ai-part-subtitle.is-second {
+        .personal-projects-subtitle {
             margin-top: clamp(32px, 5vw, 56px);
         }
 
@@ -845,11 +843,312 @@
         }
 
         /* ---------- AI CREATOR videos ---------- */
-        .ai-creator-section {
+        .ai-creator-section,
+        .ai-detail-section {
             width: 100%;
+            max-width: 1100px;
         }
-        .ai-part-subtitle + .video-grid {
-            margin-top: 12px;
+        .ai-creator-text p {
+            margin: 0;
+        }
+        .ai-block {
+            margin-top: clamp(44px, 6vw, 72px);
+        }
+        .ai-block__label {
+            font-size: var(--fs-label);
+            font-weight: bold;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin: 0 0 18px;
+        }
+        .ai-placeholder {
+            color: var(--muted);
+        }
+
+        /* playable media: poster + restrained play mark, video is mounted on click */
+        .ai-media {
+            position: relative;
+            display: block;
+            width: 100%;
+            aspect-ratio: var(--ai-r, 9 / 16);
+            background: var(--card);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .ai-media img,
+        .ai-media video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            background: var(--card);
+        }
+        .ai-play {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+            font: inherit;
+        }
+        .ai-play::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 44px;
+            height: 44px;
+            margin: -22px 0 0 -22px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.42);
+        }
+        .ai-play::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -7px 0 0 -4px;
+            border-style: solid;
+            border-width: 7px 0 7px 12px;
+            border-color: transparent transparent transparent #fff;
+        }
+        .ai-play--sm::before { width: 32px; height: 32px; margin: -16px 0 0 -16px; }
+        .ai-play--sm::after { margin: -5px 0 0 -3px; border-width: 5px 0 5px 9px; }
+        .ai-media.is-playing .ai-play,
+        .ai-media.is-playing > img { display: none; }
+        .ai-play:focus-visible,
+        .ai-card:focus-visible,
+        .ai-btn:focus-visible {
+            outline: 2px solid var(--ink);
+            outline-offset: 3px;
+        }
+
+        .ai-meta {
+            margin: 0 0 28px;
+            display: grid;
+            grid-template-columns: max-content minmax(0, 1fr);
+            gap: 8px 20px;
+            font-size: var(--fs-label);
+            line-height: 1.6;
+        }
+        .ai-meta dt { color: var(--muted); }
+        .ai-meta dd { margin: 0; color: var(--ink); word-break: keep-all; }
+        .ai-more {
+            justify-self: start;
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            padding: 0;
+            font: inherit;
+            font-size: var(--fs-label);
+            letter-spacing: 0.04em;
+            color: var(--muted);
+            background: transparent;
+            border: 0;
+            border-bottom: 1px solid var(--line);
+            cursor: pointer;
+        }
+        .ai-more:hover { color: var(--ink); border-color: var(--ink); }
+        .ai-more:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+        /* groups sit side by side (one column each) */
+        .ai-groups {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            column-gap: clamp(20px, 3vw, 44px);
+            row-gap: 0;
+            align-items: start;
+            margin-top: clamp(44px, 6vw, 72px);
+        }
+        .ai-groups .ai-block {
+            margin-top: 0;
+            /* rows (label / work / text / link) line up across the three columns */
+            display: grid;
+            grid-row: span 4;
+            grid-template-rows: subgrid;
+            row-gap: 0;
+        }
+        .ai-groups .ai-cards { grid-template-columns: minmax(0, 1fr); }
+        .ai-group__head { margin-top: 16px; }
+        .ai-group__tag {
+            margin: 0 0 8px;
+            font-size: var(--fs-body);
+            font-weight: bold;
+            line-height: 1.45;
+            color: var(--ink);
+            word-break: keep-all;
+        }
+        .ai-group__desc {
+            margin: 0;
+            font-size: var(--fs-label);
+            line-height: 1.65;
+            color: var(--muted);
+            word-break: keep-all;
+        }
+        .ai-cards .ai-media { aspect-ratio: 4 / 5; }
+        .ai-cards .ai-media img { object-fit: cover; }
+        .ai-cards .ai-media.is-playing { aspect-ratio: var(--ai-r, 9 / 16); }
+        .ai-cards .ai-media + .ai-card__title { margin-top: 10px; }
+
+        /* project card grid */
+        .ai-cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: clamp(28px, 3.4vw, 44px) clamp(18px, 2.4vw, 32px);
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .ai-card {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+        }
+        .ai-card .ai-media {
+            aspect-ratio: 4 / 5;
+        }
+        .ai-card .ai-media img {
+            object-fit: cover;
+            transition: opacity 0.25s ease;
+        }
+        .ai-card:hover .ai-media img { opacity: 0.88; }
+        .ai-card__title {
+            display: block;
+            font-size: var(--fs-body);
+            font-weight: normal;
+            line-height: 1.45;
+            color: var(--ink);
+            word-break: keep-all;
+        }
+        .ai-card__desc {
+            display: block;
+            margin-top: 4px;
+            font-size: var(--fs-label);
+            line-height: 1.55;
+            color: var(--muted);
+            word-break: keep-all;
+        }
+        .ai-card__count {
+            display: block;
+            margin-top: 6px;
+            font-size: var(--fs-role);
+            color: var(--faint);
+        }
+
+        /* project detail */
+        .ai-detail__head { margin-bottom: clamp(24px, 4vw, 40px); }
+        .ai-detail__cat {
+            font-size: var(--fs-role);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin: 0 0 6px;
+        }
+        .ai-detail__title {
+            font-size: var(--fs-h2);
+            font-weight: bold;
+            line-height: 1.4;
+            margin: 0 0 8px;
+            color: var(--ink);
+            word-break: keep-all;
+        }
+        .ai-detail__lead {
+            font-size: var(--fs-body);
+            line-height: 1.7;
+            color: var(--muted);
+            margin: 0;
+            max-width: 56ch;
+            word-break: keep-all;
+        }
+        .ai-videos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 260px));
+            gap: clamp(24px, 3vw, 40px) clamp(18px, 2.4vw, 32px);
+            margin: 0 0 clamp(32px, 5vw, 56px);
+            padding: 0;
+            list-style: none;
+            align-items: start;
+        }
+        .ai-videos--single { display: block; }
+        .ai-videos--single .ai-media {
+            width: auto;
+            height: min(72vh, 640px);
+            max-width: 100%;
+        }
+        .ai-video-title {
+            display: block;
+            margin-top: 10px;
+            font-size: var(--fs-label);
+            color: var(--ink);
+            word-break: keep-all;
+        }
+        .ai-sec {
+            margin: 0 0 clamp(26px, 4vw, 40px);
+            max-width: 62ch;
+        }
+        .ai-sec h3 {
+            font-size: var(--fs-label);
+            font-weight: bold;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin: 0 0 10px;
+        }
+        .ai-sec p {
+            margin: 0;
+            font-size: var(--fs-body);
+            line-height: 1.75;
+            color: var(--ink);
+            word-break: keep-all;
+        }
+        .ai-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 10px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-size: var(--fs-body);
+            color: var(--ink);
+        }
+        .ai-steps li + li::before {
+            content: "→";
+            margin-right: 10px;
+            color: var(--faint);
+        }
+        .ai-compare {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 220px));
+            gap: 18px;
+            margin: 16px 0 0;
+            padding: 0;
+        }
+        .ai-compare figure { margin: 0; }
+        .ai-compare figcaption {
+            margin-top: 8px;
+            font-size: var(--fs-role);
+            color: var(--muted);
+        }
+
+        @media (max-width: 1180px) {
+            .ai-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 760px) {
+            .ai-videos--single .ai-media {
+                width: min(100%, 360px);
+                height: auto;
+            }
+            .ai-cards { grid-template-columns: minmax(0, 1fr); }
+            .ai-groups { grid-template-columns: minmax(0, 1fr); gap: 44px; }
+            .ai-groups .ai-block { display: block; grid-row: auto; }
+            .ai-videos { grid-template-columns: minmax(0, 1fr); }
+            .ai-videos .ai-media { max-width: 360px; }
         }
         .video-grid {
             display: grid;
@@ -883,7 +1182,7 @@
 
         footer {
             text-align: center;
-            padding: 8px 3px;
+            padding: 4px 3px;
             background: var(--footer-bg);
             color: var(--footer-ink);
             font-size: var(--fs-footer);
@@ -1022,12 +1321,14 @@
             }
         }
     </style>
+    <script src="ai-works-data.js" defer></script>
     <script>
         var SECTIONS = [
             "intro-section",
             "project-manager-section",
             "motion-graphic-section",
             "ai-creator-section",
+            "ai-detail-section",
             "contact-section",
             "case-techlove-section",
             "case-wristbrace-section",
@@ -1153,11 +1454,13 @@
             "case-gukgabohun-section": 2,
             "case-plantlance-section": 2,
             "ai-creator-section": 3,
+            "ai-detail-section": 3,
             "contact-section": 4
         };
 
         function sectionFromHash() {
             var slug = location.hash.replace(/^#\/?/, "");
+            if (aiIdFromHash() || aiMoreFromHash()) return "ai-detail-section"; /* #/ai-creator/<project id> */
             return SLUG_TO_SECTION.hasOwnProperty(slug) ? SLUG_TO_SECTION[slug] : "intro-section";
         }
 
@@ -1177,7 +1480,20 @@
             });
         }
 
+        /* URL hash for a section (the AI project detail carries its id) */
+        function hashFor(name) {
+            if (name === "ai-detail-section") {
+                var mk = aiMoreFromHash();
+                return mk ? "#/ai-creator/more/" + mk : "#/ai-creator/" + (aiIdFromHash() || "");
+            }
+            return "#/" + (SECTION_SLUGS[name] || "");
+        }
+
         function showSection(name) {
+            if (name === "ai-detail-section") {
+                var mk = aiMoreFromHash();
+                if (mk) renderAiMore(mk); else renderAiDetail(aiIdFromHash());
+            }
             SECTIONS.forEach(function (cls) {
                 var el = document.querySelector("." + cls);
                 if (!el) return;
@@ -1194,18 +1510,22 @@
                     el.querySelectorAll("video").forEach(function (v) {
                         if (!v.paused) v.pause();
                     });
+                    /* the AI detail page is rebuilt on every visit; dropping it frees its video */
+                    if (cls === "ai-detail-section" && el.firstChild) el.innerHTML = "";
                 }
             });
             var content = document.querySelector(".content");
             if (content) content.scrollTop = 0;
             syncActiveNav(name);
-            document.title = SECTION_TITLES[name] || SECTION_TITLES["intro-section"];
+            if (name !== "ai-detail-section") {
+                document.title = SECTION_TITLES[name] || SECTION_TITLES["intro-section"];
+            }
         }
 
         /* Navigate + record a browser-history entry so Back/Forward work. */
         function navigate(name) {
             showSection(name);
-            var hash = "#/" + (SECTION_SLUGS[name] || "");
+            var hash = hashFor(name);
             if (location.hash !== hash) {
                 history.pushState({ section: name }, "", hash);
             }
@@ -1244,6 +1564,212 @@
         function showCaseAmbasa() { navigate("case-ambasa-section"); }
         function showCasePoweradeBaseball() { navigate("case-powerade-baseball-section"); }
         function showCaseGeorgiaCoffee() { navigate("case-georgia-coffee-section"); }
+
+        /* ---------- AI WORKS: rendered from ai-works-data.js (window.AI_WORKS) ---------- */
+        function aiEsc(t) {
+            return String(t).replace(/[&<>"]/g, function (c) {
+                return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+            });
+        }
+        /* text in [brackets] is an unfilled placeholder: shown muted */
+        function aiText(t) {
+            t = String(t);
+            return /^\[.*\]$/.test(t) ? '<span class="ai-placeholder">' + aiEsc(t) + "</span>" : aiEsc(t);
+        }
+        function aiField(p, key) {
+            return p[key] != null ? p[key] : (window.AI_WORKS.placeholders[key] || "");
+        }
+        /* click-to-play box: only the poster is loaded until the viewer presses play */
+        function aiMedia(v, small) {
+            return '<div class="ai-media" style="--ai-r:' + v.w + " / " + v.h + '" data-src="' + aiEsc(v.src) +
+                '" data-poster="' + aiEsc(v.poster) + '" data-title="' + aiEsc(v.title) + '">' +
+                '<img src="' + aiEsc(v.poster) + '" alt="" width="' + v.w + '" height="' + v.h + '" loading="lazy" decoding="async">' +
+                '<button class="ai-play' + (small ? " ai-play--sm" : "") + '" type="button" aria-label="영상 재생: ' + aiEsc(v.title) + '"></button>' +
+                "</div>";
+        }
+        function aiMeta(p) {
+            var L = window.AI_WORKS.labels;
+            return '<dl class="ai-meta">' +
+                "<dt>" + L.kind + "</dt><dd>" + aiText(aiField(p, "kind")) + "</dd>" +
+                "<dt>" + L.role + "</dt><dd>" + aiText(aiField(p, "role")) + "</dd>" +
+                "<dt>" + L.tools + "</dt><dd>" + aiText(aiField(p, "tools")) + "</dd>" +
+                "</dl>";
+        }
+
+        /* all items of a group, as HTML strings (first = representative work) */
+        function aiGroupItems(g, bare) {
+            var D = window.AI_WORKS, items = [];
+            if (g.projects) {
+                g.projects.forEach(function (id) {
+                    var p = D.projects[id];
+                    if (!p) return;
+                    var v = p.videos[0];
+                    /* plays in place (no detail page) */
+                    items.push(aiMedia(v, true) + (bare ? "" :
+                        '<span class="ai-card__title">' + aiEsc(p.title) + "</span>"));
+                });
+            } else {
+                var vids = g.videos || D.projects[g.series].videos;
+                vids.forEach(function (v) {
+                    items.push(aiMedia(v, true) + (bare ? "" : '<span class="ai-card__title">' + aiEsc(v.title) + "</span>"));
+                });
+            }
+            return items;
+        }
+        function aiList(items) {
+            return '<ul class="ai-cards">' + items.map(function (it) { return "<li>" + it + "</li>"; }).join("") + "</ul>";
+        }
+
+        /* text under the representative video: subtitle (bold) + paragraph */
+        function aiGroupHead(g) {
+            return '<div class="ai-group__head">' +
+                (g.tagline ? '<p class="ai-group__tag">' + aiEsc(g.tagline) + "</p>" : "") +
+                (g.desc ? '<p class="ai-group__desc">' + aiEsc(g.desc) + "</p>" : "") + "</div>";
+        }
+
+        /* main page: ONE representative work per group + a "Read More" link to the full list */
+        function renderAiWorks() {
+            var D = window.AI_WORKS, root = document.getElementById("aiWorks");
+            if (!D || !root) return;
+            var html = '<div class="ai-creator-text"><h2>' + aiEsc(D.title) + "</h2><p>" + aiEsc(D.intro) + "</p></div>";
+            html += '<div class="ai-groups">';
+            D.groups.forEach(function (g) {
+                var items = aiGroupItems(g, true);
+                html += '<section class="ai-block ai-group" aria-label="' + aiEsc(g.title) + '">' +
+                    '<h3 class="ai-block__label">' + aiEsc(g.label || g.title) + "</h3>" +
+                    aiList(items.slice(0, 1)) +
+                    aiGroupHead(g) +
+                    (items.length > 1
+                        ? '<a class="ai-more" href="#/ai-creator/more/' + aiEsc(g.key) + '" data-ai-more="' + aiEsc(g.key) + '">Read More</a>'
+                        : "") +
+                    "</section>";
+            });
+            html += "</div>";
+            root.innerHTML = html;
+        }
+
+        /* "Read More" page: every work of one group (#/ai-creator/more/<key>) */
+        function aiGroupByKey(key) {
+            var gs = (window.AI_WORKS && window.AI_WORKS.groups) || [];
+            for (var i = 0; i < gs.length; i++) if (gs[i].key === key) return gs[i];
+            return null;
+        }
+        function aiMoreFromHash() {
+            var m = location.hash.replace(/^#\/?/, "").match(/^ai-creator\/more\/([^\/?#]+)$/);
+            return m && aiGroupByKey(decodeURIComponent(m[1])) ? decodeURIComponent(m[1]) : null;
+        }
+        function renderAiMore(key) {
+            var el = document.getElementById("aiDetail"), g = aiGroupByKey(key);
+            if (!el || !g) return;
+            el.innerHTML = '<button class="case-back" type="button" data-ai-open="">' + window.AI_WORKS.labels.back + "</button>" +
+                '<header class="ai-detail__head"><h2 class="ai-detail__title">' + aiEsc(g.title) +
+                (g.tagline ? " — " + aiEsc(g.tagline) : "") + "</h2>" +
+                (g.desc ? '<p class="ai-detail__lead">' + aiEsc(g.desc) + "</p>" : "") + "</header>" +
+                aiList(aiGroupItems(g));
+            document.title = g.title + " — AI Works — LIM";
+        }
+
+        function renderAiDetail(id) {
+            var D = window.AI_WORKS, el = document.getElementById("aiDetail");
+            if (!D || !el || !id) return;
+            var L = D.labels, p = D.projects[id], single = p.videos.length === 1, html = "";
+            var process = p.process || D.detailDefaults.process;
+
+            html += '<button class="case-back" type="button" data-ai-open="">' + L.back + "</button>";
+            html += '<header class="ai-detail__head"><p class="ai-detail__cat">' + aiEsc(p.category) + "</p>" +
+                '<h2 class="ai-detail__title">' + aiEsc(p.title) + "</h2>" +
+                '<p class="ai-detail__lead">' + aiEsc(p.summary) + "</p></header>";
+
+            html += '<ul class="ai-videos' + (single ? " ai-videos--single" : "") + '">';
+            p.videos.forEach(function (v) {
+                html += "<li>" + aiMedia(v) + (single ? "" : '<span class="ai-video-title">' + aiEsc(v.title) + "</span>") + "</li>";
+            });
+            html += "</ul>";
+
+            html += aiMeta(p);
+            html += '<section class="ai-sec"><h3>' + L.intent + "</h3><p>" + aiText(aiField(p, "intent")) + "</p></section>";
+            html += '<section class="ai-sec" id="aiProcess"><h3>' + L.process + '</h3><ol class="ai-steps">' +
+                process.map(function (s) { return "<li>" + aiEsc(s) + "</li>"; }).join("") + "</ol></section>";
+            html += '<section class="ai-sec"><h3>' + L.issue + "</h3><p>" + aiText(aiField(p, "issue")) + "</p>";
+            if (p.comparison && p.comparison.before && p.comparison.after) {
+                html += '<div class="ai-compare"><figure>' + aiMedia(p.comparison.before, true) + "<figcaption>초기 결과</figcaption></figure>" +
+                    "<figure>" + aiMedia(p.comparison.after, true) + "<figcaption>개선 결과</figcaption></figure></div>";
+            }
+            html += "</section>";
+
+            html += '<button class="case-back" type="button" data-ai-open="">' + L.back + "</button>";
+                        el.innerHTML = html;
+            document.title = p.title + " — AI Works — LIM";
+        }
+
+        function aiIdFromHash() {
+            var m = location.hash.replace(/^#\/?/, "").match(/^ai-creator\/([^\/?#]+)$/);
+            if (!m || !window.AI_WORKS) return null;
+            var id = decodeURIComponent(m[1]);
+            return window.AI_WORKS.projects.hasOwnProperty(id) ? id : null;
+        }
+
+        /* open a project detail page (hash route #/ai-creator/<id>) */
+        function openAiProject(id) {
+            history.pushState({ section: "ai-detail-section" }, "", "#/ai-creator/" + id);
+            showSection("ai-detail-section");
+        }
+
+        function aiMountVideo(box) {
+            if (box.classList.contains("is-playing")) return;
+            var v = document.createElement("video");
+            v.src = box.dataset.src;
+            v.poster = box.dataset.poster;
+            v.controls = true;
+            v.loop = true;
+            v.muted = true;
+            v.setAttribute("playsinline", "");
+            v.preload = "auto";
+            v.setAttribute("aria-label", box.dataset.title || "");
+            box.appendChild(v);
+            box.classList.add("is-playing");
+            var pr = v.play();
+            if (pr && pr.catch) pr.catch(function () {});
+        }
+
+        function initAiWorks() {
+            renderAiWorks();
+            ["aiWorks", "aiDetail"].forEach(function (rid) {
+                var root = document.getElementById(rid);
+                if (!root) return;
+                root.addEventListener("click", function (e) {
+                    var play = e.target.closest(".ai-play");
+                    if (play && play.tagName === "BUTTON") {
+                        aiMountVideo(play.closest(".ai-media"));
+                        return;
+                    }
+                    var more = e.target.closest("[data-ai-more]");
+                    if (more) {
+                        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+                        e.preventDefault();
+                        history.pushState({ section: "ai-detail-section" }, "", "#/ai-creator/more/" + more.getAttribute("data-ai-more"));
+                        showSection("ai-detail-section");
+                        return;
+                    }
+                    var open = e.target.closest("[data-ai-open]");
+                    if (open) {
+                        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+                        e.preventDefault();
+                        var id = open.getAttribute("data-ai-open");
+                        if (id) openAiProject(id);
+                        else navigate("ai-creator-section");
+                    }
+                });
+            });
+            /* only one video plays at a time */
+            document.addEventListener("play", function (e) {
+                var t = e.target;
+                if (!t || t.tagName !== "VIDEO") return;
+                document.querySelectorAll("video").forEach(function (v) {
+                    if (v !== t && !v.paused) v.pause();
+                });
+            }, true);
+        }
 
         /* ---------- Theme toggle ---------- */
         function currentTheme() {
@@ -1332,9 +1858,10 @@
         document.addEventListener("DOMContentLoaded", function () {
             /* restore whichever section the URL points at (deep link / reload),
                and normalize the URL so Back/Forward has a starting point. */
+            initAiWorks();
             var initial = sectionFromHash();
             showSection(initial);
-            history.replaceState({ section: initial }, "", "#/" + (SECTION_SLUGS[initial] || ""));
+            history.replaceState({ section: initial }, "", hashFor(initial));
 
             initLightbox();
             initBackToTop();
@@ -2318,62 +2845,9 @@
                     </figure>
                 </div>
             </div>
-            <div class="ai-creator-section">
-                <div class="ai-creator-text">
-                    <h2>PERSONAL AI WORKS</h2>
-                </div>
-                <h3 class="ai-part-subtitle">BRAND CONTENT</h3>
-                <div class="video-grid">
-                    <figure>
-                        <video src="videos/reels.mp4" controls muted loop playsinline preload="metadata"></video>
-                    </figure>
-                    <figure>
-                        <video src="videos/Reels2.mp4" controls muted loop playsinline preload="metadata"></video>
-                    </figure>
-                    <figure>
-                        <video src="videos/Stand.mp4" controls muted loop playsinline preload="metadata"></video>
-                    </figure>
-                    <figure>
-                        <video src="videos/TABASCO.mp4" controls muted loop playsinline preload="metadata"></video>
-                    </figure>
-                    <figure>
-                        <video src="videos/PORSHE.mp4" controls muted loop playsinline preload="metadata"></video>
-                    </figure>
-                </div>
-                <h3 class="ai-part-subtitle is-second">STOCK CONTENT</h3>
-                <div class="video-grid">
-                    <figure>
-                        <video src="videos/Final.mp4" controls muted loop playsinline preload="metadata"></video>
-                    </figure>
-                    <figure>
-                        <video src="videos/Final_2.mp4" controls muted loop playsinline preload="metadata"></video>
-                    </figure>
-                    <figure>
-                        <video src="videos/finance-gold-coin.mp4" controls muted loop playsinline preload="metadata"></video>
-                    </figure>
-                    <figure>
-                        <video src="videos/finance-premium.mp4" controls muted loop playsinline preload="metadata"></video>
-                    </figure>
-                </div>
-                <h3 class="ai-part-subtitle is-second">JOSEON CONTENT</h3>
-                <div class="video-grid">
-                    <figure>
-                        <video src="videos/bulgari.mp4" controls muted loop playsinline preload="metadata"></video>
-                    </figure>
-                    <figure>
-                        <video src="videos/miumiu-kkotsin.mp4" controls muted loop playsinline preload="metadata"></video>
-                    </figure>
-                    <figure>
-                        <video src="videos/zippo-hwarotae.mp4" controls muted loop playsinline preload="metadata"></video>
-                    </figure>
-                    <figure>
-                        <video src="videos/injeong-ppopgi.mp4" controls muted loop playsinline preload="metadata"></video>
-                    </figure>
-                    <figure>
-                        <video src="videos/gimyo-festival.mp4" controls muted loop playsinline preload="metadata"></video>
-                    </figure>
-                </div>
-            </div>
+            <!-- AI WORKS: rendered from ai-works-data.js (window.AI_WORKS) -->
+            <div class="ai-creator-section" id="aiWorks"></div>
+            <div class="ai-detail-section" id="aiDetail"></div>
             <div class="contact-section">
                 <div class="contact-text">
                     <h2>Contact</h2>
