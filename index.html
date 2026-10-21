@@ -957,44 +957,37 @@
         }
         .ai-more:hover { color: var(--ink); border-color: var(--ink); }
         .ai-more:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
-        /* groups sit side by side (one column each) */
+        /* groups sit side by side, sized so the whole page fits on one screen */
         .ai-groups {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            column-gap: clamp(20px, 3vw, 44px);
-            row-gap: 0;
+            grid-template-columns: repeat(var(--ai-cols, 5), minmax(0, 1fr));
+            column-gap: clamp(12px, 1.6vw, 22px);
+            row-gap: 28px;
             align-items: start;
-            margin-top: clamp(44px, 6vw, 72px);
+            margin-top: clamp(28px, 4vw, 44px);
         }
         .ai-groups .ai-block {
             margin-top: 0;
-            /* rows (label / work / text / link) line up across the three columns */
+            /* rows (label / work / link) line up across the columns */
             display: grid;
-            grid-row: span 4;
+            grid-row: span 3;
             grid-template-rows: subgrid;
             row-gap: 0;
         }
+        .ai-groups .ai-block__label { margin-bottom: 12px; line-height: 1.3; }
         .ai-groups .ai-cards { grid-template-columns: minmax(0, 1fr); }
-        .ai-group__head { margin-top: 16px; }
-        .ai-group__tag {
-            margin: 0 0 8px;
-            font-size: var(--fs-body);
-            font-weight: bold;
-            line-height: 1.45;
-            color: var(--ink);
-            word-break: keep-all;
-        }
-        .ai-group__desc {
-            margin: 0;
-            font-size: var(--fs-label);
-            line-height: 1.65;
-            color: var(--muted);
-            word-break: keep-all;
-        }
-        .ai-cards .ai-media { aspect-ratio: 4 / 5; }
+        .ai-groups .ai-more { margin-top: 12px; }
+        /* shrink the thumbnails on short screens so nothing needs scrolling */
+        .ai-groups .ai-media { width: min(100%, max(96px, calc((100vh - 400px) * 9 / 16))); }
+        .ai-cards .ai-media { aspect-ratio: 9 / 16; }
         .ai-cards .ai-media img { object-fit: cover; }
         .ai-cards .ai-media.is-playing { aspect-ratio: var(--ai-r, 9 / 16); }
-        .ai-cards .ai-media + .ai-card__title { margin-top: 10px; }
+        .ai-cards .ai-card__title + .ai-media { margin-top: 8px; }
+        /* "Read More" page: every work of a group on one row */
+        .ai-detail-section .ai-cards { grid-template-columns: repeat(var(--ai-cols, 3), minmax(0, 1fr)); gap: 12px clamp(12px, 1.6vw, 22px); }
+        .ai-detail-section .ai-detail__head { margin-bottom: 16px; }
+        .ai-detail-section .ai-cards .ai-media { width: min(100%, max(96px, calc((100vh - 270px) * 9 / 16))); }
+        .ai-detail-section .case-back { margin-bottom: 14px; }
 
         /* project card grid */
         .ai-cards {
@@ -1137,16 +1130,17 @@
         }
 
         @media (max-width: 1180px) {
-            .ai-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .ai-groups { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .ai-detail-section .ai-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         }
         @media (max-width: 760px) {
             .ai-videos--single .ai-media {
                 width: min(100%, 360px);
                 height: auto;
             }
-            .ai-cards { grid-template-columns: minmax(0, 1fr); }
-            .ai-groups { grid-template-columns: minmax(0, 1fr); gap: 44px; }
-            .ai-groups .ai-block { display: block; grid-row: auto; }
+            .ai-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .ai-groups .ai-media, .ai-detail-section .ai-cards .ai-media { width: 100%; }
+            .ai-detail-section .ai-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .ai-videos { grid-template-columns: minmax(0, 1fr); }
             .ai-videos .ai-media { max-width: 360px; }
         }
@@ -1605,26 +1599,19 @@
                     if (!p) return;
                     var v = p.videos[0];
                     /* plays in place (no detail page) */
-                    items.push(aiMedia(v, true) + (bare ? "" :
-                        '<span class="ai-card__title">' + aiEsc(p.title) + "</span>"));
+                    items.push((bare ? "" : '<span class="ai-card__title">' + aiEsc(p.title) + "</span>") + aiMedia(v, true));
                 });
             } else {
                 var vids = g.videos || D.projects[g.series].videos;
                 vids.forEach(function (v) {
-                    items.push(aiMedia(v, true) + (bare ? "" : '<span class="ai-card__title">' + aiEsc(v.title) + "</span>"));
+                    items.push((bare ? "" : '<span class="ai-card__title">' + aiEsc(v.title) + "</span>") + aiMedia(v, true));
                 });
             }
             return items;
         }
-        function aiList(items) {
-            return '<ul class="ai-cards">' + items.map(function (it) { return "<li>" + it + "</li>"; }).join("") + "</ul>";
-        }
-
-        /* text under the representative video: subtitle (bold) + paragraph */
-        function aiGroupHead(g) {
-            return '<div class="ai-group__head">' +
-                (g.tagline ? '<p class="ai-group__tag">' + aiEsc(g.tagline) + "</p>" : "") +
-                (g.desc ? '<p class="ai-group__desc">' + aiEsc(g.desc) + "</p>" : "") + "</div>";
+        function aiList(items, cols) {
+            return '<ul class="ai-cards"' + (cols ? ' style="--ai-cols:' + cols + '"' : "") + ">" +
+                items.map(function (it) { return "<li>" + it + "</li>"; }).join("") + "</ul>";
         }
 
         /* main page: ONE representative work per group + a "Read More" link to the full list */
@@ -1632,13 +1619,12 @@
             var D = window.AI_WORKS, root = document.getElementById("aiWorks");
             if (!D || !root) return;
             var html = '<div class="ai-creator-text"><h2>' + aiEsc(D.title) + "</h2><p>" + aiEsc(D.intro) + "</p></div>";
-            html += '<div class="ai-groups">';
+            html += '<div class="ai-groups" style="--ai-cols:' + Math.min(D.groups.length, 5) + '">';
             D.groups.forEach(function (g) {
                 var items = aiGroupItems(g, true);
                 html += '<section class="ai-block ai-group" aria-label="' + aiEsc(g.title) + '">' +
                     '<h3 class="ai-block__label">' + aiEsc(g.label || g.title) + "</h3>" +
                     aiList(items.slice(0, 1)) +
-                    aiGroupHead(g) +
                     (items.length > 1
                         ? '<a class="ai-more" href="#/ai-creator/more/' + aiEsc(g.key) + '" data-ai-more="' + aiEsc(g.key) + '">Read More</a>'
                         : "") +
@@ -1659,13 +1645,11 @@
             return m && aiGroupByKey(decodeURIComponent(m[1])) ? decodeURIComponent(m[1]) : null;
         }
         function renderAiMore(key) {
-            var el = document.getElementById("aiDetail"), g = aiGroupByKey(key);
+            var D2 = window.AI_WORKS, el = document.getElementById("aiDetail"), g = aiGroupByKey(key);
             if (!el || !g) return;
             el.innerHTML = '<button class="case-back" type="button" data-ai-open="">' + window.AI_WORKS.labels.back + "</button>" +
-                '<header class="ai-detail__head"><h2 class="ai-detail__title">' + aiEsc(g.title) +
-                (g.tagline ? " — " + aiEsc(g.tagline) : "") + "</h2>" +
-                (g.desc ? '<p class="ai-detail__lead">' + aiEsc(g.desc) + "</p>" : "") + "</header>" +
-                aiList(aiGroupItems(g));
+                '<header class="ai-detail__head"><h2 class="ai-detail__title">' + aiEsc(g.label || g.title) + "</h2></header>" +
+                aiList(aiGroupItems(g), Math.min(g.projects ? g.projects.length : (g.videos || D2.projects[g.series].videos).length, 6));
             document.title = g.title + " — AI Works — LIM";
         }
 
