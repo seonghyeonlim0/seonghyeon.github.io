@@ -24,7 +24,7 @@ window.AI_WORKS = {
     title: "AI WORKS",
     intro: "생성형 AI를 활용해 제품의 인상과 이야기를 이미지와 영상으로 확장합니다. 기획부터 비주얼 제작, 편집까지의 작업을 담았습니다.",
 
-    /* [2][3][4] page groups, shown top to bottom.
+    /* [2][3][4] page groups, shown left to right (order = display order).
        Each group shows ONE representative work; "Read More" opens a page with all of them
        (#/ai-creator/more/<key>).
        - `title` / `tagline` / `desc`: group heading, one-line subtitle, paragraph
@@ -32,35 +32,6 @@ window.AI_WORKS = {
          (first = representative)
        To change the representative work, move its id/video to the front. */
     groups: [
-        {
-            key: "what-if",
-            label: "WHAT IF ~",   /* copy shown above the video */
-            title: "WHAT IF",
-            tagline: "브랜드의 새로운 가능성",
-            desc: "만약 익숙한 브랜드가 전혀 다른 제품을 만든다면? 브랜드를 상징하는 색, 소재, 형태를 새로운 제품에 적용하고, 그럴듯하지만 존재하지 않는 제품의 모습을 AI 영상으로 구현한 컨셉 시리즈입니다.",
-            projects: ["product-concept-featured", "product-concept-01", "material-motion", "new-scene", "product-concept-02"]
-        },
-        {
-            key: "joseon-archive",
-            label: "JOSEON ARCHIVE",
-            title: "JOSEON ARCHIVE",
-            tagline: "과거에 없던 조선",
-            desc: "오늘의 브랜드와 놀이 문화가 조선에 존재했다면? 전통적인 공간과 공예에 현대적인 상상을 더해, 익숙하면서도 낯선 조선의 풍경을 AI 영상으로 구현한 컨셉 시리즈입니다.",
-            series: "joseon"
-        },
-        {
-            key: "stock",
-            label: "STOCK",
-            title: "STOCK",
-            tagline: "개념을 장면으로",
-            desc: "금융과 기술, 도시의 일상처럼 다양한 콘텐츠에 활용할 수 있는 주제를 시각화했습니다. 추상적인 개념을 직관적인 이미지와 움직임으로 풀어낸 AI 스톡 영상 시리즈입니다.",
-            videos: [
-                { title: "쏟아지는 금화", src: "videos/Final.mp4",             poster: "videos/posters/Final.jpg",             w: 720,  h: 1280 },
-                { title: "상승하는 코인", src: "videos/Final_2.mp4",           poster: "videos/posters/Final_2.jpg",           w: 720,  h: 1280 },
-                { title: "동전으로 쌓은 도시", src: "videos/finance-gold-coin.mp4", poster: "videos/posters/finance-gold-coin.jpg", w: 1080, h: 1920 },
-                { title: "미래로 향하는 거리", src: "videos/finance-premium.mp4",   poster: "videos/posters/finance-premium.jpg",   w: 1080, h: 1920 }
-            ]
-        },
         {
             /* new Joseon character series. tagline / desc not written yet -> add them here when ready */
             key: "beomdoryeong",
@@ -84,6 +55,35 @@ window.AI_WORKS = {
                 { title: "볼링",   src: "videos/unkl-bowling.mp4",   poster: "videos/posters/unkl-bowling.jpg",   w: 960, h: 1728 },
                 { title: "다이빙", src: "videos/unkl-diving.mp4",    poster: "videos/posters/unkl-diving.jpg",    w: 960, h: 1728 },
                 { title: "할로윈", src: "videos/unkl-halloween.mp4", poster: "videos/posters/unkl-halloween.jpg", w: 960, h: 1728 }
+            ]
+        },
+        {
+            key: "joseon-archive",
+            label: "JOSEON ARCHIVE",
+            title: "JOSEON ARCHIVE",
+            tagline: "과거에 없던 조선",
+            desc: "오늘의 브랜드와 놀이 문화가 조선에 존재했다면? 전통적인 공간과 공예에 현대적인 상상을 더해, 익숙하면서도 낯선 조선의 풍경을 AI 영상으로 구현한 컨셉 시리즈입니다.",
+            series: "joseon"
+        },
+        {
+            key: "what-if",
+            label: "WHAT IF ~",   /* copy shown above the video */
+            title: "WHAT IF",
+            tagline: "브랜드의 새로운 가능성",
+            desc: "만약 익숙한 브랜드가 전혀 다른 제품을 만든다면? 브랜드를 상징하는 색, 소재, 형태를 새로운 제품에 적용하고, 그럴듯하지만 존재하지 않는 제품의 모습을 AI 영상으로 구현한 컨셉 시리즈입니다.",
+            projects: ["product-concept-featured", "product-concept-01", "material-motion", "new-scene", "product-concept-02"]
+        },
+        {
+            key: "stock",
+            label: "STOCK",
+            title: "STOCK",
+            tagline: "개념을 장면으로",
+            desc: "금융과 기술, 도시의 일상처럼 다양한 콘텐츠에 활용할 수 있는 주제를 시각화했습니다. 추상적인 개념을 직관적인 이미지와 움직임으로 풀어낸 AI 스톡 영상 시리즈입니다.",
+            videos: [
+                { title: "쏟아지는 금화", src: "videos/Final.mp4",             poster: "videos/posters/Final.jpg",             w: 720,  h: 1280 },
+                { title: "상승하는 코인", src: "videos/Final_2.mp4",           poster: "videos/posters/Final_2.jpg",           w: 720,  h: 1280 },
+                { title: "동전으로 쌓은 도시", src: "videos/finance-gold-coin.mp4", poster: "videos/posters/finance-gold-coin.jpg", w: 1080, h: 1920 },
+                { title: "미래로 향하는 거리", src: "videos/finance-premium.mp4",   poster: "videos/posters/finance-premium.jpg",   w: 1080, h: 1920 }
             ]
         }
     ],
