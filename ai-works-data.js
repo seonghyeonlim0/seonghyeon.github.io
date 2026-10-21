@@ -73,6 +73,18 @@ window.AI_WORKS = {
                 { title: "떡 하나", src: "videos/beom-tteok.mp4",  poster: "videos/posters/beom-tteok.jpg",   w: 720, h: 1280 },
                 { title: "축제",   src: "videos/beom-festival.mp4", poster: "videos/posters/beom-festival.jpg", w: 720, h: 1280 }
             ]
+        },
+        {
+            /* UNKL character content. tagline / desc not written yet -> add them here when ready */
+            key: "unkl",
+            label: "UNKL",
+            title: "UNKL",
+            videos: [
+                { title: "히어로", src: "videos/unkl-hero.mp4",      poster: "videos/posters/unkl-hero.jpg",      w: 960, h: 1728 },
+                { title: "볼링",   src: "videos/unkl-bowling.mp4",   poster: "videos/posters/unkl-bowling.jpg",   w: 960, h: 1728 },
+                { title: "다이빙", src: "videos/unkl-diving.mp4",    poster: "videos/posters/unkl-diving.jpg",    w: 960, h: 1728 },
+                { title: "할로윈", src: "videos/unkl-halloween.mp4", poster: "videos/posters/unkl-halloween.jpg", w: 960, h: 1728 }
+            ]
         }
     ],
 
