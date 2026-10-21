@@ -60,6 +60,19 @@ window.AI_WORKS = {
                 { title: "동전으로 쌓은 도시", src: "videos/finance-gold-coin.mp4", poster: "videos/posters/finance-gold-coin.jpg", w: 1080, h: 1920 },
                 { title: "미래로 향하는 거리", src: "videos/finance-premium.mp4",   poster: "videos/posters/finance-premium.jpg",   w: 1080, h: 1920 }
             ]
+        },
+        {
+            /* new Joseon character series. tagline / desc not written yet -> add them here when ready */
+            key: "beomdoryeong",
+            label: "범도령",
+            title: "범도령",
+            videos: [
+                { title: "범도령", src: "videos/beomdoryeong.mp4", poster: "videos/posters/beomdoryeong.jpg", w: 720, h: 1280 },
+                { title: "나무",   src: "videos/beom-tree.mp4",    poster: "videos/posters/beom-tree.jpg",    w: 720, h: 1280 },
+                { title: "낚시",   src: "videos/beom-fishing.mp4", poster: "videos/posters/beom-fishing.jpg", w: 720, h: 1280 },
+                { title: "떡 하나", src: "videos/beom-tteok.mp4",  poster: "videos/posters/beom-tteok.jpg",   w: 720, h: 1280 },
+                { title: "축제",   src: "videos/beom-festival.mp4", poster: "videos/posters/beom-festival.jpg", w: 720, h: 1280 }
+            ]
         }
     ],
 
