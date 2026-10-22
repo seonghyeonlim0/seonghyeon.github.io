@@ -51,7 +51,7 @@ window.AI_WORKS = {
             label: "UNKL",
             title: "UNKL",
             videos: [
-                { title: "히어로", src: "videos/unkl-hero.mp4",      poster: "videos/posters/unkl-hero.jpg",      w: 960, h: 1728 },
+                { title: "히어로", src: "videos/unkl-hero.mp4",      poster: "videos/posters/unkl-hero.jpg",      w: 1080, h: 1920 },
                 { title: "볼링",   src: "videos/unkl-bowling.mp4",   poster: "videos/posters/unkl-bowling.jpg",   w: 960, h: 1728 },
                 { title: "다이빙", src: "videos/unkl-diving.mp4",    poster: "videos/posters/unkl-diving.jpg",    w: 960, h: 1728 },
                 { title: "할로윈", src: "videos/unkl-halloween.mp4", poster: "videos/posters/unkl-halloween.jpg", w: 960, h: 1728 },
