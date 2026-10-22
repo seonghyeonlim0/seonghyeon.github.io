@@ -22,7 +22,7 @@ window.AI_WORKS = {
 
     /* [1] page header */
     title: "AI WORKS",
-    intro: "생성형 AI를 활용해 제품의 인상과 이야기를 이미지와 영상으로 확장합니다. 기획부터 비주얼 제작, 편집까지의 작업을 담았습니다.",
+    intro: "생성형 AI를 활용한 이미지 및 영상 콘텐츠를 기획하고 제작하였습니다. 브랜드와 제품을 새로운 시각으로 표현하는 비주얼 작업부터 캐릭터 IP 개발, 스토리텔링 콘텐츠까지 다양한 프로젝트를 진행하며, 기획과 제작 전반을 아우르는 작업을 진행할 수 있습니다.",
 
     /* [2][3][4] page groups, shown left to right (order = display order).
        Each group shows ONE representative work; "Read More" opens a page with all of them
