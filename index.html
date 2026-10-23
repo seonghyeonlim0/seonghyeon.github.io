@@ -529,6 +529,42 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+        /* newsletter issues: three tall images side by side (click to read in the lightbox) */
+        .case-issues {
+            max-width: 960px;
+            margin: 16px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+        .case-issues figure { margin: 0; }
+        .case-issues img {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 6px;
+            background: var(--card);
+        }
+        .case-issues figcaption {
+            margin-top: 10px;
+            font-size: var(--fs-label);
+            line-height: 1.5;
+            color: var(--muted);
+            word-break: keep-all;
+        }
+        .case-issues figcaption strong {
+            display: block;
+            margin-bottom: 2px;
+            color: var(--ink);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+        @media (max-width: 640px) {
+            .case-issues { grid-template-columns: minmax(0, 1fr); }
+        }
         .case-pair {
             max-width: 960px;
             margin: 14px auto 0;
@@ -1335,6 +1371,7 @@
             "case-gukgabohun-section",
             "case-plantlance-section",
             "case-netflix-outdoor-section",
+            "case-newsletter-section",
             "case-ballantines-section",
             "case-powerade-worldcup-section",
             "case-netflix-distribution-section",
@@ -1368,6 +1405,7 @@
             "case-gukgabohun-section": "case/gukgabohun",
             "case-plantlance-section": "case/plantlance",
             "case-netflix-outdoor-section": "case/netflix-outdoor",
+            "case-newsletter-section": "case/industry-insight-newsletter",
             "case-ballantines-section": "case/ballantines",
             "case-powerade-worldcup-section": "case/powerade-worldcup",
             "case-netflix-distribution-section": "case/netflix-distribution",
@@ -1404,6 +1442,7 @@
             "case-gukgabohun-section": "국가보훈 공모전 — LIM",
             "case-plantlance-section": "PLANTLANCE — LIM",
             "case-netflix-outdoor-section": "NETFLIX 옥외광고 — LIM",
+            "case-newsletter-section": "INDUSTRY INSIGHT NEWSLETTER — LIM",
             "case-ballantines-section": "Ballantine's — LIM",
             "case-powerade-worldcup-section": "Powerade x FIFA World Cup — LIM",
             "case-netflix-distribution-section": "NETFLIX 배급 파트너 관리 — LIM",
@@ -1423,6 +1462,7 @@
             "intro-section": 0,
             "project-manager-section": 1,
             "case-netflix-outdoor-section": 1,
+            "case-newsletter-section": 1,
             "case-ballantines-section": 1,
             "case-powerade-worldcup-section": 1,
             "case-netflix-distribution-section": 1,
@@ -1545,6 +1585,7 @@
         function showCaseGukgabohun() { navigate("case-gukgabohun-section"); }
         function showCasePlantlance() { navigate("case-plantlance-section"); }
         function showCaseNetflixOutdoor() { navigate("case-netflix-outdoor-section"); }
+        function showCaseNewsletter() { navigate("case-newsletter-section"); }
         function showCaseBallantines() { navigate("case-ballantines-section"); }
         function showCasePoweradeWorldcup() { navigate("case-powerade-worldcup-section"); }
         function showCaseNetflixDistribution() { navigate("case-netflix-distribution-section"); }
@@ -1794,7 +1835,7 @@
                 e.stopPropagation();
                 lb.classList.toggle("is-zoomed");
             });
-            document.querySelectorAll(".case-media img, .case-cols img, .case-pair img, .case-grid img, .case-16x9 img").forEach(function (img) {
+            document.querySelectorAll(".case-media img, .case-cols img, .case-pair img, .case-grid img, .case-16x9 img, .case-issues img").forEach(function (img) {
                 img.classList.add("is-zoomable");
                 img.addEventListener("click", function () {
                     open(img.dataset.full || img.currentSrc || img.src, img.alt);
@@ -2236,6 +2277,8 @@
                       -> 파워에이드 버추얼 광고 콘텐츠 기획 (제품 컨셉)
                    14. Powerade Virtual Advertisement Planning (Soccer Concept)
                       -> 파워에이드 버추얼 광고 콘텐츠 기획 (축구 컨셉)
+               (added later) INDUSTRY INSIGHT NEWSLETTER
+                      -> 업계 인사이트 뉴스레터 콘텐츠 기획 및 제작
             -->
             <div class="project-manager-section">
                 <div class="project-manager-text">
@@ -2245,6 +2288,12 @@
                         <a href="#/case/netflix-outdoor" onclick="showCaseNetflixOutdoor(); return false;">
                             <strong>넷플릭스 타이틀 옥외광고 콘텐츠 기획</strong><br>
                             September 2023 - Current
+                        </a>
+                    </p>
+                    <p>
+                        <a href="#/case/industry-insight-newsletter" onclick="showCaseNewsletter(); return false;">
+                            <strong>업계 인사이트 뉴스레터 콘텐츠 기획 및 제작</strong><br>
+                            July 2026 - September 2026
                         </a>
                     </p>
                     <p>
@@ -2387,6 +2436,43 @@
                     <video src="cases/netflix-outdoor/next-on-netflix/non-3.mp4" controls playsinline preload="metadata"></video>
                     <video src="cases/netflix-outdoor/next-on-netflix/non-4.mp4" controls playsinline preload="metadata"></video>
                     <video src="cases/netflix-outdoor/next-on-netflix/non-5.mp4" controls playsinline preload="metadata"></video>
+                </div>
+            </div>
+            <div class="case-section case-newsletter-section">
+                <button class="case-back" type="button" onclick="showProjectManager()">← PROJECT EXPERIENCE</button>
+                <h3 class="case-heading" style="margin-top:0;">프로젝트 소개</h3>
+                <div class="case-text">
+                    <p>기존 클라이언트에게 광고·마케팅 업계의 주요 소식과 트렌드를 전달하기 위해 월간 뉴스레터를 기획·제작했습니다. 2026년 7월부터 9월까지 3호를 제작했고, 매월 업계 사례를 선별해 하나의 주제로 묶어 클라이언트가 참고할 수 있는 인사이트 콘텐츠로 정리했습니다.</p>
+                </div>
+                <h3 class="case-heading">주요 업무</h3>
+                <div class="case-text">
+                    <ul>
+                        <li>월별 주제 및 콘텐츠 방향 기획</li>
+                        <li>광고·마케팅 업계 소식 및 사례 큐레이션</li>
+                        <li>섹션 구성 및 에디토리얼 흐름 설계</li>
+                        <li>뉴스레터 비주얼 제작</li>
+                    </ul>
+                </div>
+                <h3 class="case-heading">기획 방향</h3>
+                <div class="case-text">
+                    <p>매월 사례를 DOOH·OOH, Social Campaign, Experiential &amp; Spatial 세 섹션으로 나누고, 섹션마다 사례를 관통하는 한 줄 메시지를 먼저 제시한 뒤 개별 사례를 소개하는 구조로 구성했습니다. 사례를 나열하는 데 그치지 않도록 마지막에는 에디터 노트로 그달의 흐름을 정리했고, 각 사례에는 Read More 버튼을 두어 더 읽어볼 수 있게 했습니다.</p>
+                    <p>디자인은 어두운 헤더와 밝은 섹션, 어두운 섹션을 번갈아 배치하고 핵심 문구에만 오렌지 포인트 컬러를 사용해, 긴 글에서도 섹션이 구분되고 읽는 흐름이 이어지도록 했습니다.</p>
+                </div>
+                <h3 class="case-heading">OUTPUT</h3>
+                <p class="case-note" style="margin: -6px auto 0; max-width: 960px;">이미지를 클릭하면 전체 뉴스레터를 크게 볼 수 있습니다.</p>
+                <div class="case-issues">
+                    <figure>
+                        <img src="cases/newsletter/jul-thumb.jpg" data-full="cases/newsletter/jul.jpg" alt="2026년 7월 뉴스레터 VOL.01 — 캔버스가 된 도시, 서사가 된 공간" loading="lazy" decoding="async">
+                        <figcaption><strong>2026.07 VOL.01</strong>캔버스가 된 도시, 서사가 된 공간</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="cases/newsletter/aug-thumb.jpg" data-full="cases/newsletter/aug.jpg" alt="2026년 8월 뉴스레터 VOL.02 — 단순히 보여주는 것을 넘어 반응을 설계하는 것" loading="lazy" decoding="async">
+                        <figcaption><strong>2026.08 VOL.02</strong>단순히 보여주는 것을 넘어 반응을 설계하는 것</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="cases/newsletter/sep-thumb.jpg" data-full="cases/newsletter/sep.jpg" alt="2026년 9월 뉴스레터 VOL.03 — 반응하고, 움직이고, 완성하는 크리에이티브" loading="lazy" decoding="async">
+                        <figcaption><strong>2026.09 VOL.03</strong>반응하고, 움직이고, 완성하는 크리에이티브</figcaption>
+                    </figure>
                 </div>
             </div>
             <div class="case-section case-ballantines-section">
