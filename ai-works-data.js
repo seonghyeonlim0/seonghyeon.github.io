@@ -50,8 +50,8 @@ window.AI_WORKS = {
         {
             /* UNKL character content. tagline / desc not written yet -> add them here when ready */
             key: "unkl",
-            label: "UNKL",
-            title: "UNKL",
+            label: "UNKL&ANTY",
+            title: "UNKL&ANTY",
             videos: [
                 { title: "히어로", src: "videos/unkl-hero.mp4",      poster: "videos/posters/unkl-hero.jpg",      w: 1080, h: 1920 },
                 { title: "볼링",   src: "videos/unkl-bowling.mp4",   poster: "videos/posters/unkl-bowling.jpg",   w: 960, h: 1728 },
@@ -79,8 +79,8 @@ window.AI_WORKS = {
         },
         {
             key: "stock",
-            label: "STOCK",
-            title: "STOCK",
+            label: "MONEY TALK",
+            title: "MONEY TALK",
             tagline: "개념을 장면으로",
             desc: "금융과 기술, 도시의 일상처럼 다양한 콘텐츠에 활용할 수 있는 주제를 시각화했습니다. 추상적인 개념을 직관적인 이미지와 움직임으로 풀어낸 AI 스톡 영상 시리즈입니다.",
             videos: [
