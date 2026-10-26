@@ -35,6 +35,7 @@ window.AI_WORKS = {
         {
             /* new Joseon character series. tagline / desc not written yet -> add them here when ready */
             key: "beomdoryeong",
+            hideTitles: true,   /* no per-video titles in the Read More page */
             label: "범도령",
             title: "범도령",
             videos: [
@@ -50,6 +51,7 @@ window.AI_WORKS = {
         {
             /* UNKL character content. tagline / desc not written yet -> add them here when ready */
             key: "unkl",
+            hideTitles: true,   /* no per-video titles in the Read More page */
             label: "UNKL&ANTY",
             title: "UNKL&ANTY",
             videos: [

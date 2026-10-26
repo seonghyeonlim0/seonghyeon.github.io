@@ -1652,7 +1652,7 @@
             } else {
                 var vids = g.videos || D.projects[g.series].videos;
                 vids.forEach(function (v) {
-                    items.push((bare ? "" : '<span class="ai-card__title">' + aiEsc(v.title) + "</span>") + aiMedia(v, true));
+                    items.push((bare || g.hideTitles ? "" : '<span class="ai-card__title">' + aiEsc(v.title) + "</span>") + aiMedia(v, true));
                 });
             }
             return items;
