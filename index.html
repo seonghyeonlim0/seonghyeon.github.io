@@ -1010,45 +1010,15 @@
             grid-template-rows: subgrid;
             row-gap: 0;
         }
-        /* project heading above each video: category (small) / name (bold) / subtitle */
-        .ai-group__head { margin: 0 0 12px; }
-        .ai-group__cat {
-            display: block;
-            margin-bottom: 4px;
-            font-size: var(--fs-role);
-            letter-spacing: 0.08em;
-            color: var(--muted);
-        }
-        .ai-group__name {
-            margin: 0 0 3px;
-            font-size: var(--fs-label);
-            font-weight: bold;
-            letter-spacing: 0.04em;
-            line-height: 1.3;
-            color: var(--ink);
-            word-break: keep-all;
-        }
-        .ai-group__sub {
-            margin: 0;
-            font-size: var(--fs-role);
-            line-height: 1.45;
-            color: var(--muted);
-            word-break: keep-all;
-        }
+        .ai-groups .ai-block__label { margin-bottom: 12px; line-height: 1.3; }
         .ai-groups .ai-cards { grid-template-columns: minmax(0, 1fr); }
         .ai-groups .ai-more { margin-top: 12px; }
         /* shrink the thumbnails on short screens so nothing needs scrolling */
-        .ai-groups .ai-media { width: min(100%, max(96px, calc((100vh - 460px) * 9 / 16))); }
+        .ai-groups .ai-media { width: min(100%, max(96px, calc((100vh - 400px) * 9 / 16))); }
         .ai-cards .ai-media { aspect-ratio: 9 / 16; }
         .ai-cards .ai-media img { object-fit: cover; }
         .ai-cards .ai-media.is-playing { aspect-ratio: var(--ai-r, 9 / 16); }
-        .ai-cards .ai-card__meta + .ai-media, .ai-cards .ai-card__title + .ai-media { margin-top: 8px; }
-        .ai-card__meta {
-            display: block;
-            margin-top: 2px;
-            font-size: var(--fs-role);
-            color: var(--muted);
-        }
+        .ai-cards .ai-card__title + .ai-media { margin-top: 8px; }
         /* "Read More" page: every work of a group on one row */
         .ai-detail-section .ai-cards { grid-template-columns: repeat(var(--ai-cols, 3), minmax(0, 1fr)); gap: 12px clamp(12px, 1.6vw, 22px); }
         /* two rows (6+ works): larger thumbnails (the page may scroll a little) */
@@ -1059,7 +1029,7 @@
         }
         .ai-detail-section .ai-cards.ai-two-rows .ai-media { width: 100%; }
         .ai-detail-section .ai-detail__head { margin-bottom: 16px; }
-        .ai-detail-section .ai-cards .ai-media { width: min(100%, max(96px, calc((100vh - 400px) * 9 / 16))); }
+        .ai-detail-section .ai-cards .ai-media { width: min(100%, max(96px, calc((100vh - 270px) * 9 / 16))); }
         .ai-detail-section .case-back { margin-bottom: 14px; }
 
         /* project card grid */
@@ -1122,13 +1092,6 @@
             line-height: 1.4;
             margin: 0 0 8px;
             color: var(--ink);
-            word-break: keep-all;
-        }
-        .ai-detail__sub {
-            font-size: var(--fs-body);
-            line-height: 1.5;
-            color: var(--muted);
-            margin: 0 0 14px;
             word-break: keep-all;
         }
         .ai-detail__lead {
@@ -1676,12 +1639,6 @@
         }
 
         /* all items of a group, as HTML strings (first = representative work) */
-        /* text above each video in a gallery: title, then "EP.01 · video type" */
-        function aiCardText(title, ep, kind) {
-            var meta = [ep, kind].filter(Boolean).join(" · ");
-            return '<span class="ai-card__title">' + aiEsc(title) + "</span>" +
-                (meta ? '<span class="ai-card__meta">' + aiEsc(meta) + "</span>" : "");
-        }
         function aiGroupItems(g, bare) {
             var D = window.AI_WORKS, items = [];
             if (g.projects) {
@@ -1690,12 +1647,12 @@
                     if (!p) return;
                     var v = p.videos[0];
                     /* plays in place (no detail page) */
-                    items.push((bare ? "" : aiCardText(p.title, "", g.kind)) + aiMedia(v, true));
+                    items.push((bare ? "" : '<span class="ai-card__title">' + aiEsc(p.title) + "</span>") + aiMedia(v, true));
                 });
             } else {
                 var vids = g.videos || D.projects[g.series].videos;
                 vids.forEach(function (v) {
-                    items.push((bare ? "" : aiCardText(v.title, v.ep, g.kind)) + aiMedia(v, true));
+                    items.push((bare ? "" : '<span class="ai-card__title">' + aiEsc(v.title) + "</span>") + aiMedia(v, true));
                 });
             }
             return items;
@@ -1714,9 +1671,7 @@
             D.groups.forEach(function (g) {
                 var items = aiGroupItems(g, true);
                 html += '<section class="ai-block ai-group" aria-label="' + aiEsc(g.title) + '">' +
-                    '<div class="ai-group__head"><span class="ai-group__cat">' + aiEsc(g.category || "") + "</span>" +
-                    '<h3 class="ai-group__name">' + aiEsc(g.label || g.title) + "</h3>" +
-                    '<p class="ai-group__sub">' + aiEsc(g.subtitle || "") + "</p></div>" +
+                    '<h3 class="ai-block__label">' + aiEsc(g.label || g.title) + "</h3>" +
                     aiList(items.slice(0, 1)) +
                     (items.length > 1
                         ? '<a class="ai-more" href="#/ai-creator/more/' + aiEsc(g.key) + '" data-ai-more="' + aiEsc(g.key) + '">Read More</a>'
@@ -1743,12 +1698,9 @@
             var D2 = window.AI_WORKS, el = document.getElementById("aiDetail"), g = aiGroupByKey(key);
             if (!el || !g) return;
             el.innerHTML = '<button class="case-back" type="button" data-ai-open="">' + window.AI_WORKS.labels.back + "</button>" +
-                '<header class="ai-detail__head"><p class="ai-detail__cat">' + aiEsc(g.category || "") + "</p>" +
-                '<h2 class="ai-detail__title">' + aiEsc(g.label || g.title) + "</h2>" +
-                '<p class="ai-detail__sub">' + aiEsc(g.subtitle || "") + "</p>" +
-                (g.desc ? '<p class="ai-detail__lead">' + aiEsc(g.desc) + "</p>" : "") + "</header>" +
+                '<header class="ai-detail__head"><h2 class="ai-detail__title">' + aiEsc(g.label || g.title) + "</h2></header>" +
                 aiList(aiGroupItems(g), aiMoreCols(aiGroupItems(g).length), aiGroupItems(g).length > 5);
-            document.title = (g.label || g.title) + " — AI Works — LIM";
+            document.title = g.title + " — AI Works — LIM";
         }
 
         function renderAiDetail(id) {

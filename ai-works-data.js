@@ -27,21 +27,18 @@ window.AI_WORKS = {
     /* [2][3][4] page groups, shown left to right (order = display order).
        Each group shows ONE representative work; "Read More" opens a page with all of them
        (#/ai-creator/more/<key>).
-       - `label` (project name), `subtitle`, `category`, `kind` (video type), `desc` (intro paragraph)
+       - `title` / `tagline` / `desc`: group heading, one-line subtitle, paragraph
        - `projects` (project ids) or `series` / `videos`: works, played in place
          (first = representative)
        To change the representative work, move its id/video to the front. */
     groups: [
         {
+            /* new Joseon character series. tagline / desc not written yet -> add them here when ready */
             key: "beomdoryeong",
-            label: "BEOM DORYEONG",
-            title: "BEOM DORYEONG",
-            subtitle: "조선 호랑이 캐릭터 IP",
-            category: "CHARACTER IP",
-            kind: "AI 애니메이션",
-            desc: "조선시대를 배경으로 근엄하지만 어딘가 엉뚱한 호랑이 캐릭터 '범도령'의 일상을 담은 AI 애니메이션 시리즈입니다. 캐릭터의 성격과 세계관을 바탕으로 짧고 유쾌한 이야기를 기획하고 제작합니다.",
+            label: "범도령",
+            title: "범도령",
             videos: [
-                { title: "범도령 납시오", src: "videos/beomdoryeong.mp4", poster: "videos/posters/beomdoryeong.jpg", w: 720, h: 1280 },
+                { title: "범도령", src: "videos/beomdoryeong.mp4", poster: "videos/posters/beomdoryeong.jpg", w: 720, h: 1280 },
                 { title: "나무",   src: "videos/beom-tree.mp4",    poster: "videos/posters/beom-tree.jpg",    w: 720, h: 1280 },
                 { title: "낚시",   src: "videos/beom-fishing.mp4", poster: "videos/posters/beom-fishing.jpg", w: 720, h: 1280 },
                 { title: "떡 하나", src: "videos/beom-tteok.mp4",  poster: "videos/posters/beom-tteok.jpg",   w: 720, h: 1280 },
@@ -51,51 +48,41 @@ window.AI_WORKS = {
             ]
         },
         {
+            /* UNKL character content. tagline / desc not written yet -> add them here when ready */
             key: "unkl",
-            label: "UNKL & ANTY",
-            title: "UNKL & ANTY",
-            subtitle: "오리지널 캐릭터 애니메이션",
-            category: "CHARACTER IP",
-            kind: "숏폼 애니메이션",
-            desc: "서로 다른 개성을 가진 두 캐릭터가 일상 속에서 벌이는 엉뚱한 상황을 담은 숏폼 애니메이션 시리즈입니다. 캐릭터 디자인부터 상황 설정, 코믹한 움직임과 반전까지 짧은 영상 안에 이야기를 구성합니다.",
-            /* ep = episode number shown before the video type. ZERO DAMAGE / FINAL have no confirmed episode title yet (EP.09 "사탕 도둑" not matched) */
+            label: "UNKL",
+            title: "UNKL",
             videos: [
-                { ep: "EP.01", title: "영웅의 조건",     src: "videos/unkl-hero.mp4",      poster: "videos/posters/unkl-hero.jpg",      w: 1080, h: 1920 },
-                { ep: "EP.02", title: "완벽한 스트라이크", src: "videos/unkl-bowling.mp4",   poster: "videos/posters/unkl-bowling.jpg",   w: 960, h: 1728 },
-                { ep: "EP.03", title: "무모한 다이빙",   src: "videos/unkl-diving.mp4",    poster: "videos/posters/unkl-diving.jpg",    w: 960, h: 1728 },
-                { ep: "EP.04", title: "진짜 귀신",       src: "videos/unkl-halloween.mp4", poster: "videos/posters/unkl-halloween.jpg", w: 960, h: 1728 },
+                { title: "히어로", src: "videos/unkl-hero.mp4",      poster: "videos/posters/unkl-hero.jpg",      w: 1080, h: 1920 },
+                { title: "볼링",   src: "videos/unkl-bowling.mp4",   poster: "videos/posters/unkl-bowling.jpg",   w: 960, h: 1728 },
+                { title: "다이빙", src: "videos/unkl-diving.mp4",    poster: "videos/posters/unkl-diving.jpg",    w: 960, h: 1728 },
+                { title: "할로윈", src: "videos/unkl-halloween.mp4", poster: "videos/posters/unkl-halloween.jpg", w: 960, h: 1728 },
                 { title: "ZERO DAMAGE", src: "videos/unkl-zero-damage.mp4", poster: "videos/posters/unkl-zero-damage.jpg", w: 864, h: 1536 },
-                { title: "FINAL", src: "videos/unkl-final.mp4", poster: "videos/posters/unkl-final.jpg", w: 864, h: 1536 }
+                { title: "FINAL", src: "videos/unkl-final.mp4", poster: "videos/posters/unkl-final.jpg", w: 864, h: 1536 }   /* title is temporary (from file name Final_rev) */
             ]
         },
         {
             key: "joseon-archive",
             label: "JOSEON ARCHIVE",
             title: "JOSEON ARCHIVE",
-            subtitle: "조선시대 상상 콘텐츠",
-            category: "CREATIVE STORYTELLING",
-            kind: "AI 영상",
-            desc: "현대의 익숙한 제품과 문화를 조선시대에 존재했다면 어땠을지 상상하며 재해석한 AI 콘텐츠 시리즈입니다. 전통적인 소재와 제작 방식을 활용하면서 원래의 기능을 유지하는 방식으로 새로운 비주얼과 이야기를 구현합니다.",
+            tagline: "과거에 없던 조선",
+            desc: "오늘의 브랜드와 놀이 문화가 조선에 존재했다면? 전통적인 공간과 공예에 현대적인 상상을 더해, 익숙하면서도 낯선 조선의 풍경을 AI 영상으로 구현한 컨셉 시리즈입니다.",
             series: "joseon"
         },
         {
             key: "what-if",
-            label: "WHAT IF?",
-            title: "WHAT IF?",
-            subtitle: "가상 제품 및 브랜드 비주얼",
-            category: "CONCEPT VISUAL",
-            kind: "AI 영상",
-            desc: "익숙한 브랜드와 제품을 새로운 컨셉으로 재해석하는 AI 비주얼 프로젝트입니다. 가상의 제품 디자인과 브랜드 표현 방식을 실험하며, 아이디어를 이미지와 영상 콘텐츠로 구체화합니다.",
+            label: "WHAT IF ~",   /* copy shown above the video */
+            title: "WHAT IF",
+            tagline: "브랜드의 새로운 가능성",
+            desc: "만약 익숙한 브랜드가 전혀 다른 제품을 만든다면? 브랜드를 상징하는 색, 소재, 형태를 새로운 제품에 적용하고, 그럴듯하지만 존재하지 않는 제품의 모습을 AI 영상으로 구현한 컨셉 시리즈입니다.",
             projects: ["product-concept-featured", "product-concept-01", "material-motion", "new-scene", "product-concept-02"]
         },
         {
             key: "stock",
             label: "STOCK",
             title: "STOCK",
-            subtitle: "AI 비주얼 실험",
-            category: "VISUAL EXPERIMENT",
-            kind: "AI 영상",
-            desc: "다양한 소재와 표현 방식을 활용한 AI 이미지·영상 비주얼 실험입니다. 컨셉에 맞는 구도와 질감, 움직임을 탐색하며 생성형 AI를 활용한 시각적 표현 가능성을 확장합니다.",
+            tagline: "개념을 장면으로",
+            desc: "금융과 기술, 도시의 일상처럼 다양한 콘텐츠에 활용할 수 있는 주제를 시각화했습니다. 추상적인 개념을 직관적인 이미지와 움직임으로 풀어낸 AI 스톡 영상 시리즈입니다.",
             videos: [
                 { title: "쏟아지는 금화", src: "videos/Final.mp4",             poster: "videos/posters/Final.jpg",             w: 720,  h: 1280 },
                 { title: "상승하는 코인", src: "videos/Final_2.mp4",           poster: "videos/posters/Final_2.jpg",           w: 720,  h: 1280 },
@@ -188,9 +175,9 @@ window.AI_WORKS = {
             /* first video = representative work shown on the main page.
                video order = display order */
             videos: [
-                { title: "조선의 기묘한 축제",   src: "videos/gimyo-festival.mp4", poster: "videos/posters/gimyo-festival.jpg", w: 1080, h: 1920 },
+                { title: "기묘한 축제",          src: "videos/gimyo-festival.mp4", poster: "videos/posters/gimyo-festival.jpg", w: 1080, h: 1920 },
                 { title: "기묘한 숨바꼭질",        src: "videos/hide-and-seek.mp4",  poster: "videos/posters/hide-and-seek.jpg",  w: 1080, h: 1920 },
-                { title: "조선의 인형뽑기",      src: "videos/injeong-ppopgi.mp4", poster: "videos/posters/injeong-ppopgi.jpg", w: 720,  h: 1280 },
+                { title: "인형뽑기",             src: "videos/injeong-ppopgi.mp4", poster: "videos/posters/injeong-ppopgi.jpg", w: 720,  h: 1280 },
                 { title: "MIU MIU X 꽃신",       src: "videos/miumiu-kkotsin.mp4", poster: "videos/posters/miumiu-kkotsin.jpg", w: 1080, h: 1920 },
                 { title: "BVLGARI X 청자",       src: "videos/bulgari.mp4",        poster: "videos/posters/bulgari.jpg",        w: 1080, h: 1920 },
                 { title: "ZIPPO X 화로대",       src: "videos/zippo-hwarotae.mp4", poster: "videos/posters/zippo-hwarotae.jpg", w: 1080, h: 1920 }
