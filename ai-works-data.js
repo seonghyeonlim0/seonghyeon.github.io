@@ -71,8 +71,8 @@ window.AI_WORKS = {
         },
         {
             key: "what-if",
-            label: "WHAT IF ~",   /* copy shown above the video */
-            title: "WHAT IF",
+            label: "WHAT IF..?",   /* copy shown above the video */
+            title: "WHAT IF..?",
             tagline: "브랜드의 새로운 가능성",
             desc: "만약 익숙한 브랜드가 전혀 다른 제품을 만든다면? 브랜드를 상징하는 색, 소재, 형태를 새로운 제품에 적용하고, 그럴듯하지만 존재하지 않는 제품의 모습을 AI 영상으로 구현한 컨셉 시리즈입니다.",
             projects: ["product-concept-featured", "product-concept-01", "material-motion", "new-scene", "product-concept-02"]
@@ -122,7 +122,7 @@ window.AI_WORKS = {
         "product-concept-featured": {
             title: "GUCCI X 마우스",
             summary: "익숙한 제품을 새로운 소재와 공간으로 재해석한 컨셉 영상입니다. 제품의 특징이 짧은 장면 안에서 드러나도록 구성했습니다.",
-            category: "WHAT IF",
+            category: "WHAT IF..?",
             kind: "[개인 컨셉 / 클라이언트 작업 입력]",
             role: "[본인 담당 범위 입력]",
             tools: "[사용 도구 입력]",
@@ -135,7 +135,7 @@ window.AI_WORKS = {
         "product-concept-01": {
             title: "한국타이어 X 나침반",
             summary: "제품의 형태와 질감을 중심으로 구성한 AI 비주얼 실험.",
-            category: "WHAT IF",
+            category: "WHAT IF..?",
             videos: [
                 { title: "한국타이어 X 나침반", src: "videos/Reels2.mp4", poster: "videos/posters/Reels2.jpg", w: 862, h: 1076 }
             ]
@@ -143,7 +143,7 @@ window.AI_WORKS = {
         "material-motion": {
             title: "HERMÈS X 스탠드 조명",
             summary: "제품의 형태와 질감을 중심으로 구성한 AI 비주얼 실험.",
-            category: "WHAT IF",
+            category: "WHAT IF..?",
             videos: [
                 { title: "HERMÈS X 스탠드 조명", src: "videos/Stand.mp4", poster: "videos/posters/Stand.jpg", w: 1080, h: 1350 }
             ]
@@ -151,7 +151,7 @@ window.AI_WORKS = {
         "new-scene": {
             title: "TABASCO X 소화기",
             summary: "제품의 형태와 질감을 중심으로 구성한 AI 비주얼 실험.",
-            category: "WHAT IF",
+            category: "WHAT IF..?",
             videos: [
                 { title: "TABASCO X 소화기", src: "videos/TABASCO.mp4", poster: "videos/posters/TABASCO.jpg", w: 1080, h: 1920 }
             ]
@@ -160,7 +160,7 @@ window.AI_WORKS = {
         "product-concept-02": {
             title: "PORSCHE X 전동 드릴",
             summary: "제품의 형태와 질감을 중심으로 구성한 AI 비주얼 실험.",
-            category: "WHAT IF",
+            category: "WHAT IF..?",
             videos: [
                 { title: "PORSCHE X 전동 드릴", src: "videos/PORSHE.mp4", poster: "videos/posters/PORSHE.jpg", w: 1080, h: 1916 }
             ]
