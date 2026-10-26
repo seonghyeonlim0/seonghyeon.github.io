@@ -1021,6 +1021,13 @@
         .ai-cards .ai-card__title + .ai-media { margin-top: 8px; }
         /* "Read More" page: every work of a group on one row */
         .ai-detail-section .ai-cards { grid-template-columns: repeat(var(--ai-cols, 3), minmax(0, 1fr)); gap: 12px clamp(12px, 1.6vw, 22px); }
+        /* two rows (6+ works): larger thumbnails (the page may scroll a little) */
+        .ai-detail-section .ai-cards.ai-two-rows {
+            grid-template-columns: repeat(var(--ai-cols, 3), minmax(0, 200px));
+            column-gap: clamp(14px, 2vw, 24px);
+            row-gap: 18px;
+        }
+        .ai-detail-section .ai-cards.ai-two-rows .ai-media { width: 100%; }
         .ai-detail-section .ai-detail__head { margin-bottom: 16px; }
         .ai-detail-section .ai-cards .ai-media { width: min(100%, max(96px, calc((100vh - 270px) * 9 / 16))); }
         .ai-detail-section .case-back { margin-bottom: 14px; }
@@ -1176,7 +1183,7 @@
             }
             .ai-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .ai-groups .ai-media, .ai-detail-section .ai-cards .ai-media { width: 100%; }
-            .ai-detail-section .ai-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .ai-detail-section .ai-cards, .ai-detail-section .ai-cards.ai-two-rows { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .ai-videos { grid-template-columns: minmax(0, 1fr); }
             .ai-videos .ai-media { max-width: 360px; }
         }
@@ -1650,8 +1657,8 @@
             }
             return items;
         }
-        function aiList(items, cols) {
-            return '<ul class="ai-cards"' + (cols ? ' style="--ai-cols:' + cols + '"' : "") + ">" +
+        function aiList(items, cols, twoRows) {
+            return '<ul class="ai-cards' + (twoRows ? " ai-two-rows" : "") + '"' + (cols ? ' style="--ai-cols:' + cols + '"' : "") + ">" +
                 items.map(function (it) { return "<li>" + it + "</li>"; }).join("") + "</ul>";
         }
 
@@ -1685,12 +1692,14 @@
             var m = location.hash.replace(/^#\/?/, "").match(/^ai-creator\/more\/([^\/?#]+)$/);
             return m && aiGroupByKey(decodeURIComponent(m[1])) ? decodeURIComponent(m[1]) : null;
         }
+        /* up to 5 works fit on one row; more than that are split over two rows */
+        function aiMoreCols(n) { return n > 5 ? Math.ceil(n / 2) : n; }
         function renderAiMore(key) {
             var D2 = window.AI_WORKS, el = document.getElementById("aiDetail"), g = aiGroupByKey(key);
             if (!el || !g) return;
             el.innerHTML = '<button class="case-back" type="button" data-ai-open="">' + window.AI_WORKS.labels.back + "</button>" +
                 '<header class="ai-detail__head"><h2 class="ai-detail__title">' + aiEsc(g.label || g.title) + "</h2></header>" +
-                aiList(aiGroupItems(g), Math.min(g.projects ? g.projects.length : (g.videos || D2.projects[g.series].videos).length, 8));
+                aiList(aiGroupItems(g), aiMoreCols(aiGroupItems(g).length), aiGroupItems(g).length > 5);
             document.title = g.title + " — AI Works — LIM";
         }
 
