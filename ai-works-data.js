@@ -63,8 +63,8 @@ window.AI_WORKS = {
         },
         {
             key: "joseon-archive",
-            label: "JOSEON ARCHIVE",
-            title: "JOSEON ARCHIVE",
+            label: "조선의 모든 것",
+            title: "조선의 모든 것",
             tagline: "과거에 없던 조선",
             desc: "오늘의 브랜드와 놀이 문화가 조선에 존재했다면? 전통적인 공간과 공예에 현대적인 상상을 더해, 익숙하면서도 낯선 조선의 풍경을 AI 영상으로 구현한 컨셉 시리즈입니다.",
             series: "joseon"
@@ -170,7 +170,7 @@ window.AI_WORKS = {
         "joseon": {
             title: "조선 — 익숙한 것의 낯선 해석",
             summary: "전통적인 공간과 소재를 현대적인 시선으로 재구성한 AI 영상 시리즈.",
-            category: "JOSEON ARCHIVE",
+            category: "조선의 모든 것",
             series: true,
             /* first video = representative work shown on the main page.
                video order = display order */
