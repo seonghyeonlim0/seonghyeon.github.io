@@ -1690,7 +1690,7 @@
             if (!el || !g) return;
             el.innerHTML = '<button class="case-back" type="button" data-ai-open="">' + window.AI_WORKS.labels.back + "</button>" +
                 '<header class="ai-detail__head"><h2 class="ai-detail__title">' + aiEsc(g.label || g.title) + "</h2></header>" +
-                aiList(aiGroupItems(g), Math.min(g.projects ? g.projects.length : (g.videos || D2.projects[g.series].videos).length, 6));
+                aiList(aiGroupItems(g), Math.min(g.projects ? g.projects.length : (g.videos || D2.projects[g.series].videos).length, 8));
             document.title = g.title + " — AI Works — LIM";
         }
 

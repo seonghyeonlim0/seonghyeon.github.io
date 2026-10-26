@@ -42,7 +42,9 @@ window.AI_WORKS = {
                 { title: "나무",   src: "videos/beom-tree.mp4",    poster: "videos/posters/beom-tree.jpg",    w: 720, h: 1280 },
                 { title: "낚시",   src: "videos/beom-fishing.mp4", poster: "videos/posters/beom-fishing.jpg", w: 720, h: 1280 },
                 { title: "떡 하나", src: "videos/beom-tteok.mp4",  poster: "videos/posters/beom-tteok.jpg",   w: 720, h: 1280 },
-                { title: "축제",   src: "videos/beom-festival.mp4", poster: "videos/posters/beom-festival.jpg", w: 720, h: 1280 }
+                { title: "축제",   src: "videos/beom-festival.mp4", poster: "videos/posters/beom-festival.jpg", w: 720, h: 1280 },
+                { title: "강아지", src: "videos/beom-puppy.mp4",    poster: "videos/posters/beom-puppy.jpg",    w: 720, h: 1280 },
+                { title: "대장간", src: "videos/beom-forge.mp4",    poster: "videos/posters/beom-forge.jpg",    w: 720, h: 1280 }
             ]
         },
         {
