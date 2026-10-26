@@ -39,13 +39,13 @@ window.AI_WORKS = {
             label: "범도령",
             title: "범도령",
             videos: [
-                { title: "범도령", src: "videos/beomdoryeong.mp4", poster: "videos/posters/beomdoryeong.jpg", w: 720, h: 1280 },
-                { title: "나무",   src: "videos/beom-tree.mp4",    poster: "videos/posters/beom-tree.jpg",    w: 720, h: 1280 },
-                { title: "낚시",   src: "videos/beom-fishing.mp4", poster: "videos/posters/beom-fishing.jpg", w: 720, h: 1280 },
-                { title: "떡 하나", src: "videos/beom-tteok.mp4",  poster: "videos/posters/beom-tteok.jpg",   w: 720, h: 1280 },
-                { title: "축제",   src: "videos/beom-festival.mp4", poster: "videos/posters/beom-festival.jpg", w: 720, h: 1280 },
-                { title: "강아지", src: "videos/beom-puppy.mp4",    poster: "videos/posters/beom-puppy.jpg",    w: 720, h: 1280 },
-                { title: "대장간", src: "videos/beom-forge.mp4",    poster: "videos/posters/beom-forge.jpg",    w: 720, h: 1280 }
+                { title: "범도령", src: "videos/beomdoryeong.mp4", poster: "videos/posters/beomdoryeong.jpg?v=2", w: 720, h: 1280 },
+                { title: "나무",   src: "videos/beom-tree.mp4",    poster: "videos/posters/beom-tree.jpg?v=2",    w: 720, h: 1280 },
+                { title: "낚시",   src: "videos/beom-fishing.mp4", poster: "videos/posters/beom-fishing.jpg?v=2", w: 720, h: 1280 },
+                { title: "떡 하나", src: "videos/beom-tteok.mp4",  poster: "videos/posters/beom-tteok.jpg?v=2",   w: 720, h: 1280 },
+                { title: "축제",   src: "videos/beom-festival.mp4", poster: "videos/posters/beom-festival.jpg?v=2", w: 720, h: 1280 },
+                { title: "강아지", src: "videos/beom-puppy.mp4",    poster: "videos/posters/beom-puppy.jpg?v=2",    w: 720, h: 1280 },
+                { title: "대장간", src: "videos/beom-forge.mp4",    poster: "videos/posters/beom-forge.jpg?v=2",    w: 720, h: 1280 }
             ]
         },
         {
