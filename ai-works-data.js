@@ -61,7 +61,7 @@ window.AI_WORKS = {
                 { title: "할로윈", src: "videos/unkl-halloween.mp4", poster: "videos/posters/unkl-halloween.jpg", w: 960, h: 1728 },
                 { title: "ZERO DAMAGE", src: "videos/unkl-zero-damage.mp4", poster: "videos/posters/unkl-zero-damage.jpg", w: 864, h: 1536 },
                 { title: "FINAL", src: "videos/unkl-final.mp4", poster: "videos/posters/unkl-final.jpg", w: 864, h: 1536 },   /* title is temporary (from file name Final_rev) */
-                { title: "BELLY NOT INCLUDED", src: "videos/unkl-belly.mp4", poster: "videos/posters/unkl-belly.jpg", w: 864, h: 1536 }
+                { title: "BELLY NOT INCLUDED", src: "videos/unkl-belly.mp4", poster: "videos/posters/unkl-belly.jpg?v=2", w: 864, h: 1536 }
             ]
         },
         {
