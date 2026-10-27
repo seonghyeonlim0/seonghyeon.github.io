@@ -61,7 +61,10 @@ window.AI_WORKS = {
                 { title: "할로윈", src: "videos/unkl-halloween.mp4", poster: "videos/posters/unkl-halloween.jpg", w: 960, h: 1728 },
                 { title: "ZERO DAMAGE", src: "videos/unkl-zero-damage.mp4", poster: "videos/posters/unkl-zero-damage.jpg", w: 864, h: 1536 },
                 { title: "FINAL", src: "videos/unkl-final.mp4", poster: "videos/posters/unkl-final.jpg", w: 864, h: 1536 },   /* title is temporary (from file name Final_rev) */
-                { title: "BELLY NOT INCLUDED", src: "videos/unkl-belly.mp4", poster: "videos/posters/unkl-belly.jpg?v=2", w: 864, h: 1536 }
+                { title: "BELLY NOT INCLUDED", src: "videos/unkl-belly.mp4", poster: "videos/posters/unkl-belly.jpg?v=2", w: 864, h: 1536 },
+                { title: "Ep02 — HOLD ON TIGHT!",      src: "videos/unkl-ep02.mp4", poster: "videos/posters/unkl-ep02.jpg", w: 960, h: 1728 },
+                { title: "Ep03 — TARZAN ON A BUDGET",  src: "videos/unkl-ep03.mp4", poster: "videos/posters/unkl-ep03.jpg", w: 960, h: 1728 },
+                { title: "Ep04 — HOLD ON TIGHT!",      src: "videos/unkl-ep04.mp4", poster: "videos/posters/unkl-ep04.jpg", w: 960, h: 1728 }
             ]
         },
         {
