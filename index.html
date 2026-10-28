@@ -1811,14 +1811,18 @@
             v.poster = box.dataset.poster;
             v.controls = true;
             v.loop = true;
-            v.muted = true;
+            /* sound on by default (the viewer just pressed play); if the browser still blocks it, fall back to muted playback */
             v.setAttribute("playsinline", "");
             v.preload = "auto";
             v.setAttribute("aria-label", box.dataset.title || "");
             box.appendChild(v);
             box.classList.add("is-playing");
             var pr = v.play();
-            if (pr && pr.catch) pr.catch(function () {});
+            if (pr && pr.catch) pr.catch(function () {
+                v.muted = true;
+                var again = v.play();
+                if (again && again.catch) again.catch(function () {});
+            });
         }
 
         function initAiWorks() {
