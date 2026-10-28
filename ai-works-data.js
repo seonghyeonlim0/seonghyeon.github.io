@@ -33,9 +33,14 @@ window.AI_WORKS = {
        To change the representative work, move its id/video to the front. */
     groups: [
         {
-            /* new Joseon character series. tagline / desc not written yet -> add them here when ready */
             key: "beomdoryeong",
-            hideTitles: true,   /* no per-video titles in the Read More page */
+            readMore: {   /* content of the Read More page card */
+                title: "BEOM DORYEONG",
+                subtitle: "조선 호랑이 캐릭터 IP 애니메이션",
+                category: "CHARACTER IP",
+                year: "2026",
+                plan: "근엄한 호랑이의 모습과 허당스러운 행동 사이의 반전을 컨셉으로 기획한 캐릭터 IP 프로젝트입니다. 조선시대 세계관을 바탕으로 일상 속 작은 사건을 짧고 유쾌한 애니메이션으로 제작했습니다."
+            },
             label: "범도령",
             title: "범도령",
             videos: [
@@ -49,9 +54,14 @@ window.AI_WORKS = {
             ]
         },
         {
-            /* UNKL character content. tagline / desc not written yet -> add them here when ready */
             key: "unkl",
-            hideTitles: true,   /* no per-video titles in the Read More page */
+            readMore: {   /* content of the Read More page card */
+                title: "UNKL&ANTY",
+                subtitle: "오리지널 캐릭터 애니메이션",
+                category: "CHARACTER IP",
+                year: "2026",
+                plan: "서로 다른 개성을 가진 두 캐릭터의 엉뚱한 일상을 담은 코미디 애니메이션입니다. 짧은 영상 안에 상황 설정과 예상치 못한 반전을 구성하고, 과장된 움직임으로 캐릭터의 매력을 표현했습니다."
+            },
             label: "UNKL&ANTY",
             title: "UNKL&ANTY",
             videos: [
@@ -69,26 +79,41 @@ window.AI_WORKS = {
         },
         {
             key: "joseon-archive",
+            readMore: {   /* content of the Read More page card */
+                title: "조선의 모든 것",
+                subtitle: "조선시대 상상 콘텐츠",
+                category: "CREATIVE STORYTELLING",
+                year: "2026",
+                plan: "현대의 제품과 문화를 조선시대에 적용한다는 상상에서 출발한 AI 숏폼입니다. 전통적인 소재와 시대적 배경을 활용해 익숙한 아이디어를 색다른 비주얼과 움직임으로 구현했습니다."
+            },
             label: "조선의 모든 것",
             title: "조선의 모든 것",
-            tagline: "과거에 없던 조선",
-            desc: "오늘의 브랜드와 놀이 문화가 조선에 존재했다면? 전통적인 공간과 공예에 현대적인 상상을 더해, 익숙하면서도 낯선 조선의 풍경을 AI 영상으로 구현한 컨셉 시리즈입니다.",
             series: "joseon"
         },
         {
             key: "what-if",
+            readMore: {   /* content of the Read More page card */
+                title: "WHAT IF..?",
+                subtitle: "가상 제품 및 브랜드 비주얼",
+                category: "CONCEPT VISUAL",
+                year: "2026",
+                plan: "익숙한 브랜드와 제품에 새로운 디자인 컨셉을 적용하는 가상 제품 비주얼입니다. 실제로 존재하지 않는 조합을 상상하고, 제품의 형태와 소재, 브랜드 특징을 고려하여 이미지와 영상으로 구현했습니다."
+            },
             label: "WHAT IF..?",   /* copy shown above the video */
             title: "WHAT IF..?",
-            tagline: "브랜드의 새로운 가능성",
-            desc: "만약 익숙한 브랜드가 전혀 다른 제품을 만든다면? 브랜드를 상징하는 색, 소재, 형태를 새로운 제품에 적용하고, 그럴듯하지만 존재하지 않는 제품의 모습을 AI 영상으로 구현한 컨셉 시리즈입니다.",
             projects: ["product-concept-featured", "product-concept-01", "material-motion", "new-scene", "product-concept-02"]
         },
         {
             key: "stock",
+            readMore: {   /* content of the Read More page card */
+                title: "MONEY TALK",
+                subtitle: "AI 비주얼 실험",
+                category: "VISUAL EXPERIMENT",
+                year: "2026",
+                plan: "주식과 금융을 소재로, 친숙하고 직관적인 비주얼 콘텐츠로 제작하였습니다. 금융 관련 메시지를 그래픽과 모션으로 표현하며, 생성형 AI를 활용한 광고형 콘텐츠의 가능성을 탐색했습니다."
+            },
             label: "MONEY TALK",
             title: "MONEY TALK",
-            tagline: "개념을 장면으로",
-            desc: "금융과 기술, 도시의 일상처럼 다양한 콘텐츠에 활용할 수 있는 주제를 시각화했습니다. 추상적인 개념을 직관적인 이미지와 움직임으로 풀어낸 AI 스톡 영상 시리즈입니다.",
             videos: [
                 { title: "쏟아지는 금화", src: "videos/Final.mp4",             poster: "videos/posters/Final.jpg",             w: 720,  h: 1280 },
                 { title: "상승하는 코인", src: "videos/Final_2.mp4",           poster: "videos/posters/Final_2.jpg",           w: 720,  h: 1280 },

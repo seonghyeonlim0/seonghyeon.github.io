@@ -1029,6 +1029,55 @@
         }
         .ai-detail-section .ai-cards.ai-two-rows .ai-media { width: 100%; }
         .ai-detail-section .ai-detail__head { margin-bottom: 16px; }
+        /* Read More card: breadcrumb + year, title, subtitle, 기획 방향, OUTPUT gallery */
+        .ai-rm {
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: clamp(18px, 2.4vw, 28px) clamp(18px, 2.6vw, 32px) clamp(22px, 3vw, 34px);
+        }
+        .ai-rm__top {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: var(--fs-role);
+            letter-spacing: 0.02em;
+            color: var(--muted);
+        }
+        .ai-rm__title {
+            margin: clamp(22px, 3.4vw, 40px) 0 0;
+            font-size: clamp(30px, 3.6vw, 48px);
+            font-weight: normal;
+            line-height: 1.1;
+            letter-spacing: 0.01em;
+            color: var(--ink);
+            word-break: keep-all;
+        }
+        .ai-rm__sub {
+            margin: 14px 0 0;
+            font-size: var(--fs-body);
+            color: var(--muted);
+            word-break: keep-all;
+        }
+        .ai-rm__sec {
+            margin-top: clamp(18px, 2.6vw, 28px);
+            padding-top: clamp(16px, 2.2vw, 24px);
+            border-top: 1px solid var(--line);
+        }
+        .ai-rm__sec h3 {
+            margin: 0 0 8px;
+            font-size: var(--fs-body);
+            font-weight: bold;
+            color: var(--ink);
+        }
+        .ai-rm__sec p {
+            margin: 0;
+            font-size: var(--fs-body);
+            line-height: 1.7;
+            color: var(--ink);
+            word-break: keep-all;
+        }
+        .ai-rm__sec .ai-cards { margin-top: 14px; }
+        .ai-detail-section .ai-rm .ai-cards .ai-media { width: 100%; }
         .ai-detail-section .ai-cards .ai-media { width: min(100%, max(96px, calc((100vh - 270px) * 9 / 16))); }
         .ai-detail-section .case-back { margin-bottom: 14px; }
 
@@ -1697,10 +1746,16 @@
         function renderAiMore(key) {
             var D2 = window.AI_WORKS, el = document.getElementById("aiDetail"), g = aiGroupByKey(key);
             if (!el || !g) return;
-            el.innerHTML = '<button class="case-back" type="button" data-ai-open="">' + window.AI_WORKS.labels.back + "</button>" +
-                '<header class="ai-detail__head"><h2 class="ai-detail__title">' + aiEsc(g.label || g.title) + "</h2></header>" +
-                aiList(aiGroupItems(g), aiMoreCols(aiGroupItems(g).length), aiGroupItems(g).length > 5);
-            document.title = g.title + " — AI Works — LIM";
+            var rm = g.readMore || {}, items = aiGroupItems(g, true);
+            el.innerHTML = '<button class="case-back" type="button" data-ai-open="">' + D2.labels.back + "</button>" +
+                '<article class="ai-rm">' +
+                '<div class="ai-rm__top"><span>AI WORKS' + (rm.category ? " / " + aiEsc(rm.category) : "") + "</span><span>" + aiEsc(rm.year || "") + "</span></div>" +
+                '<h2 class="ai-rm__title">' + aiEsc(rm.title || g.label || g.title) + "</h2>" +
+                (rm.subtitle ? '<p class="ai-rm__sub">' + aiEsc(rm.subtitle) + "</p>" : "") +
+                (rm.plan ? '<section class="ai-rm__sec"><h3>기획 방향</h3><p>' + aiEsc(rm.plan) + "</p></section>" : "") +
+                '<section class="ai-rm__sec"><h3>OUTPUT</h3>' + aiList(items, aiMoreCols(items.length), items.length > 5) + "</section>" +
+                "</article>";
+            document.title = (rm.title || g.title) + " — AI Works — LIM";
         }
 
         function renderAiDetail(id) {
