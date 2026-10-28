@@ -212,10 +212,10 @@ window.AI_WORKS = {
                 { title: "MIU MIU X 꽃신",       src: "videos/miumiu-kkotsin.mp4", poster: "videos/posters/miumiu-kkotsin.jpg", w: 1080, h: 1920 },
                 { title: "BVLGARI X 청자",       src: "videos/bulgari.mp4",        poster: "videos/posters/bulgari.jpg",        w: 1080, h: 1920 },
                 { title: "ZIPPO X 화로대",       src: "videos/zippo-hwarotae.mp4", poster: "videos/posters/zippo-hwarotae.jpg", w: 1080, h: 1920 },
-                { title: "조선의 종 치는 법",     src: "videos/joseon-bell.mp4",    poster: "videos/posters/joseon-bell.jpg",    w: 720,  h: 1280 },
-                { title: "기와가 쓰러지는 날",     src: "videos/joseon-domino.mp4",  poster: "videos/posters/joseon-domino.jpg",  w: 720,  h: 1280 },
-                { title: "조선의 빠른 배송",      src: "videos/joseon-rocket.mp4",  poster: "videos/posters/joseon-rocket.jpg",  w: 1080, h: 1920 },
-                { title: "조선의 자동판매기",     src: "videos/joseon-vending.mp4", poster: "videos/posters/joseon-vending.jpg", w: 1080, h: 1920 }
+                { title: "조선의 종 치는 법",     src: "videos/joseon-bell.mp4",    poster: "videos/posters/joseon-bell.jpg?v=2",    w: 720,  h: 1280 },
+                { title: "기와가 쓰러지는 날",     src: "videos/joseon-domino.mp4",  poster: "videos/posters/joseon-domino.jpg?v=2",  w: 720,  h: 1280 },
+                { title: "조선의 빠른 배송",      src: "videos/joseon-rocket.mp4",  poster: "videos/posters/joseon-rocket.jpg?v=2",  w: 1080, h: 1920 },
+                { title: "조선의 자동판매기",     src: "videos/joseon-vending.mp4", poster: "videos/posters/joseon-vending.jpg?v=2", w: 1080, h: 1920 }
             ]
         }
     },
