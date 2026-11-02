@@ -53,7 +53,9 @@ window.AI_WORKS = {
                 { title: "대장간", src: "videos/beom-forge.mp4",    poster: "videos/posters/beom-forge.jpg?v=2",    w: 720, h: 1280 },
                 { title: "도자기", src: "videos/beom-pottery.mp4",  poster: "videos/posters/beom-pottery.jpg",   w: 720, h: 1280 },
                 { title: "산군", src: "videos/beom-sangun.mp4",   poster: "videos/posters/beom-sangun.jpg",    w: 720, h: 1280 },
-                { title: "널뛰기", src: "videos/beom-seesaw.mp4",   poster: "videos/posters/beom-seesaw.jpg",    w: 720, h: 1280 }
+                { title: "널뛰기", src: "videos/beom-seesaw.mp4",   poster: "videos/posters/beom-seesaw.jpg",    w: 720, h: 1280 },
+                { title: "연날리기", src: "videos/beom-kite.mp4",     poster: "videos/posters/beom-kite.jpg",      w: 720, h: 1280 },
+                { title: "말타기", src: "videos/beom-horse.mp4",    poster: "videos/posters/beom-horse.jpg",     w: 720, h: 1280 }
             ]
         },
         {
