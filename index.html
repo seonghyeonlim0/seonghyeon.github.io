@@ -1045,6 +1045,8 @@
         .bc-grid figure.is-wide { grid-column: 1 / -1; }
         .bc-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .bc-grid--2 figure.is-wide { grid-column: auto; }
+        /* logo + symbol: same box height, original ratios kept (both images are on pure black) */
+        .bc-grid--2 img { aspect-ratio: 3 / 2; object-fit: contain; background: rgb(2, 2, 2); }
         .bc-grid img { display: block; width: 100%; height: auto; border-radius: 4px; cursor: zoom-in; }
         .bc-grid--video figure:not(.is-wide) { max-width: 260px; }
         .bc-grid--video .ai-media { width: 100%; }
