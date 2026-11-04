@@ -1,7 +1,7 @@
 /* ==========================================================================
-   BRAND CONCEPTS — content data (single source of truth for #/brand-concepts)
+   BRAND LAB — content data (single source of truth for #/brand-lab; the old #/brand-concepts URL still works)
 
-   The list page and every detail page (#/brand-concepts/<slug>) are rendered
+   The list page and every detail page (#/brand-lab/<slug>) are rendered
    from this object. To add another fictional brand, copy the LUNÉVE object in
    `projects` and change the fields.
 
@@ -19,12 +19,12 @@
 window.BRAND_CONCEPTS = {
 
     /* list page */
-    title: "BRAND CONCEPTS",
+    title: "BRAND LAB",
     intro: "가상의 브랜드를 기획하고, 브랜드 아이덴티티부터 제품 비주얼과 광고 콘텐츠까지 구현한 개인 프로젝트입니다. 브랜드의 컨셉와 시각적 방향을 설계하고, 생성형 AI를 활용해 다양한 형태의 콘텐츠로 확장합니다.",
 
     /* shared small labels */
     labels: {
-        back: "← BRAND CONCEPTS",
+        back: "← BRAND LAB",
         readMore: "Read More",
         pending: "준비 중",
         disclaimer: "LUNÉVE는 실제로 판매되는 브랜드가 아닌, 개인 가상 브랜드 프로젝트입니다. 현재 제작 진행 중인 작업입니다."
