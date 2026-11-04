@@ -87,7 +87,10 @@ window.BRAND_CONCEPTS = {
 
             /* 02 BRAND IDENTITY  ([{ src, alt, w, h }]) */
             identityAssets: {
-                logo: [],          /* 01 LOGO & SYMBOL: wordmark, symbol, logo usage */
+                logo: [            /* 01 LOGO & SYMBOL: wordmark, symbol, logo usage */
+                    { src: "assets/brand-concepts/luneve/identity/wordmark.jpg", alt: "LUNÉVE wordmark", w: 2000, h: 1185 },
+                    { src: "assets/brand-concepts/luneve/identity/symbol.jpg",   alt: "LUNÉVE symbol",   w: 2000, h: 1333 }
+                ],
                 color: [],         /* 02 COLOR PALETTE: main / sub colours, usage */
                 typography: [],    /* 03 TYPOGRAPHY: main / sub type, applications */
                 application: []    /* 04 BRAND APPLICATION: packaging / brand applications */

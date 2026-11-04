@@ -1043,6 +1043,8 @@
         }
         .bc-grid figure { margin: 0; }
         .bc-grid figure.is-wide { grid-column: 1 / -1; }
+        .bc-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .bc-grid--2 figure.is-wide { grid-column: auto; }
         .bc-grid img { display: block; width: 100%; height: auto; border-radius: 4px; cursor: zoom-in; }
         .bc-grid--video figure:not(.is-wide) { max-width: 260px; }
         .bc-grid--video .ai-media { width: 100%; }
@@ -1854,9 +1856,9 @@
         function bcPending() { return '<p class="bc-pending">' + aiEsc(window.BRAND_CONCEPTS.labels.pending) + "</p>"; }
 
         /* image grid: wide images take a full row, portrait images sit in 2-3 columns; original ratios are kept */
-        function bcImages(list) {
+        function bcImages(list, cols) {
             if (!list || !list.length) return bcPending();
-            return '<div class="bc-grid">' + list.map(function (it) {
+            return '<div class="bc-grid' + (cols === 2 ? " bc-grid--2" : "") + '">' + list.map(function (it) {
                 var wide = it.w && it.h && it.w / it.h > 1.2;
                 return '<figure class="' + (wide ? "is-wide" : "") + '"><img src="' + aiEsc(it.src) + '" data-full="' + aiEsc(it.src) + '" alt="' + aiEsc(it.alt || "") + '"' +
                     (it.w && it.h ? ' width="' + it.w + '" height="' + it.h + '"' : "") + ' loading="lazy" decoding="async"></figure>';
@@ -1921,7 +1923,7 @@
 
             /* 02 BRAND IDENTITY */
             html += bcSection(S.identity,
-                bcSub("01. LOGO & SYMBOL", bcImages(id.logo)) + bcSub("02. COLOR PALETTE", bcImages(id.color)) +
+                bcSub("01. LOGO & SYMBOL", bcImages(id.logo, 2)) + bcSub("02. COLOR PALETTE", bcImages(id.color)) +
                 bcSub("03. TYPOGRAPHY", bcImages(id.typography)) + bcSub("04. BRAND APPLICATION", bcImages(id.application)));
 
             /* 03 PRODUCT & VISUAL */
