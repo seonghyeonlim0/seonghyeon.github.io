@@ -146,7 +146,9 @@ window.BRAND_CONCEPTS = {
 
             /* 04 AI CAMPAIGN */
             campaignVideos: {
-                film: [],          /* 01 BRAND FILM: [{ src, poster, w, h, title }] */
+                film: [            /* 01 BRAND FILM: [{ src, poster, w, h, title }] */
+                    { src: "assets/brand-concepts/luneve/video/brand-film.mp4", poster: "assets/brand-concepts/luneve/video/brand-film.jpg", w: 1920, h: 1080, title: "LUNÉVE Brand Film" }
+                ],
                 shortForm: []      /* 02 SHORT-FORM CONTENT: vertical videos, same shape */
             },
             campaignImages: []     /* 03 CAMPAIGN VISUAL: [{ src, alt, w, h }] */
