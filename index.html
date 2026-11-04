@@ -1025,6 +1025,41 @@
             color: var(--ink);
             word-break: keep-all;
         }
+        .bc-hero__tag {
+            margin: 12px 0 0;
+            font-size: var(--fs-label);
+            letter-spacing: 0.06em;
+            color: var(--muted);
+        }
+        .bc-pairs {
+            display: grid;
+            grid-template-columns: max-content minmax(0, 1fr);
+            gap: 8px 22px;
+            max-width: 72ch;
+            margin: 0 0 18px;
+            font-size: var(--fs-body);
+            line-height: 1.7;
+        }
+        .bc-pairs dt { color: var(--muted); font-size: var(--fs-label); letter-spacing: 0.06em; padding-top: 2px; }
+        .bc-pairs dd { margin: 0; color: var(--ink); word-break: keep-all; }
+        .bc-colors {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: clamp(12px, 1.6vw, 20px);
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .bc-colors li { display: flex; flex-direction: column; gap: 2px; font-size: var(--fs-label); color: var(--muted); }
+        .bc-colors strong { color: var(--ink); font-weight: normal; font-size: var(--fs-body); margin-top: 8px; }
+        .bc-swatch {
+            display: block;
+            aspect-ratio: 4 / 3;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+        .bc-ratio { display: flex; height: 14px; margin-top: 22px; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+        .bc-ratio__label { margin: 8px 0 0; font-size: var(--fs-role); color: var(--muted); }
         .bc-keywords {
             display: flex;
             flex-wrap: wrap;
@@ -1053,6 +1088,9 @@
         @media (max-width: 760px) {
             .bc-card { grid-template-columns: minmax(0, 1fr); }
             .bc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .bc-colors { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .bc-pairs { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+            .bc-pairs dd { margin-bottom: 10px; }
         }
         .ai-creator-section,
         .ai-detail-section {
@@ -1873,6 +1911,29 @@
                 return '<figure class="' + (wide ? "is-wide" : "") + '">' + aiMedia({ src: v.src, poster: v.poster, w: v.w, h: v.h, title: v.title || "" }) + "</figure>";
             }).join("") + "</div>";
         }
+        /* small "LABEL — text" list shown above a sub-section's images */
+        function bcPairs(arr) {
+            if (!arr || !arr.length) return "";
+            return '<dl class="bc-pairs">' + arr.map(function (r) { return "<dt>" + aiEsc(r.label) + "</dt><dd>" + aiEsc(r.text) + "</dd>"; }).join("") + "</dl>";
+        }
+        /* texts + images for one sub-section; "준비 중" only when there is neither */
+        function bcBlock(texts, images, cols) {
+            var hasImg = images && images.length;
+            return bcPairs(texts) + (hasImg ? bcImages(images, cols) : (texts && texts.length ? "" : bcPending()));
+        }
+        function bcColors(p) {
+            if (!p.colors || !p.colors.length) return "";
+            var html = '<ul class="bc-colors">' + p.colors.map(function (c) {
+                return '<li><span class="bc-swatch" style="background:' + aiEsc(c.hex) + '"></span><strong>' + aiEsc(c.name) + "</strong>" +
+                    "<span>" + aiEsc(c.hex) + " · " + aiEsc(c.type) + "</span><span>" + aiEsc(c.role) + "</span></li>";
+            }).join("") + "</ul>";
+            if (p.colorRatio && p.colorRatio.length) {
+                html += '<div class="bc-ratio" role="img" aria-label="' + aiEsc(p.colorRatio.map(function (r) { return r.label + " " + r.value; }).join(" / ")) + '">' +
+                    p.colorRatio.map(function (r) { return '<span style="flex:' + r.value + ';background:' + aiEsc(r.hex) + '"></span>'; }).join("") + "</div>" +
+                    '<p class="bc-ratio__label">초기 배분 기준 ' + aiEsc(p.colorRatio.map(function (r) { return r.label + " " + r.value; }).join(" / ")) + "</p>";
+            }
+            return html;
+        }
         function bcSub(label, body) { return '<div class="bc-sub"><h4>' + aiEsc(label) + "</h4>" + body + "</div>"; }
         function bcSection(sec, bodyHtml) {
             return '<section class="bc-section"><header><h3 class="bc-section__title">' + aiEsc(sec.title) + '</h3><p class="bc-section__sub">' + aiEsc(sec.subtitle) + "</p>" +
@@ -1905,7 +1966,7 @@
         function renderBrandConceptDetail(slug) {
             var D = window.BRAND_CONCEPTS, el = document.getElementById("brandConceptDetail"), p = bcFind(slug);
             if (!D || !el || !p) return;
-            var S = p.sections, ov = p.overview, id = p.identityAssets, pr = p.productImages, cv = p.campaignVideos, html = "";
+            var T = p.texts || {}, S = p.sections, ov = p.overview, id = p.identityAssets, pr = p.productImages, cv = p.campaignVideos, html = "";
 
             /* HERO */
             html += '<button class="case-back" type="button" data-bc-open="">' + aiEsc(D.labels.back) + "</button>";
@@ -1913,8 +1974,9 @@
                 (p.heroImage ? '<div class="bc-hero__img"><img src="' + aiEsc(p.heroImage) + '" alt="' + aiEsc(p.brandName) + ' key visual" width="' + p.heroImageSize.w + '" height="' + p.heroImageSize.h + '" decoding="async"></div>' : "") +
                 '<h2 class="bc-hero__name">' + (p.wordmark ? '<img class="bc-hero__wordmark" src="' + aiEsc(p.wordmark) + '" alt="' + aiEsc(p.brandName) + '">' : aiEsc(p.brandName)) + "</h2>" +
                 '<p class="bc-hero__sub">' + aiEsc(p.subtitle) + "</p>" +
+                (p.tagline ? '<p class="bc-hero__tag">' + aiEsc(p.tagline) + "</p>" : "") +
                 '<p class="bc-hero__desc">' + aiEsc(p.description) + "</p>" +
-                '<dl class="bc-meta"><dt>TYPE</dt><dd>' + aiEsc(p.projectType) + "</dd><dt>YEAR</dt><dd>" + aiEsc(p.year) + "</dd><dt>CATEGORY</dt><dd>" + aiEsc(p.category) + "</dd><dt>ROLE</dt><dd>" + aiEsc(p.role) + "</dd><dt>STATUS</dt><dd>" + aiEsc(p.status) + "</dd></dl>" +
+                '<dl class="bc-meta"><dt>TYPE</dt><dd>' + aiEsc(p.projectType) + "</dd><dt>YEAR</dt><dd>" + aiEsc(p.year) + "</dd><dt>CATEGORY</dt><dd>" + aiEsc(p.category) + "</dd>" + (p.format ? "<dt>FORMAT</dt><dd>" + aiEsc(p.format) + "</dd>" : "") + "<dt>ROLE</dt><dd>" + aiEsc(p.role) + "</dd><dt>STATUS</dt><dd>" + aiEsc(p.status) + "</dd></dl>" +
                 '<p class="bc-note">' + aiEsc(D.labels.disclaimer) + "</p></header>";
 
             /* 01 BRAND OVERVIEW */
@@ -1925,12 +1987,13 @@
 
             /* 02 BRAND IDENTITY */
             html += bcSection(S.identity,
-                bcSub("01. LOGO & SYMBOL", bcImages(id.logo, 2)) + bcSub("02. COLOR PALETTE", bcImages(id.color)) +
-                bcSub("03. TYPOGRAPHY", bcImages(id.typography)) + bcSub("04. BRAND APPLICATION", bcImages(id.application)));
+                bcSub("01. LOGO & SYMBOL", bcBlock(T.logo, id.logo, 2)) +
+                bcSub("02. COLOR PALETTE", bcColors(p) + (id.color && id.color.length ? bcImages(id.color) : (p.colors && p.colors.length ? "" : bcPending()))) +
+                bcSub("03. TYPOGRAPHY", bcBlock(T.typography, id.typography)) + bcSub("04. BRAND APPLICATION", bcBlock(T.application, id.application)));
 
             /* 03 PRODUCT & VISUAL */
             html += bcSection(S.product,
-                bcSub("01. PRODUCT DESIGN", bcImages(pr.design)) + bcSub("02. KEY VISUAL", bcImages(pr.keyVisual)) + bcSub("03. VISUAL APPLICATION", bcImages(pr.application)));
+                bcSub("01. PRODUCT DESIGN", bcBlock(T.design, pr.design)) + bcSub("02. KEY VISUAL", bcBlock(T.keyVisual, pr.keyVisual)) + bcSub("03. VISUAL APPLICATION", bcImages(pr.application)));
 
             /* 04 AI CAMPAIGN */
             html += bcSection(S.campaign,
