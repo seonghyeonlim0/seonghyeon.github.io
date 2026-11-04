@@ -284,7 +284,7 @@
         }
 
         .motion-graphic-section, .contact-section,
-        .project-manager-section, .ai-creator-section, .ai-detail-section, .case-section {
+        .project-manager-section, .brand-concepts-section, .brand-concept-detail-section, .ai-creator-section, .ai-detail-section, .case-section {
             display: none;
         }
 
@@ -879,6 +879,177 @@
         }
 
         /* ---------- AI CREATOR videos ---------- */
+        /* ---------- BRAND CONCEPTS ---------- */
+        .brand-concepts-section,
+        .brand-concept-detail-section {
+            width: 100%;
+            max-width: 1100px;
+        }
+        .bc-pending {
+            margin: 0;
+            font-size: var(--fs-label);
+            color: var(--muted);
+        }
+        .bc-meta {
+            display: grid;
+            grid-template-columns: max-content minmax(0, 1fr);
+            gap: 6px 20px;
+            margin: 18px 0 0;
+            font-size: var(--fs-label);
+            line-height: 1.6;
+        }
+        .bc-meta dt { color: var(--muted); letter-spacing: 0.04em; }
+        .bc-meta dd { margin: 0; color: var(--ink); word-break: keep-all; }
+
+        /* list page */
+        .bc-list {
+            list-style: none;
+            margin: clamp(28px, 4vw, 44px) 0 0;
+            padding: 0;
+        }
+        .bc-card {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+            gap: clamp(20px, 3.4vw, 48px);
+            align-items: start;
+        }
+        .bc-card__img {
+            display: block;
+            aspect-ratio: 16 / 10;
+            background: var(--card);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .bc-card__img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        .bc-card__type {
+            margin: 0 0 6px;
+            font-size: var(--fs-role);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+        .bc-card__name {
+            margin: 0 0 4px;
+            font-size: clamp(26px, 3vw, 38px);
+            font-weight: normal;
+            line-height: 1.15;
+            letter-spacing: 0.02em;
+            color: var(--ink);
+        }
+        .bc-card__sub {
+            margin: 0 0 14px;
+            font-size: var(--fs-body);
+            color: var(--muted);
+        }
+        .bc-card__desc {
+            margin: 0;
+            font-size: var(--fs-body);
+            line-height: 1.7;
+            color: var(--ink);
+            word-break: keep-all;
+        }
+        .bc-card .ai-more { margin-top: 18px; }
+
+        /* detail page */
+        .bc-hero { margin: 0 0 clamp(40px, 6vw, 72px); }
+        .bc-hero__img { margin: 0 0 clamp(20px, 3vw, 32px); border-radius: 6px; overflow: hidden; background: var(--card); }
+        .bc-hero__img img { display: block; width: 100%; height: auto; }
+        .bc-hero__name {
+            margin: 0;
+            font-size: clamp(40px, 6vw, 72px);
+            font-weight: normal;
+            line-height: 1.05;
+            letter-spacing: 0.04em;
+            color: var(--ink);
+        }
+        .bc-hero__wordmark { display: block; height: clamp(40px, 6vw, 72px); width: auto; }
+        .bc-hero__sub {
+            margin: 10px 0 0;
+            font-size: var(--fs-sub);
+            color: var(--muted);
+        }
+        .bc-hero__desc {
+            max-width: 62ch;
+            margin: 18px 0 0;
+            font-size: var(--fs-body);
+            line-height: 1.75;
+            color: var(--ink);
+            word-break: keep-all;
+        }
+        .bc-note {
+            max-width: 62ch;
+            margin: 18px 0 0;
+            font-size: var(--fs-role);
+            line-height: 1.6;
+            color: var(--muted);
+            word-break: keep-all;
+        }
+        .bc-section {
+            margin: 0 0 clamp(44px, 7vw, 84px);
+            padding-top: clamp(20px, 3vw, 32px);
+            border-top: 1px solid var(--line);
+        }
+        .bc-section__title {
+            margin: 0;
+            font-size: clamp(22px, 2.6vw, 32px);
+            font-weight: normal;
+            letter-spacing: 0.04em;
+            color: var(--ink);
+        }
+        .bc-section__sub {
+            margin: 6px 0 0;
+            font-size: var(--fs-label);
+            color: var(--muted);
+        }
+        .bc-section__intro {
+            max-width: 62ch;
+            margin: 14px 0 0;
+            font-size: var(--fs-body);
+            line-height: 1.75;
+            color: var(--ink);
+            word-break: keep-all;
+        }
+        .bc-sub { margin-top: clamp(22px, 3vw, 34px); }
+        .bc-sub h4 {
+            margin: 0 0 10px;
+            font-size: var(--fs-label);
+            font-weight: bold;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+        }
+        .bc-sub > p:not(.bc-pending) {
+            max-width: 62ch;
+            margin: 0;
+            font-size: var(--fs-body);
+            line-height: 1.7;
+            color: var(--ink);
+            word-break: keep-all;
+        }
+        .bc-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-size: var(--fs-body);
+            color: var(--ink);
+        }
+        .bc-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: clamp(12px, 1.6vw, 20px);
+            align-items: start;
+        }
+        .bc-grid figure { margin: 0; }
+        .bc-grid figure.is-wide { grid-column: 1 / -1; }
+        .bc-grid img { display: block; width: 100%; height: auto; border-radius: 4px; cursor: zoom-in; }
+        .bc-grid--video figure:not(.is-wide) { max-width: 260px; }
+        .bc-grid--video .ai-media { width: 100%; }
+        @media (max-width: 760px) {
+            .bc-card { grid-template-columns: minmax(0, 1fr); }
+            .bc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
         .ai-creator-section,
         .ai-detail-section {
             width: 100%;
@@ -1408,11 +1579,14 @@
         }
     </style>
     <script src="ai-works-data.js" defer></script>
+    <script src="brand-concepts-data.js" defer></script>
     <script>
         var SECTIONS = [
             "intro-section",
             "project-manager-section",
             "motion-graphic-section",
+            "brand-concepts-section",
+            "brand-concept-detail-section",
             "ai-creator-section",
             "ai-detail-section",
             "contact-section",
@@ -1448,6 +1622,7 @@
             "intro-section": "",
             "project-manager-section": "project-manager",
             "motion-graphic-section": "motion-graphic",
+            "brand-concepts-section": "brand-concepts",
             "ai-creator-section": "ai-creator",
             "contact-section": "contact",
             "case-techlove-section": "case/techlove",
@@ -1485,6 +1660,7 @@
             "intro-section": "LIM, Content Creator",
             "project-manager-section": "Brand Projects — LIM",
             "motion-graphic-section": "Motion & 3D Works — LIM",
+            "brand-concepts-section": "Brand Concepts — LIM",
             "ai-creator-section": "Personal AI Works — LIM",
             "contact-section": "Contact — LIM",
             "case-techlove-section": "TECHLOVE 목견인기 — LIM",
@@ -1516,6 +1692,8 @@
         /* which sidebar nav item (by order) should light up for a given section */
         var NAV_INDEX = {
             "intro-section": 0,
+            "brand-concepts-section": 2,
+            "brand-concept-detail-section": 2,
             "project-manager-section": 1,
             "case-netflix-outdoor-section": 1,
             "case-newsletter-section": 1,
@@ -1532,25 +1710,26 @@
             "case-ambasa-section": 1,
             "case-powerade-baseball-section": 1,
             "case-georgia-coffee-section": 1,
-            "motion-graphic-section": 2,
-            "case-techlove-section": 2,
-            "case-wristbrace-section": 2,
-            "case-casacaffe-section": 2,
-            "case-steamvac-section": 2,
-            "case-queenlabel-section": 2,
-            "case-drbarn-section": 2,
-            "case-3dartwork-section": 2,
-            "case-puricare-section": 2,
-            "case-gukgabohun-section": 2,
-            "case-plantlance-section": 2,
-            "ai-creator-section": 3,
-            "ai-detail-section": 3,
-            "contact-section": 4
+            "motion-graphic-section": 3,
+            "case-techlove-section": 3,
+            "case-wristbrace-section": 3,
+            "case-casacaffe-section": 3,
+            "case-steamvac-section": 3,
+            "case-queenlabel-section": 3,
+            "case-drbarn-section": 3,
+            "case-3dartwork-section": 3,
+            "case-puricare-section": 3,
+            "case-gukgabohun-section": 3,
+            "case-plantlance-section": 3,
+            "ai-creator-section": 4,
+            "ai-detail-section": 4,
+            "contact-section": 5
         };
 
         function sectionFromHash() {
             var slug = location.hash.replace(/^#\/?/, "");
             if (aiIdFromHash() || aiMoreFromHash()) return "ai-detail-section"; /* #/ai-creator/<project id> */
+            if (bcSlugFromHash()) return "brand-concept-detail-section"; /* #/brand-concepts/<slug> */
             return SLUG_TO_SECTION.hasOwnProperty(slug) ? SLUG_TO_SECTION[slug] : "intro-section";
         }
 
@@ -1572,6 +1751,7 @@
 
         /* URL hash for a section (the AI project detail carries its id) */
         function hashFor(name) {
+            if (name === "brand-concept-detail-section") return "#/brand-concepts/" + (bcSlugFromHash() || "");
             if (name === "ai-detail-section") {
                 var mk = aiMoreFromHash();
                 return mk ? "#/ai-creator/more/" + mk : "#/ai-creator/" + (aiIdFromHash() || "");
@@ -1580,6 +1760,7 @@
         }
 
         function showSection(name) {
+            if (name === "brand-concept-detail-section") renderBrandConceptDetail(bcSlugFromHash());
             if (name === "ai-detail-section") {
                 var mk = aiMoreFromHash();
                 if (mk) renderAiMore(mk); else renderAiDetail(aiIdFromHash());
@@ -1601,13 +1782,13 @@
                         if (!v.paused) v.pause();
                     });
                     /* the AI detail page is rebuilt on every visit; dropping it frees its video */
-                    if (cls === "ai-detail-section" && el.firstChild) el.innerHTML = "";
+                    if ((cls === "ai-detail-section" || cls === "brand-concept-detail-section") && el.firstChild) el.innerHTML = "";
                 }
             });
             var content = document.querySelector(".content");
             if (content) content.scrollTop = 0;
             syncActiveNav(name);
-            if (name !== "ai-detail-section") {
+            if (name !== "ai-detail-section" && name !== "brand-concept-detail-section") {
                 document.title = SECTION_TITLES[name] || SECTION_TITLES["intro-section"];
             }
         }
@@ -1628,6 +1809,7 @@
         function showHome() { navigate("intro-section"); }
         function showProjectManager() { navigate("project-manager-section"); }
         function showMotionGraphic() { navigate("motion-graphic-section"); }
+        function showBrandConcepts() { navigate("brand-concepts-section"); }
         function showAiCreator() { navigate("ai-creator-section"); }
         function showContact() { navigate("contact-section"); }
         function showCaseTechlove() { navigate("case-techlove-section"); }
@@ -1655,6 +1837,141 @@
         function showCaseAmbasa() { navigate("case-ambasa-section"); }
         function showCasePoweradeBaseball() { navigate("case-powerade-baseball-section"); }
         function showCaseGeorgiaCoffee() { navigate("case-georgia-coffee-section"); }
+
+        /* ---------- BRAND CONCEPTS (rendered from brand-concepts-data.js) ---------- */
+        function bcProjects() { return (window.BRAND_CONCEPTS && window.BRAND_CONCEPTS.projects) || []; }
+        function bcFind(slug) {
+            var list = bcProjects();
+            for (var i = 0; i < list.length; i++) if (list[i].slug === slug) return list[i];
+            return null;
+        }
+        function bcSlugFromHash() {
+            var m = location.hash.replace(/^#\/?/, "").match(/^brand-concepts\/([^\/?#]+)$/);
+            if (!m) return null;
+            var slug = decodeURIComponent(m[1]);
+            return bcFind(slug) ? slug : null;
+        }
+        function bcPending() { return '<p class="bc-pending">' + aiEsc(window.BRAND_CONCEPTS.labels.pending) + "</p>"; }
+
+        /* image grid: wide images take a full row, portrait images sit in 2-3 columns; original ratios are kept */
+        function bcImages(list) {
+            if (!list || !list.length) return bcPending();
+            return '<div class="bc-grid">' + list.map(function (it) {
+                var wide = it.w && it.h && it.w / it.h > 1.2;
+                return '<figure class="' + (wide ? "is-wide" : "") + '"><img src="' + aiEsc(it.src) + '" data-full="' + aiEsc(it.src) + '" alt="' + aiEsc(it.alt || "") + '"' +
+                    (it.w && it.h ? ' width="' + it.w + '" height="' + it.h + '"' : "") + ' loading="lazy" decoding="async"></figure>';
+            }).join("") + "</div>";
+        }
+        function bcVideos(list) {
+            if (!list || !list.length) return bcPending();
+            return '<div class="bc-grid bc-grid--video">' + list.map(function (v) {
+                var wide = v.w / v.h > 1.2;
+                return '<figure class="' + (wide ? "is-wide" : "") + '">' + aiMedia({ src: v.src, poster: v.poster, w: v.w, h: v.h, title: v.title || "" }) + "</figure>";
+            }).join("") + "</div>";
+        }
+        function bcSub(label, body) { return '<div class="bc-sub"><h4>' + aiEsc(label) + "</h4>" + body + "</div>"; }
+        function bcSection(sec, bodyHtml) {
+            return '<section class="bc-section"><header><h3 class="bc-section__title">' + aiEsc(sec.title) + '</h3><p class="bc-section__sub">' + aiEsc(sec.subtitle) + "</p>" +
+                '<p class="bc-section__intro">' + aiEsc(sec.intro) + "</p></header>" + bodyHtml + "</section>";
+        }
+        function bcText(label, text) {
+            return '<div class="bc-sub"><h4>' + aiEsc(label) + "</h4>" + (text ? "<p>" + aiEsc(text) + "</p>" : bcPending()) + "</div>";
+        }
+
+        function renderBrandConcepts() {
+            var D = window.BRAND_CONCEPTS, root = document.getElementById("brandConcepts");
+            if (!D || !root) return;
+            var html = '<div class="ai-creator-text"><h2>' + aiEsc(D.title) + "</h2><p>" + aiEsc(D.intro) + "</p></div>";
+            html += '<ul class="bc-list">';
+            D.projects.forEach(function (p) {
+                var href = "#/brand-concepts/" + aiEsc(p.slug);
+                html += '<li><article class="bc-card"><a class="bc-card__img" href="' + href + '" data-bc-open="' + aiEsc(p.slug) + '" aria-label="' + aiEsc(p.brandName) + '">' +
+                    (p.heroImage ? '<img src="' + aiEsc(p.heroImage) + '" alt="" loading="lazy" decoding="async">' : "") + "</a>" +
+                    '<div class="bc-card__body"><p class="bc-card__type">' + aiEsc(p.projectType.split(" / ")[0]) + "</p>" +
+                    '<h3 class="bc-card__name">' + aiEsc(p.brandName) + "</h3>" +
+                    '<p class="bc-card__sub">' + aiEsc(p.subtitle) + "</p>" +
+                    '<p class="bc-card__desc">' + aiEsc(p.summary) + "</p>" +
+                    '<dl class="bc-meta"><dt>Project Type</dt><dd>' + aiEsc(p.projectType) + "</dd><dt>Category</dt><dd>" + aiEsc(p.category) + "</dd><dt>Year</dt><dd>" + aiEsc(p.year) + "</dd><dt>Scope</dt><dd>" + aiEsc(p.scope) + "</dd></dl>" +
+                    '<a class="ai-more" href="' + href + '" data-bc-open="' + aiEsc(p.slug) + '">' + aiEsc(D.labels.readMore) + "</a></div></article></li>";
+            });
+            html += "</ul>";
+            root.innerHTML = html;
+        }
+
+        function renderBrandConceptDetail(slug) {
+            var D = window.BRAND_CONCEPTS, el = document.getElementById("brandConceptDetail"), p = bcFind(slug);
+            if (!D || !el || !p) return;
+            var S = p.sections, ov = p.overview, id = p.identityAssets, pr = p.productImages, cv = p.campaignVideos, html = "";
+
+            /* HERO */
+            html += '<button class="case-back" type="button" data-bc-open="">' + aiEsc(D.labels.back) + "</button>";
+            html += '<header class="bc-hero">' +
+                (p.heroImage ? '<div class="bc-hero__img"><img src="' + aiEsc(p.heroImage) + '" alt="' + aiEsc(p.brandName) + ' key visual" width="' + p.heroImageSize.w + '" height="' + p.heroImageSize.h + '" decoding="async"></div>' : "") +
+                '<h2 class="bc-hero__name">' + (p.wordmark ? '<img class="bc-hero__wordmark" src="' + aiEsc(p.wordmark) + '" alt="' + aiEsc(p.brandName) + '">' : aiEsc(p.brandName)) + "</h2>" +
+                '<p class="bc-hero__sub">' + aiEsc(p.subtitle) + "</p>" +
+                '<p class="bc-hero__desc">' + aiEsc(p.description) + "</p>" +
+                '<dl class="bc-meta"><dt>TYPE</dt><dd>' + aiEsc(p.projectType) + "</dd><dt>YEAR</dt><dd>" + aiEsc(p.year) + "</dd><dt>CATEGORY</dt><dd>" + aiEsc(p.category) + "</dd><dt>ROLE</dt><dd>" + aiEsc(p.role) + "</dd><dt>STATUS</dt><dd>" + aiEsc(p.status) + "</dd></dl>" +
+                '<p class="bc-note">' + aiEsc(D.labels.disclaimer) + "</p></header>";
+
+            /* 01 BRAND OVERVIEW */
+            html += bcSection(S.overview,
+                bcText("01. 브랜드 콘셉트", ov.concept) + bcText("02. 브랜드 무드 및 방향성", ov.mood) + bcText("03. 타깃 고객", ov.target) +
+                bcSub("04. 브랜드 키워드", ov.keywords && ov.keywords.length ? '<ul class="bc-keywords">' + ov.keywords.map(function (k) { return "<li>" + aiEsc(k) + "</li>"; }).join("") + "</ul>" : bcPending()) +
+                bcSub("05. 무드보드", bcImages(ov.moodboard)));
+
+            /* 02 BRAND IDENTITY */
+            html += bcSection(S.identity,
+                bcSub("01. LOGO & SYMBOL", bcImages(id.logo)) + bcSub("02. COLOR PALETTE", bcImages(id.color)) +
+                bcSub("03. TYPOGRAPHY", bcImages(id.typography)) + bcSub("04. BRAND APPLICATION", bcImages(id.application)));
+
+            /* 03 PRODUCT & VISUAL */
+            html += bcSection(S.product,
+                bcSub("01. PRODUCT DESIGN", bcImages(pr.design)) + bcSub("02. KEY VISUAL", bcImages(pr.keyVisual)) + bcSub("03. VISUAL APPLICATION", bcImages(pr.application)));
+
+            /* 04 AI CAMPAIGN */
+            html += bcSection(S.campaign,
+                bcSub("01. BRAND FILM", bcVideos(cv.film)) + bcSub("02. SHORT-FORM CONTENT", bcVideos(cv.shortForm)) + bcSub("03. CAMPAIGN VISUAL", bcImages(p.campaignImages)));
+
+            html += '<button class="case-back" type="button" data-bc-open="">' + aiEsc(D.labels.back) + "</button>";
+            el.innerHTML = html;
+            document.title = p.brandName + " — Brand Concepts — LIM";
+        }
+
+        function openBrandConcept(slug) {
+            history.pushState({ section: "brand-concept-detail-section" }, "", "#/brand-concepts/" + slug);
+            showSection("brand-concept-detail-section");
+        }
+
+        function initBrandConcepts() {
+            renderBrandConcepts();
+            ["brandConcepts", "brandConceptDetail"].forEach(function (rid) {
+                var root = document.getElementById(rid);
+                if (!root) return;
+                root.addEventListener("click", function (e) {
+                    var play = e.target.closest(".ai-play");
+                    if (play && play.tagName === "BUTTON") { aiMountVideo(play.closest(".ai-media")); return; }
+                    /* images open in the shared lightbox (click again there to zoom to full size) */
+                    var zoom = e.target.closest(".bc-grid img");
+                    if (zoom) {
+                        var lb = document.getElementById("lightbox"), lbImg = document.getElementById("lightboxImg");
+                        if (lb && lbImg) {
+                            lbImg.src = zoom.getAttribute("data-full") || zoom.src;
+                            lbImg.alt = zoom.alt || "";
+                            lb.classList.remove("is-zoomed");
+                            lb.hidden = false;
+                        }
+                        return;
+                    }
+                    var open = e.target.closest("[data-bc-open]");
+                    if (open) {
+                        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+                        e.preventDefault();
+                        var slug = open.getAttribute("data-bc-open");
+                        if (slug) openBrandConcept(slug); else navigate("brand-concepts-section");
+                    }
+                });
+            });
+        }
 
         /* ---------- AI WORKS: rendered from ai-works-data.js (window.AI_WORKS) ---------- */
         function aiEsc(t) {
@@ -1952,6 +2269,7 @@
             /* restore whichever section the URL points at (deep link / reload),
                and normalize the URL so Back/Forward has a starting point. */
             initAiWorks();
+            initBrandConcepts();
             var initial = sectionFromHash();
             showSection(initial);
             history.replaceState({ section: initial }, "", hashFor(initial));
@@ -2006,6 +2324,7 @@
                 <ul>
                     <li><a href="#/" onclick="showHome(); return false;">HOME</a></li>
                     <li><a href="#/project-manager" onclick="showProjectManager(); return false;">BRAND PROJECTS</a></li>
+                    <li><a href="#/brand-concepts" onclick="showBrandConcepts(); return false;">BRAND CONCEPTS</a></li>
                     <li><a href="#/motion-graphic" onclick="showMotionGraphic(); return false;">MOTION &amp; 3D</a></li>
                     <li><a href="#/ai-creator" onclick="showAiCreator(); return false;">AI WORKS</a></li>
                     <li><a href="#/contact" onclick="showContact(); return false;">CONTACT</a></li>
@@ -3014,6 +3333,9 @@
                     </figure>
                 </div>
             </div>
+            <!-- BRAND CONCEPTS: rendered from brand-concepts-data.js (window.BRAND_CONCEPTS) -->
+            <div class="brand-concepts-section" id="brandConcepts"></div>
+            <div class="brand-concept-detail-section" id="brandConceptDetail"></div>
             <!-- AI WORKS: rendered from ai-works-data.js (window.AI_WORKS) -->
             <div class="ai-creator-section" id="aiWorks"></div>
             <div class="ai-detail-section" id="aiDetail"></div>
