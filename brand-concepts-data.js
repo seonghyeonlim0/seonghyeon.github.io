@@ -51,8 +51,8 @@ window.BRAND_CONCEPTS = {
             description: "몽환적이고 신비로운 감성을 기반으로 기획한 가상의 니치 향수 브랜드입니다. 브랜드 컨셉부터 비주얼 아이덴티티, 제품 디자인과 광고 콘텐츠까지 일관된 세계관으로 구현하는 것을 목표로 합니다.",
 
             /* images. Empty string / [] = not available yet (shows a quiet placeholder, nothing invented) */
-            heroImage: "",            /* e.g. "assets/brand-concepts/luneve/hero.jpg" (card image + hero key visual) */
-            heroImageSize: { w: 16, h: 9 },
+            heroImage: "assets/brand-concepts/luneve/hero.jpg",   /* card image on the list page + key visual at the top of the detail page */
+            heroImageSize: { w: 1672, h: 941 },
             wordmark: "",             /* confirmed logo file only, e.g. "assets/brand-concepts/luneve/identity/wordmark.svg" */
 
             sections: {
