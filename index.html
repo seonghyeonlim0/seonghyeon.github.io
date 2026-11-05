@@ -1079,6 +1079,8 @@
         .bc-grid figure { margin: 0; }
         .bc-grid figure.is-wide { grid-column: 1 / -1; }
         .bc-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        /* one row: as many columns as images (4 key visuals side by side) */
+        .bc-grid--n { grid-template-columns: repeat(var(--bc-cols, 4), minmax(0, 1fr)); }
         .bc-grid--2 figure.is-wide { grid-column: auto; }
         /* logo + symbol: same box height, original ratios kept (both images are on pure black) */
         .bc-grid--2 img { aspect-ratio: 3 / 2; object-fit: contain; background: rgb(2, 2, 2); }
@@ -1087,7 +1089,7 @@
         .bc-grid--video .ai-media { width: 100%; }
         @media (max-width: 760px) {
             .bc-card { grid-template-columns: minmax(0, 1fr); }
-            .bc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .bc-grid, .bc-grid--n { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .bc-colors { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .bc-pairs { grid-template-columns: minmax(0, 1fr); gap: 2px; }
             .bc-pairs dd { margin-bottom: 10px; }
@@ -1900,7 +1902,7 @@
         /* image grid: wide images take a full row, portrait images sit in 2-3 columns; original ratios are kept */
         function bcImages(list, cols) {
             if (!list || !list.length) return bcPending();
-            return '<div class="bc-grid' + (cols === 2 ? " bc-grid--2" : "") + '">' + list.map(function (it) {
+            return '<div class="bc-grid' + (cols === 2 ? " bc-grid--2" : "") + (cols > 2 ? " bc-grid--n" : "") + '"' + (cols > 2 ? ' style="--bc-cols:' + cols + '"' : "") + ">" + list.map(function (it) {
                 var wide = it.w && it.h && it.w / it.h > 1.2;
                 return '<figure class="' + (wide ? "is-wide" : "") + '"><img src="' + aiEsc(it.src) + '" data-full="' + aiEsc(it.src) + '" alt="' + aiEsc(it.alt || "") + '"' +
                     (it.w && it.h ? ' width="' + it.w + '" height="' + it.h + '"' : "") + ' loading="lazy" decoding="async"></figure>';
@@ -1996,7 +1998,7 @@
 
             /* 03 PRODUCT & VISUAL */
             html += bcSection(S.product,
-                bcSub("01. PRODUCT DESIGN", bcBlock(T.design, pr.design)) + bcSub("02. KEY VISUAL", bcBlock(T.keyVisual, pr.keyVisual)) + bcSub("03. VISUAL APPLICATION", bcImages(pr.application)));
+                bcSub("01. PRODUCT DESIGN", bcBlock(T.design, pr.design)) + bcSub("02. KEY VISUAL", bcBlock(T.keyVisual, pr.keyVisual)) + bcSub("03. VISUAL APPLICATION", bcImages(pr.application, pr.application && pr.application.length > 3 ? pr.application.length : 0)));
 
             /* 04 AI CAMPAIGN */
             html += bcSection(S.campaign,
