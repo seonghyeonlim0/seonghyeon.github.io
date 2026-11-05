@@ -140,13 +140,12 @@ window.BRAND_CONCEPTS = {
             /* 03 PRODUCT & VISUAL  ([{ src, alt, w, h }]) */
             productImages: {
                 design: [],        /* 01 PRODUCT DESIGN: single shots, details, angles */
-                keyVisual: [       /* 02 KEY VISUAL: brand key visual, campaign visual */
-                    { src: "assets/brand-concepts/luneve/product/key-visual-4.jpg", alt: "LUNÉVE key visual — muse with bottle and moon", w: 1086, h: 1448 }
-                ],
+                keyVisual: [],     /* 02 KEY VISUAL: brand key visual, campaign visual */
                 application: [    /* 03 VISUAL APPLICATION: SNS, ad creatives, digital */
                     { src: "assets/brand-concepts/luneve/product/key-visual-1.jpg", alt: "LUNÉVE key visual — flowing light ribbon", w: 1086, h: 1448 },
                     { src: "assets/brand-concepts/luneve/product/key-visual-2.jpg", alt: "LUNÉVE key visual — bottle on water",        w: 1086, h: 1448 },
-                    { src: "assets/brand-concepts/luneve/product/key-visual-3.jpg", alt: "LUNÉVE key visual — moon and reflection",    w: 1086, h: 1448 }
+                    { src: "assets/brand-concepts/luneve/product/key-visual-3.jpg", alt: "LUNÉVE key visual — moon and reflection",    w: 1086, h: 1448 },
+                    { src: "assets/brand-concepts/luneve/product/key-visual-4.jpg", alt: "LUNÉVE key visual — muse with bottle and moon", w: 1086, h: 1448 }
                 ]
             },
 
