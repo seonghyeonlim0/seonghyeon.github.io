@@ -1952,7 +1952,8 @@
             html += '<ul class="bc-list">';
             D.projects.forEach(function (p) {
                 var href = "#/brand-lab/" + aiEsc(p.slug);
-                html += '<li><article class="bc-card"><a class="bc-card__img" href="' + href + '" data-bc-open="' + aiEsc(p.slug) + '" aria-label="' + aiEsc(p.brandName) + '">' +
+                html += '<li><article class="bc-card"><a class="bc-card__img" href="' + href + '" data-bc-open="' + aiEsc(p.slug) + '" aria-label="' + aiEsc(p.brandName) + '"' +
+                    (p.heroImage && p.heroImageSize ? ' style="aspect-ratio:' + p.heroImageSize.w + " / " + p.heroImageSize.h + '"' : "") + ">" +
                     (p.heroImage ? '<img src="' + aiEsc(p.heroImage) + '" alt="" loading="lazy" decoding="async">' : "") + "</a>" +
                     '<div class="bc-card__body"><p class="bc-card__type">' + aiEsc(p.projectType.split(" / ")[0]) + "</p>" +
                     '<h3 class="bc-card__name">' + aiEsc(p.brandName) + "</h3>" +
