@@ -39,7 +39,8 @@ window.AI_WORKS = {
                 subtitle: "조선 호랑이 캐릭터 IP 애니메이션",
                 category: "CHARACTER IP",
                 year: "2026",
-                plan: "근엄한 호랑이의 모습과 허당스러운 행동 사이의 반전을 컨셉으로 기획한 캐릭터 IP 프로젝트입니다. 조선시대 세계관을 바탕으로 일상 속 작은 사건을 짧고 유쾌한 애니메이션으로 제작했습니다."
+                plan: "근엄한 호랑이의 모습과 허당스러운 행동 사이의 반전을 컨셉으로 기획한 캐릭터 IP 프로젝트입니다. 조선시대 세계관을 바탕으로 일상 속 작은 사건을 짧고 유쾌한 애니메이션으로 제작했습니다.",
+                tools: "ChatGPT / Claude / Runway (Seedance 2.5)"
             },
             label: "범도령",
             title: "범도령",
@@ -65,7 +66,8 @@ window.AI_WORKS = {
                 subtitle: "오리지널 캐릭터 애니메이션",
                 category: "CHARACTER IP",
                 year: "2026",
-                plan: "서로 다른 개성을 가진 두 캐릭터의 엉뚱한 일상을 담은 코미디 애니메이션입니다. 짧은 영상 안에 상황 설정과 예상치 못한 반전을 구성하고, 과장된 움직임으로 캐릭터의 매력을 표현했습니다."
+                plan: "서로 다른 개성을 가진 두 캐릭터의 엉뚱한 일상을 담은 코미디 애니메이션입니다. 짧은 영상 안에 상황 설정과 예상치 못한 반전을 구성하고, 과장된 움직임으로 캐릭터의 매력을 표현했습니다.",
+                tools: "ChatGPT / Claude / ComfyUI (Minimax)"
             },
             label: "UNKL&ANTY",
             title: "UNKL&ANTY",

@@ -2142,6 +2142,7 @@
                 '<h2 class="ai-rm__title">' + aiEsc(rm.title || g.label || g.title) + "</h2>" +
                 (rm.subtitle ? '<p class="ai-rm__sub">' + aiEsc(rm.subtitle) + "</p>" : "") +
                 (rm.plan ? '<section class="ai-rm__sec"><h3>기획 방향</h3><p>' + aiEsc(rm.plan) + "</p></section>" : "") +
+                (rm.tools ? '<section class="ai-rm__sec"><h3>TOOLS</h3><p>' + aiEsc(rm.tools) + "</p></section>" : "") +
                 '<section class="ai-rm__sec"><h3>OUTPUT</h3>' + aiList(items, aiMoreCols(items.length), items.length > 5) + "</section>" +
                 "</article>";
             document.title = (rm.title || g.title) + " — AI Works — LIM";
