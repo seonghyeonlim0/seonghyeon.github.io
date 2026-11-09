@@ -73,8 +73,7 @@ window.AI_WORKS = {
                 tools: "ChatGPT / Claude / ComfyUI (Minimax)",
                 links: [
                     { label: "Instagram", url: "https://www.instagram.com/unkl.ush/" },
-                    { label: "TikTok", url: "https://www.tiktok.com/@unkl.ush" },
-                    { label: "YouTube Shorts", url: "https://www.youtube.com/@unkl_ush/shorts" }
+                    { label: "TikTok", url: "https://www.tiktok.com/@unkl.ush" }
                 ]
             },
             label: "UNKL&ANTY",
