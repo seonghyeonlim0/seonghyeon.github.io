@@ -2150,8 +2150,9 @@
             var m = location.hash.replace(/^#\/?/, "").match(/^ai-creator\/more\/([^\/?#]+)$/);
             return m && aiGroupByKey(decodeURIComponent(m[1])) ? decodeURIComponent(m[1]) : null;
         }
-        /* up to 5 works on one row, 6-8 on two rows, 9 or more on three rows */
-        function aiMoreCols(n) { return n <= 5 ? n : (n <= 8 ? Math.ceil(n / 2) : Math.ceil(n / 3)); }
+        /* up to 5 works on one row, 6-8 on two rows, 9 or more on three rows;
+           never more than 4 columns, so 13+ works wrap onto extra rows instead of widening */
+        function aiMoreCols(n) { return n <= 5 ? n : (n <= 8 ? Math.ceil(n / 2) : Math.min(4, Math.ceil(n / 3))); }
         function renderAiMore(key) {
             var D2 = window.AI_WORKS, el = document.getElementById("aiDetail"), g = aiGroupByKey(key);
             if (!el || !g) return;
