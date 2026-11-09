@@ -59,7 +59,11 @@ window.AI_WORKS = {
                 { title: "산군", src: "videos/beom-sangun.mp4",   poster: "videos/posters/beom-sangun.jpg",    w: 720, h: 1280 },
                 { title: "널뛰기", src: "videos/beom-seesaw.mp4",   poster: "videos/posters/beom-seesaw.jpg",    w: 720, h: 1280 },
                 { title: "연날리기", src: "videos/beom-kite.mp4",     poster: "videos/posters/beom-kite.jpg",      w: 720, h: 1280 },
-                { title: "말타기", src: "videos/beom-horse.mp4",    poster: "videos/posters/beom-horse.jpg",     w: 720, h: 1280 }
+                { title: "말타기", src: "videos/beom-horse.mp4",    poster: "videos/posters/beom-horse.jpg",     w: 720, h: 1280 },
+                { title: "맷돌", src: "videos/beom-millstone.mp4", poster: "videos/posters/beom-millstone.jpg", w: 720, h: 1280 },
+                { title: "코라니 등장", src: "videos/beom-korani-intro.mp4", poster: "videos/posters/beom-korani-intro.jpg", w: 720, h: 1280 },
+                { title: "코라니 축제", src: "videos/beom-korani-festival.mp4", poster: "videos/posters/beom-korani-festival.jpg", w: 720, h: 1280 },
+                { title: "떡메질", src: "videos/beom-tteok-pound.mp4", poster: "videos/posters/beom-tteok-pound.jpg", w: 720, h: 1280 }
             ]
         },
         {
