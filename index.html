@@ -1080,22 +1080,6 @@
         .bc-grid img { display: block; width: 100%; height: auto; border-radius: 4px; cursor: zoom-in; }
         .bc-grid--video figure:not(.is-wide) { max-width: 260px; }
         .bc-grid--video { grid-template-columns: minmax(0, 1fr); }
-        .bc-feature {
-            display: grid;
-            grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
-            gap: clamp(20px, 3vw, 44px);
-            align-items: start;
-            margin-bottom: clamp(14px, 1.8vw, 22px);
-        }
-        .bc-feature figure { margin: 0; max-width: 460px; }
-        .bc-feature img { display: block; width: 100%; height: auto; border-radius: 4px; cursor: zoom-in; }
-        .bc-feature .bc-pairs { margin-bottom: 0; }
-        /* feature row uses the same 3 columns as the image grid below: image = 2 columns, text = 3rd column */
-        .bc-feature { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 20px); }
-        .bc-feature figure { grid-column: 1 / span 2; max-width: none; }
-        .bc-feature > div { grid-column: 3; }
-        .bc-feature .bc-pairs { grid-template-columns: minmax(0, 1fr); gap: 4px; }
-        .bc-feature .bc-pairs dd { margin-bottom: 12px; }
         .bc-flow {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1159,6 +1143,21 @@
             align-items: baseline;
         }
         .bc-pairs dt, .bc-meta dt { padding-top: 0; }
+        /* vertical rhythm: header -> content, content -> next block */
+        .bc-section header { margin-bottom: clamp(22px, 3vw, 32px); }
+        .bc-section__intro { margin-top: 16px; }
+        .bc-pairs { row-gap: 12px; margin-bottom: clamp(18px, 2.4vw, 26px); }
+        .bc-pairs:last-child { margin-bottom: 0; }
+        .bc-note { margin-top: 18px; }
+        .bc-flow span { text-wrap: balance; }
+        /* product: lead key visual (large, left) + the other three stacked on the right */
+        .bc-showcase { display: grid; gap: clamp(12px, 1.6vw, 20px); }
+        .bc-showcase figure { margin: 0; }
+        .bc-showcase img { display: block; width: 100%; height: auto; border-radius: 4px; cursor: zoom-in; }
+        .bc-showcase--4 { grid-template-columns: 3fr 1fr; grid-template-rows: repeat(3, auto); align-items: stretch; }
+        .bc-showcase--4 .is-lead { grid-row: 1 / span 3; }
+        .bc-showcase--4 .is-lead img { height: 100%; object-fit: cover; }
+        .bc-showcase--4 figure:not(.is-lead) img { aspect-ratio: 3 / 4; object-fit: cover; }
         .bc-sub > .bc-ratio__label { font-size: var(--fs-role); line-height: 1.6; color: var(--muted); max-width: none; margin-top: 8px; }
         .bc-note { font-size: var(--fs-role); line-height: 1.6; }
         .bc-colors strong { font-size: var(--fs-body); }
@@ -1170,8 +1169,9 @@
         .bc-grid--video .ai-media { width: 100%; }
         @media (max-width: 760px) {
             .bc-card { grid-template-columns: minmax(0, 1fr); }
-            .bc-feature { grid-template-columns: minmax(0, 1fr); }
-            .bc-feature figure, .bc-feature > div { grid-column: auto; }
+            .bc-showcase--4 { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: none; }
+            .bc-showcase--4 .is-lead { grid-column: 1 / -1; grid-row: auto; }
+            .bc-showcase--4 .is-lead img { height: auto; }
             .bc-flow { grid-template-columns: minmax(0, 1fr); }
             .bc-flow li + li strong::before { content: "↓ "; }
             .bc-grid, .bc-grid--n { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -2088,15 +2088,13 @@
                 bcSub("TYPOGRAPHY", bcPairs(id.typography)) + bcSub("APPLICATION", bcImages(id.application)));
 
             /* 03 PRODUCT & VISUAL: the first image is the key visual, shown large next to the product facts */
-            var pr = S.product, prBody = "";
+            var pr = S.product, prBody = bcPairs(pr.rows);
             if (pr.images && pr.images.length) {
-                var lead = pr.images[0], rest = pr.images.slice(1);
-                prBody += '<div class="bc-feature"><figure><img src="' + aiEsc(lead.src) + '" data-full="' + aiEsc(lead.src) + '" alt="' + aiEsc(lead.alt || "") + '"' +
-                    (lead.w && lead.h ? ' width="' + lead.w + '" height="' + lead.h + '"' : "") + ' loading="lazy" decoding="async"></figure>' +
-                    "<div>" + bcPairs(pr.rows) + "</div></div>";
-                prBody += bcImages(rest, rest.length > 2 ? rest.length : 0);
-            } else {
-                prBody += bcPairs(pr.rows);
+                var figs = pr.images.map(function (it, i) {
+                    return '<figure' + (i === 0 ? ' class="is-lead"' : "") + '><img src="' + aiEsc(it.src) + '" data-full="' + aiEsc(it.src) + '" alt="' + aiEsc(it.alt || "") + '"' +
+                        (it.w && it.h ? ' width="' + it.w + '" height="' + it.h + '"' : "") + ' loading="lazy" decoding="async"></figure>';
+                }).join("");
+                prBody += '<div class="bc-showcase' + (pr.images.length === 4 ? " bc-showcase--4" : "") + '">' + figs + "</div>";
             }
             html += bcSection(pr, prBody);
 
@@ -2129,7 +2127,7 @@
                     var play = e.target.closest(".ai-play");
                     if (play && play.tagName === "BUTTON") { aiMountVideo(play.closest(".ai-media")); return; }
                     /* images open in the shared lightbox (click again there to zoom to full size) */
-                    var zoom = e.target.closest(".bc-grid img");
+                    var zoom = e.target.closest(".bc-grid img, .bc-showcase img");
                     if (zoom) {
                         var lb = document.getElementById("lightbox"), lbImg = document.getElementById("lightboxImg");
                         if (lb && lbImg) {
