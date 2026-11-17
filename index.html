@@ -609,6 +609,31 @@
                 grid-template-columns: 1fr;
             }
         }
+        /* Case page top block (title + subtitle) and label/value facts.
+           Reuses the BRAND LAB type (.bc-hero__name / .bc-hero__sub / .bc-meta /
+           .bc-pairs); these rules only fit them to the case-page column. */
+        .case-hero {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .case-text .bc-meta,
+        .case-text .bc-pairs {
+            grid-template-columns: 184px minmax(0, 1fr);
+            max-width: none;
+            margin-top: 0;
+        }
+        .case-text > p + .bc-pairs { margin-top: 20px; }
+        .case-text .bc-pairs dd ul { margin: 0; padding-left: 18px; }
+        .case-text .bc-pairs dd li { margin-bottom: 2px; }
+        @media (max-width: 520px) {
+            .case-text .bc-meta,
+            .case-text .bc-pairs {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 2px 0;
+            }
+            .case-text .bc-meta dd,
+            .case-text .bc-pairs dd { margin-bottom: 12px; }
+        }
 
         .about-text h2, .contact-text h2, .project-manager-text h2,
         .ai-creator-text h2, .experience h3 {
@@ -1899,7 +1924,7 @@
             "case-puricare-section": "LG PuriCare — LIM",
             "case-gukgabohun-section": "국가보훈 공모전 — LIM",
             "case-plantlance-section": "PLANTLANCE — LIM",
-            "case-netflix-outdoor-section": "NETFLIX 옥외광고 — LIM",
+            "case-netflix-outdoor-section": "NETFLIX OOH & DOOH — LIM",
             "case-newsletter-section": "INDUSTRY INSIGHT NEWSLETTER — LIM",
             "case-ballantines-section": "Ballantine's — LIM",
             "case-powerade-worldcup-section": "Powerade x FIFA World Cup — LIM",
@@ -3079,26 +3104,73 @@
             </div>
             <div class="case-section case-netflix-outdoor-section">
                 <button class="case-back" type="button" onclick="showProjectManager()">← PROJECT EXPERIENCE</button>
-                <h3 class="case-heading" style="margin-top:0;">프로젝트 소개</h3>
-                <div class="case-text">
-                    <p>넷플릭스 주요 작품과 브랜드 캠페인의 메시지를 다양한 옥외 매체 환경에 맞게 재구성하고, OOH·DOOH 콘텐츠 기획부터 제작 운영까지 담당했습니다.</p>
+                <header class="case-hero">
+                    <h2 class="bc-hero__name">NETFLIX OOH &amp; DOOH</h2>
+                    <p class="bc-hero__sub">옥외광고 콘텐츠 기획 및 크리에이티브 제작 운영</p>
+                </header>
+                <div class="case-text" style="margin-top: clamp(20px, 3vw, 30px);">
+                    <dl class="bc-meta">
+                        <dt>PERIOD</dt><dd>2023.09 – 2026.11</dd>
+                        <dt>CLIENT</dt><dd>NETFLIX</dd>
+                        <dt>ROLE</dt><dd>Creative Planning · Art Direction · Project Management</dd>
+                        <dt>PROJECT TYPE</dt><dd>OOH &amp; DOOH Campaign Production</dd>
+                        <dt>CYCLE</dt><dd>약 1~2개월 주기</dd>
+                    </dl>
                 </div>
-                <h3 class="case-heading">주요 업무</h3>
+                <h3 class="case-heading">PROJECT OVERVIEW</h3>
                 <div class="case-text">
-                    <ul>
-                        <li>작품 및 캠페인 브리프 분석</li>
-                        <li>매체별 콘텐츠 아이디어 및 구성 기획</li>
-                        <li>메시지 우선순위와 모션 흐름 설계</li>
-                        <li>2D·3D·모션 제작 디렉팅</li>
-                        <li>클라이언트 커뮤니케이션 및 일정 관리</li>
-                        <li>결과물 검수 및 최종 납품</li>
-                    </ul>
+                    <p>약 3년간 넷플릭스를 주요 클라이언트로 담당하며 다양한 작품 및 브랜드 캠페인의 OOH·DOOH 콘텐츠 기획과 제작 운영을 수행했습니다.</p>
+                    <p>정기적으로 진행되는 캠페인에서 브리프 분석부터 크리에이티브 기획, 비주얼 디렉팅, 제작사 협업 및 최종 납품까지 전반적인 과정을 관리했습니다.</p>
                 </div>
-                <h3 class="case-heading">기획 방향</h3>
+                <h3 class="case-heading">MY ROLE</h3>
                 <div class="case-text">
-                    <p>매체의 크기, 관람 거리, 노출 시간 등 실제 시청 환경을 고려해 작품의 핵심 메시지가 짧은 시간 안에 전달되도록 콘텐츠 구조와 시선 흐름을 설계했습니다.</p>
+                    <p>넷플릭스의 작품 및 브랜드 캠페인별 요구사항을 분석하고, 콘텐츠 기획부터 제작 디렉팅, 일정 및 품질 관리, 최종 납품까지 프로젝트 전반을 운영했습니다.</p>
+                    <dl class="bc-pairs">
+                        <dt>Creative Planning</dt>
+                        <dd>
+                            <ul>
+                                <li>클라이언트 브리프 분석</li>
+                                <li>작품 및 캠페인별 콘텐츠 콘셉트 기획</li>
+                                <li>매체 특성을 고려한 콘텐츠 구성</li>
+                            </ul>
+                        </dd>
+                        <dt>Art Direction</dt>
+                        <dd>
+                            <ul>
+                                <li>콘텐츠 비주얼 방향 설정</li>
+                                <li>2D·3D·모션 제작 디렉팅</li>
+                                <li>크리에이티브 검수 및 수정 방향 제안</li>
+                            </ul>
+                        </dd>
+                        <dt>Project Management</dt>
+                        <dd>
+                            <ul>
+                                <li>제작 일정 및 진행 상황 관리</li>
+                                <li>제작사 및 유관 부서 커뮤니케이션</li>
+                                <li>클라이언트 피드백 조율</li>
+                                <li>최종 결과물 검수 및 납품</li>
+                            </ul>
+                        </dd>
+                    </dl>
                 </div>
-                <h3 class="case-heading">OUTPUT</h3>
+                <h3 class="case-heading">CREATIVE APPROACH</h3>
+                <div class="case-text">
+                    <p>작품별 메시지와 옥외 매체의 노출 환경을 고려하여 콘텐츠의 정보 구조와 시각적 표현 방식을 기획했습니다.</p>
+                    <p>매체별 화면 비율과 노출 특성에 맞춰 크리에이티브 방향을 설정하고, 제작 과정 전반에서 콘텐츠의 일관성과 완성도를 관리했습니다.</p>
+                    <dl class="bc-pairs">
+                        <dt>핵심 업무</dt>
+                        <dd>
+                            <ul>
+                                <li>작품별 핵심 메시지 분석</li>
+                                <li>매체별 화면 구성 및 표현 방식 기획</li>
+                                <li>콘텐츠 비주얼 방향 설정</li>
+                                <li>제작물 검수 및 크리에이티브 개선</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+                <h3 class="case-heading">SELECTED CAMPAIGNS</h3>
+                <p class="case-note" style="margin-top: -6px;">주요 OOH·DOOH 캠페인 제작 결과물</p>
                 <p class="case-label">Title Campaigns</p>
                 <div class="case-16x9">
                     <video src="cases/netflix-outdoor/title-campaigns/gisaengsu.mp4" controls muted loop playsinline preload="metadata"></video>
@@ -3137,6 +3209,11 @@
                     <video src="cases/netflix-outdoor/next-on-netflix/non-3.mp4" controls playsinline preload="metadata"></video>
                     <video src="cases/netflix-outdoor/next-on-netflix/non-4.mp4" controls playsinline preload="metadata"></video>
                     <video src="cases/netflix-outdoor/next-on-netflix/non-5.mp4" controls playsinline preload="metadata"></video>
+                </div>
+                <h3 class="case-heading">PROJECT OUTCOME</h3>
+                <div class="case-text">
+                    <p>넷플릭스의 다양한 작품 및 브랜드 캠페인을 대상으로 OOH·DOOH 콘텐츠를 지속적으로 기획하고 제작 운영했습니다.</p>
+                    <p>장기간 반복되는 프로젝트에서 클라이언트 요구사항과 제작 환경을 조율하며, 매체별 크리에이티브 검수부터 최종 납품까지 안정적으로 수행했습니다.</p>
                 </div>
             </div>
             <div class="case-section case-newsletter-section">
