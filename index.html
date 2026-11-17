@@ -820,64 +820,57 @@
             .home-hero { flex-direction: column; align-items: flex-start; }
         }
 
-        /* ---------- MOTION GRAPHIC grids ---------- */
-        .work-experience-subtitle,
-        .personal-projects-subtitle {
-            font-size: var(--fs-sub);
-            color: var(--muted);
-            font-weight: bold;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin: 0 0 4px;
-        }
-        .personal-projects-subtitle {
-            margin-top: clamp(32px, 5vw, 56px);
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(6, minmax(0, 1fr));
-            gap: clamp(14px, 2vw, 26px);
-            margin-top: 20px;
+        /* ---------- MOTION & 3D home (same language as AI WORKS / BRAND LAB) ---------- */
+        .motion-graphic-section {
             width: 100%;
             max-width: 1100px;
         }
-        .grid-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+        .motion-graphic-section .ai-creator-text p { margin: 0; }
+        .mg-grid {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: clamp(20px, 2.4vw, 28px) clamp(12px, 1.6vw, 20px);
         }
-        .grid-item a {
+        .mg-card {
             display: block;
-            width: 100%;
-            max-width: 200px;
+            color: inherit;
+            text-decoration: none;
+        }
+        .mg-thumb {
+            display: block;
             aspect-ratio: 1 / 1;
-            border-radius: 50%;
-            overflow: hidden;
             background: var(--card);
-            cursor: pointer;
-            transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
-                box-shadow 0.35s ease;
+            border-radius: 6px;
+            overflow: hidden;
         }
-        .grid-item a:hover {
-            transform: scale(1.06) translateY(-2px);
-            box-shadow: 0 14px 32px -12px rgba(0, 0, 0, 0.35);
-        }
-        .grid-item img {
+        .mg-thumb img {
+            display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: opacity 0.25s ease;
         }
-        .grid-item p {
-            font-size: var(--fs-label);
+        .mg-card:hover .mg-thumb img { opacity: 0.9; }
+        @media (max-width: 520px) {
+            .mg-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+        .mg-card:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; }
+        .mg-sub {
+            display: block;
+            margin: 12px 0 4px;
+            font-size: var(--fs-role);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
             color: var(--muted);
-            margin-top: 12px;
-            font-weight: normal;
-            line-height: 1.4;
             word-break: keep-all;
         }
-
+        .mg-name {
+            display: block;
+            font-size: var(--fs-label);
+            line-height: 1.3;
+            color: var(--ink);
+            word-break: keep-all;
+        }
         /* ---------- AI CREATOR videos ---------- */
         /* ---------- BRAND LAB (formerly BRAND CONCEPTS) ---------- */
         .brand-concepts-section,
@@ -1619,7 +1612,7 @@
             .reveal-in {
                 animation: sectionIn 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
             }
-            .reveal-in .grid-item,
+            .reveal-in .mg-card,
             .reveal-in .video-grid figure,
             .reveal-in .project-manager-text p,
             .reveal-in .experience li,
@@ -1634,9 +1627,6 @@
         @media (max-width: 900px) {
             .content {
                 padding-top: 4vh;
-            }
-            .grid-container {
-                grid-template-columns: repeat(4, minmax(0, 1fr));
             }
         }
 
@@ -1712,18 +1702,8 @@
             .project-manager-text, .ai-creator-text {
                 max-width: 100%;
             }
-            .grid-container {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-                gap: 16px;
-            }
             .video-grid {
                 grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            }
-        }
-
-        @media (max-width: 380px) {
-            .grid-container {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
     </style>
@@ -1893,7 +1873,7 @@
         }
 
         function staggerChildren(section) {
-            var sel = ".grid-item, .video-grid figure, .project-manager-text p, .experience li, .intro-text p";
+            var sel = ".mg-card, .video-grid figure, .project-manager-text p, .experience li, .intro-text p";
             var items = section.querySelectorAll(sel);
             items.forEach(function (el, i) {
                 el.style.animationDelay = (Math.min(i, 16) * 0.04) + "s";
@@ -2602,82 +2582,78 @@
                 </div>
             </div>
             <div class="motion-graphic-section">
-                <h3 class="work-experience-subtitle">WORK EXPERIENCE</h3>
-                <div class="grid-container">
-                    <div class="grid-item">
-                        <a href="#/case/queenlabel" onclick="showCaseQueenlabel(); return false;">
-                            <img src="image1.jpg" alt="QUEENLABEL" loading="lazy" decoding="async">
-                        </a>
-                        <p>QUEENLABEL</p>
-                    </div>
-                    <div class="grid-item">
-                        <a href="#/case/techlove" onclick="showCaseTechlove(); return false;">
-                            <img src="image2.jpg" alt="TECHLOVE" loading="lazy" decoding="async">
-                        </a>
-                        <p>TECHLOVE</p>
-                    </div>
-                    <div class="grid-item">
-                        <a href="#/case/drbarn" onclick="showCaseDrbarn(); return false;">
-                            <img src="image3.jpg" alt="Dr. BARN" loading="lazy" decoding="async">
-                        </a>
-                        <p>Dr. BARN</p>
-                    </div>
-                    <div class="grid-item">
-                        <a href="#/case/steamvac" onclick="showCaseSteamvac(); return false;">
-                            <img src="image4.jpg" alt="QUEENLABEL" loading="lazy" decoding="async">
-                        </a>
-                        <p>QUEENLABEL</p>
-                    </div>
-                    <div class="grid-item">
-                        <a href="#/case/casacaffe" onclick="showCaseCasacaffe(); return false;">
-                            <img src="image5.jpg" alt="Casa Caffe" loading="lazy" decoding="async">
-                        </a>
-                        <p>Casa Caffe</p>
-                    </div>
-                    <div class="grid-item">
-                        <a href="#/case/wristbrace" onclick="showCaseWristbrace(); return false;">
-                            <img src="image6.jpg" alt="TECHLOVE" loading="lazy" decoding="async">
-                        </a>
-                        <p>TECHLOVE</p>
+                <div class="ai-creator-text">
+                    <h2>MOTION &amp; 3D</h2>
+                    <p>2D·3D·모션 제작을 활용하여 제품의 구조와 사용 방식을 직관적으로 전달하는 콘텐츠를 기획하고 제작하였습니다. 브랜드 실무 프로젝트부터 개인 작업까지 다양한 제품군의 3D·모션 콘텐츠를 진행하며, 기획과 제작 전반을 아우르는 작업을 진행할 수 있습니다.</p>
+                </div>
+                <div class="ai-block">
+                    <h3 class="ai-block__label">WORK EXPERIENCE</h3>
+                    <div class="mg-grid">
+                    <a class="mg-card" href="#/case/queenlabel" onclick="showCaseQueenlabel(); return false;">
+                        <span class="mg-thumb"><img src="image1.jpg" alt="QUEENLABEL 대용량 제습기" loading="lazy" decoding="async"></span>
+                        <span class="mg-sub">대용량 제습기</span>
+                        <span class="mg-name">QUEENLABEL</span>
+                    </a>
+                    <a class="mg-card" href="#/case/techlove" onclick="showCaseTechlove(); return false;">
+                        <span class="mg-thumb"><img src="image2.jpg" alt="TECHLOVE 베이직 목 견인기" loading="lazy" decoding="async"></span>
+                        <span class="mg-sub">베이직 목 견인기</span>
+                        <span class="mg-name">TECHLOVE</span>
+                    </a>
+                    <a class="mg-card" href="#/case/drbarn" onclick="showCaseDrbarn(); return false;">
+                        <span class="mg-thumb"><img src="image3.jpg" alt="Dr. BARN 올인원 이뮨" loading="lazy" decoding="async"></span>
+                        <span class="mg-sub">올인원 이뮨</span>
+                        <span class="mg-name">Dr. BARN</span>
+                    </a>
+                    <a class="mg-card" href="#/case/steamvac" onclick="showCaseSteamvac(); return false;">
+                        <span class="mg-thumb"><img src="image4.jpg" alt="QUEENLABEL 클린쉴드 스팀청소기" loading="lazy" decoding="async"></span>
+                        <span class="mg-sub">클린쉴드 스팀청소기</span>
+                        <span class="mg-name">QUEENLABEL</span>
+                    </a>
+                    <a class="mg-card" href="#/case/casacaffe" onclick="showCaseCasacaffe(); return false;">
+                        <span class="mg-thumb"><img src="image5.jpg" alt="Casa Caffe 전자동 커피머신" loading="lazy" decoding="async"></span>
+                        <span class="mg-sub">전자동 커피머신</span>
+                        <span class="mg-name">Casa Caffe</span>
+                    </a>
+                    <a class="mg-card" href="#/case/wristbrace" onclick="showCaseWristbrace(); return false;">
+                        <span class="mg-thumb"><img src="image6.jpg" alt="TECHLOVE 다이얼 손목 보호대" loading="lazy" decoding="async"></span>
+                        <span class="mg-sub">다이얼 손목 보호대</span>
+                        <span class="mg-name">TECHLOVE</span>
+                    </a>
                     </div>
                 </div>
-                <h3 class="personal-projects-subtitle">PERSONAL PROJECTS</h3>
-                <div class="grid-container">
-                    <div class="grid-item">
-                        <a href="#/case/puricare" onclick="showCasePuricare(); return false;">
-                            <img src="image7.jpg" alt="LG PuriCare" loading="lazy" decoding="async">
-                        </a>
-                        <p>LG PuriCare</p>
-                    </div>
-                    <div class="grid-item">
-                        <a href="#/case/plantlance" onclick="showCasePlantlance(); return false;">
-                            <img src="image8.jpg" alt="PLANTLANCE" loading="lazy" decoding="async">
-                        </a>
-                        <p>PLANTLANCE</p>
-                    </div>
-                    <div class="grid-item">
-                        <a href="#/case/3dartwork" onclick="showCase3dartwork(); return false;">
-                            <img src="image9.jpg" alt="3D ARTWORK" loading="lazy" decoding="async">
-                        </a>
-                        <p>3D ARTWORK</p>
-                    </div>
-                    <div class="grid-item">
-                        <a href="https://drive.google.com/file/d/1xIrHIyh4R0VW4-SpE8EBeRUAw-RtrmUH/view?usp=sharing" target="_blank">
-                            <img src="image10.jpg" alt="GENTLE MONSTER" loading="lazy" decoding="async">
-                        </a>
-                        <p>GENTLE MONSTER</p>
-                    </div>
-                    <div class="grid-item">
-                        <a href="https://drive.google.com/file/d/1gPbIVAwzy5q7a8R2eQTNQAEwYVJUF3i7/view?usp=sharing" target="_blank">
-                            <img src="image11.jpg" alt="melixir" loading="lazy" decoding="async">
-                        </a>
-                        <p>melixir</p>
-                    </div>
-                    <div class="grid-item">
-                        <a href="#/case/gukgabohun" onclick="showCaseGukgabohun(); return false;">
-                            <img src="image12.jpg" alt="국가보훈 공모전" loading="lazy" decoding="async">
-                        </a>
-                        <p>국가보훈 공모전</p>
+                <div class="ai-block">
+                    <h3 class="ai-block__label">PERSONAL PROJECTS</h3>
+                    <div class="mg-grid">
+                    <a class="mg-card" href="#/case/puricare" onclick="showCasePuricare(); return false;">
+                        <span class="mg-thumb"><img src="image7.jpg" alt="LG PuriCare" loading="lazy" decoding="async"></span>
+                        <span class="mg-sub">360˚ 공기청정기</span>
+                        <span class="mg-name">LG PuriCare</span>
+                    </a>
+                    <a class="mg-card" href="#/case/plantlance" onclick="showCasePlantlance(); return false;">
+                        <span class="mg-thumb"><img src="image8.jpg" alt="PLANTLANCE" loading="lazy" decoding="async"></span>
+                        <span class="mg-sub">Personal Project</span>
+                        <span class="mg-name">PLANTLANCE</span>
+                    </a>
+                    <a class="mg-card" href="#/case/3dartwork" onclick="showCase3dartwork(); return false;">
+                        <span class="mg-thumb"><img src="image9.jpg" alt="3D ARTWORK" loading="lazy" decoding="async"></span>
+                        <span class="mg-sub">Animal Characters</span>
+                        <span class="mg-name">3D ARTWORK</span>
+                    </a>
+                    <a class="mg-card" href="https://drive.google.com/file/d/1xIrHIyh4R0VW4-SpE8EBeRUAw-RtrmUH/view?usp=sharing" target="_blank" rel="noopener">
+                        <span class="mg-thumb"><img src="image10.jpg" alt="GENTLE MONSTER" loading="lazy" decoding="async"></span>
+                        <span class="mg-sub">Personal Project</span>
+                        <span class="mg-name">GENTLE MONSTER</span>
+                    </a>
+                    <a class="mg-card" href="https://drive.google.com/file/d/1gPbIVAwzy5q7a8R2eQTNQAEwYVJUF3i7/view?usp=sharing" target="_blank" rel="noopener">
+                        <span class="mg-thumb"><img src="image11.jpg" alt="melixir" loading="lazy" decoding="async"></span>
+                        <span class="mg-sub">Personal Project</span>
+                        <span class="mg-name">melixir</span>
+                    </a>
+                    <a class="mg-card" href="#/case/gukgabohun" onclick="showCaseGukgabohun(); return false;">
+                        <span class="mg-thumb"><img src="image12.jpg" alt="국가보훈 공모전" loading="lazy" decoding="async"></span>
+                        <span class="mg-sub">독립운동 일러스트</span>
+                        <span class="mg-name">국가보훈 공모전</span>
+                    </a>
                     </div>
                 </div>
             </div>
