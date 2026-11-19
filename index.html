@@ -2201,7 +2201,7 @@
         /* ---------- Case pages: previous / next project ---------- */
         var CASE_GROUPS = [
             { list: "motion-graphic-section", label: "ALL WORKS", items: ["case-queenlabel-section", "case-techlove-section", "case-drbarn-section", "case-steamvac-section", "case-casacaffe-section", "case-wristbrace-section", "case-puricare-section", "case-plantlance-section", "case-3dartwork-section", "case-gukgabohun-section"] },
-            { list: "project-manager-section", label: "ALL PROJECTS", items: ["case-netflix-outdoor-section", "case-netflix-distribution-section", "case-newsletter-section", "case-ballantines-section", "case-powerade-worldcup-section", "case-powerade-baseball-section", "case-powerade-physical-section", "case-powerade-product-section", "case-powerade-soccer-section", "case-kumho-tire-section", "case-skhynix-amazon-section", "case-skhynix-social-section", "case-georgia-coffee-section", "case-ambasa-section", "case-sprite-waterbomb-section", "case-minutemaid-section"] }
+            { list: "project-manager-section", label: "ALL PROJECTS", items: ["case-netflix-outdoor-section", "case-netflix-distribution-section", "case-kumho-tire-section", "case-powerade-worldcup-section", "case-powerade-baseball-section", "case-powerade-physical-section", "case-powerade-product-section", "case-powerade-soccer-section", "case-georgia-coffee-section", "case-ambasa-section", "case-sprite-waterbomb-section", "case-minutemaid-section", "case-skhynix-amazon-section", "case-skhynix-social-section", "case-ballantines-section", "case-newsletter-section"] }
         ];
         function caseTitle(name) { return (SECTION_TITLES[name] || "").replace(/\s+—\s+LIM$/, ""); }
         function ensureCasePager(name) {
@@ -3111,7 +3111,7 @@
             </div>
             <!-- BRAND PROJECTS list: project names are shown in Korean.
                  Original English names (kept here so they can be restored later). Numbers are the old recency order;
-                 the list below is now grouped by brand (Netflix, Powerade, SK hynix adjacent):
+                 the list below is ordered NETFLIX, KUMHO TIRE, POWERADE, COCA-COLA brands, SK HYNIX, BALLANTINE'S, NEWSLETTER:
                    1. NETFLIX Title Outdoor Advertising Campaign
                       -> 넷플릭스 타이틀 옥외광고 콘텐츠 기획
                    2. Pernod Ricard (Ballantine's) Blog & Social Content Planning and Production
@@ -3162,15 +3162,9 @@
                         </a>
                     </p>
                     <p class="pj-row is-first">
-                        <a href="#/case/industry-insight-newsletter" onclick="showCaseNewsletter(); return false;">
-                            <span class="pj-brand">NEWSLETTER</span>
-                            <span class="pj-main"><strong>업계 인사이트 뉴스레터 콘텐츠 기획 및 제작</strong><span class="pj-period">July 2026 - September 2026</span></span>
-                        </a>
-                    </p>
-                    <p class="pj-row is-first">
-                        <a href="#/case/ballantines" onclick="showCaseBallantines(); return false;">
-                            <span class="pj-brand">BALLANTINE’S</span>
-                            <span class="pj-main"><strong>페르노리카(발렌타인) 블로그·소셜 콘텐츠 기획 및 제작</strong><span class="pj-period">February 2026 - September 2026</span></span>
+                        <a href="#/case/kumho-tire" onclick="showCaseKumhoTire(); return false;">
+                            <span class="pj-brand">KUMHO TIRE</span>
+                            <span class="pj-main"><strong>금호타이어 전시 영상 기획</strong><span class="pj-period">March 2026 - May 2026</span></span>
                         </a>
                     </p>
                     <p class="pj-row is-first">
@@ -3204,9 +3198,27 @@
                         </a>
                     </p>
                     <p class="pj-row is-first">
-                        <a href="#/case/kumho-tire" onclick="showCaseKumhoTire(); return false;">
-                            <span class="pj-brand">KUMHO TIRE</span>
-                            <span class="pj-main"><strong>금호타이어 전시 영상 기획</strong><span class="pj-period">March 2026 - May 2026</span></span>
+                        <a href="#/case/georgia-coffee" onclick="showCaseGeorgiaCoffee(); return false;">
+                            <span class="pj-brand">COCA-COLA</span>
+                            <span class="pj-main"><strong>조지아 커피 키비주얼 촬영 콘텐츠 기획</strong><span class="pj-period">December 2024 - January 2025</span></span>
+                        </a>
+                    </p>
+                    <p class="pj-row">
+                        <a href="#/case/ambasa" onclick="showCaseAmbasa(); return false;">
+                            <span class="pj-brand"></span>
+                            <span class="pj-main"><strong>암바사 소셜 광고 영상 콘텐츠 기획</strong><span class="pj-period">October 2024 - November 2024</span></span>
+                        </a>
+                    </p>
+                    <p class="pj-row">
+                        <a href="#/case/sprite-waterbomb" onclick="showCaseSpriteWaterbomb(); return false;">
+                            <span class="pj-brand"></span>
+                            <span class="pj-main"><strong>스프라이트 워터밤 광고 콘텐츠 기획</strong><span class="pj-period">July 2024 - August 2024</span></span>
+                        </a>
+                    </p>
+                    <p class="pj-row">
+                        <a href="#/case/minutemaid" onclick="showCaseMinutemaid(); return false;">
+                            <span class="pj-brand"></span>
+                            <span class="pj-main"><strong>미닛메이드 레모네이드 키비주얼 및 숏폼 영상 콘텐츠 기획</strong><span class="pj-period">January 2024 - February 2024</span></span>
                         </a>
                     </p>
                     <p class="pj-row is-first">
@@ -3222,27 +3234,15 @@
                         </a>
                     </p>
                     <p class="pj-row is-first">
-                        <a href="#/case/georgia-coffee" onclick="showCaseGeorgiaCoffee(); return false;">
-                            <span class="pj-brand">GEORGIA</span>
-                            <span class="pj-main"><strong>조지아 커피 키비주얼 촬영 콘텐츠 기획</strong><span class="pj-period">December 2024 - January 2025</span></span>
+                        <a href="#/case/ballantines" onclick="showCaseBallantines(); return false;">
+                            <span class="pj-brand">BALLANTINE’S</span>
+                            <span class="pj-main"><strong>페르노리카(발렌타인) 블로그·소셜 콘텐츠 기획 및 제작</strong><span class="pj-period">February 2026 - September 2026</span></span>
                         </a>
                     </p>
                     <p class="pj-row is-first">
-                        <a href="#/case/ambasa" onclick="showCaseAmbasa(); return false;">
-                            <span class="pj-brand">AMBASA</span>
-                            <span class="pj-main"><strong>암바사 소셜 광고 영상 콘텐츠 기획</strong><span class="pj-period">October 2024 - November 2024</span></span>
-                        </a>
-                    </p>
-                    <p class="pj-row is-first">
-                        <a href="#/case/sprite-waterbomb" onclick="showCaseSpriteWaterbomb(); return false;">
-                            <span class="pj-brand">SPRITE</span>
-                            <span class="pj-main"><strong>스프라이트 워터밤 광고 콘텐츠 기획</strong><span class="pj-period">July 2024 - August 2024</span></span>
-                        </a>
-                    </p>
-                    <p class="pj-row is-first">
-                        <a href="#/case/minutemaid" onclick="showCaseMinutemaid(); return false;">
-                            <span class="pj-brand">MINUTE MAID</span>
-                            <span class="pj-main"><strong>미닛메이드 레모네이드 키비주얼 및 숏폼 영상 콘텐츠 기획</strong><span class="pj-period">January 2024 - February 2024</span></span>
+                        <a href="#/case/industry-insight-newsletter" onclick="showCaseNewsletter(); return false;">
+                            <span class="pj-brand">NEWSLETTER</span>
+                            <span class="pj-main"><strong>업계 인사이트 뉴스레터 콘텐츠 기획 및 제작</strong><span class="pj-period">July 2026 - September 2026</span></span>
                         </a>
                     </p>
                 </div>
