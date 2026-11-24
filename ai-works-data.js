@@ -65,7 +65,7 @@ window.AI_WORKS = {
                 ],
                 links: [{ label: "범도령", url: "https://www.instagram.com/beomdoryeong/reels/" }]
             },
-            cover: { title: "맷돌", src: "videos/beom-millstone.mp4", poster: "videos/posters/beom-millstone.jpg?v=2", w: 720, h: 1280 },   /* thumbnail on the main AI WORKS page */
+            cover: { title: "맷돌", src: "videos/beom-millstone.mp4", poster: "videos/posters/beom-cover.jpg", w: 720, h: 1280 },   /* thumbnail on the main AI WORKS page */
             label: "범도령",
             title: "범도령",
             videos: [
@@ -98,7 +98,7 @@ window.AI_WORKS = {
                 ],
                 links: [{ label: "UNKL", url: "https://www.instagram.com/unkl.ush/reels/" }]
             },
-            cover: { title: "HOLD ON TIGHT!", src: "videos/unkl-ep02.mp4", poster: "videos/posters/unkl-ep02.jpg?v=3", w: 864, h: 1536 },   /* thumbnail on the main AI WORKS page */
+            cover: { title: "HOLD ON TIGHT!", src: "videos/unkl-ep02.mp4", poster: "videos/posters/unkl-cover.jpg", w: 864, h: 1536 },   /* thumbnail on the main AI WORKS page */
             label: "UNKL&ANTY",
             title: "UNKL&ANTY",
             videos: [
