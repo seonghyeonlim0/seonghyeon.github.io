@@ -163,6 +163,27 @@ window.AI_WORKS = {
                     ]
                 }
             ]
+        },
+        {
+            key: "brand-lab",
+            aliases: ["brand-concepts"],   /* the old BRAND LAB menu addresses (#/brand-lab) also open this page */
+            brandLab: true,   /* its works are the brands in brand-concepts-data.js (add a brand there) */
+            readMore: {   /* content of the Read More page card */
+                title: "BRAND LAB",
+                subtitle: "Brand Concept & Creative Direction",
+                category: "BRAND CONCEPT",
+                year: "2026",
+                planLabel: "PROJECT OVERVIEW",
+                plan: [
+                    "가상의 브랜드를 기반으로 브랜드 콘셉트, 비주얼 아이덴티티, 제품 디자인 및 광고 콘텐츠를 기획하고 구현하는 개인 창작 프로젝트입니다.",
+                    "생성형 AI를 단순한 이미지 제작 도구가 아닌 브랜드 기획과 크리에이티브 구현을 위한 도구로 활용합니다."
+                ],
+                brandNote: "각 브랜드는 실제 클라이언트 프로젝트가 아닌 가상의 브랜드 프로젝트입니다."
+            },
+            /* main-page card: still image only (replace videos/posters/brand-lab-cover.jpg to change it) */
+            cover: { title: "BRAND LAB", poster: "videos/posters/brand-lab-cover.jpg", w: 522, h: 929, still: true },
+            label: "BRAND LAB",
+            title: "BRAND LAB"
         }
     ],
 
