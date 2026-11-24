@@ -769,6 +769,204 @@
             .case-brief .brief-row .bc-pairs dt { font-size: var(--fs-label); }
         }
 
+        /* ---------- NETFLIX case page (case study layout; scoped to .case-nf) ---------- */
+        .case-nf { --nf: #d6101b; }
+        :root[data-theme="dark"] .case-nf { --nf: #ff4d57; }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) .case-nf { --nf: #ff4d57; }
+        }
+        .case-nf .nf-no {
+            display: block;
+            margin: 0 0 4px;
+            font-size: var(--fs-role);
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            color: var(--nf);
+        }
+        .case-nf .case-hero + .case-text { margin-top: clamp(20px, 3vw, 30px); }
+        .case-nf .brief-row .case-text p.nf-statement {
+            margin: 0 0 14px;
+            font-size: clamp(20px, 2.6vw, 28px);
+            font-weight: 700;
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+            word-break: keep-all;
+            color: var(--ink);
+        }
+        .case-nf .nf-points,
+        .case-nf .nf-flow {
+            list-style: none;
+            margin: 20px 0 0;
+            padding: 0;
+        }
+        .case-nf .nf-points li {
+            display: grid;
+            grid-template-columns: 40px minmax(0, 1fr);
+            padding: 12px 0;
+            border-top: 1px solid var(--line);
+            line-height: 1.6;
+            word-break: keep-all;
+        }
+        .case-nf .nf-points li:last-child { border-bottom: 1px solid var(--line); }
+        .case-nf .nf-points li > span {
+            padding-top: 2px;
+            font-size: var(--fs-role);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--nf);
+        }
+        .case-nf .brief-row .case-text .nf-strat {
+            display: grid;
+            grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+            column-gap: clamp(16px, 2.4vw, 28px);
+            align-items: start;
+            padding: clamp(16px, 2.2vw, 22px) 0;
+            border-top: 1px solid var(--line);
+        }
+        .case-nf .brief-row .case-text .nf-strat:last-child { border-bottom: 1px solid var(--line); }        .case-nf .brief-row .case-text .nf-strat p { margin: 0; line-height: 1.7; word-break: keep-all; }
+        .case-nf .brief-row .case-text .nf-strat p.nf-strat__no {
+            margin: 0 0 4px;
+            font-size: var(--fs-role);
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            color: var(--nf);
+        }
+        .case-nf .nf-strat h4 {
+            margin: 0;
+            font-size: var(--fs-sub);
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--ink);
+        }
+        .case-nf .brief-row .case-text .nf-strat p.nf-strat__ko {
+            margin: 2px 0 0;
+            color: var(--muted);
+            font-size: var(--fs-label);
+        }
+        .case-nf .nf-flow li {
+            display: grid;
+            grid-template-columns: 28px minmax(0, 200px) minmax(0, 1fr);
+            column-gap: 16px;
+            padding: 14px 0;
+            border-top: 1px solid var(--line);
+            line-height: 1.6;
+            word-break: keep-all;
+        }
+        .case-nf .nf-flow li:last-child { border-bottom: 1px solid var(--line); }
+        .case-nf .nf-flow__no {
+            font-size: var(--fs-role);
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            padding-top: 2px;
+            color: var(--nf);
+        }
+        .case-nf .nf-flow strong { font-weight: 700; color: var(--ink); }
+        .case-nf .nf-flow__d { color: var(--muted); }
+
+        .case-nf .nf-camp {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: clamp(22px, 3vw, 34px) 0 0;
+        }
+        .case-nf .nf-camp + .nf-camp {
+            margin-top: clamp(24px, 3.4vw, 38px);
+            border-top: 1px solid var(--line);
+        }
+        .case-nf .nf-camp__head {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 4px 12px;
+            margin: 0 0 14px;
+        }
+        .case-nf .nf-camp__head .nf-no { display: inline; margin: 0; }
+        .case-nf .nf-camp__head h4 {
+            margin: 0;
+            font-size: var(--fs-sub);
+            font-weight: 700;
+            color: var(--ink);
+        }
+        .case-nf .nf-camp__en {
+            font-size: var(--fs-role);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--faint);
+        }
+        .case-nf .nf-fields {
+            display: grid;
+            grid-template-columns: var(--brief-label) minmax(0, 1fr);
+            column-gap: var(--brief-gap);
+            row-gap: 8px;
+            margin: 0 0 18px;
+        }
+        .case-nf .nf-fields dt {
+            padding-top: 3px;
+            font-size: var(--fs-role);
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink);
+        }
+        .case-nf .nf-fields dd {
+            margin: 0;
+            line-height: 1.7;
+            word-break: keep-all;
+        }
+        .case-nf .nf-media {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 14px;
+        }
+        .case-nf .nf-media > img,
+        .case-nf .nf-media > video {
+            grid-column: span 3;
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #000;
+        }
+        .case-nf .nf-media > .is-lead { grid-column: span 6; }
+        .case-nf .nf-media > .is-third { grid-column: span 2; }
+
+        .case-nf .brief-row.nf-outcome { margin-top: clamp(32px, 4.4vw, 52px); }
+        .case-nf .nf-stats {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            column-gap: clamp(20px, 3vw, 36px);
+            margin-top: 22px;
+        }
+        .case-nf .nf-stat {
+            padding: 16px 0 20px;
+            border-top: 1px solid var(--line);
+        }
+        .case-nf .nf-stat strong {
+            display: block;
+            font-size: clamp(26px, 3.6vw, 40px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+        }
+        .case-nf .nf-stat span {
+            display: block;
+            margin-top: 8px;
+            font-size: var(--fs-nav);
+            line-height: 1.5;
+            color: var(--muted);
+            word-break: keep-all;
+        }
+        @media (max-width: 640px) {
+            .case-nf .brief-row .case-text .nf-strat { grid-template-columns: minmax(0, 1fr); row-gap: 8px; }
+            .case-nf .nf-flow li { grid-template-columns: 28px minmax(0, 1fr); row-gap: 2px; }
+            .case-nf .nf-flow__d { grid-column: 2; }
+            .case-nf .nf-fields { grid-template-columns: minmax(0, 1fr); row-gap: 2px; }
+            .case-nf .nf-fields dd { margin-bottom: 10px; }
+            .case-nf .nf-media > img,
+            .case-nf .nf-media > video,
+            .case-nf .nf-media > .is-third { grid-column: span 6; }
+        }
         .about-text h2, .contact-text h2, .project-manager-text h2,
         .ai-creator-text h2, .experience h3 {
             font-size: var(--fs-h2);
@@ -2694,7 +2892,7 @@
                 e.stopPropagation();
                 lb.classList.toggle("is-zoomed");
             });
-            document.querySelectorAll(".case-media img, .case-cols img, .case-pair img, .case-grid img, .case-16x9 img, .case-issues img").forEach(function (img) {
+            document.querySelectorAll(".case-media img, .case-cols img, .case-pair img, .case-grid img, .case-16x9 img, .case-issues img, .nf-media img").forEach(function (img) {
                 img.classList.add("is-zoomable");
                 img.addEventListener("click", function () {
                     open(img.dataset.full || img.currentSrc || img.src, img.alt);
@@ -3247,124 +3445,214 @@
                     </p>
                 </div>
             </div>
-            <div class="case-section case-netflix-outdoor-section case-brief">
+            <div class="case-section case-netflix-outdoor-section case-brief case-nf">
                 <button class="case-back" type="button" onclick="showProjectManager()">← PROJECT EXPERIENCE</button>
                 <header class="case-hero">
                     <h2 class="bc-hero__name">NETFLIX OOH &amp; DOOH</h2>
-                    <p class="bc-hero__sub">옥외광고 콘텐츠 기획 및 크리에이티브 제작 운영</p>
+                    <p class="bc-hero__sub">Brand Content Planning &amp; Creative Direction</p>
                 </header>
-                <div class="case-text" style="margin-top: clamp(20px, 3vw, 30px);">
+                <div class="case-text">
                     <dl class="bc-meta">
-                        <dt>PERIOD</dt><dd>2023.09 – 2026.11</dd>
-                        <dt>CLIENT</dt><dd>NETFLIX</dd>
-                        <dt>ROLE</dt><dd>Creative Planning · Art Direction · Project Management</dd>
-                        <dt>PROJECT TYPE</dt><dd>OOH &amp; DOOH Campaign Production</dd>
+                        <dt>CLIENT</dt><dd>Netflix</dd>
+                        <dt>PERIOD</dt><dd>2023.09 – 현재</dd>
+                        <dt>CATEGORY</dt><dd>OOH / DOOH</dd>
+                        <dt>ROLE</dt><dd>Creative Planning · Visual Direction · Project Management</dd>
                     </dl>
                 </div>
+
+                <!-- 01 PROJECT OVERVIEW -->
                 <div class="brief-row">
-                    <h3 class="case-heading">PROJECT OVERVIEW</h3>
+                    <h3 class="case-heading"><span class="nf-no">01</span>PROJECT OVERVIEW</h3>
                     <div class="case-text">
-                        <p>약 3년간 넷플릭스를 주요 클라이언트로 담당하며 다양한 작품 및 브랜드 캠페인의 OOH·DOOH 콘텐츠 기획과 제작 운영을 수행했습니다.</p>
-                        <p>정기적으로 진행되는 캠페인에서 브리프 분석부터 크리에이티브 기획, 비주얼 디렉팅, 제작사 협업 및 최종 납품까지 전반적인 과정을 관리했습니다.</p>
+                        <p>약 3년간 넷플릭스의 주요 작품 및 브랜드 캠페인을 대상으로 옥외광고 콘텐츠 기획, 비주얼 디렉팅 및 제작 운영을 수행했습니다.</p>
+                        <p>1~2개월 주기로 진행되는 캠페인에 참여하며 브랜드의 일관성을 유지하는 동시에 캠페인별 새로운 크리에이티브 표현 방식을 제안했습니다.</p>
                     </div>
                 </div>
+
+                <!-- 02 CHALLENGE -->
                 <div class="brief-row">
-                    <h3 class="case-heading">MY ROLE</h3>
+                    <h3 class="case-heading"><span class="nf-no">02</span>CHALLENGE</h3>
                     <div class="case-text">
-                        <p>넷플릭스의 작품 및 브랜드 캠페인별 요구사항을 분석하고, 콘텐츠 기획부터 제작 디렉팅, 일정 및 품질 관리, 최종 납품까지 프로젝트 전반을 운영했습니다.</p>
-                        <dl class="bc-pairs">
-                            <dt>Creative Planning</dt>
-                            <dd>
-                                <ul>
-                                    <li>클라이언트 브리프 분석</li>
-                                    <li>작품 및 캠페인별 콘텐츠 콘셉트 기획</li>
-                                    <li>매체 특성을 고려한 콘텐츠 구성</li>
-                                </ul>
-                            </dd>
-                            <dt>Art Direction</dt>
-                            <dd>
-                                <ul>
-                                    <li>콘텐츠 비주얼 방향 설정</li>
-                                    <li>2D·3D·모션 제작 디렉팅</li>
-                                    <li>크리에이티브 검수 및 수정 방향 제안</li>
-                                </ul>
-                            </dd>
-                            <dt>Project Management</dt>
-                            <dd>
-                                <ul>
-                                    <li>제작 일정 및 진행 상황 관리</li>
-                                    <li>제작사 및 유관 부서 커뮤니케이션</li>
-                                    <li>클라이언트 피드백 조율</li>
-                                    <li>최종 결과물 검수 및 납품</li>
-                                </ul>
-                            </dd>
-                        </dl>
+                        <p class="nf-statement">지속되는 캠페인 속에서 새로운 크리에이티브를 어떻게 만들어낼 것인가?</p>
+                        <p>정기적으로 진행되는 넷플릭스의 옥외광고 캠페인은 브랜드의 일관성을 유지하면서도 작품과 시즌에 따라 차별화된 콘텐츠를 지속적으로 제안해야 하는 과제가 있었습니다.</p>
+                        <ol class="nf-points">
+                            <li><span>01</span>반복되는 캠페인 속 새로운 크리에이티브 발굴</li>
+                            <li><span>02</span>브랜드 정체성과 작품별 개성의 균형</li>
+                            <li><span>03</span>제한된 노출 시간 내 직관적인 메시지 전달</li>
+                            <li><span>04</span>다양한 옥외광고 매체 및 규격 대응</li>
+                        </ol>
                     </div>
                 </div>
+
+                <!-- 03 CREATIVE STRATEGY -->
                 <div class="brief-row">
-                    <h3 class="case-heading">CREATIVE APPROACH</h3>
+                    <h3 class="case-heading"><span class="nf-no">03</span>CREATIVE STRATEGY</h3>
                     <div class="case-text">
-                        <p>작품별 메시지와 옥외 매체의 노출 환경을 고려하여 콘텐츠의 정보 구조와 시각적 표현 방식을 기획했습니다.</p>
-                        <p>매체별 화면 비율과 노출 특성에 맞춰 크리에이티브 방향을 설정하고, 제작 과정 전반에서 콘텐츠의 일관성과 완성도를 관리했습니다.</p>
-                        <dl class="bc-pairs">
-                            <dt>핵심 업무</dt>
-                            <dd>
-                                <ul>
-                                    <li>작품별 핵심 메시지 분석</li>
-                                    <li>매체별 화면 구성 및 표현 방식 기획</li>
-                                    <li>콘텐츠 비주얼 방향 설정</li>
-                                    <li>제작물 검수 및 크리에이티브 개선</li>
-                                </ul>
-                            </dd>
-                        </dl>
+                        <p class="nf-statement">브랜드의 일관성은 유지하고, 콘텐츠의 표현 방식은 확장하다.</p>
+                        <article class="nf-strat">
+                            <div class="nf-strat__head">
+                                <p class="nf-strat__no">01</p>
+                                <h4>Brand Consistency</h4>
+                                <p class="nf-strat__ko">브랜드 일관성</p>
+                            </div>
+                            <p>넷플릭스의 브랜드 가이드라인을 기반으로 캠페인별 시각적 정체성과 메시지의 일관성을 유지했습니다.</p>
+                        </article>
+                        <article class="nf-strat">
+                            <div class="nf-strat__head">
+                                <p class="nf-strat__no">02</p>
+                                <h4>Creative Development</h4>
+                                <p class="nf-strat__ko">크리에이티브 차별화</p>
+                            </div>
+                            <p>작품별 특성과 캠페인 메시지를 분석하고 새로운 레이아웃, 그래픽 및 모션 표현 방식을 제안했습니다.</p>
+                        </article>
+                        <article class="nf-strat">
+                            <div class="nf-strat__head">
+                                <p class="nf-strat__no">03</p>
+                                <h4>Media Optimization</h4>
+                                <p class="nf-strat__ko">매체별 콘텐츠 최적화</p>
+                            </div>
+                            <p>옥외광고의 매체 규격과 노출 환경을 고려하여 콘텐츠의 정보 구조와 비주얼 표현 방식을 설계했습니다.</p>
+                        </article>
+                        <article class="nf-strat">
+                            <div class="nf-strat__head">
+                                <p class="nf-strat__no">04</p>
+                                <h4>Production Management</h4>
+                                <p class="nf-strat__ko">지속적인 제작 운영</p>
+                            </div>
+                            <p>제작사와의 협업, 프로젝트 일정 관리, 크리에이티브 검수 및 품질 관리를 통해 기획 의도가 최종 결과물에 반영될 수 있도록 운영했습니다.</p>
+                        </article>
                     </div>
                 </div>
-                <h3 class="case-heading brief-h">SELECTED CAMPAIGNS</h3>
-                <p class="case-note" style="margin-top: -6px;">주요 OOH·DOOH 캠페인 제작 결과물</p>
-                <p class="case-label">Title Campaigns</p>
-                <div class="case-16x9">
-                    <video src="cases/netflix-outdoor/title-campaigns/gisaengsu.mp4" controls muted loop playsinline preload="metadata"></video>
-                    <video src="cases/netflix-outdoor/title-campaigns/melo-movie.mp4" controls muted loop playsinline preload="metadata"></video>
-                    <video src="cases/netflix-outdoor/title-campaigns/oggaem.mp4" controls muted loop playsinline preload="metadata"></video>
-                    <video src="cases/netflix-outdoor/title-campaigns/iruh-jilgini.mp4" controls muted loop playsinline preload="metadata"></video>
-                    <img src="cases/netflix-outdoor/title-campaigns/wolgan-namchin-bus.jpg" alt="넷플릭스 「월간남친」 — 버스 옥외광고" loading="lazy" decoding="async">
-                </div>
-                <p class="case-label">Brand Campaign</p>
-                <div class="case-16x9">
-                    <img src="cases/netflix-outdoor/brand-campaign/brand-1.jpg" alt="넷플릭스 「9월, 넷플 뭐봄?」 — 지하철 옥외광고" loading="lazy" decoding="async">
-                    <video src="cases/netflix-outdoor/brand-campaign/brand-1.mp4" controls playsinline preload="metadata"></video>
-                    <video src="cases/netflix-outdoor/brand-campaign/brand-2.mp4" controls playsinline preload="metadata"></video>
-                    <video src="cases/netflix-outdoor/brand-campaign/brand-3.mp4" controls playsinline preload="metadata"></video>
-                </div>
-                <p class="case-label">Busan International Film Festival</p>
-                <div class="case-16x9">
-                    <img src="cases/netflix-outdoor/busan-iff/busan-3.jpg" alt="부산국제영화제 — 넷플릭스 옥외 포스터 전시" loading="lazy" decoding="async">
-                    <img src="cases/netflix-outdoor/busan-iff/busan-4.jpg" alt="부산국제영화제 — 넷플릭스 외벽 포스터" loading="lazy" decoding="async">
-                    <video src="cases/netflix-outdoor/busan-iff/busan-1.mp4" controls playsinline preload="metadata"></video>
-                    <video src="cases/netflix-outdoor/busan-iff/busan-2.mp4" controls playsinline preload="metadata"></video>
-                </div>
-                <p class="case-label">BTS Comeback Live</p>
-                <div class="case-16x9">
-                    <img src="cases/netflix-outdoor/bts-comeback/bts-photo.jpg" alt="넷플릭스 N x BTS 「Comeback Live」 — 옥외 계단 광고" loading="lazy" decoding="async">
-                    <video src="cases/netflix-outdoor/bts-comeback/bts-1.mp4" controls playsinline preload="metadata"></video>
-                    <video src="cases/netflix-outdoor/bts-comeback/bts-2.mp4" controls playsinline preload="metadata"></video>
-                    <video src="cases/netflix-outdoor/bts-comeback/bts-3.mp4" controls playsinline preload="metadata"></video>
-                    <video src="cases/netflix-outdoor/bts-comeback/bts-4.mp4" controls playsinline preload="metadata"></video>
-                </div>
-                <p class="case-label">Next on Netflix</p>
-                <div class="case-16x9">
-                    <img src="cases/netflix-outdoor/next-on-netflix/non-1.jpg" alt="Next on Netflix — 지하상가 옥외광고" loading="lazy" decoding="async">
-                    <video src="cases/netflix-outdoor/next-on-netflix/non-1.mp4" controls playsinline preload="metadata"></video>
-                    <video src="cases/netflix-outdoor/next-on-netflix/non-2.mp4" controls playsinline preload="metadata"></video>
-                    <video src="cases/netflix-outdoor/next-on-netflix/non-3.mp4" controls playsinline preload="metadata"></video>
-                    <video src="cases/netflix-outdoor/next-on-netflix/non-4.mp4" controls playsinline preload="metadata"></video>
-                    <video src="cases/netflix-outdoor/next-on-netflix/non-5.mp4" controls playsinline preload="metadata"></video>
-                </div>
+
+                <!-- 04 MY ROLE & PROCESS -->
                 <div class="brief-row">
-                    <h3 class="case-heading">PROJECT OUTCOME</h3>
+                    <h3 class="case-heading"><span class="nf-no">04</span>MY ROLE &amp; PROCESS</h3>
                     <div class="case-text">
-                        <p>넷플릭스의 다양한 작품 및 브랜드 캠페인을 대상으로 OOH·DOOH 콘텐츠를 지속적으로 기획하고 제작 운영했습니다.</p>
-                        <p>장기간 반복되는 프로젝트에서 클라이언트 요구사항과 제작 환경을 조율하며, 매체별 크리에이티브 검수부터 최종 납품까지 안정적으로 수행했습니다.</p>
+                        <p class="nf-statement">기획부터 최종 결과물까지</p>
+                        <ol class="nf-flow">
+                            <li><span class="nf-flow__no">1</span><strong>Brief Analysis</strong><span class="nf-flow__d">클라이언트 브리프 및 캠페인 메시지 분석</span></li>
+                            <li><span class="nf-flow__no">2</span><strong>Creative Planning</strong><span class="nf-flow__d">크리에이티브 아이디어 발굴 및 콘텐츠 방향 기획</span></li>
+                            <li><span class="nf-flow__no">3</span><strong>Visual Direction</strong><span class="nf-flow__d">레이아웃, 그래픽, 모션 등 비주얼 방향 설정</span></li>
+                            <li><span class="nf-flow__no">4</span><strong>Production Management</strong><span class="nf-flow__d">제작사 협업, 제작 일정 및 진행 상황 관리</span></li>
+                            <li><span class="nf-flow__no">5</span><strong>Quality Control &amp; Delivery</strong><span class="nf-flow__d">크리에이티브 검수, 매체별 결과물 확인 및 최종 납품</span></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- 05 SELECTED CAMPAIGNS -->
+                <h3 class="case-heading brief-h"><span class="nf-no">05</span>SELECTED CAMPAIGNS</h3>
+                <p class="case-note" style="margin-top: -6px;">대표 캠페인 및 기획 사례</p>
+                <!--
+                    캠페인 내용 추가 방법:
+                    - 비어 있는 항목(Creative Approach, My Contribution)은 hidden 속성으로 숨겨져 있습니다.
+                    - 내용을 <dd> 안에 적고, 해당 <dt>와 <dd>의 hidden 속성을 지우면 페이지에 나타납니다.
+                    - 미디어는 .nf-media 안에서 is-lead(전체 폭) / is-third(3분할) 클래스로 크기를 조절합니다.
+                -->
+
+                <article class="nf-camp">
+                    <header class="nf-camp__head"><span class="nf-no">A</span><h4>부산국제영화제</h4><span class="nf-camp__en">Busan International Film Festival</span></header>
+                    <dl class="nf-fields">
+                        <dt>Campaign Overview</dt>
+                        <dd>부산국제영화제 기간에 맞춰 넷플릭스 작품 포스터를 외벽과 야외 전시 형태로 선보인 옥외 캠페인입니다.</dd>
+                        <dt hidden>Creative Approach</dt>
+                        <dd hidden></dd>
+                        <dt hidden>My Contribution</dt>
+                        <dd hidden></dd>
+                        <dt>Final Output</dt>
+                        <dd>외벽 포스터 · 야외 포스터 전시 · 영상 콘텐츠</dd>
+                    </dl>
+                    <div class="nf-media">
+                        <video src="cases/netflix-outdoor/busan-iff/busan-1.mp4" controls playsinline preload="metadata"></video>
+                        <video src="cases/netflix-outdoor/busan-iff/busan-2.mp4" controls playsinline preload="metadata"></video>
+                    </div>
+                </article>
+
+                <article class="nf-camp">
+                    <header class="nf-camp__head"><span class="nf-no">B</span><h4>넷플릭스 월별 라인업 캠페인</h4><span class="nf-camp__en">Monthly Lineup Campaign</span></header>
+                    <dl class="nf-fields">
+                        <dt>Campaign Overview</dt>
+                        <dd>월별 넷플릭스 라인업을 소개하는 브랜드 캠페인입니다. (예: 「9월, 넷플 뭐봄?」)</dd>
+                        <dt hidden>Creative Approach</dt>
+                        <dd hidden></dd>
+                        <dt hidden>My Contribution</dt>
+                        <dd hidden></dd>
+                        <dt>Final Output</dt>
+                        <dd>지하철 옥외광고 · 영상 콘텐츠</dd>
+                    </dl>
+                    <div class="nf-media">
+                        <video class="is-lead" src="cases/netflix-outdoor/brand-campaign/brand-1.mp4" controls playsinline preload="metadata"></video>
+                        <video src="cases/netflix-outdoor/brand-campaign/brand-2.mp4" controls playsinline preload="metadata"></video>
+                        <video src="cases/netflix-outdoor/brand-campaign/brand-3.mp4" controls playsinline preload="metadata"></video>
+                    </div>
+                </article>
+
+                <article class="nf-camp">
+                    <header class="nf-camp__head"><span class="nf-no">C</span><h4>BTS 컴백 라이브</h4><span class="nf-camp__en">N x BTS Comeback Live</span></header>
+                    <dl class="nf-fields">
+                        <dt>Campaign Overview</dt>
+                        <dd>넷플릭스에서 공개된 「N x BTS Comeback Live」를 알린 옥외 캠페인입니다.</dd>
+                        <dt hidden>Creative Approach</dt>
+                        <dd hidden></dd>
+                        <dt hidden>My Contribution</dt>
+                        <dd hidden></dd>
+                        <dt>Final Output</dt>
+                        <dd>옥외 계단 광고 · 영상 콘텐츠</dd>
+                    </dl>
+                    <div class="nf-media">
+                        <img class="is-lead" src="cases/netflix-outdoor/bts-comeback/bts-photo.jpg" alt="넷플릭스 N x BTS 「Comeback Live」 — 옥외 계단 광고" loading="lazy" decoding="async">
+                        <video class="is-third" src="cases/netflix-outdoor/bts-comeback/bts-1.mp4" controls playsinline preload="metadata"></video>
+                        <video class="is-third" src="cases/netflix-outdoor/bts-comeback/bts-3.mp4" controls playsinline preload="metadata"></video>
+                        <video class="is-third" src="cases/netflix-outdoor/bts-comeback/bts-4.mp4" controls playsinline preload="metadata"></video>
+                    </div>
+                </article>
+
+                <article class="nf-camp">
+                    <header class="nf-camp__head"><span class="nf-no">D</span><h4>Next on Netflix</h4><span class="nf-camp__en">Next on Netflix</span></header>
+                    <dl class="nf-fields">
+                        <dt>Campaign Overview</dt>
+                        <dd>Next on Netflix 캠페인으로, 지하상가를 포함한 다양한 옥외 매체에서 진행했습니다.</dd>
+                        <dt hidden>Creative Approach</dt>
+                        <dd hidden></dd>
+                        <dt hidden>My Contribution</dt>
+                        <dd hidden></dd>
+                        <dt>Final Output</dt>
+                        <dd>지하상가 옥외광고 · 영상 콘텐츠</dd>
+                    </dl>
+                    <div class="nf-media">
+                        <video class="is-lead" src="cases/netflix-outdoor/next-on-netflix/non-1.mp4" controls playsinline preload="metadata"></video>
+                        <video src="cases/netflix-outdoor/next-on-netflix/non-4.mp4" controls playsinline preload="metadata"></video>
+                        <video src="cases/netflix-outdoor/next-on-netflix/non-5.mp4" controls playsinline preload="metadata"></video>
+                    </div>
+                </article>
+
+                <article class="nf-camp">
+                    <header class="nf-camp__head"><span class="nf-no">E</span><h4>기타 대표 캠페인</h4><span class="nf-camp__en">Title Campaigns</span></header>
+                    <div class="nf-media">
+                        <video src="cases/netflix-outdoor/title-campaigns/gisaengsu.mp4" controls muted loop playsinline preload="metadata"></video>
+                        <video src="cases/netflix-outdoor/title-campaigns/melo-movie.mp4" controls muted loop playsinline preload="metadata"></video>
+                        <video src="cases/netflix-outdoor/title-campaigns/oggaem.mp4" controls muted loop playsinline preload="metadata"></video>
+                        <video src="cases/netflix-outdoor/title-campaigns/iruh-jilgini.mp4" controls muted loop playsinline preload="metadata"></video>
+                    </div>
+                </article>
+
+                <!-- 06 PROJECT OUTCOME -->
+                <div class="brief-row nf-outcome">
+                    <h3 class="case-heading"><span class="nf-no">06</span>PROJECT OUTCOME</h3>
+                    <div class="case-text">
+                        <p class="nf-statement">지속적인 브랜드 콘텐츠 기획 및 제작 운영</p>
+                        <p>단발성 광고 제작을 넘어 약 3년간 정기적으로 진행되는 넷플릭스의 옥외광고 캠페인에 참여하며 브랜드 콘텐츠의 기획, 비주얼 디렉팅 및 제작 운영을 지속적으로 수행했습니다.</p>
+                        <!--
+                            수치를 확보하면 아래 목록에 .nf-stat 항목을 추가하세요. (2열로 자동 배치됩니다)
+                            예: 전체 캠페인 수행 건수 / 전체 콘텐츠 제작 건수 / 크리에이티브 기획안 채택 건수 /
+                                광고 적용 매체 수 / 신규 콘텐츠 포맷 도입 사례
+                            <div class="nf-stat"><strong>00</strong><span>항목 설명</span></div>
+                        -->
+                        <div class="nf-stats">
+                            <div class="nf-stat"><strong>3 YEARS</strong><span>약 3년간 지속적인 브랜드 프로젝트 수행</span></div>
+                            <div class="nf-stat"><strong>1–2 MONTHS</strong><span>정기적인 캠페인 제작 주기</span></div>
+                            <div class="nf-stat"><strong>OOH &amp; DOOH</strong><span>다양한 옥외광고 매체 대응</span></div>
+                            <div class="nf-stat"><strong>END-TO-END</strong><span>기획부터 제작 운영 및 최종 납품까지 수행</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
