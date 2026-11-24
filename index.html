@@ -2554,7 +2554,7 @@
         function showHome() { navigate("intro-section"); }
         function showProjectManager() { navigate("project-manager-section"); }
         function showMotionGraphic() { navigate("motion-graphic-section"); }
-        function showBrandConcepts() { openAiMore("brand-lab"); }
+        function showBrandConcepts() { bcBack(true); }
         function showAiCreator() { navigate("ai-creator-section"); }
         function showContact() { navigate("contact-section"); }
         function showCaseTechlove() { navigate("case-techlove-section"); }
@@ -2590,7 +2590,13 @@
             return null;
         }
         function bcSlugFromHash() {
-            var m = location.hash.replace(/^#\/?/, "").match(/^brand-(?:lab|concepts)\/([^\/?#]+)$/);
+            var raw = location.hash.replace(/^#\/?/, "");
+            /* BRAND LAB with a single brand opens that brand directly (old #/brand-lab address) */
+            if (/^brand-(?:lab|concepts)\/?$/.test(raw) && bcProjects().length === 1) {
+                try { history.replaceState(history.state, "", "#/brand-lab/" + bcProjects()[0].slug); } catch (e) {}
+                return bcProjects()[0].slug;
+            }
+            var m = raw.match(/^brand-(?:lab|concepts)\/([^\/?#]+)$/);
             if (!m) return null;
             var slug = decodeURIComponent(m[1]);
             return bcFind(slug) ? slug : null;
@@ -2660,7 +2666,8 @@
             var S = p.sections, html = "";
 
             /* HERO: key visual, name, one-line subtitle, who/when/role */
-            html += '<button class="case-back" type="button" data-bc-open="">' + aiEsc(D.labels.back) + "</button>";
+            var backLabel = bcProjects().length === 1 ? window.AI_WORKS.labels.back : D.labels.back;
+            html += '<button class="case-back" type="button" data-bc-open="">' + aiEsc(backLabel) + "</button>";
             html += '<header class="bc-hero">' +
                 (p.heroImage ? '<div class="bc-hero__img"><img src="' + aiEsc(p.heroImage) + '" alt="' + aiEsc(p.brandName) + ' key visual" width="' + p.heroImageSize.w + '" height="' + p.heroImageSize.h + '" decoding="async"></div>' : "") +
                 '<h2 class="bc-hero__name">' + aiEsc(p.brandName) + "</h2>" +
@@ -2698,11 +2705,17 @@
                 return "<li><strong>" + aiEsc(st.label) + "</strong><span>" + aiEsc(st.text) + "</span></li>";
             }).join("") + "</ol>" : "");
 
-            html += '<button class="case-back" type="button" data-bc-open="">' + aiEsc(D.labels.back) + "</button>";
+            html += '<button class="case-back" type="button" data-bc-open="">' + aiEsc(backLabel) + "</button>";
             el.innerHTML = html;
             document.title = p.brandName + " — Brand Lab — LIM";
         }
 
+        /* "back" from a brand: one brand -> straight to AI WORKS; several -> the BRAND LAB list page */
+        function bcBack(open) {
+            var one = bcProjects().length === 1;
+            if (open) { if (one) openBrandConcept(bcProjects()[0].slug); else openAiMore("brand-lab"); return; }
+            if (one) navigate("ai-creator-section"); else openAiMore("brand-lab");
+        }
         function openAiMore(key) {
             history.pushState({ section: "ai-detail-section" }, "", "#/ai-creator/more/" + key);
             showSection("ai-detail-section");
@@ -2736,7 +2749,7 @@
                         if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
                         e.preventDefault();
                         var slug = open.getAttribute("data-bc-open");
-                        if (slug) openBrandConcept(slug); else openAiMore("brand-lab");
+                        if (slug) openBrandConcept(slug); else bcBack();
                     }
                 });
             });
@@ -2818,6 +2831,11 @@
                 items.map(function (it) { return "<li>" + it + "</li>"; }).join("") + "</ul>";
         }
 
+        /* link target of a main-page card: its Read More page (BRAND LAB with a single brand goes straight to that brand) */
+        function aiMoreAttrs(g) {
+            if (g.brandLab && bcProjects().length === 1) return 'href="#/brand-lab/' + aiEsc(bcProjects()[0].slug) + '" data-bc-open="' + aiEsc(bcProjects()[0].slug) + '"';
+            return 'href="#/ai-creator/more/' + aiEsc(g.key) + '" data-ai-more="' + aiEsc(g.key) + '"';
+        }
         /* main page: ONE representative work per group + a "Read More" link to the full list */
         function renderAiWorks() {
             var D = window.AI_WORKS, root = document.getElementById("aiWorks");
@@ -2828,9 +2846,9 @@
                 var items = aiGroupItems(g, true);
                 html += '<section class="ai-block ai-group" aria-label="' + aiEsc(g.title) + '">' +
                     '<h3 class="ai-block__label">' + aiEsc(g.label || g.title) + "</h3>" +
-                    aiList(g.cover ? [g.cover.still ? '<a class="ai-cover-link" href="#/ai-creator/more/' + aiEsc(g.key) + '" data-ai-more="' + aiEsc(g.key) + '" aria-label="' + aiEsc(g.label || g.title) + ' — Read More">' + aiMedia(g.cover, true) + "</a>" : aiMedia(g.cover, true)] : items.slice(0, 1)) +
+                    aiList(g.cover ? [g.cover.still ? '<a class="ai-cover-link" ' + aiMoreAttrs(g) + ' aria-label="' + aiEsc(g.label || g.title) + ' — Read More">' + aiMedia(g.cover, true) + "</a>" : aiMedia(g.cover, true)] : items.slice(0, 1)) +
                     ((g.cover && g.cover.still) || items.length > 1
-                        ? '<a class="ai-more" href="#/ai-creator/more/' + aiEsc(g.key) + '" data-ai-more="' + aiEsc(g.key) + '">Read More</a>'
+                        ? '<a class="ai-more" ' + aiMoreAttrs(g) + '>Read More</a>'
                         : "") +
                     "</section>";
             });
@@ -2849,7 +2867,7 @@
             var raw = location.hash.replace(/^#\/?/, "");
             var m = raw.match(/^ai-creator\/more\/([^\/?#]+)$/);
             /* BRAND LAB used to be its own menu (#/brand-lab): it now lives inside AI WORKS */
-            if (!m && /^brand-(?:lab|concepts)\/?$/.test(raw)) m = [raw, "brand-lab"];
+            if (!m && /^brand-(?:lab|concepts)\/?$/.test(raw) && bcProjects().length !== 1) m = [raw, "brand-lab"];
             var g = m && aiGroupByKey(decodeURIComponent(m[1]));
             if (!g) return null;
             /* an old address (alias) opens the group's current page */

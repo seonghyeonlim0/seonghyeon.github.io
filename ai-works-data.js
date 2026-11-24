@@ -181,7 +181,7 @@ window.AI_WORKS = {
                 brandNote: "각 브랜드는 실제 클라이언트 프로젝트가 아닌 가상의 브랜드 프로젝트입니다."
             },
             /* main-page card: still image only (replace videos/posters/brand-lab-cover.jpg to change it) */
-            cover: { title: "BRAND LAB", poster: "videos/posters/brand-lab-cover.jpg", w: 522, h: 929, still: true },
+            cover: { title: "BRAND LAB", poster: "videos/posters/brand-lab-cover.jpg?v=2", w: 941, h: 1672, still: true },
             label: "BRAND LAB",
             title: "BRAND LAB"
         }
