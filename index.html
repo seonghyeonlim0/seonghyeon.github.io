@@ -1849,6 +1849,79 @@
             color: var(--ink);
             border-color: var(--ink);
         }
+        /* Instagram views / likes under a video */
+        .ai-stat {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px 10px;
+            margin-top: 8px;
+            font-size: var(--fs-role);
+            letter-spacing: 0.02em;
+            color: var(--muted);
+        }
+        .ai-stat b { font-weight: 700; color: var(--ink); }
+        /* CONTENT PERFORMANCE */
+        .ai-perf__lead { color: var(--muted) !important; margin-bottom: 4px !important; }
+        .ai-perf__stats {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0 clamp(18px, 3vw, 36px);
+            margin: 14px 0 16px;
+        }
+        .ai-perf__stats > div { padding: 14px 0 16px; border-top: 1px solid var(--line); }
+        .ai-perf__stats dt {
+            font-size: clamp(24px, 3.2vw, 36px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+        }
+        .ai-perf__stats dd {
+            margin: 8px 0 0;
+            font-size: var(--fs-nav);
+            line-height: 1.5;
+            color: var(--muted);
+            word-break: keep-all;
+        }
+        @media (max-width: 520px) {
+            .ai-perf__stats { grid-template-columns: minmax(0, 1fr); }
+        }
+        /* Instagram embed (item with `ig`): Instagram's embed is ~360px wide, so it is laid out at
+           360px and scaled to the card width (--ig-s is set from JS); the card keeps its proportions. */
+        .ai-media.ai-media--ig,
+        .ai-cards .ai-media.ai-media--ig,
+        .ai-groups .ai-media.ai-media--ig,
+        .ai-detail-section .ai-cards .ai-media.ai-media--ig,
+        .ai-detail-section .ai-rm .ai-cards .ai-media.ai-media--ig {
+            width: 100%;
+            aspect-ratio: 360 / 660;
+            overflow: hidden;
+            background: #fff;
+            border-radius: 8px;
+        }
+        .ai-media--ig iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 360px;
+            height: 660px;
+            border: 0;
+            background: #fff;
+            transform-origin: 0 0;
+            transform: scale(var(--ig-s, 0.55));
+        }
+        /* Read More page with embeds: wider cards so the embed stays readable */
+        .ai-detail-section .ai-rm .ai-cards.ai-cards--ig {
+            grid-template-columns: repeat(var(--ai-cols, 3), minmax(0, 300px));
+            column-gap: 22px;
+            row-gap: 22px;
+        }
+        @media (max-width: 980px) {
+            .ai-detail-section .ai-rm .ai-cards.ai-cards--ig { grid-template-columns: repeat(2, minmax(0, 300px)); }
+        }
+        @media (max-width: 680px) {
+            .ai-detail-section .ai-rm .ai-cards.ai-cards--ig { grid-template-columns: minmax(0, 340px); }
+        }
         .ai-rm__sec .ai-cards { margin-top: 14px; }
         .ai-detail-section .ai-rm .ai-cards .ai-media { width: 100%; }
         .ai-detail-section .ai-cards .ai-media { width: min(100%, max(96px, calc((100vh - 270px) * 9 / 16))); }
@@ -2681,6 +2754,12 @@
         }
         /* click-to-play box: only the poster is loaded until the viewer presses play */
         function aiMedia(v, small) {
+            /* Instagram reel given only by its link id: shown with Instagram's official embed (loaded lazily) */
+            if (v.ig) {
+                return '<div class="ai-media ai-media--ig">' +
+                    '<iframe src="https://www.instagram.com/reel/' + encodeURIComponent(v.ig) + '/embed/" title="Instagram: ' + aiEsc(v.title) + '" loading="lazy" scrolling="no" allowfullscreen></iframe>' +
+                    "</div>";
+            }
             return '<div class="ai-media" style="--ai-r:' + v.w + " / " + v.h + '" data-src="' + aiEsc(v.src) +
                 '" data-poster="' + aiEsc(v.poster) + '" data-title="' + aiEsc(v.title) + '">' +
                 '<img src="' + aiEsc(v.poster) + '" alt="" width="' + v.w + '" height="' + v.h + '" loading="lazy" decoding="async">' +
@@ -2694,6 +2773,12 @@
                 "<dt>" + L.role + "</dt><dd>" + aiText(aiField(p, "role")) + "</dd>" +
                 "<dt>" + L.tools + "</dt><dd>" + aiText(aiField(p, "tools")) + "</dd>" +
                 "</dl>";
+        }
+
+        /* Instagram views under a video (likes are shown live by the embed itself) */
+        function aiStat(v) {
+            if (!v.views) return "";
+            return '<span class="ai-stat"><span>조회수 <b>' + aiEsc(v.views) + "</b></span></span>";
         }
 
         /* all items of a group, as HTML strings (first = representative work) */
@@ -2710,13 +2795,13 @@
             } else {
                 var vids = g.videos || D.projects[g.series].videos;
                 vids.forEach(function (v) {
-                    items.push((bare || g.hideTitles ? "" : '<span class="ai-card__title">' + aiEsc(v.title) + "</span>") + aiMedia(v, true));
+                    items.push((bare || g.hideTitles ? "" : '<span class="ai-card__title">' + aiEsc(v.title) + "</span>") + aiMedia(v, true) + aiStat(v));
                 });
             }
             return items;
         }
-        function aiList(items, cols, twoRows) {
-            return '<ul class="ai-cards' + (twoRows ? " ai-two-rows" : "") + '"' + (cols ? ' style="--ai-cols:' + cols + '"' : "") + ">" +
+        function aiList(items, cols, twoRows, embeds) {
+            return '<ul class="ai-cards' + (twoRows ? " ai-two-rows" : "") + (embeds ? " ai-cards--ig" : "") + '"' + (cols ? ' style="--ai-cols:' + cols + '"' : "") + ">" +
                 items.map(function (it) { return "<li>" + it + "</li>"; }).join("") + "</ul>";
         }
 
@@ -2730,7 +2815,7 @@
                 var items = aiGroupItems(g, true);
                 html += '<section class="ai-block ai-group" aria-label="' + aiEsc(g.title) + '">' +
                     '<h3 class="ai-block__label">' + aiEsc(g.label || g.title) + "</h3>" +
-                    aiList(items.slice(0, 1)) +
+                    aiList(g.cover ? [aiMedia(g.cover, true)] : items.slice(0, 1)) +
                     (items.length > 1
                         ? '<a class="ai-more" href="#/ai-creator/more/' + aiEsc(g.key) + '" data-ai-more="' + aiEsc(g.key) + '">Read More</a>'
                         : "") +
@@ -2738,6 +2823,7 @@
             });
             html += "</div>";
             root.innerHTML = html;
+            aiFitEmbeds(root);
         }
 
         /* "Read More" page: every work of one group (#/ai-creator/more/<key>) */
@@ -2753,6 +2839,27 @@
         /* up to 5 works on one row, 6-8 on two rows, 9 or more on three rows;
            never more than 4 columns, so 13+ works wrap onto extra rows instead of widening */
         function aiMoreCols(n) { return n <= 5 ? n : (n <= 8 ? Math.ceil(n / 2) : Math.min(4, Math.ceil(n / 3))); }
+        /* CONTENT PERFORMANCE: headline numbers + links to the channels */
+        function aiPerformance(P) {
+            return '<section class="ai-rm__sec ai-perf"><h3>' + aiEsc(P.title) + "</h3>" +
+                (P.lead ? '<p class="ai-perf__lead">' + aiEsc(P.lead) + "</p>" : "") +
+                '<dl class="ai-perf__stats">' + (P.stats || []).map(function (s) {
+                    return "<div><dt>" + aiEsc(s.value) + "</dt><dd>" + aiEsc(s.label) + "</dd></div>";
+                }).join("") + "</dl>" +
+                (P.links && P.links.length ? '<p class="ai-rm__links">' + P.links.map(function (l) {
+                    return '<a href="' + aiEsc(l.url) + '" target="_blank" rel="noopener noreferrer">' + aiEsc(l.label) + " ↗</a>";
+                }).join("") + "</p>" : "") + "</section>";
+        }
+        /* scale each Instagram embed to its card (ResizeObserver also covers cards that were hidden when rendered) */
+        function aiFitEmbeds(root) {
+            var boxes = (root || document).querySelectorAll(".ai-media--ig");
+            boxes.forEach(function (box) {
+                if (box.__fit) return;
+                function fit() { var w = box.clientWidth; if (w) box.style.setProperty("--ig-s", (w / 360).toFixed(4)); }
+                box.__fit = fit; fit();
+                if (window.ResizeObserver) new ResizeObserver(fit).observe(box); else window.addEventListener("resize", fit);
+            });
+        }
         function renderAiMore(key) {
             var D2 = window.AI_WORKS, el = document.getElementById("aiDetail"), g = aiGroupByKey(key);
             if (!el || !g) return;
@@ -2767,9 +2874,11 @@
                 (rm.links && rm.links.length ? '<section class="ai-rm__sec"><h3>SNS</h3><p class="ai-rm__links">' + rm.links.map(function (l) {
                     return '<a href="' + aiEsc(l.url) + '" target="_blank" rel="noopener noreferrer">' + aiEsc(l.label) + " ↗</a>";
                 }).join("") + "</p></section>" : "") +
-                '<section class="ai-rm__sec"><h3>OUTPUT</h3>' + aiList(items, aiMoreCols(items.length), items.length > 5) + "</section>" +
+                '<section class="ai-rm__sec"><h3>OUTPUT</h3>' + aiList(items, aiMoreCols(items.length), items.length > 5, !!(g.videos && g.videos.length && g.videos.every(function (v) { return v.ig; }))) + "</section>" +
+                (g.performance && D2.performance ? aiPerformance(Object.assign({}, D2.performance, g.performance === true ? {} : g.performance)) : "") +
                 "</article>";
             document.title = (rm.title || g.title) + " — AI Works — LIM";
+            aiFitEmbeds(el);
         }
 
         function renderAiDetail(id) {

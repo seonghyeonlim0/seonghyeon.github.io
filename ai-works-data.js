@@ -10,6 +10,7 @@
    - Swap the representative work of a group : move it to the front of
      that group's list in `groups`.
    - Swap a video           : edit `src` (path under /videos) of that entry.
+   - Add an Instagram reel without a file : { title, ig: "<id from https://www.instagram.com/reel/<id>/>", views, likes }
    - Swap a thumbnail       : replace the jpg in /videos/posters/ or edit
      `poster`. Keep `w` / `h` equal to the real video pixel size, they set
      the playback aspect ratio.
@@ -24,6 +25,18 @@ window.AI_WORKS = {
     title: "AI WORKS",
     intro: "생성형 AI를 활용한 이미지 및 영상 콘텐츠를 기획하고 제작하였습니다. 브랜드와 제품을 새로운 시각으로 표현하는 비주얼 작업부터 캐릭터 IP 개발, 스토리텔링 콘텐츠까지 다양한 프로젝트를 진행하며, 기획과 제작 전반을 아우르는 작업을 진행할 수 있습니다.",
 
+    /* CONTENT PERFORMANCE block (shown under OUTPUT on groups that have a `performance` object).
+       Title / lead are shared; `stats` and `links` are set per account on the group.
+       Per-video `views` are Instagram reel counts read on 2026-11-24 (Instagram rounds large
+       values, e.g. "4.4만"); likes are not stored, the Instagram embed shows them live.
+       Account totals = sum of all reel views of that account on 2026-11-24:
+         UNKL 67 reels ~94,500 -> "92,000+"   |   Beom Doryeong 21 reels ~122,300 -> "121,000+"
+       (rounded down with a margin for Instagram's rounding).
+       Videos with 10,000+ views are always included in OUTPUT. */
+    performance: {
+        title: "CONTENT PERFORMANCE",
+        lead: "실제 콘텐츠 운영 및 성과 분석"
+    },
     /* [2][3][4] page groups, shown left to right (order = display order).
        Each group shows ONE representative work; "Read More" opens a page with all of them
        (#/ai-creator/more/<key>).
@@ -45,25 +58,23 @@ window.AI_WORKS = {
                     { label: "Instagram", url: "https://www.instagram.com/beomdoryeong/" }
                 ]
             },
+            performance: {   /* CONTENT PERFORMANCE of this account only */
+                stats: [
+                    { value: "121,000+", label: "범도령 계정 총 조회수 (릴스 합산)" },
+                    { value: "Organic", label: "광고비 없이 자연 유입 중심 운영" }
+                ],
+                links: [{ label: "범도령", url: "https://www.instagram.com/beomdoryeong/reels/" }]
+            },
+            cover: { title: "맷돌", src: "videos/beom-millstone.mp4", poster: "videos/posters/beom-millstone.jpg?v=2", w: 720, h: 1280 },   /* thumbnail on the main AI WORKS page */
             label: "범도령",
             title: "범도령",
             videos: [
-                { title: "범도령", src: "videos/beomdoryeong.mp4", poster: "videos/posters/beomdoryeong.jpg?v=2", w: 720, h: 1280 },
-                { title: "나무",   src: "videos/beom-tree.mp4",    poster: "videos/posters/beom-tree.jpg?v=2",    w: 720, h: 1280 },
-                { title: "낚시",   src: "videos/beom-fishing.mp4", poster: "videos/posters/beom-fishing.jpg?v=2", w: 720, h: 1280 },
-                { title: "떡 하나", src: "videos/beom-tteok.mp4",  poster: "videos/posters/beom-tteok.jpg?v=2",   w: 720, h: 1280 },
-                { title: "축제",   src: "videos/beom-festival.mp4", poster: "videos/posters/beom-festival.jpg?v=2", w: 720, h: 1280 },
-                { title: "강아지", src: "videos/beom-puppy.mp4",    poster: "videos/posters/beom-puppy.jpg?v=2",    w: 720, h: 1280 },
-                { title: "대장간", src: "videos/beom-forge.mp4",    poster: "videos/posters/beom-forge.jpg?v=2",    w: 720, h: 1280 },
-                { title: "도자기", src: "videos/beom-pottery.mp4",  poster: "videos/posters/beom-pottery.jpg",   w: 720, h: 1280 },
-                { title: "산군", src: "videos/beom-sangun.mp4",   poster: "videos/posters/beom-sangun.jpg",    w: 720, h: 1280 },
-                { title: "널뛰기", src: "videos/beom-seesaw.mp4",   poster: "videos/posters/beom-seesaw.jpg",    w: 720, h: 1280 },
-                { title: "연날리기", src: "videos/beom-kite.mp4",     poster: "videos/posters/beom-kite.jpg",      w: 720, h: 1280 },
-                { title: "말타기", src: "videos/beom-horse.mp4",    poster: "videos/posters/beom-horse.jpg",     w: 720, h: 1280 },
-                { title: "맷돌", src: "videos/beom-millstone.mp4", poster: "videos/posters/beom-millstone.jpg?v=2", w: 720, h: 1280 },
-                { title: "코라니 등장", src: "videos/beom-korani-intro.mp4", poster: "videos/posters/beom-korani-intro.jpg?v=2", w: 720, h: 1280 },
-                { title: "코라니 축제", src: "videos/beom-korani-festival.mp4", poster: "videos/posters/beom-korani-festival.jpg?v=2", w: 720, h: 1280 },
-                { title: "떡메질", src: "videos/beom-tteok-pound.mp4", poster: "videos/posters/beom-tteok-pound.jpg?v=2", w: 720, h: 1280 }
+                { title: "맷돌", ig: "DfV7P55TyPE", views: "4.4만" },
+                { title: "활쏘기", ig: "Df4lHjDNBaL", views: "3만" },
+                { title: "말타기", ig: "DfqjckiN6ms", views: "4,374" },
+                { title: "대장간", ig: "DfBV3QzTv1s", views: "4,332" },
+                { title: "도자기", ig: "DfGdQoyzh_8", views: "3,444" },
+                { title: "산군", ig: "DfJHYDMpWJU", views: "3,438" }
             ]
         },
         {
@@ -80,21 +91,23 @@ window.AI_WORKS = {
                     { label: "TikTok", url: "https://www.tiktok.com/@unkl.ush" }
                 ]
             },
+            performance: {   /* CONTENT PERFORMANCE of this account only */
+                stats: [
+                    { value: "92,000+", label: "UNKL 계정 총 조회수 (릴스 합산)" },
+                    { value: "Organic", label: "광고비 없이 자연 유입 중심 운영" }
+                ],
+                links: [{ label: "UNKL", url: "https://www.instagram.com/unkl.ush/reels/" }]
+            },
+            cover: { title: "HOLD ON TIGHT!", src: "videos/unkl-ep02.mp4", poster: "videos/posters/unkl-ep02.jpg?v=3", w: 864, h: 1536 },   /* thumbnail on the main AI WORKS page */
             label: "UNKL&ANTY",
             title: "UNKL&ANTY",
             videos: [
-                { title: "히어로", src: "videos/unkl-hero.mp4",      poster: "videos/posters/unkl-hero.jpg",      w: 1080, h: 1920 },
-                { title: "볼링",   src: "videos/unkl-bowling.mp4",   poster: "videos/posters/unkl-bowling.jpg",   w: 960, h: 1728 },
-                { title: "다이빙", src: "videos/unkl-diving.mp4",    poster: "videos/posters/unkl-diving.jpg",    w: 960, h: 1728 },
-                { title: "할로윈", src: "videos/unkl-halloween.mp4", poster: "videos/posters/unkl-halloween.jpg", w: 960, h: 1728 },
-                { title: "ZERO DAMAGE", src: "videos/unkl-zero-damage.mp4", poster: "videos/posters/unkl-zero-damage.jpg", w: 864, h: 1536 },
-                { title: "SOMETHING'S WRONG...", src: "videos/unkl-final.mp4", poster: "videos/posters/unkl-final.jpg?v=3", w: 864, h: 1536 },
-                { title: "BELLY NOT INCLUDED", src: "videos/unkl-belly.mp4", poster: "videos/posters/unkl-belly.jpg?v=2", w: 864, h: 1536 },
-                { title: "HOLD ON TIGHT!",  src: "videos/unkl-ep02.mp4", poster: "videos/posters/unkl-ep02.jpg?v=3", w: 864, h: 1536 },
-                { title: "Ep03 — TARZAN ON A BUDGET",  src: "videos/unkl-ep03.mp4", poster: "videos/posters/unkl-ep03.jpg", w: 960, h: 1728 },
-                { title: "NO BRAKES, NO COFFEE",  src: "videos/unkl-ep04.mp4", poster: "videos/posters/unkl-ep04.jpg?v=3", w: 864, h: 1536 },
-                { title: "SNACKS GONE WILD!",      src: "videos/unkl-snacks.mp4", poster: "videos/posters/unkl-snacks.jpg", w: 864,  h: 1536 },
-                { title: "THE DUMBEST WAY TO FISH", src: "videos/unkl-fish.mp4",   poster: "videos/posters/unkl-fish.jpg",   w: 1024, h: 1792 }
+                { title: "HOLD ON TIGHT!", ig: "DfcIcjPPo56", views: "2.6만" },
+                { title: "BELLY NOT INCLUDED", ig: "DfW-216PppW", views: "2.3만" },
+                { title: "ALMOST MADE IT!", ig: "DfhSAaXPUWT", views: "1.2만" },
+                { title: "SNACKS GONE WILD!", ig: "Df2M6FrP8yX", views: "1.1만" },
+                { title: "SOMETHING'S WRONG...", ig: "DfGeVX3Pw2u", views: "3,598" },
+                { title: "NO BRAKES, NO COFFEE", ig: "DfrsDPwPyLN", views: "1,848" }
             ]
         },
         {
