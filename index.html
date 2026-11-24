@@ -1771,6 +1771,13 @@
         .ai-cards .ai-media { aspect-ratio: 9 / 16; }
         .ai-cards .ai-media img { object-fit: cover; }
         .ai-cards .ai-media.is-playing { aspect-ratio: var(--ai-r, 9 / 16); }
+        .ai-rm__subgroup { margin-top: clamp(32px, 5vw, 52px); }
+        .ai-rm__subgroup:first-of-type { margin-top: 18px; }
+        .ai-rm__subgroup .ai-rm__series { margin: 0 0 6px; font-size: var(--fs-label); letter-spacing: 0.14em; color: var(--muted); }
+        .ai-rm__subgroup h4 { margin: 0 0 8px; font-size: var(--fs-body); font-weight: 700; letter-spacing: 0.04em; }
+        .ai-rm__subgroup > p { margin: 0 0 10px; font-size: var(--fs-label); line-height: 1.7; color: var(--muted); word-break: keep-all; max-width: 62ch; }
+        .ai-rm__subgroup > .ai-rm__tag { color: var(--ink); font-weight: 600; margin-bottom: 6px; }
+        .ai-rm__subgroup > .ai-rm__note { font-size: 12px; opacity: 0.8; }
         .ai-cards .ai-card__title + .ai-media { margin-top: 8px; }
         /* "Read More" page: every work of a group on one row */
         .ai-detail-section .ai-cards { grid-template-columns: repeat(var(--ai-cols, 3), minmax(0, 1fr)); gap: 12px clamp(12px, 1.6vw, 22px); }
@@ -2760,6 +2767,12 @@
                     '<iframe src="https://www.instagram.com/reel/' + encodeURIComponent(v.ig) + '/embed/" title="Instagram: ' + aiEsc(v.title) + '" loading="lazy" scrolling="no" allowfullscreen></iframe>' +
                     "</div>";
             }
+            /* still: true = image only (no video, no play button) */
+            if (v.still) {
+                return '<div class="ai-media" style="--ai-r:' + v.w + " / " + v.h + '">' +
+                    '<img src="' + aiEsc(v.poster) + '" alt="' + aiEsc(v.title) + '" width="' + v.w + '" height="' + v.h + '" loading="lazy" decoding="async">' +
+                    "</div>";
+            }
             return '<div class="ai-media" style="--ai-r:' + v.w + " / " + v.h + '" data-src="' + aiEsc(v.src) +
                 '" data-poster="' + aiEsc(v.poster) + '" data-title="' + aiEsc(v.title) + '">' +
                 '<img src="' + aiEsc(v.poster) + '" alt="" width="' + v.w + '" height="' + v.h + '" loading="lazy" decoding="async">' +
@@ -2784,7 +2797,9 @@
         /* all items of a group, as HTML strings (first = representative work) */
         function aiGroupItems(g, bare) {
             var D = window.AI_WORKS, items = [];
-            if (g.projects) {
+            if (g.subgroups) {
+                g.subgroups.forEach(function (sg) { items = items.concat(aiGroupItems(sg, bare)); });
+            } else if (g.projects) {
                 g.projects.forEach(function (id) {
                     var p = D.projects[id];
                     if (!p) return;
@@ -2829,12 +2844,16 @@
         /* "Read More" page: every work of one group (#/ai-creator/more/<key>) */
         function aiGroupByKey(key) {
             var gs = (window.AI_WORKS && window.AI_WORKS.groups) || [];
-            for (var i = 0; i < gs.length; i++) if (gs[i].key === key) return gs[i];
+            for (var i = 0; i < gs.length; i++) if (gs[i].key === key || (gs[i].aliases && gs[i].aliases.indexOf(key) > -1)) return gs[i];
             return null;
         }
         function aiMoreFromHash() {
             var m = location.hash.replace(/^#\/?/, "").match(/^ai-creator\/more\/([^\/?#]+)$/);
-            return m && aiGroupByKey(decodeURIComponent(m[1])) ? decodeURIComponent(m[1]) : null;
+            var g = m && aiGroupByKey(decodeURIComponent(m[1]));
+            if (!g) return null;
+            /* an old address (alias) opens the group's current page */
+            if (decodeURIComponent(m[1]) !== g.key) { try { history.replaceState(history.state, "", "#/ai-creator/more/" + g.key); } catch (e) {} }
+            return g.key;
         }
         /* up to 5 works on one row, 6-8 on two rows, 9 or more on three rows;
            never more than 4 columns, so 13+ works wrap onto extra rows instead of widening */
@@ -2864,17 +2883,27 @@
             var D2 = window.AI_WORKS, el = document.getElementById("aiDetail"), g = aiGroupByKey(key);
             if (!el || !g) return;
             var rm = g.readMore || {}, items = aiGroupItems(g, true);
+            /* a group made of several experiments: each one gets its own heading, description and row of works */
+            function aiOutput(x) {
+                var its = aiGroupItems(x, true);
+                return aiList(its, x.title ? 3 : aiMoreCols(its.length), its.length > 5 && !x.title, !!(x.videos && x.videos.length && x.videos.every(function (v) { return v.ig; })));
+            }
             el.innerHTML = '<button class="case-back" type="button" data-ai-open="">' + D2.labels.back + "</button>" +
                 '<article class="ai-rm">' +
                 '<div class="ai-rm__top"><span>AI WORKS' + (rm.category ? " / " + aiEsc(rm.category) : "") + "</span><span>" + aiEsc(rm.year || "") + "</span></div>" +
                 '<h2 class="ai-rm__title">' + aiEsc(rm.title || g.label || g.title) + "</h2>" +
                 (rm.subtitle ? '<p class="ai-rm__sub">' + aiEsc(rm.subtitle) + "</p>" : "") +
-                (rm.plan ? '<section class="ai-rm__sec"><h3>기획 방향</h3><p>' + aiEsc(rm.plan) + "</p></section>" : "") +
+                (rm.plan ? '<section class="ai-rm__sec"><h3>' + aiEsc(rm.planLabel || "기획 방향") + "</h3>" + [].concat(rm.plan).map(function (t) { return "<p>" + aiEsc(t) + "</p>"; }).join("") + "</section>" : "") +
                 (rm.tools ? '<section class="ai-rm__sec"><h3>TOOLS</h3><p>' + aiEsc(rm.tools) + "</p></section>" : "") +
                 (rm.links && rm.links.length ? '<section class="ai-rm__sec"><h3>SNS</h3><p class="ai-rm__links">' + rm.links.map(function (l) {
                     return '<a href="' + aiEsc(l.url) + '" target="_blank" rel="noopener noreferrer">' + aiEsc(l.label) + " ↗</a>";
                 }).join("") + "</p></section>" : "") +
-                '<section class="ai-rm__sec"><h3>OUTPUT</h3>' + aiList(items, aiMoreCols(items.length), items.length > 5, !!(g.videos && g.videos.length && g.videos.every(function (v) { return v.ig; }))) + "</section>" +
+                '<section class="ai-rm__sec"><h3>OUTPUT</h3>' + (g.subgroups ? g.subgroups.map(function (sg, n) {
+                    return '<div class="ai-rm__subgroup"><p class="ai-rm__series">SERIES ' + (n < 9 ? "0" : "") + (n + 1) + "</p><h4>" + aiEsc(sg.title) + "</h4>" +
+                        (sg.tagline ? '<p class="ai-rm__tag">' + aiEsc(sg.tagline) + "</p>" : "") +
+                        (sg.plan ? "<p>" + aiEsc(sg.plan) + "</p>" : "") +
+                        (sg.note ? '<p class="ai-rm__note">' + aiEsc(sg.note) + "</p>" : "") + aiOutput(sg) + "</div>";
+                }).join("") : aiOutput(g)) + "</section>" +
                 (g.performance && D2.performance ? aiPerformance(Object.assign({}, D2.performance, g.performance === true ? {} : g.performance)) : "") +
                 "</article>";
             document.title = (rm.title || g.title) + " — AI Works — LIM";

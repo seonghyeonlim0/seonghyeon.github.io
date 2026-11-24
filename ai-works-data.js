@@ -65,7 +65,7 @@ window.AI_WORKS = {
                 ],
                 links: [{ label: "범도령", url: "https://www.instagram.com/beomdoryeong/reels/" }]
             },
-            cover: { title: "맷돌", src: "videos/beom-millstone.mp4", poster: "videos/posters/beom-cover.jpg", w: 720, h: 1280 },   /* thumbnail on the main AI WORKS page */
+            cover: { title: "맷돌", src: "videos/beom-millstone.mp4", poster: "videos/posters/beom-cover.jpg", w: 720, h: 1280, still: true },   /* thumbnail on the main AI WORKS page */
             label: "범도령",
             title: "범도령",
             videos: [
@@ -98,7 +98,7 @@ window.AI_WORKS = {
                 ],
                 links: [{ label: "UNKL", url: "https://www.instagram.com/unkl.ush/reels/" }]
             },
-            cover: { title: "HOLD ON TIGHT!", src: "videos/unkl-ep02.mp4", poster: "videos/posters/unkl-cover.jpg", w: 864, h: 1536 },   /* thumbnail on the main AI WORKS page */
+            cover: { title: "HOLD ON TIGHT!", src: "videos/unkl-ep02.mp4", poster: "videos/posters/unkl-cover.jpg", w: 864, h: 1536, still: true },   /* thumbnail on the main AI WORKS page */
             label: "UNKL&ANTY",
             title: "UNKL&ANTY",
             videos: [
@@ -124,34 +124,43 @@ window.AI_WORKS = {
             series: "joseon"
         },
         {
-            key: "what-if",
+            key: "ai-experiments",
+            aliases: ["what-if", "stock", "experiments"],   /* old addresses that now open this page */
             readMore: {   /* content of the Read More page card */
-                title: "WHAT IF..?",
-                subtitle: "가상 제품 및 브랜드 비주얼",
-                category: "CONCEPT VISUAL",
-                year: "2026",
-                plan: "익숙한 브랜드와 제품에 새로운 디자인 컨셉을 적용하는 가상 제품 비주얼입니다. 실제로 존재하지 않는 조합을 상상하고, 제품의 형태와 소재, 브랜드 특징을 고려하여 이미지와 영상으로 구현했습니다."
-            },
-            label: "WHAT IF..?",   /* copy shown above the video */
-            title: "WHAT IF..?",
-            projects: ["product-concept-featured", "product-concept-01", "material-motion", "new-scene", "product-concept-02"]
-        },
-        {
-            key: "stock",
-            readMore: {   /* content of the Read More page card */
-                title: "MONEY TALK",
-                subtitle: "AI 비주얼 실험",
+                title: "AI EXPERIMENTS",
+                subtitle: "Concept & Visual Exploration",
                 category: "VISUAL EXPERIMENT",
                 year: "2026",
-                plan: "주식과 금융을 소재로, 친숙하고 직관적인 비주얼 콘텐츠로 제작하였습니다. 금융 관련 메시지를 그래픽과 모션으로 표현하며, 생성형 AI를 활용한 광고형 콘텐츠의 가능성을 탐색했습니다."
+                planLabel: "PROJECT OVERVIEW",
+                plan: [
+                    "현실과 상상의 경계를 넘어 다양한 아이디어를 콘텐츠로 구현하는 개인 크리에이티브 프로젝트입니다.",
+                    "생성형 AI를 활용하여 새로운 콘텐츠 콘셉트를 발굴하고, 다양한 비주얼 스타일과 스토리텔링 방식을 실험합니다."
+                ]
             },
-            label: "MONEY TALK",
-            title: "MONEY TALK",
-            videos: [
-                { title: "쏟아지는 금화", src: "videos/Final.mp4",             poster: "videos/posters/Final.jpg",             w: 720,  h: 1280 },
-                { title: "상승하는 코인", src: "videos/Final_2.mp4",           poster: "videos/posters/Final_2.jpg",           w: 720,  h: 1280 },
-                { title: "동전으로 쌓은 도시", src: "videos/finance-gold-coin.mp4", poster: "videos/posters/finance-gold-coin.jpg", w: 1080, h: 1920 },
-                { title: "미래로 향하는 거리", src: "videos/finance-premium.mp4",   poster: "videos/posters/finance-premium.jpg",   w: 1080, h: 1920 }
+            /* main-page card: still image only (replace videos/posters/ai-experiments-cover.jpg to change it) */
+            cover: { title: "AI EXPERIMENTS", poster: "videos/posters/ai-experiments-cover.jpg", w: 941, h: 1672, still: true },
+            label: "AI EXPERIMENTS",
+            title: "AI EXPERIMENTS",
+            /* SERIES: add a new experiment by appending one object here (title, tagline, plan, note + projects/videos).
+               Its works are listed under its own heading on the same page - no new page needed. */
+            subgroups: [
+                {
+                    title: "WHAT IF..?",
+                    tagline: "현실에 없는 조합, 상상에서 시작된 광고",
+                    plan: "실제로 존재하지 않는 브랜드와 제품의 조합을 상상하고, 이를 가상의 제품 및 광고 콘텐츠로 구현하는 크리에이티브 프로젝트입니다.",
+                    note: "실제 브랜드의 공식 협업이나 광고가 아닌 개인 창작 프로젝트입니다.",
+                    projects: ["product-concept-featured", "product-concept-01", "material-motion", "new-scene", "product-concept-02"]
+                },
+                {
+                    title: "MONEY TALK",
+                    plan: "주식과 금융을 소재로, 친숙하고 직관적인 비주얼 콘텐츠로 제작하였습니다. 금융 관련 메시지를 그래픽과 모션으로 표현하며, 생성형 AI를 활용한 광고형 콘텐츠의 가능성을 탐색했습니다.",
+                    videos: [
+                        { title: "쏟아지는 금화", src: "videos/Final.mp4",             poster: "videos/posters/Final.jpg",             w: 720,  h: 1280 },
+                        { title: "상승하는 코인", src: "videos/Final_2.mp4",           poster: "videos/posters/Final_2.jpg",           w: 720,  h: 1280 },
+                        { title: "동전으로 쌓은 도시", src: "videos/finance-gold-coin.mp4", poster: "videos/posters/finance-gold-coin.jpg", w: 1080, h: 1920 },
+                        { title: "미래로 향하는 거리", src: "videos/finance-premium.mp4",   poster: "videos/posters/finance-premium.jpg",   w: 1080, h: 1920 }
+                    ]
+                }
             ]
         }
     ],
