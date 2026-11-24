@@ -1771,6 +1771,8 @@
         .ai-cards .ai-media { aspect-ratio: 9 / 16; }
         .ai-cards .ai-media img { object-fit: cover; }
         .ai-cards .ai-media.is-playing { aspect-ratio: var(--ai-r, 9 / 16); }
+        .ai-cover-link { display: block; cursor: pointer; }
+        .ai-cover-link:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
         .ai-rm__subgroup { margin-top: clamp(32px, 5vw, 52px); }
         .ai-rm__subgroup:first-of-type { margin-top: 18px; }
         .ai-rm__subgroup .ai-rm__series { margin: 0 0 6px; font-size: var(--fs-label); letter-spacing: 0.14em; color: var(--muted); }
@@ -2830,7 +2832,7 @@
                 var items = aiGroupItems(g, true);
                 html += '<section class="ai-block ai-group" aria-label="' + aiEsc(g.title) + '">' +
                     '<h3 class="ai-block__label">' + aiEsc(g.label || g.title) + "</h3>" +
-                    aiList(g.cover ? [aiMedia(g.cover, true)] : items.slice(0, 1)) +
+                    aiList(g.cover ? [g.cover.still ? '<a class="ai-cover-link" href="#/ai-creator/more/' + aiEsc(g.key) + '" data-ai-more="' + aiEsc(g.key) + '" aria-label="' + aiEsc(g.label || g.title) + ' — Read More">' + aiMedia(g.cover, true) + "</a>" : aiMedia(g.cover, true)] : items.slice(0, 1)) +
                     (items.length > 1
                         ? '<a class="ai-more" href="#/ai-creator/more/' + aiEsc(g.key) + '" data-ai-more="' + aiEsc(g.key) + '">Read More</a>'
                         : "") +

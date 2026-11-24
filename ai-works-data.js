@@ -119,15 +119,16 @@ window.AI_WORKS = {
                 year: "2026",
                 plan: "현대의 제품과 문화를 조선시대에 적용한다는 상상에서 출발한 AI 숏폼입니다. 전통적인 소재와 시대적 배경을 활용해 익숙한 아이디어를 색다른 비주얼과 움직임으로 구현했습니다."
             },
+            cover: { title: "조선의 모든 것", poster: "videos/posters/joseon-cover.jpg", w: 941, h: 1672, still: true },   /* thumbnail on the main AI WORKS page (image only) */
             label: "조선의 모든 것",
             title: "조선의 모든 것",
             series: "joseon"
         },
         {
-            key: "ai-experiments",
-            aliases: ["what-if", "stock", "experiments"],   /* old addresses that now open this page */
+            key: "concept-works",
+            aliases: ["ai-experiments", "what-if", "stock", "experiments"],   /* old addresses that now open this page */
             readMore: {   /* content of the Read More page card */
-                title: "AI EXPERIMENTS",
+                title: "CONCEPT WORKS",
                 subtitle: "Concept & Visual Exploration",
                 category: "VISUAL EXPERIMENT",
                 year: "2026",
@@ -137,10 +138,10 @@ window.AI_WORKS = {
                     "생성형 AI를 활용하여 새로운 콘텐츠 콘셉트를 발굴하고, 다양한 비주얼 스타일과 스토리텔링 방식을 실험합니다."
                 ]
             },
-            /* main-page card: still image only (replace videos/posters/ai-experiments-cover.jpg to change it) */
-            cover: { title: "AI EXPERIMENTS", poster: "videos/posters/ai-experiments-cover.jpg", w: 941, h: 1672, still: true },
-            label: "AI EXPERIMENTS",
-            title: "AI EXPERIMENTS",
+            /* main-page card: still image only (replace videos/posters/concept-works-cover.jpg to change it) */
+            cover: { title: "CONCEPT WORKS", poster: "videos/posters/concept-works-cover.jpg", w: 941, h: 1672, still: true },
+            label: "CONCEPT WORKS",
+            title: "CONCEPT WORKS",
             /* SERIES: add a new experiment by appending one object here (title, tagline, plan, note + projects/videos).
                Its works are listed under its own heading on the same page - no new page needed. */
             subgroups: [
