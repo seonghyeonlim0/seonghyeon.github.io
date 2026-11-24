@@ -867,6 +867,14 @@
         .case-nf .nf-camp .case-note { margin: 0 0 4px; max-width: none; }
         .case-nf .nf-fields dd p { margin: 0 0 8px; }
         .case-nf .nf-fields dd p:last-child { margin-bottom: 0; }
+        .case-nf .case-pair video {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: contain;
+            border-radius: 8px;
+            background: #000;
+        }
         @media (min-width: 641px) {
             .case-nf .case-grid.case-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .case-nf .case-grid.case-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -4593,58 +4601,139 @@
                     <video src="cases/powerade-physical/preview.mp4" controls playsinline preload="metadata"></video>
                 </div>
             </div>
-            <div class="case-section case-ambasa-section case-brief">
+            <div class="case-section case-ambasa-section case-brief case-nf">
                 <button class="case-back" type="button" onclick="showProjectManager()">← PROJECT EXPERIENCE</button>
-                <header class="case-hero case-hero--ko">
-                    <h2 class="bc-hero__name">암바사 소셜 광고 영상 콘텐츠 기획</h2>
+                <header class="case-hero">
+                    <h2 class="bc-hero__name">AMBASA — Social Media Campaign</h2>
+                    <p class="bc-hero__sub">Social Content Planning &amp; Creative Direction</p>
                 </header>
-                <div class="case-text" style="margin-top: clamp(20px, 3vw, 30px);">
+                <div class="case-text">
                     <dl class="bc-meta">
-                        <dt>PERIOD</dt><dd>2024.10 – 2024.11</dd>
+                        <dt>CLIENT</dt><dd>Coca-Cola</dd>
                         <dt>BRAND</dt><dd>AMBASA</dd>
+                        <dt>PERIOD</dt><dd>2024.10 – 2024.11</dd>
+                        <dt>CATEGORY</dt><dd>Social Media / Digital Advertising</dd>
+                        <dt>ROLE</dt><dd>Creative Planning · Visual Direction · Motion Direction</dd>
                     </dl>
                 </div>
+
+                <!-- 01 PROJECT OVERVIEW -->
                 <div class="brief-row">
-                    <h3 class="case-heading">PROJECT OVERVIEW</h3>
+                    <h3 class="case-heading"><span class="nf-no">01</span>PROJECT OVERVIEW</h3>
                     <div class="case-text">
-                        <p>암바사 오리지널·제로 제품의 부드럽고 경쾌한 브랜드 이미지를 소셜 광고 콘텐츠로 시각화했습니다.</p>
-                        <p>밀크 탄산이라는 제품 특성을 구름, 버블, 별 등 가볍고 부드러운 그래픽 요소로 확장해 암바사만의 밝고 친근한 이미지를 표현했습니다.</p>
+                        <p>암바사 오리지널과 제로 제품의 특징 및 브랜드 이미지를 전달하기 위한 소셜 광고 콘텐츠를 기획했습니다.</p>
+                        <p>밀크 탄산 특유의 부드러움과 경쾌함을 일러스트, 3D 및 모션 그래픽으로 재해석하고, 제품의 감각적인 매력이 직관적으로 전달될 수 있도록 콘텐츠의 구성과 비주얼 방향을 설계했습니다.</p>
                     </div>
                 </div>
+
+                <!-- 02 CHALLENGE -->
                 <div class="brief-row">
-                    <h3 class="case-heading">MY CONTRIBUTION</h3>
+                    <h3 class="case-heading"><span class="nf-no">02</span>CHALLENGE</h3>
                     <div class="case-text">
-                        <dl class="bc-pairs">
-                            <dt>기획</dt>
-                            <dd>
-                                <ul>
-                                    <li>SNS 콘텐츠 아이디어 기획</li>
-                                    <li>제품 중심 비주얼 구성</li>
-                                </ul>
-                            </dd>
-                            <dt>디렉팅</dt>
-                            <dd>
-                                <ul>
-                                    <li>일러스트·3D 표현 방향 설정</li>
-                                    <li>모션 콘텐츠 기획 및 제작 디렉팅</li>
-                                </ul>
-                            </dd>
-                            <dt>관리</dt>
-                            <dd>
-                                <ul>
-                                    <li>결과물 검수 및 납품</li>
-                                </ul>
-                            </dd>
-                        </dl>
+                        <p class="nf-statement">밀크 탄산 특유의 부드러움과 청량감을 어떻게 시각적으로 전달할 것인가?</p>
+                        <p>제품의 맛과 질감처럼 직접적으로 보여주기 어려운 감각적 특징을 시각적인 콘텐츠로 표현하고, 짧은 시간 안에 제품의 매력과 브랜드 이미지가 전달되도록 기획하는 것이 핵심 과제였습니다.</p>
+                        <ol class="nf-points">
+                            <li><span>01</span>밀크 탄산의 감각적 특징을 시각적 요소로 전환</li>
+                            <li><span>02</span>암바사 특유의 밝고 친근한 브랜드 이미지 표현</li>
+                            <li><span>03</span>오리지널과 제로 제품의 비주얼 구성</li>
+                            <li><span>04</span>소셜 미디어 환경에 적합한 콘텐츠 기획</li>
+                            <li><span>05</span>일러스트와 3D·모션 간의 시각적 일관성 유지</li>
+                        </ol>
                     </div>
                 </div>
-                <h3 class="case-heading brief-h">OUTPUT</h3>
-                <div class="case-pair">
-                    <img src="cases/ambasa/ambasa-1.jpg" alt="암바사 — 핸드드로잉 일러스트" loading="lazy" decoding="async">
-                    <img src="cases/ambasa/ambasa-2.jpg" alt="암바사 오리지널·제로 — 일러스트" loading="lazy" decoding="async">
+
+                <!-- 03 CREATIVE STRATEGY -->
+                <div class="brief-row">
+                    <h3 class="case-heading"><span class="nf-no">03</span>CREATIVE STRATEGY</h3>
+                    <div class="case-text">
+                        <p class="nf-statement">제품의 감각적 특징을 친근하고 경쾌한 비주얼로 확장하다.</p>
+                        <article class="nf-strat">
+                            <div class="nf-strat__head">
+                                <p class="nf-strat__no">01</p>
+                                <h4>Product Characterization</h4>
+                                <p class="nf-strat__ko">제품 특성의 시각적 재해석</p>
+                            </div>
+                            <p>밀크 탄산이라는 제품의 특징을 바탕으로 부드러움과 경쾌함을 표현할 수 있는 시각적 콘셉트를 기획했습니다.</p>
+                        </article>
+                        <article class="nf-strat">
+                            <div class="nf-strat__head">
+                                <p class="nf-strat__no">02</p>
+                                <h4>Visual Metaphor</h4>
+                                <p class="nf-strat__ko">시각적 메타포 활용</p>
+                            </div>
+                            <p>구름, 버블, 별 등의 그래픽 요소를 활용하여 제품의 부드러운 질감과 탄산의 경쾌한 이미지를 직관적으로 연상할 수 있도록 구성했습니다.</p>
+                        </article>
+                        <article class="nf-strat">
+                            <div class="nf-strat__head">
+                                <p class="nf-strat__no">03</p>
+                                <h4>Creative Expression</h4>
+                                <p class="nf-strat__ko">크리에이티브 표현 방식 확장</p>
+                            </div>
+                            <p>핸드드로잉 일러스트와 3D 그래픽을 활용하여 브랜드의 밝고 친근한 이미지를 다양한 비주얼 콘텐츠로 표현했습니다.</p>
+                        </article>
+                        <article class="nf-strat">
+                            <div class="nf-strat__head">
+                                <p class="nf-strat__no">04</p>
+                                <h4>Social Content Design</h4>
+                                <p class="nf-strat__ko">소셜 콘텐츠에 적합한 연출</p>
+                            </div>
+                            <p>제품 중심의 화면 구성과 그래픽 요소의 움직임을 통해 소셜 미디어 환경에서 브랜드와 제품의 특징이 효과적으로 전달될 수 있도록 모션 콘텐츠를 기획했습니다.</p>
+                        </article>
+                    </div>
                 </div>
-                <div class="case-media" style="margin-top: 20px; max-width: 420px;">
-                    <video src="cases/ambasa/preview.mp4" controls playsinline preload="metadata"></video>
+
+                <!-- 04 MY ROLE & PROCESS -->
+                <div class="brief-row">
+                    <h3 class="case-heading"><span class="nf-no">04</span>MY ROLE &amp; PROCESS</h3>
+                    <div class="case-text">
+                        <p class="nf-statement">제품 특성 분석부터 소셜 광고 콘텐츠 구현까지</p>
+                        <ol class="nf-flow">
+                            <li><span class="nf-flow__no">1</span><strong>Product Analysis<small>제품 및 브랜드 특성 분석</small></strong><span class="nf-flow__d">암바사 오리지널·제로의 제품 특징과 브랜드 이미지 정리</span></li>
+                            <li><span class="nf-flow__no">2</span><strong>Creative Planning<small>크리에이티브 아이디어 기획</small></strong><span class="nf-flow__d">제품의 감각적 특징을 반영한 소셜 콘텐츠 아이디어 및 콘셉트 기획</span></li>
+                            <li><span class="nf-flow__no">3</span><strong>Visual Development<small>비주얼 콘셉트 설계</small></strong><span class="nf-flow__d">제품 배치, 그래픽 요소 및 일러스트·3D 표현 방향 설정</span></li>
+                            <li><span class="nf-flow__no">4</span><strong>Motion &amp; Visual Direction<small>모션 및 비주얼 디렉팅</small></strong><span class="nf-flow__d">콘텐츠의 움직임과 연출 흐름 기획, 일러스트 및 3D·모션 제작 디렉팅</span></li>
+                            <li><span class="nf-flow__no">5</span><strong>Quality Control &amp; Delivery<small>결과물 검수 및 납품</small></strong><span class="nf-flow__d">기획 의도와 비주얼 방향을 기반으로 최종 콘텐츠 검수 및 납품</span></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- 05 SELECTED PROJECTS -->
+                <h3 class="case-heading brief-h"><span class="nf-no">05</span>SELECTED PROJECTS</h3>
+                <p class="case-note" style="margin-top: -6px;">대표 콘텐츠 및 크리에이티브 기획 사례</p>
+
+                <article class="nf-camp">
+                    <header class="nf-camp__head"><span class="nf-no">01</span><h4>HAND-DRAWN ILLUSTRATION</h4><span class="nf-camp__en">제품의 부드러움을 표현하는 감성적인 일러스트</span></header>
+                    <div class="case-pair">
+                        <img src="cases/ambasa/ambasa-1.jpg" alt="암바사 — 핸드드로잉 일러스트" loading="lazy" decoding="async">
+                    </div>
+                </article>
+
+                <article class="nf-camp">
+                    <header class="nf-camp__head"><span class="nf-no">02</span><h4>ORIGINAL &amp; ZERO</h4><span class="nf-camp__en">오리지널과 제로를 하나의 브랜드 비주얼로 연결</span></header>
+                    <div class="case-pair">
+                        <img src="cases/ambasa/ambasa-2.jpg" alt="암바사 오리지널·제로 — 일러스트" loading="lazy" decoding="async">
+                        <video src="cases/ambasa/preview.mp4" controls playsinline preload="metadata"></video>
+                    </div>
+                </article>
+
+                <!-- 06 PROJECT OUTCOME -->
+                <div class="brief-row nf-outcome">
+                    <h3 class="case-heading"><span class="nf-no">06</span>PROJECT OUTCOME</h3>
+                    <div class="case-text">
+                        <p class="nf-statement">제품의 감각적 특징을 소셜 광고 콘텐츠로 구현</p>
+                        <p>밀크 탄산이라는 제품의 특징을 시각적 메타포와 그래픽 요소로 재해석하고, 일러스트와 3D·모션을 활용한 소셜 광고 콘텐츠로 구현했습니다.</p>
+                        <p>제품의 특징을 기반으로 콘텐츠 아이디어를 기획하고, 비주얼 방향 설정과 제작 디렉팅부터 최종 결과물 검수 및 납품까지 수행했습니다.</p>
+                        <!--
+                            수치를 확보하면 아래 목록에 .nf-stat 항목을 추가하세요. (2열로 자동 배치됩니다)
+                            <div class="nf-stat"><strong>00</strong><span>항목 설명</span></div>
+                        -->
+                        <div class="nf-stats nf-stats--wide">
+                            <div class="nf-stat"><strong>2 PRODUCTS</strong><span>오리지널·제로 2종의 제품 콘텐츠 기획</span></div>
+                            <div class="nf-stat"><strong>VISUAL METAPHOR</strong><span>제품의 감각적 특징을 시각적 요소로 재해석</span></div>
+                            <div class="nf-stat"><strong>2D &amp; 3D</strong><span>일러스트와 3D·모션을 활용한 크리에이티브 구현</span></div>
+                            <div class="nf-stat"><strong>SOCIAL CONTENT</strong><span>제품 중심의 소셜 광고 콘텐츠 기획 및 제작 디렉팅</span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="case-section case-powerade-baseball-section case-brief">
