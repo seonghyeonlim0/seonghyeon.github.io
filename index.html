@@ -875,6 +875,11 @@
             border-radius: 8px;
             background: #000;
         }
+        .case-nf .case-pair video.is-portrait {
+            aspect-ratio: 9 / 16;
+            object-fit: cover;
+            max-width: 360px;
+        }
         @media (min-width: 641px) {
             .case-nf .case-grid.case-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .case-nf .case-grid.case-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -4702,17 +4707,17 @@
                 <p class="case-note" style="margin-top: -6px;">대표 콘텐츠 및 크리에이티브 기획 사례</p>
 
                 <article class="nf-camp">
-                    <header class="nf-camp__head"><span class="nf-no">01</span><h4>HAND-DRAWN ILLUSTRATION</h4><span class="nf-camp__en">제품의 부드러움을 표현하는 감성적인 일러스트</span></header>
+                    <header class="nf-camp__head"><span class="nf-no">01</span><h4>KEY VISUAL</h4></header>
                     <div class="case-pair">
-                        <img src="cases/ambasa/ambasa-1.jpg" alt="암바사 — 핸드드로잉 일러스트" loading="lazy" decoding="async">
+                        <img src="cases/ambasa/ambasa-1.jpg" alt="암바사 — 핸드드로잉 일러스트 키비주얼" loading="lazy" decoding="async">
+                        <img src="cases/ambasa/ambasa-2.jpg" alt="암바사 오리지널·제로 — 일러스트 키비주얼" loading="lazy" decoding="async">
                     </div>
                 </article>
 
                 <article class="nf-camp">
-                    <header class="nf-camp__head"><span class="nf-no">02</span><h4>ORIGINAL &amp; ZERO</h4><span class="nf-camp__en">오리지널과 제로를 하나의 브랜드 비주얼로 연결</span></header>
+                    <header class="nf-camp__head"><span class="nf-no">02</span><h4>VIDEO</h4></header>
                     <div class="case-pair">
-                        <img src="cases/ambasa/ambasa-2.jpg" alt="암바사 오리지널·제로 — 일러스트" loading="lazy" decoding="async">
-                        <video src="cases/ambasa/preview.mp4" controls playsinline preload="metadata"></video>
+                        <video class="is-portrait" src="cases/ambasa/preview.mp4" controls playsinline preload="metadata"></video>
                     </div>
                 </article>
 
